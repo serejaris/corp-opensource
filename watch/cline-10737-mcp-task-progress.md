@@ -3,6 +3,7 @@
 ## Upstream
 
 - Issue: https://github.com/cline/cline/issues/10737
+- Internal issue: https://github.com/serejaris/corp-opensource/issues/17
 - Repo: `cline/cline`
 - Status checked: 2026-05-27 02:13 -03
 
@@ -42,6 +43,19 @@ warning: Clone succeeded, but checkout failed.
 ```
 
 Do not use that broken checkout as evidence of repo state until `git-lfs` is installed and checkout is restored.
+
+Source files were later readable after disabling the LFS filter for a restore command, but the checkout index still reports a broken delete/untracked state. Treat source reads as source-only evidence, not as a clean working tree.
+
+## Current Main Source Audit
+
+Checked source on 2026-05-27 after restoring readable files:
+
+- `apps/vscode/src/core/task/tools/handlers/UseMcpToolHandler.ts:67` parses `block.params.arguments` into `parsedArguments`.
+- `apps/vscode/src/core/task/tools/handlers/UseMcpToolHandler.ts:168` passes `parsedArguments` directly to `config.services.mcpHub.callTool(server_name, tool_name, parsedArguments, config.ulid)`.
+- No source-side deletion of `parsedArguments.task_progress` exists in this handler.
+- Prompt text still tells the model that `task_progress` is supported by every tool call, including `use_mcp_tool`, while also saying it must be a separate parameter and not inside `arguments`.
+
+This confirms the bug class still appears present on current readable source, but does not by itself justify a fresh PR because the duplicate PR queue is already messy.
 
 ## Decision
 

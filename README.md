@@ -18,7 +18,7 @@
 | pydantic/pydantic-ai | [#5680](https://github.com/pydantic/pydantic-ai/pull/5680) | [#16](https://github.com/serejaris/corp-opensource/issues/16), [watch](watch/pydantic-ai-5679-textcontent-metadata.md) | Open, mergeable, CI green | Watch maintainer/bot review |
 | pydantic/pydantic-ai | [#5681](https://github.com/pydantic/pydantic-ai/pull/5681) | [watch](watch/pydantic-ai-5671-google-cached-content.md) | Competing PR open, mergeable, CI green | Watch/review only; do not duplicate |
 | trycua/cua | [#1725](https://github.com/trycua/cua/issues/1725) | [#15](https://github.com/serejaris/corp-opensource/issues/15), [watch](watch/trycua-1725-windows-click-marker.md) | Likely fixed on main pending Windows smoke | Wait for runner/repro path before PR |
-| cline/cline | [#10737](https://github.com/cline/cline/issues/10737) | [watch](watch/cline-10737-mcp-task-progress.md) | Strong bug, but duplicate-race with stale/conflicting PRs | Triage existing PRs; no fresh PR yet |
+| cline/cline | [#10737](https://github.com/cline/cline/issues/10737) | [#17](https://github.com/serejaris/corp-opensource/issues/17), [watch](watch/cline-10737-mcp-task-progress.md) | Strong bug, but duplicate-race with stale/conflicting PRs | Triage existing PRs; no fresh PR yet |
 
 ## Рабочие issues
 
@@ -38,6 +38,7 @@
 - [#14 pydantic-ai serialize_any loses binary data](https://github.com/serejaris/corp-opensource/issues/14)
 - [#15 trycua Windows element-index clicks miss click.png marker](https://github.com/serejaris/corp-opensource/issues/15)
 - [#16 pydantic-ai TextContent metadata lost in UI adapter round-trip](https://github.com/serejaris/corp-opensource/issues/16)
+- [#17 cline MCP task_progress leaks into MCP args](https://github.com/serejaris/corp-opensource/issues/17)
 
 ## Правила
 
