@@ -105,7 +105,7 @@ These can become Tier 1 only after identity and repo-health validation.
 |---|---|
 | `openclaw/openclaw` | Search reports unusually high stars; verify releases, commits, issue quality, and maintainer loop before trusting. |
 | `Gitlawb/openclaude` | OpenClaude-like target, but identity/canonical status needs validation. |
-| `Infisical/agent-vault` | Relevant credential proxy/vault for agents, smaller/newer repo; cycle 29 created an infra-adjacent watch card, but license text and secret-boundary gates are required before PR work. |
+| `Infisical/agent-vault` | Relevant credential proxy/vault for agents; bounded scan [#60](https://github.com/serejaris/corp-opensource/issues/60) / [watch](agent-vault-scouting-2026-05-27.md) kept final `WATCH`. Best lead `#194` is Codex/Agent Vault WebSocket proxy compatibility, but Agent Vault-owned patch surface is unproven until secret-free v0.22.0/current-main runner repro and owner-boundary gate. |
 | `HKUDS/OpenHarness` | Appears in agent-harness search; validate real usage and maintainership. |
 | `langchain-ai/deepagentsjs` | JS sibling of DeepAgents; validate maturity and issue quality. |
 | `OpenHands/software-agent-sdk` | Suggested by OpenHands maintainers; validate separately from monorepo issues. |
