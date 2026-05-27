@@ -26,7 +26,7 @@
 | browser-use/browser-use | [#4877](https://github.com/browser-use/browser-use/issues/4877), [#4801](https://github.com/browser-use/browser-use/issues/4801), [#4846](https://github.com/browser-use/browser-use/issues/4846) | [scouting](watch/ai-native-frameworks-scouting-2026-05-27.md) | Good repo, but top candidates already covered by open mergeable PRs | Watch/review only; no duplicate PR |
 | OpenHands/software-agent-sdk | [#3394](https://github.com/OpenHands/software-agent-sdk/pull/3394), [#2806](https://github.com/OpenHands/software-agent-sdk/issues/2806) | [#22](https://github.com/serejaris/corp-opensource/issues/22), [watch](watch/openhands-sdk-2806-tmux-viewport.md) | PR open, mergeable, review required; `pr-review` skipped | Watch maintainer review |
 | anomalyco/opencode | [#29530](https://github.com/anomalyco/opencode/pull/29530), [#29525](https://github.com/anomalyco/opencode/issues/29525) | [#23](https://github.com/serejaris/corp-opensource/issues/23), [watch](watch/opencode-29525-webfetch-null-format.md) | PR open, mergeable; duplicate/compliance/standards checks green | Watch maintainer review |
-| cline/cline | [#11086](https://github.com/cline/cline/issues/11086) | [#24](https://github.com/serejaris/corp-opensource/issues/24), [scouting](watch/ai-native-frameworks-scouting-2026-05-27-cycle-2.md) | Strong signal; no competing PR found; current main did not show reported openai-compatible payload path | Needs exact CLI repro before PR |
+| cline/cline | [#11087](https://github.com/cline/cline/pull/11087), [#11086](https://github.com/cline/cline/issues/11086) | [#24](https://github.com/serejaris/corp-opensource/issues/24), [scouting](watch/ai-native-frameworks-scouting-2026-05-27-cycle-7.md) | PR open, mergeable; Greptile gap addressed; Quality Checks + Ubuntu/Windows SDK tests green | Watch maintainer review |
 | e2b-dev/E2B | [#1352](https://github.com/e2b-dev/E2B/issues/1352) | [#25](https://github.com/serejaris/corp-opensource/issues/25), [scouting](watch/ai-native-frameworks-scouting-2026-05-27-cycle-2.md) | Strategic sandbox reconnect candidate; may need live sandbox | Track; avoid PR until repro/test surface clear |
 | langchain-ai/deepagents | [#3568](https://github.com/langchain-ai/deepagents/issues/3568) | [scouting](watch/ai-native-frameworks-scouting-2026-05-27-cycle-2.md) | Small prompt/schema bug, but reporter has local fix and assignment gate risk | Watch/comment only if maintainers ask |
 
@@ -82,6 +82,7 @@
 - [Follow-up по старым upstream PR/issues](playbooks/upstream-followup-loop.md)
 - [Runner-контейнер на corp-server](playbooks/runner-container.md)
 - [AI-native frameworks scouting cycle 2](watch/ai-native-frameworks-scouting-2026-05-27-cycle-2.md)
+- [AI-native frameworks scouting cycle 7](watch/ai-native-frameworks-scouting-2026-05-27-cycle-7.md)
 
 ## Метки
 
