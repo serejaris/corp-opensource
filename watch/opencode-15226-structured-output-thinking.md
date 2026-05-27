@@ -59,3 +59,10 @@ Note: local Bun is `1.2.21`; opencode docs ask for Bun 1.3+, so push used `--no-
 - Watch duplicate check and maintainer review.
 - If a competing PR appears, compare final provider payload behavior before commenting.
 - If maintainer prefers disabling thinking instead of relaxing tool choice, keep the regression focused on "no incompatible final request shape".
+
+## Follow-up check - 2026-05-27 10:35 -03
+
+- PR remains open, ready, mergeable.
+- No comments or reviews yet.
+- All visible opencode management/standards checks are green.
+- No code action. Keep monitoring maintainer review and user reports.

@@ -108,3 +108,10 @@ Workflow run check:
 - this means fork workflows are waiting for maintainer approval, not failing due to code.
 
 Следующее действие: дождаться новых CI/eval результатов и maintainer response; не пушить дальше без нового actionable review.
+
+## Follow-up check - 2026-05-27 10:35 -03
+
+- PR remains open.
+- Maintainer comment: looks fine, wants to run an eval before merge.
+- Latest fork workflows for `3c8eae78` still show `action_required` with no jobs; this is maintainer approval/eval gating, not a local test failure.
+- No code action. Wait maintainer eval / workflow approval.
