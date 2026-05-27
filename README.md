@@ -20,7 +20,7 @@
 
 | Upstream PR | Что сделано | Текущий статус | Следующее действие |
 |---|---|---|---|
-| [NousResearch/hermes-agent#15640](https://github.com/NousResearch/hermes-agent/pull/15640) | Старый Hermes gateway fix: macOS launchd plist должен регистрировать Login Item как `hermes`, не `python`. | `CLOSE-CANDIDATE` via [#67](https://github.com/serejaris/corp-opensource/issues/67) / [watch](watch/hermes-15640-stale-cleanup-2026-05-27.md): open, `CLEAN/MERGEABLE`, stale since 2026-04-25; no comments/reviews/checks; exact duplicate not found in previous notes. | Не закрывать/пинговать в dashboard heartbeat; отдельный cleanup cycle должен выбрать close vs one useful ping vs keep watch after fresh gates. |
+| [NousResearch/hermes-agent#15640](https://github.com/NousResearch/hermes-agent/pull/15640) | Старый Hermes gateway fix: macOS launchd plist должен регистрировать Login Item как `hermes`, не `python`. | `PR-OPEN / WATCH-stale-clean` via [#67](https://github.com/serejaris/corp-opensource/issues/67) / [watch](watch/hermes-15640-stale-cleanup-2026-05-27.md): open, `CLEAN/MERGEABLE`, stale since 2026-04-25; no comments/reviews/checks; exact PR `#15885` closed as superseded by `#15640`, while `#29673/#29965` are collision risks. | Не закрывать/пинговать без fresh macOS launchd validation or maintainer signal; watch `#29673/#29965` for supersede/rewrite pressure. |
 
 ### В работе сейчас
 
