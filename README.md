@@ -25,6 +25,7 @@
 | OpenHands/OpenHands | [#14476](https://github.com/OpenHands/OpenHands/issues/14476) | [#21](https://github.com/serejaris/corp-opensource/issues/21), [watch](watch/openhands-14476-conversation-metadata-race.md) | Candidate/watch; no competing PR found; SaaS semantics risk | Only pursue if unit repro is possible |
 | browser-use/browser-use | [#4877](https://github.com/browser-use/browser-use/issues/4877), [#4801](https://github.com/browser-use/browser-use/issues/4801), [#4846](https://github.com/browser-use/browser-use/issues/4846) | [scouting](watch/ai-native-frameworks-scouting-2026-05-27.md) | Good repo, but top candidates already covered by open mergeable PRs | Watch/review only; no duplicate PR |
 | OpenHands/software-agent-sdk | [#3394](https://github.com/OpenHands/software-agent-sdk/pull/3394), [#2806](https://github.com/OpenHands/software-agent-sdk/issues/2806) | [#22](https://github.com/serejaris/corp-opensource/issues/22), [watch](watch/openhands-sdk-2806-tmux-viewport.md) | PR open, mergeable, review required; checks mostly not started yet | Watch CI/review |
+| anomalyco/opencode | [#29530](https://github.com/anomalyco/opencode/pull/29530), [#29525](https://github.com/anomalyco/opencode/issues/29525) | [#23](https://github.com/serejaris/corp-opensource/issues/23), [watch](watch/opencode-29525-webfetch-null-format.md) | PR open, mergeable; checks pending | Watch duplicate bot, CI, maintainer review |
 
 ## Рабочие issues
 
@@ -50,6 +51,7 @@
 - [#20 deepagents subagent task fails without tool_call_id on OpenAI-compatible Qwen](https://github.com/serejaris/corp-opensource/issues/20)
 - [#21 OpenHands conversation metadata race hides started resolver conversations](https://github.com/serejaris/corp-opensource/issues/21)
 - [#22 OpenHands SDK tmux 1000x1000 viewport burns CPU](https://github.com/serejaris/corp-opensource/issues/22)
+- [#23 opencode webfetch nullable format mismatch](https://github.com/serejaris/corp-opensource/issues/23)
 
 ## Правила
 
@@ -60,6 +62,7 @@
   - patchability: где минимальный patch surface и есть targeted tests.
 - Не начинаем PR без воспроизведения или понятного failing/regression test.
 - Для bugfix PR сначала доказываем, что regression test реально ловит старый баг: временно возвращаем старое поведение или запускаем тест на pre-fix state и записываем точный failing assertion/error.
+- Для schema/runtime mismatch regression пишем через raw wire/tool boundary: передаём тот же payload, который видит runtime/модель (`null`, missing default, etc.), а не только typed helper.
 - Для publish/release багов проверяем не только helper, но и внешний артефакт/контракт: registry metadata, package manifest, install/runtime symptom или closest publishable fixture.
 - Если есть competing PR, ведём duplicate triage публично: что сравнили, что портировали, чего не хватает.
 - Duplicate scan повторяем прямо перед кодом. Если candidate уже закрыт open/mergeable PR с тестами, переключаемся в watch/review/validation.
