@@ -24,6 +24,8 @@
 - До provisioning dedicated runner допускается использовать CT `216` / `pc-hermes-test` только для Hermes-specific smoke/repro checks. Не превращай CT `216` в общий open-source runner.
 - Любое создание/изменение Proxmox CT — live infra mutation. Работай через `corp-server-ops`, issue/runbook в `corp-server`, dry-run/read-only gate и approval policy.
 - В runner не клади приватные токены в repo. Секреты только в окружении контейнера или host-managed secret path.
+- Если server runner работает в goal-mode/hourly-mode, он должен делать максимум один bundled commit+push в час: сначала выполнить bounded scouting/follow-up cycle, затем `git diff --check`, затем один commit со всеми изменениями. Если изменений нет, commit не создавать.
+- Hourly runner не открывает внешний upstream PR автоматически. Upstream PR остаётся ручным/явно подтверждённым действием после `PR-READY`; hourly mode может делать internal tracker/watch updates и upstream comment-first только когда gates уже записаны.
 
 ## Рабочий порядок
 
