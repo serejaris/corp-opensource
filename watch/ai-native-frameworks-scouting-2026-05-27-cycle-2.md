@@ -34,7 +34,7 @@
 
 | Rank | Issue | Решение |
 |---:|---|---|
-| 1 | Cline [#11086](https://github.com/cline/cline/issues/11086) — CLI sends `reasoning: {exclude:true}` to OpenAI-compatible GLM endpoints | Strong signal, but local main did not show the reported openai-compatible payload path; needs exact CLI repro before PR |
+| 1 | Cline [#11086](https://github.com/cline/cline/issues/11086) — CLI sends `reasoning: {exclude:true}` to OpenAI-compatible GLM endpoints | PR opened: [cline/cline#11087](https://github.com/cline/cline/pull/11087). Repro found in SDK CLI `createGatewayApiHandler.createMessage` path, not old VSCode `OpenAiHandler` path |
 | 2 | E2B [#1352](https://github.com/e2b-dev/E2B/issues/1352) — resumed sandbox `commands.connect` stops stdout after large response | Strategic but may need paid/live sandbox; track first |
 | 3 | deepagents [#3568](https://github.com/langchain-ai/deepagents/issues/3568) — `read_file` prompt/schema mismatch | Small patch, but reporter has local fix and another contributor asked assignment; do not jump in |
 | 4 | pydantic-ai [#5671](https://github.com/pydantic/pydantic-ai/issues/5671) — Google cached content forbidden fields | Good test surface, but competing [#5681](https://github.com/pydantic/pydantic-ai/pull/5681) exists |
@@ -50,5 +50,5 @@
 ## Next
 
 1. Re-check OpenHands SDK #3394 after follow-up push.
-2. Continue Cline #11086 only after exact CLI `providers.json` repro; current main's `OpenAiHandler` path does not appear to emit `reasoning: {exclude:true}` for GLM.
+2. Monitor Cline [#11087](https://github.com/cline/cline/pull/11087): CI, Greptile, maintainer review.
 3. Create internal issues for Cline #11086 and E2B #1352 if not already present.
