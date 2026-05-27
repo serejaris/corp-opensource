@@ -26,7 +26,7 @@ Useful action: confirmed that the next tempting candidates are duplicate-covered
 | `trycua/cua#1722` | Exact PR `#1723` was opened by the issue author and closes the issue. | Watch `#1723`; no duplicate. |
 | `anomalyco/opencode#29498/#29518/#29534` | No exact open PR for these three, but all are either assigned, Windows/encoding repro-heavy, or adjacent to active opencode PRs `#29530`/`#29565`. `#29518` also overlaps tool-input repair work. | Watch/comment-first; no third simultaneous opencode PR. |
 | `OpenHands/software-agent-sdk#3317` | No open exact PR now, but closed exact PR `#3319` exists and our `#3394` is still waiting eval in the same repo. | Watch; ask maintainer before any new PR. |
-| Fresh candidate scout | Timed out in this pass. | Repeat in next cycle if current PR queue is still blocked. |
+| Fresh candidate scout | Proposed `modelcontextprotocol/python-sdk#2687`, but parent duplicate check found exact open PR `#2701` covering the issue with regression tests. | Watch `#2701`; no duplicate PR. |
 
 ## Local duplicate checks
 
@@ -38,6 +38,7 @@ Useful action: confirmed that the next tempting candidates are duplicate-covered
 | `gh api repos/trycua/cua/issues/1722/timeline` | Cross-referenced `#1723` by the issue author. |
 | `gh pr view OpenHands/software-agent-sdk#3394` | Review threads resolved; old `CHANGES_REQUESTED` still present; no PR checks reported. |
 | `gh run list --repo OpenHands/software-agent-sdk --branch fix/2806-reduce-tmux-session-size` | Workflows for `3c8eae78` are `completed/action_required`, i.e. maintainer approval needed. |
+| `gh pr view modelcontextprotocol/python-sdk#2701` | Open, mergeable, review required; closes `#2687` with redirect URI normalization and regression test. |
 
 ## Next action
 
