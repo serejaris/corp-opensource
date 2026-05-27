@@ -16,6 +16,7 @@
 | NousResearch/hermes-agent | [#32999](https://github.com/NousResearch/hermes-agent/pull/32999), [#32963](https://github.com/NousResearch/hermes-agent/pull/32963), [#33042](https://github.com/NousResearch/hermes-agent/pull/33042) | [#6](https://github.com/serejaris/corp-opensource/issues/6), [watch](watch/hermes-codex-null-output.md) | #32963 merged outage fix; #32999 closed obsolete after #33042 removed the SDK stream helper path entirely | Accept closure; keep boundary-regression lesson in skill/watch |
 | pydantic/pydantic-ai | [#5678](https://github.com/pydantic/pydantic-ai/pull/5678) | [#14](https://github.com/serejaris/corp-opensource/issues/14) | Open, mergeable, CI green; Codex review quota warning only | Watch maintainer/bot review |
 | pydantic/pydantic-ai | [#5680](https://github.com/pydantic/pydantic-ai/pull/5680) | [#16](https://github.com/serejaris/corp-opensource/issues/16), [watch](watch/pydantic-ai-5679-textcontent-metadata.md) | Open, mergeable, CI green; Codex review quota warning only | Watch maintainer/bot review |
+| pydantic/pydantic-ai | [#5688](https://github.com/pydantic/pydantic-ai/issues/5688) | [#47](https://github.com/serejaris/corp-opensource/issues/47), [cycle 15](watch/ai-native-frameworks-scouting-2026-05-27-cycle-15.md) | Best next technical candidate; comment-first because pydanty says PR opener is delegated and repo has assignment/maintainer gate | Wait assignment/confirmation or pydanty PR; no racing PR |
 | pydantic/pydantic-ai | [#5681](https://github.com/pydantic/pydantic-ai/pull/5681) | [watch](watch/pydantic-ai-5671-google-cached-content.md) | Competing PR open, mergeable, CI green | Watch/review only; do not duplicate |
 | trycua/cua | [#1725](https://github.com/trycua/cua/issues/1725) | [#15](https://github.com/serejaris/corp-opensource/issues/15), [watch](watch/trycua-1725-windows-click-marker.md) | Likely fixed on main pending Windows smoke | Wait for runner/repro path before PR |
 | cline/cline | [#10737](https://github.com/cline/cline/issues/10737) | [#17](https://github.com/serejaris/corp-opensource/issues/17), [watch](watch/cline-10737-mcp-task-progress.md) | Strong bug, but duplicate-race with stale/conflicting PRs | Triage existing PRs; no fresh PR yet |
@@ -98,6 +99,7 @@
 - [#44 opencode structured output conflicts with thinking tool_choice](https://github.com/serejaris/corp-opensource/issues/44)
 - [#45 Cycle 13 scouting: no safe new PR after six-agent triage](https://github.com/serejaris/corp-opensource/issues/45)
 - [#46 google-adk vertexai optional dependency import guard](https://github.com/serejaris/corp-opensource/issues/46)
+- [#47 pydantic-ai MCPToolset http_client follow_redirects guard](https://github.com/serejaris/corp-opensource/issues/47)
 
 ## Правила
 
@@ -136,6 +138,7 @@
 - [AI-native frameworks scouting cycle 12 PR-readiness](watch/ai-native-frameworks-scouting-2026-05-27-cycle-12-pr-readiness.md)
 - [AI-native frameworks scouting cycle 13](watch/ai-native-frameworks-scouting-2026-05-27-cycle-13.md)
 - [AI-native frameworks scouting cycle 14](watch/ai-native-frameworks-scouting-2026-05-27-cycle-14.md)
+- [AI-native frameworks scouting cycle 15](watch/ai-native-frameworks-scouting-2026-05-27-cycle-15.md)
 - [Goose #9332 PDEATHSIG MCP subprocess lifecycle](watch/goose-9332-pdeathsig-mcp-subprocess.md)
 
 ## Метки
