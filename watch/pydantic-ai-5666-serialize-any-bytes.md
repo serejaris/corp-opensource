@@ -81,13 +81,17 @@ Third check:
 
 - New CI run for `be323816` is still in progress.
 - Passed after the Pyright fix:
+  - `lint`
   - `mypy`
   - `docs`
   - `harness compat`
   - `pydantic-ai-slim` tests on Python 3.10/3.11/3.12/3.13/3.14
   - `pydantic-evals` tests on Python 3.10/3.11/3.12/3.13/3.14
   - examples on Python 3.11/3.12/3.13/3.14
-- Still pending: `lint`, broader standard/all-extras/lowest-versions matrix.
+  - standard tests on Python 3.10/3.11/3.12/3.13/3.14
+  - all-extras tests on Python 3.14
+  - lowest-versions tests on Python 3.14
+- Still pending: remaining all-extras and lowest-versions matrix.
 - Do not open another upstream PR until this CI result is known.
 
 ## Next
