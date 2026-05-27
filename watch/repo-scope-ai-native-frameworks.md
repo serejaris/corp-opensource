@@ -81,7 +81,7 @@ These can produce good candidates, but the next step must be repo-specific gates
 | `SWE-agent/SWE-agent` | Coding-agent harness and runner; useful for benchmark runner, Docker/env and docs drift bugs. |
 | `SWE-agent/mini-swe-agent` | Promoted to Tier 1A after cycle 29; kept here only as a reminder to cross-check with `SWE-agent/SWE-agent` before treating a candidate as independent. |
 | `Skyvern-AI/skyvern` | Browser/vision/RPA agent; take only distinct browser-agent issues not already covered by current browser lanes. |
-| `BloopAI/vibe-kanban` | Paperclip-like control-plane for coding agents; scoped control-plane watch after cycle 29, but activity/maintainer rhythm and contribution surface must be validated before issue-level work. |
+| `BloopAI/vibe-kanban` | Paperclip-like control-plane for coding agents; [bounded scan](vibe-kanban-scouting-2026-05-27.md) kept `WATCH` because repo is sunsetting, README asks for discussion before PR, and maintainer rhythm is weak. `#3329` is lead-after-repro only; no PR hunting. |
 | `QwenLM/qwen-code` | Terminal coding agent; verify-first due to high issue/PR volume and likely duplicate reports. |
 | `gptme/gptme` | Lower-noise terminal agent; verify maintainer rhythm before promotion. |
 | `awslabs/cli-agent-orchestrator` | Multi-agent CLI control-plane; lower popularity but relevant control-plane watch. |
