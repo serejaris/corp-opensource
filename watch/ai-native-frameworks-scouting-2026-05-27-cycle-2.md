@@ -39,7 +39,7 @@
 | 2 | E2B [#1352](https://github.com/e2b-dev/E2B/issues/1352) — resumed sandbox `commands.connect` stops stdout after large response | WATCH / live-repro-needed. Public SDK path is a thin envd stream wrapper; no server-side fix surface found in repo and no `E2B_API_KEY` is available locally |
 | 3 | deepagents [#3568](https://github.com/langchain-ai/deepagents/issues/3568) — `read_file` prompt/schema mismatch | Small patch, but reporter has local fix and another contributor asked assignment; do not jump in |
 | 4 | pydantic-ai [#5671](https://github.com/pydantic/pydantic-ai/issues/5671) — Google cached content forbidden fields | Good test surface, but competing [#5681](https://github.com/pydantic/pydantic-ai/pull/5681) exists |
-| 5 | OpenHands [#14563](https://github.com/OpenHands/OpenHands/issues/14563) — global skills not loaded in CLI/Docker/WebUI | Strategic, but larger container semantics |
+| 5 | OpenHands [#14563](https://github.com/OpenHands/OpenHands/issues/14563) — global skills not loaded in CLI/Docker/WebUI | WATCH / maintainer-direction-needed. Six-agent triage found a real `openhands serve` Docker visibility gap, but #14121/#14273 may be the preferred product path. Comment posted: https://github.com/OpenHands/OpenHands/issues/14563#issuecomment-4552415740. Internal tracker: https://github.com/serejaris/corp-opensource/issues/26 |
 
 ## Duplicate no-go
 
@@ -53,3 +53,4 @@
 1. Re-check OpenHands SDK #3394 after follow-up push.
 2. Monitor Cline [#11087](https://github.com/cline/cline/pull/11087): maintainer review.
 3. E2B [#1352](https://github.com/e2b-dev/E2B/issues/1352): only resume after live E2B key/runner is available or maintainers expose server-side fix surface.
+4. OpenHands [#14563](https://github.com/OpenHands/OpenHands/issues/14563): wait for maintainer answer before PR; if green-lit, first write a failing Docker/serve mount regression, not a loader-only test.

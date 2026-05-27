@@ -43,6 +43,7 @@ Write upstream comments when there is new useful information:
 - our branch is still distinct from a newer PR;
 - we can offer to port tests or rebase after another PR lands;
 - a user reports success/failure with our fix and the maintainers should see the signal.
+- maintainer explicitly asks for clarification before implementation; answer that first and do not open a PR until the intended product direction is clear.
 
 Do not comment just to bump.
 
@@ -71,3 +72,12 @@ On 2026-05-27:
 - #32999 remained open for a distinct callback-error hardening regression.
 - #33017 appeared as a usage-preservation follow-up touching overlapping files.
 - Action: commented on #32999 explaining that #33017 and #32999 are complementary and offering to rebase if #33017 lands first.
+
+## Example: OpenHands Global Skills In Docker Serve
+
+On 2026-05-27:
+
+- OpenHands #14563 reported host-global skills not appearing in `openhands serve`.
+- Six-agent triage found the loader already requests `load_user=True`; the likely break is Docker visibility: host `~/.openhands` is not mounted into the agent-server container.
+- Related #14121/#14273 may be the intended Settings/personal-repo direction, so a runtime PR without maintainer direction risks design conflict.
+- Action: posted a clarification/comment-first update and tracked internally in `corp-opensource#26`.

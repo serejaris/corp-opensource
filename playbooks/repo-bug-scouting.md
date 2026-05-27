@@ -53,4 +53,6 @@ gh search prs 'repo:OWNER/REPO is:pr is:open bug OR regression OR crash' --limit
 
 Минимальный стандарт: targeted test падает на текущем сломанном состоянии или на reverted fix, затем проходит после patch. Если это дорого, фиксируем `WATCH / needs-repro`, а не открываем PR.
 
+Для container/runtime visibility багов тест должен стоять на границе, где ломается пользовательский контракт: Docker volumes, env passthrough, CLI command generation, request payload или wire protocol. Helper-level тест на parser/loader недостаточен, если реальный баг в том, что helper не получает нужный filesystem/path/env внутри container.
+
 Для invitation-only репозиториев отдельный gate: без явного приглашения не открывать upstream PR, даже если fix очевиден. В таком случае полезная работа — watch note, issue, duplicate/test analysis и короткий upstream comment только при наличии нового факта.
