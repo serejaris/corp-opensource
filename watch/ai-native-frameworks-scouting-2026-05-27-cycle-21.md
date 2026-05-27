@@ -15,6 +15,12 @@ Six-subagent scouting pass:
 
 Parent gate then rechecked the only new candidate that was not clearly duplicate-covered or assignment-gated.
 
+Before any PR work, run the 3-subagent critique pass:
+
+1. fact-check: no overclaim on freshness, maintainer signal, duplicate status, or subagent findings;
+2. process-gate: confirm the sequence `6-subagent scouting -> parent live gates -> 3-subagent critique -> comment/PR/tracker update`;
+3. actionability: force one next status with a blocker/event: `LEAD`, `CANDIDATE`, `COMMENT-FIRST`, `PR-READY`, `PR-OPEN`, `WATCH`, or `NO-GO`.
+
 ## Shortlist
 
 | Target | Subagent signal | Parent decision | Why | Next action |

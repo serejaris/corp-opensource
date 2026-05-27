@@ -2,7 +2,7 @@
 
 ## Что уже сделано: PR dashboard
 
-Последняя live-проверка: 2026-05-27 13:19 UTC.
+Последняя live-проверка dashboard: 2026-05-27 13:19 UTC. Это snapshot; перед новым upstream comment/PR нужно перепроверить конкретную строку через `gh pr view` / `gh issue view`.
 
 ### Активные upstream PR
 
@@ -40,9 +40,21 @@
 ## Execution model
 
 - Разведка и triage идут через 6 субагентов, если есть несколько repo/PR или тема быстро меняется.
+- Hard gate перед upstream comment/PR: `6-subagent scouting -> parent live gates -> 3-subagent critique -> comment/PR/tracker update`.
+- Если критика нашла оверклейм, stale status, duplicate risk или слабый regression contract, кандидат остаётся `WATCH`/`NO-GO`, а не идёт в PR.
 - Repro, targeted tests и тяжёлые checkout должны уходить в dedicated runner на `corp-server`: `corp-opensource-runner`.
 - Пока runner не создан, CT `216` / `pc-hermes-test` можно использовать только для Hermes-specific bounded smoke/repro checks. Это не общий runner.
 - Provisioning runner-контейнера живёт в `corp-server`; этот repo хранит очередь, watch notes и решения по upstream.
+
+## Allowed next_status
+
+- `LEAD`: только subagent-сигнал; parent live gates ещё не пройдены. Нельзя комментировать upstream или писать код.
+- `CANDIDATE`: parent live gates чистые, есть regression card, но pre-fix fail ещё не доказан. Это не `PR-READY`.
+- `COMMENT-FIRST`: баг вероятен, но repo/social gate требует сначала вопрос, assignment, maintainer direction или confirmation.
+- `PR-READY`: fresh duplicate gate чистый, contribution gate разрешает PR, regression card заполнена, pre-fix fail доказан, patch surface минимален, verification command известна.
+- `PR-OPEN`: PR открыт; дальше только follow-up loop.
+- `WATCH`: полезно наблюдать, но сейчас нет разрешения на PR: `needs-repro`, `needs-reporter-path`, `maintainer-direction-needed`, `assignment-first`, `duplicate-race`, `release-followup`.
+- `NO-GO`: не открывать PR в этом цикле: `duplicate-covered`, assignment-gated with closed attempts, invitation-only without invite, upstream main already fixed, no public patch surface.
 
 ## Активный watchlist
 
@@ -74,7 +86,7 @@
 | trycua/cua | [#1724](https://github.com/trycua/cua/issues/1724) | [#32](https://github.com/serejaris/corp-opensource/issues/32), [cycle 8](watch/ai-native-frameworks-scouting-2026-05-27-cycle-8.md) | Comment-first; direct stdio launch support needs confirmation | Repro/comment only with new evidence |
 | openai/codex | [#24612](https://github.com/openai/codex/issues/24612) | [#33](https://github.com/serejaris/corp-opensource/issues/33), [cycle 8](watch/ai-native-frameworks-scouting-2026-05-27-cycle-8.md) | Candidate/watch; no direct PR found; provider-history sanitizer bug | Watch/access-sensitive |
 | aaif-goose/goose | [#9332](https://github.com/aaif-goose/goose/issues/9332) | [#34](https://github.com/serejaris/corp-opensource/issues/34), [watch](watch/goose-9332-pdeathsig-mcp-subprocess.md) | Comment-first; no duplicate PR; maintainer-alignment comment posted | Wait direction or run Linux repro on runner |
-| aaif-goose/goose | [#9446](https://github.com/aaif-goose/goose/issues/9446), [#9447](https://github.com/aaif-goose/goose/pull/9447) | [#49](https://github.com/serejaris/corp-opensource/issues/49), [cycle 18](watch/ai-native-frameworks-scouting-2026-05-27-cycle-18.md), [cycle 19](watch/ai-native-frameworks-scouting-2026-05-27-cycle-19.md), [watch](watch/goose-9446-response-completed-missing-output.md) | PR open, ready, mergeable; `check-quarantined` and `machete` passed; `changes` failed on GitHub diff API transient, dependent jobs skipped | Watch maintainer/rerun/review |
+| aaif-goose/goose | [#9446](https://github.com/aaif-goose/goose/issues/9446), [#9447](https://github.com/aaif-goose/goose/pull/9447) | [#49](https://github.com/serejaris/corp-opensource/issues/49), [cycle 18](watch/ai-native-frameworks-scouting-2026-05-27-cycle-18.md), [cycle 19](watch/ai-native-frameworks-scouting-2026-05-27-cycle-19.md), [watch](watch/goose-9446-response-completed-missing-output.md) | Open, review required; `check-quarantined` and `machete` passed; `changes` failed on GitHub diff API transient, dependent jobs skipped; mergeability `UNKNOWN` in last check | Watch maintainer/rerun/review |
 | BerriAI/litellm | [#28962](https://github.com/BerriAI/litellm/issues/28962) | [#35](https://github.com/serejaris/corp-opensource/issues/35), [cycle 9](watch/ai-native-frameworks-scouting-2026-05-27-cycle-9.md) | No-go / release-followup; mocked current branch maps Gemini 503 `MaskedHTTPStatusError` to `ServiceUnavailableError` | Watch reporter/upstream; no PR unless exact leaking path is confirmed |
 | microsoft/playwright-mcp | [#1635](https://github.com/microsoft/playwright-mcp/issues/1635) | [#36](https://github.com/serejaris/corp-opensource/issues/36), [cycle 9](watch/ai-native-frameworks-scouting-2026-05-27-cycle-9.md) | Comment-first / assignment-gated; [regression offer posted](https://github.com/microsoft/playwright-mcp/issues/1635#issuecomment-4552993898) | Wait maintainer direction; no PR without approval |
 | modelcontextprotocol/typescript-sdk | [#2155](https://github.com/modelcontextprotocol/typescript-sdk/issues/2155), [#1925](https://github.com/modelcontextprotocol/typescript-sdk/pull/1925), [#1926](https://github.com/modelcontextprotocol/typescript-sdk/pull/1926) | [#37](https://github.com/serejaris/corp-opensource/issues/37), [cycle 9](watch/ai-native-frameworks-scouting-2026-05-27-cycle-9.md) | Duplicate-triage; server-side SSE escaping already covered by open mergeable PRs with tests | Watch maintainer review; validate only uncovered client fail-fast / JSON-response gap |
@@ -153,6 +165,10 @@
   - patchability: где минимальный patch surface и есть targeted tests;
   - duplicate-race: linked PRs, issue timeline, competing PRs, maintainer comments;
   - PR-readiness: contribution guide, PR template, issue policy, test commands, draft/ready expectation.
+- После синтеза и parent live gates делаем 3-subagent critique:
+  - fact-check: не оверклеймим freshness, maintainer signal, duplicate status и результат субагентов;
+  - process-gate: проверяем порядок `6-subagent scouting -> parent live gates -> 3-subagent critique -> comment/PR/tracker`;
+  - actionability: проверяем, что следующий шаг один из `CANDIDATE`, `COMMENT-FIRST`, `PR-READY`, `WATCH`, `NO-GO`, и у него есть конкретный gate/unblock event.
 - Не начинаем PR без воспроизведения или понятного failing/regression test.
 - Для bugfix PR сначала доказываем, что regression test реально ловит старый баг: временно возвращаем старое поведение или запускаем тест на pre-fix state и записываем точный failing assertion/error.
 - Для schema/runtime mismatch regression пишем через raw wire/tool boundary: передаём тот же payload, который видит runtime/модель (`null`, missing default, etc.), а не только typed helper.

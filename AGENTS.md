@@ -15,6 +15,7 @@
 - Для поиска репозиториев, candidate bugs и triage используй `open-source-bug-scouting`.
 - Для подготовки/мониторинга upstream PR используй `open-source-pr-workflow`.
 - Если есть 2+ repo, 2+ competing PR или пользователь просит subagents/scouting/triage, запускай цикл из 6 субагентов и фиксируй synthesis в issue/watch note.
+- Перед upstream comment/PR, который меняет статус кандидата, после parent live gates запускай 3-subagent critique: фактология/дубликаты, process gates, actionability. Результат фиксируй в issue/watch note.
 
 ## Runner Container
 
@@ -28,9 +29,10 @@
 
 1. Создай или обнови issue в `corp-opensource`.
 2. Проведи scouting/triage через нужные subagent роли.
-3. Зафиксируй score, repro plan и duplicate check.
-4. Запусти repro/test в runner-контейнере или явно напиши, почему runner ещё не доступен.
-5. Только после repro переходи в upstream PR workflow.
+3. Parent live gates: issue state, assignee/labels, linked PRs/timeline, PR search, contribution docs, regression card.
+4. Проведи 3-subagent critique и выбери ровно один `next_status`: `LEAD`, `CANDIDATE`, `COMMENT-FIRST`, `PR-READY`, `PR-OPEN`, `WATCH`, `NO-GO`.
+5. Запусти repro/test в runner-контейнере или явно напиши, почему runner ещё не доступен.
+6. Только после repro и `PR-READY` переходи в upstream PR workflow.
 
 ## Проверка перед commit
 

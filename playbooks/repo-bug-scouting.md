@@ -21,7 +21,7 @@ gh search prs 'repo:OWNER/REPO is:pr is:open bug OR regression OR crash' --limit
 
 ## Субагенты
 
-Запускать параллельно:
+Запускать параллельно на этапе scouting/triage:
 
 1. **Repo-fit**: contribution guide, test commands, recent merged PR, maintainer response.
 2. **Bug-signal**: свежие баги, реакции, дубликаты, user impact.
@@ -29,6 +29,53 @@ gh search prs 'repo:OWNER/REPO is:pr is:open bug OR regression OR crash' --limit
 4. **Patchability**: вероятные файлы, fixtures, targeted tests, риск большого refactor.
 5. **Duplicate-race**: открытые/смерженные конкурирующие PR, linked issues, похожие fixes.
 6. **PR-readiness**: CONTRIBUTING, PR template, fork workflow, required checks, draft-vs-ready.
+
+После синтеза родитель обязан сделать live gates сам: issue state, assignee/labels, linked PRs/timeline, PR search, contribution docs, regression card.
+
+Перед upstream comment/PR запускать отдельный 3-subagent critique:
+
+1. **Fact-check critique**: ловит оверклеймы про freshness, maintainer signal, duplicate coverage, CI/mergeability и `subagent GO`.
+2. **Process-gate critique**: проверяет, что порядок не нарушен: `6-subagent scouting -> parent live gates -> 3-subagent critique -> comment/PR/tracker update`.
+3. **Actionability critique**: требует один конкретный `next_status`: `LEAD`, `CANDIDATE`, `COMMENT-FIRST`, `PR-READY`, `PR-OPEN`, `WATCH`, `NO-GO`; для `PR-READY` нужен regression-first contract, для `COMMENT-FIRST` — точный вопрос/предложение, для `WATCH` — событие-разблокировщик.
+
+## Allowed next_status
+
+- `LEAD`: только subagent-сигнал; parent live gates ещё не пройдены. Нельзя комментировать upstream или писать код.
+- `CANDIDATE`: parent live gates чистые, есть regression card, но pre-fix fail ещё не доказан. Это не `PR-READY`.
+- `COMMENT-FIRST`: баг вероятен, но repo/social gate требует сначала вопрос, assignment, maintainer direction или confirmation.
+- `PR-READY`: fresh duplicate gate чистый, contribution gate разрешает PR, regression card заполнена, pre-fix fail доказан, patch surface минимален, verification command известна.
+- `PR-OPEN`: PR открыт; дальше только follow-up loop.
+- `WATCH`: полезно наблюдать, но сейчас нет разрешения на PR: `needs-repro`, `needs-reporter-path`, `maintainer-direction-needed`, `assignment-first`, `duplicate-race`, `release-followup`.
+- `NO-GO`: не открывать PR в этом цикле: `duplicate-covered`, assignment-gated with closed attempts, invitation-only without invite, upstream main already fixed, no public patch surface.
+
+## After critique decision gate
+
+После 3-subagent critique parent обязан выбрать ровно один статус:
+
+- `PR-READY`, если duplicate gate clean, contribution gate разрешает PR, pre-fix failure доказан, test file + command известны, patch touches minimal public boundary.
+- `COMMENT-FIRST`, если duplicate gate clean, но repo просит comment-before-code; нет assignment/ready label; maintainer обсуждает product direction; patch затрагивает public API/runtime semantics; есть exact regression card, которую можно предложить.
+- `WATCH`, если баг не воспроизведён; upstream main не ломается на проверенном path; нужен reporter version/body/log; runner недоступен; есть active same-repo PR by us waiting review; есть competing PR, но coverage ещё не сравнён.
+- `NO-GO`, если existing PR covers same contract + test; issue assignment-gated and previous drive-by PRs were closed; repo is invitation-only without invite; upstream removed affected code path; no public contribution surface.
+
+## Hard PR gate
+
+Перед `gh pr create` все пункты должны быть true:
+
+- watch note / internal issue updated after critique;
+- current issue state, assignee, labels and timeline checked;
+- linked/cross-referenced PRs checked, not only text search;
+- contribution gate says PR is allowed now;
+- no active same-repo PR by us is waiting review/eval unless this issue is clearly independent and urgent;
+- pre-fix or reverted-fix failure recorded with exact assertion/error;
+- targeted post-fix command passed;
+- required owner-level test/typecheck/format command identified or explicitly marked not applicable;
+- upstream comment posted first if repo requires comment-before-code.
+
+## WATCH recheck trigger
+
+Каждый `WATCH` должен иметь `unblock_event`: `maintainer-reply`, `assignment/ready label`, `reporter provides version/path/body`, `runner available`, `competing PR merged/closed`, `release published`, `our active same-repo PR reviewed/merged/closed`, or `scheduled recheck date`.
+
+Без `unblock_event` статус считается не actionable и должен стать `NO-GO` или закрытым stale internal candidate.
 
 ## Выход
 
@@ -48,9 +95,10 @@ gh search prs 'repo:OWNER/REPO is:pr is:open bug OR regression OR crash' --limit
 
 1. fresh duplicate gate: issue timeline, linked/cross-referenced PRs, text PR search;
 2. regression card в issue/watch note;
-3. pre-fix failing test или reverted-fix failing test;
-4. минимальный patch;
-5. повторный duplicate gate прямо перед `gh pr create`.
+3. 3-subagent critique по фактологии, process gates и actionability;
+4. pre-fix failing test или reverted-fix failing test;
+5. минимальный patch;
+6. повторный duplicate gate прямо перед `gh pr create`.
 
 Нельзя считать PR готовым, если:
 
@@ -59,6 +107,7 @@ gh search prs 'repo:OWNER/REPO is:pr is:open bug OR regression OR crash' --limit
 - reference PR существует, но мы не сравнили его тесты и не поняли, какой контракт он доказывает;
 - fresh duplicate gate нашёл открытый PR, но мы не сравнили, покрывает ли он наш user-facing contract;
 - upstream `main` уже выглядит исправленным, но мы всё равно начинаем ветку без duplicate triage.
+- critique не зафиксирована в issue/watch note для свежего scouting candidate.
 
 Минимальный стандарт: targeted test падает на текущем сломанном состоянии или на reverted fix, затем проходит после patch. Если это дорого, фиксируем `WATCH / needs-repro`, а не открываем PR.
 

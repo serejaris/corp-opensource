@@ -45,7 +45,9 @@ Write upstream comments when there is new useful information:
 - a user reports success/failure with our fix and the maintainers should see the signal.
 - maintainer explicitly asks for clarification before implementation; answer that first and do not open a PR until the intended product direction is clear.
 
-Do not comment just to bump.
+Before a new upstream comment/PR that changes candidate status, record the 3-subagent critique result in the issue/watch note.
+
+Do not comment just to bump. Do not comment if there is no new evidence, the duplicate gate is incomplete, critique is not recorded, or the same question is already waiting for an answer.
 
 ## Required Internal Record
 
