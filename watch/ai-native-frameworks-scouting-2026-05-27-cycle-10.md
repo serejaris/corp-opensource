@@ -13,7 +13,7 @@
 | LiteLLM guardrail logging | [BerriAI/litellm#28971](https://github.com/BerriAI/litellm/issues/28971), [PR #28970](https://github.com/BerriAI/litellm/pull/28970) | `WATCH / duplicate-triage` | Изначально выглядел как лучший PR-ready bug, но fresh duplicate gate нашёл открытый mergeable PR #28970 по близкому guardrail logging path с regression tests и зелёными guardrails/proxy checks. Нужен compare, не новый PR. |
 | E2B multi-source COPY | [e2b-dev/E2B#1349](https://github.com/e2b-dev/E2B/issues/1349), [PR #1354](https://github.com/e2b-dev/E2B/pull/1354) | `PR OPEN / CLA-gated` | Red/green regression proved locally; PR opened ready. External blocker: `verification/cla-signed` requires @serejaris CLA signature. |
 | OpenHands global skills | [OpenHands/OpenHands#14563](https://github.com/OpenHands/OpenHands/issues/14563) | `COMMENT-FIRST / maintainer-direction-needed` | Баг реальный и важный для skills/runtime, но мы уже спросили upstream, хотят ли narrow CLI/self-hosted mount fix или ждать Settings/personal repo path. Без ответа PR не открывать. |
-| MCP Python OAuth refresh | [modelcontextprotocol/python-sdk#2578](https://github.com/modelcontextprotocol/python-sdk/issues/2578) | `CANDIDATE / rules-gated` | Хороший no-secret unit repro, но repo в целом maintainer-gated; сначала проверить rules/current duplicates и спросить, если нет `ready for work`. |
+| MCP Python OAuth refresh | [modelcontextprotocol/python-sdk#2578](https://github.com/modelcontextprotocol/python-sdk/issues/2578), [#2590](https://github.com/modelcontextprotocol/python-sdk/pull/2590), [#2645](https://github.com/modelcontextprotocol/python-sdk/pull/2645), [#2646](https://github.com/modelcontextprotocol/python-sdk/pull/2646) | `WATCH / duplicate-covered` | Three open linked PRs already cover both reported contracts with green CI; duplicate-triage comment posted. |
 | MCP TypeScript protocol mismatch | [modelcontextprotocol/typescript-sdk#2108](https://github.com/modelcontextprotocol/typescript-sdk/issues/2108) | `CANDIDATE / duplicate-check-needed` | Хороший wire-contract test surface; нужен fresh linked-PR/timeline check перед checkout. |
 | Cline long retry-after | [cline/cline#10139](https://github.com/cline/cline/issues/10139) | `CANDIDATE / maintainer-signal-check` | Patchable retry policy bug, но надо проверить Linear/assignee/duplicate PR перед кодом. |
 
@@ -103,3 +103,27 @@ Initial PR state:
 - `changeset-bot`: patch changeset detected.
 - `verification/cla-signed`: error; CLA needs signing at <https://e2b.dev/docs/cla>, then comment `@cla-bot check`.
 - Vercel check is failure/authorization URL, likely external preview authorization rather than code failure.
+
+## MCP Python #2578 duplicate triage
+
+Fresh check: 2026-05-27
+
+Upstream issue: <https://github.com/modelcontextprotocol/python-sdk/issues/2578>
+
+Linked PRs from issue timeline:
+
+- <https://github.com/modelcontextprotocol/python-sdk/pull/2590>
+- <https://github.com/modelcontextprotocol/python-sdk/pull/2645>
+- <https://github.com/modelcontextprotocol/python-sdk/pull/2646>
+
+All three PRs touch the same focused surface:
+
+- `src/mcp/client/auth/oauth2.py`
+- `tests/client/test_auth.py`
+
+All three cover the two reported contracts:
+
+- refresh-token requests no longer include `resource=`;
+- bare-domain PRM resource URLs do not retain Pydantic/AnyHttpUrl's trailing `/` in `get_resource_url()`.
+
+All three showed green matrix/all-green checks in the checked state, with review still required. No extra behavior found that justifies another PR. Upstream duplicate-triage comment posted: <https://github.com/modelcontextprotocol/python-sdk/issues/2578#issuecomment-4553327160>.
