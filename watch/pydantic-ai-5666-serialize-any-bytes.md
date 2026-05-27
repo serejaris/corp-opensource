@@ -94,6 +94,18 @@ Third check:
 - Still pending: remaining all-extras and lowest-versions matrix.
 - Do not open another upstream PR until this CI result is known.
 
+Fourth check:
+
+- All completed checks remain green.
+- Newly confirmed green:
+  - all standard tests on Python 3.10/3.11/3.12/3.13/3.14
+  - all-extras on Python 3.13/3.14
+  - lowest-versions on Python 3.12/3.14
+- Still pending:
+  - all-extras on Python 3.10/3.11/3.12
+  - lowest-versions on Python 3.10/3.11/3.13
+- No upstream comment needed while CI is still running and no maintainer action is requested.
+
 ## Next
 
 Watch CI and maintainer / bot review. If maintainers prefer an explicit wrapper shape for binary values instead of raw base64 strings, adapt the branch.
