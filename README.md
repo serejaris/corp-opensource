@@ -45,8 +45,10 @@
 ## Playbooks
 
 - [Стратегия open-source contribution](strategy.md)
+- [Repo scope: AI-native frameworks and harnesses](watch/repo-scope-ai-native-frameworks.md)
 - [Разведка багов в репозиториях](playbooks/repo-bug-scouting.md)
 - [Гонка duplicate PR](playbooks/duplicate-pr-race.md)
+- [Follow-up по старым upstream PR/issues](playbooks/upstream-followup-loop.md)
 - [Runner-контейнер на corp-server](playbooks/runner-container.md)
 
 ## Метки

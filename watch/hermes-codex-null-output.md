@@ -84,3 +84,32 @@ PR state after create:
 
 - Open, ready for review, mergeable.
 - Checks: no checks reported on branch at first check; keep monitoring.
+
+## Follow-up loop check - 2026-05-27
+
+Checked upstream state after user reminder that previous work needs periodic follow-up:
+
+- #32963 remains merged with green checks.
+- #32884 remains closed as duplicate.
+- #32999 remains open, ready, mergeable, with no checks reported on branch.
+- New related PR #33017 opened by `iqdoctor`: usage-preservation during null-output recovery.
+- Latest check: #33017 is open/mergeable; all reported checks are green except `build-arm64`, still in progress.
+
+Comparison:
+
+- #33017 touches `agent/auxiliary_client.py`, `agent/codex_runtime.py`, `tests/agent/test_auxiliary_client.py`, `tests/run_agent/test_run_agent_codex_responses.py`.
+- #32999 touches `agent/codex_runtime.py`, `tests/run_agent/test_run_agent_codex_responses.py`.
+- #33017 preserves terminal `response.completed.response.usage`.
+- #32999 keeps callback/handler `TypeError("'NoneType' object is not iterable")` from being swallowed by null-output recovery.
+
+Action taken:
+
+- Posted coordination comment on #32999:
+  https://github.com/NousResearch/hermes-agent/pull/32999#issuecomment-4551108788
+- Message: #33017 and #32999 overlap in files but cover different behavior; if #33017 lands first, rebase #32999 and keep only the distinct recovery-boundary change/test.
+
+Next check:
+
+- Watch whether #33017 merges before #32999.
+- If #33017 lands first, rebase #32999 and rerun `tests/run_agent/test_run_agent_codex_responses.py`.
+- If maintainers close #32999 as duplicate, compare whether callback-error regression is covered before accepting closure.

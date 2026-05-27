@@ -6,6 +6,8 @@
 
 ## Какие репозитории подходят
 
+Upfront scope lives in [watch/repo-scope-ai-native-frameworks.md](watch/repo-scope-ai-native-frameworks.md). Перед поиском багов сначала работай из этого списка или явно добавляй новый repo в `candidate / verify` с доказательствами.
+
 Ищем репозитории, где:
 
 - продуктом реально пользуются разработчики, AI builders или infra-команды;
@@ -77,6 +79,7 @@
 - Раз в неделю: обновить candidate repos через live GitHub search по top stars, recently updated и новым `topic:ai-agent` / `topic:coding-agent` / `topic:agent-framework` repos.
 - Раз в неделю: отдельно смотреть Paperclip-like harness/framework repos: Cline, OpenHands, OpenClaw/openclaude-подобные, CUA/browser-use, Pydantic AI, CopilotKit, новые agent harness проекты.
 - Ежедневно: проверить активные upstream watch issues.
+- Ежедневно: проверить старые/активные upstream PR и комментарии по [upstream follow-up loop](playbooks/upstream-followup-loop.md), особенно если появились competing PR или maintainer comments.
 - При новом competing PR: duplicate triage через субагентов.
 - После каждого исхода PR: обновить watch note и skill.
 
