@@ -39,3 +39,18 @@ gh search prs 'repo:OWNER/REPO is:pr is:open bug OR regression OR crash' --limit
 - состояние repro;
 - patch surface;
 - следующий конкретный шаг.
+
+## Урок по тестам
+
+Для bugfix PR сначала ищем контракт, который реально сломан у пользователя, и пишем/проверяем regression test на этом контракте.
+
+Нельзя считать PR готовым, если:
+
+- есть только helper-level unit test, а пользовательский путь не покрыт;
+- test был запущен только после фикса и не показал pre-fix failure;
+- reference PR существует, но мы не сравнили его тесты и не поняли, какой контракт он доказывает;
+- upstream `main` уже выглядит исправленным, но мы всё равно начинаем ветку без duplicate triage.
+
+Минимальный стандарт: targeted test падает на текущем сломанном состоянии или на reverted fix, затем проходит после patch. Если это дорого, фиксируем `WATCH / needs-repro`, а не открываем PR.
+
+Для invitation-only репозиториев отдельный gate: без явного приглашения не открывать upstream PR, даже если fix очевиден. В таком случае полезная работа — watch note, issue, duplicate/test analysis и короткий upstream comment только при наличии нового факта.

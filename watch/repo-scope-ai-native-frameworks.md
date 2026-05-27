@@ -41,6 +41,7 @@ These are allowed for regular weekly scouting.
 | `CopilotKit/CopilotKit` | `31776` stars, pushed `2026-05-27` | Frontend stack/protocol for agents and generative UI. |
 | `langchain-ai/deepagents` | `23391` stars, pushed `2026-05-27` | Agent harness with LangChain maintainership; likely tool/memory/runtime tests. |
 | `e2b-dev/E2B` | `12371` stars, pushed `2026-05-27` | Secure sandbox/runtime layer for agents. |
+| `openai/codex` | `86061` stars, pushed `2026-05-27` | Coding-agent runtime, subagents, prompt-cache, sandbox, app-server, and test harness patterns directly relevant to Hermes/Paperclip workflows. |
 
 ## Tier 2: Watch / Verify Before Bug Scouting
 
