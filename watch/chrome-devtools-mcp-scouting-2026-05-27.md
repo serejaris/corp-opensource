@@ -51,3 +51,41 @@
 3. Run `npm ci && npm run build` and targeted tests in dedicated runner or document why local-only is enough for this non-browser refactor.
 4. For `#1921`, use runner with isolated Chrome profile, scalable local tab fixture, and CPU/RSS/latency metrics before any upstream comment.
 5. For `#2115`, only comment if latest release/current main still reproduces original timeout/desync after `#2134`.
+
+## Source Scan For `#2138`
+
+Fresh checkout: `/tmp/chrome-devtools-mcp-scout` at `b391311` (`chore: reflect emulated device in CrUX data (#2131)`), 2026-05-27 18:40 UTC. No source edits.
+
+Direct `context.validatePath(...)` call sites in tool handlers:
+
+| Tool file | Tool(s) / field(s) | Notes |
+|---|---|---|
+| `src/tools/input.ts` | `upload_file.filePath` | Required path, page-scoped, file input upload. |
+| `src/tools/extensions.ts` | `install_extension.path`; `reload_extension` validates `extension.path` after lookup | `reload_extension` has no request path field; central request-param validation would only cover `install_extension.path`, not the stored extension path. |
+| `src/tools/script.ts` | `evaluate_script.filePath` | Optional output path; schema is dynamic because `defineTool(cliArgs => ...)` adds optional page/service-worker fields. |
+| `src/tools/memory.ts` | `take_heapsnapshot.filePath`; read tools `get_heapsnapshot_* .filePath` | Five required `filePath` call sites. |
+| `src/tools/lighthouse.ts` | `lighthouse_audit.outputDirPath` | Optional directory path, not named `filePath`; important test for non-default field naming. |
+| `src/tools/screenshot.ts` | `take_screenshot.filePath` | Optional output path; existing malformed/unwritable file tests cover behavior. |
+| `src/tools/snapshot.ts` | `take_snapshot.filePath` | Optional output path passed into `response.includeSnapshot`. |
+| `src/tools/performance.ts` | `performance_start_trace.filePath`; `performance_stop_trace.filePath` | Shared optional `filePathSchema`. |
+| `src/tools/network.ts` | `get_network_request.requestFilePath`; `responseFilePath` | Two optional fields in one tool; good regression case for multi-field validation. |
+| `src/tools/screencast.ts` | `screencast_start.filePath` | Optional path; when omitted, handler creates temp path after validation, so central validation must preserve `undefined` semantics. |
+
+Non-tool central validations to leave alone unless design broadens:
+
+- `src/McpContext.ts` internal `saveTemporaryFile(...)` and `saveFile(...)` validate generated/client-provided paths.
+- `tests/roots.test.ts` and `tests/McpContext.test.ts` validate root/path semantics directly.
+
+Likely minimal patch shape to evaluate later:
+
+- Add explicit path metadata to `BaseToolDefinition`, for example `filePathFields?: string[]` or `pathFields?: string[]`.
+- In `ToolHandler.handle()`, after context resolution and before `tool.handler(...)`, iterate those field names over request params and call `context.validatePath(value)`.
+- Keep handler-local validation only where the path is not a request param, notably `reload_extension` validating `extension.path`.
+- Prefer an allow-list over name heuristics because fields include `path`, `filePath`, `outputDirPath`, `requestFilePath`, and `responseFilePath`.
+
+Targeted regression/test plan before PR:
+
+- Add a `ToolHandler` unit test that a tool with two path fields calls `validatePath` for both before handler execution and preserves `undefined` optional fields.
+- Add one non-`filePath` field case, likely `outputDirPath` or `path`, so the refactor does not silently become `filePath`-only.
+- Run existing focused tool tests for representative paths: `tests/tools/screenshot.test.ts`, `tests/tools/network.test.ts`, `tests/tools/extensions.test.ts`, `tests/tools/memory.test.ts`, `tests/tools/performance.test.ts`, plus `tests/McpContext.test.ts`.
+- Full pre-PR command set remains `npm ci && npm run build && npm run test && npm run check-format`; add `npm run gen` if generated docs/CLI tool reference changes.
