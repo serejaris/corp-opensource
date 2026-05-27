@@ -1,6 +1,6 @@
 # Repo cards: AI-native universe, 2026-05-27
 
-Source: [cycle 23 repo-universe update](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-23-repo-universe.md), [cycle 24 repo-universe update](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-24-repo-universe.md), [cycle 25 openai-agents scan](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-25-openai-agents.md), [cycle 27 SWE-agent mini scan](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-27-swe-mini.md), [cycle 28 repo-universe update](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-28-repo-universe.md) и umbrella tracker [#52](https://github.com/serejaris/corp-opensource/issues/52).
+Source: [cycle 23 repo-universe update](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-23-repo-universe.md), [cycle 24 repo-universe update](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-24-repo-universe.md), [cycle 25 openai-agents scan](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-25-openai-agents.md), [cycle 27 SWE-agent mini scan](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-27-swe-mini.md), [cycle 28 repo-universe update](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-28-repo-universe.md), [ChromeDevTools issue-level scan](chrome-devtools-mcp-scouting-2026-05-27.md) и umbrella tracker [#52](https://github.com/serejaris/corp-opensource/issues/52).
 
 Purpose: make the next bounded repo-scouting block concrete. These are repo-level cards, not bug candidates.
 
@@ -68,7 +68,7 @@ These rows are repo-level cards only. They do not authorize upstream comments or
 
 | Repo | Tier | Next action | Scan lane | Duplicate risk | Runner need | Last checked | avoid_pr_hunting | Promotion gate |
 |---|---|---|---|---|---|---|---|---|
-| `ChromeDevTools/chrome-devtools-mcp` | 1A | promote | Chrome DevTools MCP browser/session/tool lifecycle regressions | medium | browser runtime likely | 2026-05-27 18:14 UTC | fixture-only | issue-level duplicate sweep + linked PR/release-note check + tiny browser fixture |
+| `ChromeDevTools/chrome-devtools-mcp` | 1A | watch / internal candidate `#2138` | Chrome DevTools MCP browser/session/tool lifecycle regressions; path-validation refactor lane in [#54](https://github.com/serejaris/corp-opensource/issues/54) | medium-high | browser runner for perf/session lanes; local/runner tests for `#2138` | 2026-05-27 18:36 UTC | fixture-only | `#2138` call-site scan + fresh duplicate gate + test card; browser lanes need dedicated runner repro |
 | `PrefectHQ/fastmcp` | 1A | promote | MCP client/server/tool framework regressions | medium | local tests likely | 2026-05-27 18:14 UTC | fixture-only | avoid spec-design PRs; require official SDK behavior comparison when protocol semantics are involved |
 | `ag-ui-protocol/ag-ui` | 2 | create repo-card | Agent UI protocol / SDK conformance / examples | high | local tests likely | 2026-05-27 18:14 UTC | comment-first | subsystem lane selected + issue/PR search by SDK/protocol area |
 | `mcp-use/mcp-use` | 2 | create repo-card | MCP app/client/server integration framework | medium | local tests likely | 2026-05-27 18:14 UTC | comment-first | compare against official MCP SDK behavior before calling a bug |
