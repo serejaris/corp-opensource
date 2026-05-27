@@ -1,0 +1,41 @@
+name: Duplicate triage
+description: Compare competing PRs during an upstream race.
+title: "[duplicate-triage] "
+labels: ["duplicate-triage"]
+body:
+  - type: textarea
+    id: prs
+    attributes:
+      label: PRs to compare
+      description: Include PR numbers, URLs, authors, createdAt, and state.
+    validations:
+      required: true
+  - type: textarea
+    id: diff
+    attributes:
+      label: Diff coverage
+      description: Files, runtime paths, and behavior covered by each PR.
+    validations:
+      required: true
+  - type: textarea
+    id: tests
+    attributes:
+      label: Test coverage
+      description: Regression tests, fixtures, validation commands, CI state.
+    validations:
+      required: true
+  - type: textarea
+    id: maintainer
+    attributes:
+      label: Maintainer signal
+      description: Labels, comments, reviews, timeline, linked issues, reactions.
+    validations:
+      required: true
+  - type: textarea
+    id: decision
+    attributes:
+      label: Decision
+      description: Port missing coverage, ask maintainers, or post duplicate-check update.
+    validations:
+      required: true
+
