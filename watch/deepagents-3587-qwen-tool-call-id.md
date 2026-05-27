@@ -5,12 +5,13 @@ Date: 2026-05-27
 ## Links
 
 - Upstream issue: https://github.com/langchain-ai/deepagents/issues/3587
+- Upstream PR: https://github.com/langchain-ai/deepagents/pull/3616
 - Internal issue: https://github.com/serejaris/corp-opensource/issues/20
 - Local checkout: `/Users/ris/Documents/GitHub/deepagents-3587`
 
 ## Status
 
-`CANDIDATE / NEEDS-REPRO`.
+`PR OPEN / CI IN PROGRESS`.
 
 No open or closed competing PR was found via `gh search prs` for:
 
@@ -48,7 +49,64 @@ Without a `tool_call_id`, the returned `ToolMessage` cannot obviously be matched
 - ToolRuntime construction;
 - Deep Agents wrapper.
 
+## Fix
+
+Opened PR #3616 from branch `serejaris:codex/repro-3587-tool-call-id`.
+
+Root cause narrowed to empty-string tool call ids:
+
+- a normal LangGraph tool call with `id=""` works;
+- Deep Agents `task` rejected the same id because it used truthiness: `if not runtime.tool_call_id`;
+- `None` still means genuinely missing and should keep raising.
+
+The PR changes the sync and async task paths to reject only `None`, preserving `""` as the tool call id.
+
+## Verification
+
+Pre-fix regression proof:
+
+```bash
+uv run --group test pytest tests/unit_tests/test_subagents.py -k empty_string_tool_call_id --no-cov
+```
+
+Failed with:
+
+```text
+ValueError: Tool call ID is required for subagent invocation
+```
+
+Post-fix checks from `libs/deepagents`:
+
+```bash
+uv run --group test pytest tests/unit_tests/test_subagents.py -k 'empty_string_tool_call_id' --no-cov
+make test TEST_FILE=tests/unit_tests/test_subagents.py
+make format
+make lint
+make test
+```
+
+Results:
+
+- focused regression: `2 passed`;
+- owner test file: `33 passed, 1 xfailed`;
+- full unit suite: `1620 passed, 90 skipped, 4 xfailed`;
+- format/lint/type: passed.
+
+## PR State
+
+Checked after opening:
+
+- state: open;
+- ready, not draft;
+- mergeable;
+- title lint: green;
+- lockfile check / full CI: in progress.
+
 ## Next Action
+
+Watch CI and maintainer review.
+
+## Original Next Action
 
 Build a synthetic repro without a real Qwen/API key:
 
