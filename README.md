@@ -2,6 +2,13 @@
 
 Приватный контур для системной работы с open-source: какие upstream-репозитории смотрим, какие баги проверяем, какие PR ведём, где есть конкурирующие PR и какие уроки надо переносить в skills.
 
+## Execution model
+
+- Разведка и triage идут через 6 субагентов, если есть несколько repo/PR или тема быстро меняется.
+- Repro, targeted tests и тяжёлые checkout должны уходить в dedicated runner на `corp-server`: `corp-opensource-runner`.
+- Пока runner не создан, CT `216` / `pc-hermes-test` можно использовать только для Hermes-specific bounded smoke/repro checks. Это не общий runner.
+- Provisioning runner-контейнера живёт в `corp-server`; этот repo хранит очередь, watch notes и решения по upstream.
+
 ## Активный watchlist
 
 | Проект | Upstream | Наш контур | Статус | Следующее действие |
@@ -19,6 +26,7 @@
 - [#7 MarkItDown IpynbConverter crashes on non-ASCII PDF](https://github.com/serejaris/corp-opensource/issues/7)
 - [#8 opencode Task subagents omit tools for Bedrock/LiteLLM](https://github.com/serejaris/corp-opensource/issues/8)
 - [#9 Firecrawl cancel crawl floods webhook failures](https://github.com/serejaris/corp-opensource/issues/9)
+- [#10 Provision corp-opensource runner container on corp-server](https://github.com/serejaris/corp-opensource/issues/10)
 
 ## Правила
 
@@ -36,6 +44,7 @@
 - [Стратегия open-source contribution](strategy.md)
 - [Разведка багов в репозиториях](playbooks/repo-bug-scouting.md)
 - [Гонка duplicate PR](playbooks/duplicate-pr-race.md)
+- [Runner-контейнер на corp-server](playbooks/runner-container.md)
 
 ## Метки
 

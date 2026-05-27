@@ -46,12 +46,25 @@
    - maintainer active за 48 часов: `+2`;
    - огромный domain context: `-3`;
    - нет test harness: `-2`.
-3. Запускать субагентов:
+3. Запускать 6 субагентов:
    - repo-fit;
    - bug-signal;
-   - patchability.
+   - repro-path;
+   - patchability;
+   - duplicate-race;
+   - PR-readiness.
 4. Открывать `candidate-bug` issue до реализации.
-5. Делать PR только когда есть repro или точный regression test.
+5. Делать repro в dedicated runner на `corp-server`, когда нужна Linux/container среда, тяжёлые зависимости или долгие тесты.
+6. Делать PR только когда есть repro или точный regression test.
+
+## Runner-контур
+
+Целевой runtime для open-source работ: `corp-opensource-runner` на `corp-server`.
+
+- `corp-opensource` отвечает за scouting, issue queue, watch notes, PR decisions.
+- `corp-server` отвечает за CT/VM provisioning, ресурсы, lifecycle, backups, access policy.
+- CT `216` / `pc-hermes-test` не является общим runner. Его можно использовать только как временный Hermes-specific smoke/repro контейнер.
+- Создание или изменение runner-контейнера — live infra mutation и проходит через `corp-server-ops`, issue/runbook и approval policy.
 
 ## Ритм
 
@@ -68,4 +81,3 @@
 - merged PR или landed upstream fixes;
 - maintainer interactions;
 - lessons, перенесённые в skills.
-

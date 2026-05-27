@@ -1,0 +1,39 @@
+# corp-opensource
+
+## Назначение
+
+`corp-opensource` — приватный рабочий контур для системного open-source contribution: scouting, triage, upstream watch, PR evidence, duplicate-race notes и lessons learned.
+
+## Язык
+
+- Файлы репозитория, issue bodies и internal notes веди на русском.
+- Upstream PR/issue comments пиши на языке upstream repo, обычно на английском.
+- Не копируй длинные upstream обсуждения; оставляй ссылки и короткий вывод.
+
+## Обязательные skills
+
+- Для поиска репозиториев, candidate bugs и triage используй `open-source-bug-scouting`.
+- Для подготовки/мониторинга upstream PR используй `open-source-pr-workflow`.
+- Если есть 2+ repo, 2+ competing PR или пользователь просит subagents/scouting/triage, запускай цикл из 6 субагентов и фиксируй synthesis в issue/watch note.
+
+## Runner Container
+
+- Тесты, repro и heavy scouting должны выполняться в dedicated runner-контейнере на `corp-server`, а не на локальной машине, когда это требует стабильного окружения или долгих зависимостей.
+- Целевой runner: `corp-opensource-runner` на `pc-sys2-pve01`; точный CTID/IP назначает `corp-server`.
+- До provisioning dedicated runner допускается использовать CT `216` / `pc-hermes-test` только для Hermes-specific smoke/repro checks. Не превращай CT `216` в общий open-source runner.
+- Любое создание/изменение Proxmox CT — live infra mutation. Работай через `corp-server-ops`, issue/runbook в `corp-server`, dry-run/read-only gate и approval policy.
+- В runner не клади приватные токены в repo. Секреты только в окружении контейнера или host-managed secret path.
+
+## Рабочий порядок
+
+1. Создай или обнови issue в `corp-opensource`.
+2. Проведи scouting/triage через нужные subagent роли.
+3. Зафиксируй score, repro plan и duplicate check.
+4. Запусти repro/test в runner-контейнере или явно напиши, почему runner ещё не доступен.
+5. Только после repro переходи в upstream PR workflow.
+
+## Проверка перед commit
+
+```bash
+git diff --check
+```
