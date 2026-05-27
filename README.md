@@ -146,7 +146,10 @@
 - Разведку по новым target repo делаем через субагентов:
   - repo-fit: активность, contribution rules, test surface, maintainer response;
   - bug-signal: свежие баги, дубликаты, реакции, боль пользователей;
-  - patchability: где минимальный patch surface и есть targeted tests.
+  - repro-path: можно ли доказать баг локально/fixture/CLI без внешних секретов;
+  - patchability: где минимальный patch surface и есть targeted tests;
+  - duplicate-race: linked PRs, issue timeline, competing PRs, maintainer comments;
+  - PR-readiness: contribution guide, PR template, issue policy, test commands, draft/ready expectation.
 - Не начинаем PR без воспроизведения или понятного failing/regression test.
 - Для bugfix PR сначала доказываем, что regression test реально ловит старый баг: временно возвращаем старое поведение или запускаем тест на pre-fix state и записываем точный failing assertion/error.
 - Для schema/runtime mismatch regression пишем через raw wire/tool boundary: передаём тот же payload, который видит runtime/модель (`null`, missing default, etc.), а не только typed helper.
