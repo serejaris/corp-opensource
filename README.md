@@ -45,6 +45,7 @@
 | modelcontextprotocol/python-sdk | [#2578](https://github.com/modelcontextprotocol/python-sdk/issues/2578), [#2590](https://github.com/modelcontextprotocol/python-sdk/pull/2590), [#2645](https://github.com/modelcontextprotocol/python-sdk/pull/2645), [#2646](https://github.com/modelcontextprotocol/python-sdk/pull/2646) | [cycle 10](watch/ai-native-frameworks-scouting-2026-05-27-cycle-10.md) | Duplicate-covered; all three linked PRs cover refresh resource omission + trailing slash normalization with green checks | Watch maintainer selection; no PR |
 | BerriAI/litellm | [#28971](https://github.com/BerriAI/litellm/issues/28971), [#28970](https://github.com/BerriAI/litellm/pull/28970) | [#39](https://github.com/serejaris/corp-opensource/issues/39), [cycle 10](watch/ai-native-frameworks-scouting-2026-05-27-cycle-10.md) | Comment-first / missing-regression-offered; #28970 is adjacent `/apply_guardrail`, not exact `/v1/responses` spend-log path | Wait maintainer signal before PR |
 | e2b-dev/E2B | [#1349](https://github.com/e2b-dev/E2B/issues/1349), [#1354](https://github.com/e2b-dev/E2B/pull/1354) | [#39](https://github.com/serejaris/corp-opensource/issues/39), [cycle 10](watch/ai-native-frameworks-scouting-2026-05-27-cycle-10.md) | PR open, ready, mergeable; red/green regression proved; CLA check failing | Sign E2B CLA, then `@cla-bot check`; watch CI/review |
+| openai/codex | [#24725](https://github.com/openai/codex/issues/24725) | [#41](https://github.com/serejaris/corp-opensource/issues/41), [cycle 11](watch/ai-native-frameworks-scouting-2026-05-27-cycle-11.md) | Regression-first candidate, but upstream external PRs are invitation-only | Watch/comment-first; no PR without maintainer signal |
 | langchain-ai/deepagents | [#3568](https://github.com/langchain-ai/deepagents/issues/3568) | [scouting](watch/ai-native-frameworks-scouting-2026-05-27-cycle-2.md) | Small prompt/schema bug, but reporter has local fix and assignment gate risk | Watch/comment only if maintainers ask |
 
 ## Рабочие issues
@@ -88,10 +89,13 @@
 - [#37 MCP TypeScript SDK U+2028/U+2029 SSE timeout duplicate triage](https://github.com/serejaris/corp-opensource/issues/37)
 - [#38 MCP Python SDK AnyUrl/AnyHttpUrl OAuth redirect mismatch](https://github.com/serejaris/corp-opensource/issues/38)
 - [#39 Cycle 10 scouting: LiteLLM guardrail duplicate gate and E2B next repro](https://github.com/serejaris/corp-opensource/issues/39)
+- [#40 Cycle 11 scouting: regression-first AI-native bug targets](https://github.com/serejaris/corp-opensource/issues/40)
+- [#41 Codex plugin-namespaced skills exceed MAX_NAME_LEN](https://github.com/serejaris/corp-opensource/issues/41)
 
 ## Правила
 
 - Репозиторий ведём на русском: README, playbooks, watch notes, issue bodies.
+- Для bugfix PR сначала оформляем regression card в issue/watch note: `контракт`, `test file`, `command`, `pre-fix fail`, `post-fix pass`. Если pre-fix failure нельзя дешево доказать, candidate остаётся `WATCH / needs-repro`, а не ready PR.
 - Разведку по новым target repo делаем через субагентов:
   - repo-fit: активность, contribution rules, test surface, maintainer response;
   - bug-signal: свежие баги, дубликаты, реакции, боль пользователей;
@@ -117,6 +121,7 @@
 - [AI-native frameworks scouting cycle 8](watch/ai-native-frameworks-scouting-2026-05-27-cycle-8.md)
 - [AI-native frameworks scouting cycle 9](watch/ai-native-frameworks-scouting-2026-05-27-cycle-9.md)
 - [AI-native frameworks scouting cycle 10](watch/ai-native-frameworks-scouting-2026-05-27-cycle-10.md)
+- [AI-native frameworks scouting cycle 11](watch/ai-native-frameworks-scouting-2026-05-27-cycle-11.md)
 - [Goose #9332 PDEATHSIG MCP subprocess lifecycle](watch/goose-9332-pdeathsig-mcp-subprocess.md)
 
 ## Метки
