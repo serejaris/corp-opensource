@@ -14,8 +14,8 @@
 | E2B multi-source COPY | [e2b-dev/E2B#1349](https://github.com/e2b-dev/E2B/issues/1349), [PR #1354](https://github.com/e2b-dev/E2B/pull/1354) | `PR OPEN / CLA-gated` | Red/green regression proved locally; PR opened ready. External blocker: `verification/cla-signed` requires @serejaris CLA signature. |
 | OpenHands global skills | [OpenHands/OpenHands#14563](https://github.com/OpenHands/OpenHands/issues/14563) | `COMMENT-FIRST / maintainer-direction-needed` | Баг реальный и важный для skills/runtime, но мы уже спросили upstream, хотят ли narrow CLI/self-hosted mount fix или ждать Settings/personal repo path. Без ответа PR не открывать. |
 | MCP Python OAuth refresh | [modelcontextprotocol/python-sdk#2578](https://github.com/modelcontextprotocol/python-sdk/issues/2578), [#2590](https://github.com/modelcontextprotocol/python-sdk/pull/2590), [#2645](https://github.com/modelcontextprotocol/python-sdk/pull/2645), [#2646](https://github.com/modelcontextprotocol/python-sdk/pull/2646) | `WATCH / duplicate-covered` | Three open linked PRs already cover both reported contracts with green CI; duplicate-triage comment posted. |
-| MCP TypeScript protocol mismatch | [modelcontextprotocol/typescript-sdk#2108](https://github.com/modelcontextprotocol/typescript-sdk/issues/2108) | `CANDIDATE / duplicate-check-needed` | Хороший wire-contract test surface; нужен fresh linked-PR/timeline check перед checkout. |
-| Cline long retry-after | [cline/cline#10139](https://github.com/cline/cline/issues/10139) | `CANDIDATE / maintainer-signal-check` | Patchable retry policy bug, но надо проверить Linear/assignee/duplicate PR перед кодом. |
+| MCP TypeScript protocol mismatch | [modelcontextprotocol/typescript-sdk#2108](https://github.com/modelcontextprotocol/typescript-sdk/issues/2108), [#2111](https://github.com/modelcontextprotocol/typescript-sdk/pull/2111) | `WATCH / duplicate-covered` | Linked PR #2111 directly covers both mismatch directions plus match/absent cases with green checks; duplicate-triage comment posted. |
+| Cline long retry-after | [cline/cline#10139](https://github.com/cline/cline/issues/10139), [#10384](https://github.com/cline/cline/pull/10384), [#10140](https://github.com/cline/cline/pull/10140), [#10141](https://github.com/cline/cline/pull/10141) | `WATCH / duplicate-race` | Three competing PRs already cover the fix; #10384 is most complete but conflicting. No fresh PR. |
 
 ## Fresh duplicate checks
 
@@ -127,3 +127,46 @@ All three cover the two reported contracts:
 - bare-domain PRM resource URLs do not retain Pydantic/AnyHttpUrl's trailing `/` in `get_resource_url()`.
 
 All three showed green matrix/all-green checks in the checked state, with review still required. No extra behavior found that justifies another PR. Upstream duplicate-triage comment posted: <https://github.com/modelcontextprotocol/python-sdk/issues/2578#issuecomment-4553327160>.
+
+## MCP TypeScript #2108 duplicate triage
+
+Fresh check: 2026-05-27
+
+Upstream issue: <https://github.com/modelcontextprotocol/typescript-sdk/issues/2108>
+
+Linked PR: <https://github.com/modelcontextprotocol/typescript-sdk/pull/2111>
+
+PR #2111 directly covers the reported Streamable HTTP initialize mismatch:
+
+- touches `packages/server/src/server/streamableHttp.ts`;
+- adds tests in `packages/server/test/server/streamableHttp.test.ts`;
+- rejects both mismatch directions with HTTP 400 / JSON-RPC `-32600`;
+- accepts matching header/body protocol versions;
+- keeps initialize accepted when the header is absent.
+
+Checked state: open, mergeable, review required, build/client-conformance/server-conformance/test checks green, changeset present. No extra behavior found that justifies another PR. Upstream duplicate-triage comment posted: <https://github.com/modelcontextprotocol/typescript-sdk/issues/2108#issuecomment-4553345238>.
+
+## Cline #10139 duplicate race
+
+Fresh check: 2026-05-27
+
+Upstream issue: <https://github.com/cline/cline/issues/10139>
+
+Linked / matching PRs:
+
+- <https://github.com/cline/cline/pull/10384>
+- <https://github.com/cline/cline/pull/10140>
+- <https://github.com/cline/cline/pull/10141>
+
+All three are open and conflicting, and all target the same surface:
+
+- `src/core/api/retry.ts`
+- `src/core/api/retry.test.ts` for #10384 and #10140; #10141 lacks test coverage.
+
+Comparison:
+
+- #10384 is the strongest candidate: adds configurable `maxRetryAfter` defaulting to 60s, covers immediate throw for 3h `retry-after`, preserves retry for short `retry-after`, and fixes the Unix timestamp test path after review. CI checked state: quality/test/e2e mostly green; smoke cancelled; mergeable conflicting; review required.
+- #10140 adds a hardcoded 5-minute threshold plus regression test, but checks have failures and it is conflicting.
+- #10141 adds only the hardcoded runtime threshold without regression test coverage; checks include failures and it is conflicting.
+
+Decision: no fresh PR. Useful action is maintainer consolidation/rebase of #10384 or porting its configurable threshold/tests into the maintainer-preferred branch. No upstream comment posted because the issue/PRs already contain equivalent review signal and a new comment would not add a missing behavior.
