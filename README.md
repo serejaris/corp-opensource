@@ -20,6 +20,7 @@
 | trycua/cua | [#1725](https://github.com/trycua/cua/issues/1725) | [#15](https://github.com/serejaris/corp-opensource/issues/15), [watch](watch/trycua-1725-windows-click-marker.md) | Likely fixed on main pending Windows smoke | Wait for runner/repro path before PR |
 | cline/cline | [#10737](https://github.com/cline/cline/issues/10737) | [#17](https://github.com/serejaris/corp-opensource/issues/17), [watch](watch/cline-10737-mcp-task-progress.md) | Strong bug, but duplicate-race with stale/conflicting PRs | Triage existing PRs; no fresh PR yet |
 | openai/codex | [#24704](https://github.com/openai/codex/issues/24704) | [watch](watch/openai-codex-24704-subagent-prompt-cache.md) | Strong subagent/cache bug; reporter has reference PR | Watch; no duplicate PR unless maintainers ask |
+| CopilotKit/CopilotKit | [#5035](https://github.com/CopilotKit/CopilotKit/pull/5035) | [#19](https://github.com/serejaris/corp-opensource/issues/19), [watch](watch/copilotkit-4911-workspace-deps.md) | Open, mergeable; Vercel fork auth pending | Watch maintainer review |
 
 ## Рабочие issues
 
@@ -41,6 +42,7 @@
 - [#16 pydantic-ai TextContent metadata lost in UI adapter round-trip](https://github.com/serejaris/corp-opensource/issues/16)
 - [#17 cline MCP task_progress leaks into MCP args](https://github.com/serejaris/corp-opensource/issues/17)
 - [#18 openai/codex forked subagents lose prompt-cache lineage](https://github.com/serejaris/corp-opensource/issues/18)
+- [#19 CopilotKit workspace protocol deps leak into published package](https://github.com/serejaris/corp-opensource/issues/19)
 
 ## Правила
 
@@ -50,6 +52,8 @@
   - bug-signal: свежие баги, дубликаты, реакции, боль пользователей;
   - patchability: где минимальный patch surface и есть targeted tests.
 - Не начинаем PR без воспроизведения или понятного failing/regression test.
+- Для bugfix PR сначала доказываем, что regression test реально ловит старый баг: временно возвращаем старое поведение или запускаем тест на pre-fix state и записываем точный failing assertion/error.
+- Для publish/release багов проверяем не только helper, но и внешний артефакт/контракт: registry metadata, package manifest, install/runtime symptom или closest publishable fixture.
 - Если есть competing PR, ведём duplicate triage публично: что сравнили, что портировали, чего не хватает.
 - Реакции и лайки считаем impact-сигналом, но не approval и не CI.
 

@@ -102,3 +102,19 @@ Outcome:
 | `browser-use/browser-use#4580` | Concrete Windows MCP startup bug, but existing PR `#4657` and related startup PRs/issues exist. | `WATCH`; needs Windows repro against current main. |
 
 Operational lesson: when subagents find a clean bug, re-run duplicate search immediately before starting implementation. `pydantic-ai#5671` became occupied during the scouting cycle.
+
+## Third Scouting Cycle - 2026-05-27 02:30 -03
+
+Six subagents reran repo-fit, bug-signal, repro-path, patchability, duplicate-race, and PR-readiness across Tier 1 AI-native repos.
+
+Outcome:
+
+| Candidate | Current state | Decision |
+|---|---|---|
+| `CopilotKit/CopilotKit#4911` | Published package leaked `workspace:*`; no matching PR found; release-script test surface exists. | `IMPLEMENTED`; upstream PR [#5035](https://github.com/CopilotKit/CopilotKit/pull/5035) opened. |
+| `langchain-ai/deepagents` | Best repo-fit, but top simple candidates had assignment/duplicate risk (`#3573` -> `#3574`, `#3441` duplicate race). | `WATCH`; choose only unoccupied issues. |
+| `OpenHands/OpenHands#14563` | High relevance to skills/global agents, maintainer confirmed mount gap, but related design/skills PRs exist. | `WATCH / design-race`; no PR without tighter maintainer signal. |
+| `browser-use/browser-use#4801` | Relevant browser-agent failure mode, low duplicate risk, but issue needs synthetic repro before patch. | `WATCH / needs-repro`. |
+| `E2B#1352` | Fresh sandbox stdout bug, low public duplicate risk, but linked internal Linear. | `WATCH`; wait for public maintainer signal or local SDK repro. |
+
+Operational lesson: small packaging/release bugs can be valid first PRs when they have a strong regression test and low duplicate risk, even if they are less directly “agentic” than runtime bugs. The strategy should still prefer agent/harness bugs, but not ignore clean unblockers in the same ecosystem.
