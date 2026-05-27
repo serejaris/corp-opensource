@@ -75,6 +75,8 @@
 
 Последний verify-first repo watch: [gptme / CAO / OpenACP scope](watch/gptme-cao-openacp-verify-first-2026-05-27.md), tracker [#69](https://github.com/serejaris/corp-opensource/issues/69). Итог: 6 scouting subagents, parent repo/issue/PR/community/test gates, internal 3-role critique, 0 upstream PR/comment, final `next_status: WATCH`; `awslabs/cli-agent-orchestrator` поднят как главный follow-up lane for inbox/tmux/status delivery `#131/#78/#164`, но blocked by `#115/#251` overlap and missing runner repro; `gptme/gptme` остаётся passive low-noise terminal-agent watch, `Open-ACP/OpenACP` остаётся ACP ecosystem watch.
 
+Последний browser-agent repo watch: [browser-use / Stagehand / Skyvern scope](watch/browser-agent-repo-scope-2026-05-27.md), tracker [#70](https://github.com/serejaris/corp-opensource/issues/70). Итог: 6 scouting subagents, parent repo/issue/PR/community/test gates, internal 3-role critique, 0 upstream PR/comment, final `next_status: WATCH`; `browserbase/stagehand` лучший future browser-SDK lane, но blocked by active PR clusters `#2162/#2166/#2156/#2062/#2159/#2048`; `browser-use/browser-use` остаётся post-merge gap scan after `#4880/#4881/#4882/#4927`; `Skyvern-AI/skyvern` остаётся self-hosted/service-stack watch with AGPL caution.
+
 | Проект | Upstream | Наш контур | Статус | Следующее действие |
 |---|---:|---:|---|---|
 | NousResearch/hermes-agent | [#32999](https://github.com/NousResearch/hermes-agent/pull/32999), [#32963](https://github.com/NousResearch/hermes-agent/pull/32963), [#33042](https://github.com/NousResearch/hermes-agent/pull/33042) | [#6](https://github.com/serejaris/corp-opensource/issues/6), [watch](watch/hermes-codex-null-output.md) | #32963 merged outage fix; #32999 closed obsolete after #33042 removed the SDK stream helper path entirely | Accept closure; keep boundary-regression lesson in skill/watch |
@@ -166,6 +168,7 @@
 - [#52 Popular AI-native / Paperclip-like repo scouting 2026-05-27](https://github.com/serejaris/corp-opensource/issues/52)
 - [#68 Qwen Code / Agent Framework repo-scope watch](https://github.com/serejaris/corp-opensource/issues/68)
 - [#69 gptme / CAO / OpenACP verify-first watch](https://github.com/serejaris/corp-opensource/issues/69)
+- [#70 Browser-agent repo-scope watch](https://github.com/serejaris/corp-opensource/issues/70)
 - [#66 AI SDK / Agents repo scope watch](https://github.com/serejaris/corp-opensource/issues/66)
 - [#65 Docker MCP exact-validation scope watch](https://github.com/serejaris/corp-opensource/issues/65)
 - [#67 Hermes #15640 stale cleanup candidate](https://github.com/serejaris/corp-opensource/issues/67)

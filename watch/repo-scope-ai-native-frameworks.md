@@ -68,8 +68,8 @@ These can produce good candidates, but the next step must be repo-specific gates
 
 | Repo | Why watch first |
 |---|---|
-| `browser-use/browser-use` | Strong browser-agent fit, but parent count `66` open issues / `177` open PRs and high duplicate race. |
-| `browserbase/stagehand` | AI browser SDK with active queue; avoid broad SDK PRs without maintainer confirmation. |
+| `browser-use/browser-use` | `WATCH` after [#70](https://github.com/serejaris/corp-opensource/issues/70) / [watch](browser-agent-repo-scope-2026-05-27.md): strong browser-agent fit, but parent count `66` open issues / `179` open PRs and high duplicate race. Best lanes `#4846/#4801/#4824/#4860` overlap active PRs; use post-merge gap scan only. |
+| `browserbase/stagehand` | `WATCH` after [#70](https://github.com/serejaris/corp-opensource/issues/70) / [watch](browser-agent-repo-scope-2026-05-27.md): strongest future browser-SDK lane, but active queue and external PR approval flow block broad PR hunting. Wait for gaps after `#2162/#2166/#2156/#2062/#2159/#2048`. |
 | `modelcontextprotocol/python-sdk` | Official SDK, but parent count `251` open issues / `241` open PRs and spec churn. |
 | `modelcontextprotocol/typescript-sdk` | Official SDK, but parent count `222` open issues / `207` open PRs and duplicate-heavy PR flow. |
 | `langchain-ai/langgraph` | Active graph/runtime ecosystem; crowded, fast-moving, only crisp regressions. |
@@ -80,7 +80,7 @@ These can produce good candidates, but the next step must be repo-specific gates
 | `promptfoo/promptfoo` | Eval/harness/provider assertion and plugin surface; high PR collision risk, targeted PR search required. |
 | `SWE-agent/SWE-agent` | Coding-agent harness and runner; useful for benchmark runner, Docker/env and docs drift bugs. |
 | `SWE-agent/mini-swe-agent` | Promoted to Tier 1A after cycle 29; kept here only as a reminder to cross-check with `SWE-agent/SWE-agent` before treating a candidate as independent. |
-| `Skyvern-AI/skyvern` | Browser/vision/RPA agent; take only distinct browser-agent issues not already covered by current browser lanes. |
+| `Skyvern-AI/skyvern` | `WATCH` after [#70](https://github.com/serejaris/corp-opensource/issues/70) / [watch](browser-agent-repo-scope-2026-05-27.md): browser workflow/RPA reference; AGPL and service-stack caution. Take only exact self-hosted/current-main bugs with runner evidence, not cloud/account support issues. |
 | `BloopAI/vibe-kanban` | Paperclip-like control-plane for coding agents; [bounded scan](vibe-kanban-scouting-2026-05-27.md) kept `WATCH` because repo is sunsetting, README asks for discussion before PR, and maintainer rhythm is weak. `#3329` is lead-after-repro only; no PR hunting. |
 | `QwenLM/qwen-code` | `WATCH` after [#68](https://github.com/serejaris/corp-opensource/issues/68) / [watch](qwen-code-agent-framework-scouting-2026-05-27.md): terminal coding agent, but verify-first only. Strongest lanes `#4450/#4466/#4363/#4364` are covered by active PRs or nearby work; promote only after one exact issue, fresh PR search, Node >=22 runner repro and targeted test/preflight card. |
 | `gptme/gptme` | Passive `WATCH` after [#69](https://github.com/serejaris/corp-opensource/issues/69) / [watch](gptme-cao-openacp-verify-first-2026-05-27.md): lower-noise terminal agent with good CLI/tooling fit, but current open issues are mostly feature/design or gap-check lanes. Promote only for small current-main CLI/tooling/session regression with targeted `make test` card. |
@@ -168,4 +168,4 @@ Weekly scouting must update this scope only when:
 
 Record removed or demoted repos with a reason.
 
-Latest repo-universe update: [gptme / CAO / OpenACP verify-first scope](gptme-cao-openacp-verify-first-2026-05-27.md), after [Qwen Code / Agent Framework scope watch](qwen-code-agent-framework-scouting-2026-05-27.md), [AI SDK / Agents repo scope check](ai-sdk-agents-repo-scope-2026-05-27.md), [Docker MCP scope check](docker-mcp-scope-2026-05-27.md), [Morph SDK generic scope closure](morph-sdk-generic-scope-closure-2026-05-27.md), [OpenClaw/OpenClaude identity scan](openclaw-openclaude-identity-scouting-2026-05-27.md) and [cycle 29](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-29-repo-universe.md). Repo-card queue: [repo cards 2026-05-27](repo-cards-ai-native-2026-05-27.md).
+Latest repo-universe update: [browser-agent repo scope](browser-agent-repo-scope-2026-05-27.md), after [gptme / CAO / OpenACP verify-first scope](gptme-cao-openacp-verify-first-2026-05-27.md), [Qwen Code / Agent Framework scope watch](qwen-code-agent-framework-scouting-2026-05-27.md), [AI SDK / Agents repo scope check](ai-sdk-agents-repo-scope-2026-05-27.md), [Docker MCP scope check](docker-mcp-scope-2026-05-27.md), [Morph SDK generic scope closure](morph-sdk-generic-scope-closure-2026-05-27.md), [OpenClaw/OpenClaude identity scan](openclaw-openclaude-identity-scouting-2026-05-27.md) and [cycle 29](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-29-repo-universe.md). Repo-card queue: [repo cards 2026-05-27](repo-cards-ai-native-2026-05-27.md).
