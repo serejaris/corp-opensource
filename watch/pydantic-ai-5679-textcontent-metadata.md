@@ -6,7 +6,7 @@
 - PR: https://github.com/pydantic/pydantic-ai/pull/5680
 - Internal issue: https://github.com/serejaris/corp-opensource/issues/16
 - Repo: `pydantic/pydantic-ai`
-- Status: upstream PR open, mergeable, CI pending
+- Status: upstream PR open, mergeable, CI green
 - Branch: `codex/textcontent-metadata-roundtrip`
 - Local checkout: `/Users/ris/Documents/GitHub/pydantic-ai-5679`
 - Commit: `fec6e534 fix: preserve TextContent metadata in UI adapters`
@@ -104,6 +104,21 @@ Initial upstream state, 2026-05-27 01:49 -03:
 - CI started; most jobs pending.
 - Passed immediately: Guard, Size Label, prompt fetch.
 - `chatgpt-codex-connector` posted usage limit notice; no code action required.
+
+Final CI check, 2026-05-27 02:00 -03:
+
+- Fresh CI for commit `fec6e534` is green.
+- Confirmed passed:
+  - `lint`
+  - `mypy`
+  - `docs`
+  - `coverage`
+  - summary `check`
+  - harness compat
+  - examples on Python 3.11/3.12/3.13/3.14
+  - `pydantic-ai-slim`, `pydantic-evals`, `standard`, `all-extras`, and `lowest-versions` matrix on Python 3.10/3.11/3.12/3.13/3.14
+- Skipped jobs are release/deploy/review automation and do not require code action.
+- PR remains open and mergeable; next action is maintainer/bot review monitoring.
 
 ## Next
 
