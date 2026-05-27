@@ -1,34 +1,34 @@
-name: Upstream watch
-description: Track an external open-source PR, issue, or release follow-up.
+name: Upstream-наблюдение
+description: Следить за внешним open-source PR, issue или release follow-up.
 title: "[upstream-watch] "
 labels: ["upstream-watch"]
 body:
   - type: input
     id: upstream
     attributes:
-      label: Upstream link
-      description: PR, issue, release, or commit URL.
+      label: Upstream-ссылка
+      description: PR, issue, release или commit URL.
     validations:
       required: true
   - type: textarea
     id: status
     attributes:
-      label: Current status
-      description: What is true right now, with dates if relevant.
+      label: Текущий статус
+      description: Что сейчас правда; если важно, с датами.
     validations:
       required: true
   - type: textarea
     id: watch
     attributes:
-      label: What to watch
+      label: За чем следить
       description: Comments, reviews, CI, release tags, duplicate PRs, linked issues.
     validations:
       required: true
   - type: textarea
     id: next
     attributes:
-      label: Next action
-      description: Exact next check or action.
+      label: Следующее действие
+      description: Точная следующая проверка или действие.
     validations:
       required: true
 

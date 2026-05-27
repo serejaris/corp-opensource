@@ -1,20 +1,20 @@
 name: Duplicate triage
-description: Compare competing PRs during an upstream race.
+description: Сравнить конкурирующие upstream PR.
 title: "[duplicate-triage] "
 labels: ["duplicate-triage"]
 body:
   - type: textarea
     id: prs
     attributes:
-      label: PRs to compare
-      description: Include PR numbers, URLs, authors, createdAt, and state.
+      label: PR для сравнения
+      description: Номера, ссылки, авторы, createdAt, state.
     validations:
       required: true
   - type: textarea
     id: diff
     attributes:
       label: Diff coverage
-      description: Files, runtime paths, and behavior covered by each PR.
+      description: Файлы, runtime paths и поведение каждого PR.
     validations:
       required: true
   - type: textarea
@@ -34,8 +34,7 @@ body:
   - type: textarea
     id: decision
     attributes:
-      label: Decision
-      description: Port missing coverage, ask maintainers, or post duplicate-check update.
+      label: Решение
+      description: "Что делаем: портируем, спрашиваем maintainers или пишем duplicate-check update."
     validations:
       required: true
-

@@ -1,48 +1,47 @@
 # Corp Open Source
 
-Private control plane for open-source PR work: what we watch, who owns follow-up, what upstream decided, and which lessons should become reusable process.
+Приватный контур для системной работы с open-source: какие upstream-репозитории смотрим, какие баги проверяем, какие PR ведём, где есть конкурирующие PR и какие уроки надо переносить в skills.
 
-## Active Watchlist
+## Активный watchlist
 
-| Project | Upstream PR | Local/Fork PR | Status | Next action |
+| Проект | Upstream | Наш контур | Статус | Следующее действие |
 |---|---:|---:|---|---|
-| NousResearch/hermes-agent | [#32884](https://github.com/NousResearch/hermes-agent/pull/32884) | [serejaris/hermes-agent:fix/codex-null-output-stream](https://github.com/serejaris/hermes-agent/tree/fix/codex-null-output-stream) | Closed as duplicate after fix landed via [#32963](https://github.com/NousResearch/hermes-agent/pull/32963) | Track whether upstream release includes the merged fix and whether openai-python follow-up lands |
+| NousResearch/hermes-agent | [#32884](https://github.com/NousResearch/hermes-agent/pull/32884) | [fork branch](https://github.com/serejaris/hermes-agent/tree/fix/codex-null-output-stream) | Закрыт как duplicate после merge через [#32963](https://github.com/NousResearch/hermes-agent/pull/32963) | Проверить релиз, `openai-python#3315`, и hardening follow-up по broad `TypeError` recovery |
 
-## Program Issues
+## Рабочие issues
 
+- [#1 Track Hermes Codex null-output upstream fix](https://github.com/serejaris/corp-opensource/issues/1)
 - [#2 Launch open-source bug contribution program](https://github.com/serejaris/corp-opensource/issues/2)
 - [#3 Scout Hermes follow-up bugs after Codex null-output merge](https://github.com/serejaris/corp-opensource/issues/3)
 - [#4 Scout opencode for reproducible coding-agent bugs](https://github.com/serejaris/corp-opensource/issues/4)
 - [#5 Scout MarkItDown for fixture-friendly conversion bugs](https://github.com/serejaris/corp-opensource/issues/5)
+- [#6 Hermes Codex recovery may mask unrelated TypeError after #32963](https://github.com/serejaris/corp-opensource/issues/6)
+- [#7 MarkItDown IpynbConverter crashes on non-ASCII PDF](https://github.com/serejaris/corp-opensource/issues/7)
+- [#8 opencode Task subagents omit tools for Bedrock/LiteLLM](https://github.com/serejaris/corp-opensource/issues/8)
+- [#9 Firecrawl cancel crawl floods webhook failures](https://github.com/serejaris/corp-opensource/issues/9)
+
+## Правила
+
+- Репозиторий ведём на русском: README, playbooks, watch notes, issue bodies.
+- Разведку по новым target repo делаем через субагентов:
+  - repo-fit: активность, contribution rules, test surface, maintainer response;
+  - bug-signal: свежие баги, дубликаты, реакции, боль пользователей;
+  - patchability: где минимальный patch surface и есть targeted tests.
+- Не начинаем PR без воспроизведения или понятного failing/regression test.
+- Если есть competing PR, ведём duplicate triage публично: что сравнили, что портировали, чего не хватает.
+- Реакции и лайки считаем impact-сигналом, но не approval и не CI.
 
 ## Playbooks
 
-- [Open-source contribution strategy](strategy.md)
-- [Repo bug scouting](playbooks/repo-bug-scouting.md)
-- [Duplicate PR race](playbooks/duplicate-pr-race.md)
+- [Стратегия open-source contribution](strategy.md)
+- [Разведка багов в репозиториях](playbooks/repo-bug-scouting.md)
+- [Гонка duplicate PR](playbooks/duplicate-pr-race.md)
 
-## Current Rules
+## Метки
 
-- Do not trust “we were first” as enough. Compare competing PRs for files, runtime paths, tests, and maintainer signals.
-- Use subagents for fast duplicate triage when there are 2+ competing PRs:
-  - Diff coverage: changed files, runtime paths, behavior.
-  - Test coverage: regression tests, fixtures, validation commands.
-  - Maintainer signal: labels, comments, reviews, timeline, linked issues, reactions.
-- Post duplicate-check updates on the canonical PR when competing PRs appear.
-- Reactions/upvotes are impact signal, not approval and not CI.
-- Top-level PR comments can be actionable even when `reviews=[]`.
-
-## Links
-
-- Open-source PR workflow skill: `/Users/ris/.codex/skills/open-source-pr-workflow`
-- Hermes PR we opened: https://github.com/NousResearch/hermes-agent/pull/32884
-- Hermes PR merged by upstream: https://github.com/NousResearch/hermes-agent/pull/32963
-- Competing broader PR: https://github.com/NousResearch/hermes-agent/pull/32890
-- OpenAI Python SDK follow-up: https://github.com/openai/openai-python/pull/3315
-
-## Issue Types
-
-- `upstream-watch`: track a live external PR/issue.
-- `duplicate-triage`: compare competing PRs and decide what to port.
-- `skill-update`: capture process lessons that should update local skills.
-- `release-followup`: check whether a merged upstream fix reached a release.
+- `repo-scouting` — поиск и оценка репозиториев.
+- `candidate-bug` — потенциальный баг для PR.
+- `needs-subagents` — нужна параллельная разведка.
+- `needs-repro` — нет подтверждённого воспроизведения.
+- `duplicate-triage` — есть конкурирующие PR.
+- `release-followup` — проверить, дошёл ли fix до релиза.

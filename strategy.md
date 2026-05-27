@@ -1,72 +1,71 @@
-# Open Source Contribution Strategy
+# Стратегия open-source contribution
 
-## Goal
+## Цель
 
-Build a repeatable system for finding high-signal bugs in important repositories, fixing them fast, and turning the process into reputation, learning, and reusable agent workflows.
+Системно находить важные open-source баги, воспроизводить их, чинить маленькими PR с тестами и превращать каждый исход в процессный урок.
 
-## Target Repo Profile
+## Какие репозитории подходят
 
-Prefer repositories that are:
+Ищем репозитории, где:
 
-- actively used by AI builders, developers, or infra teams;
-- updated in the last 7 days;
-- large enough that a fix is visible, but not so bureaucratic that first contribution takes weeks;
-- runtime/tooling products where we can reproduce real bugs locally;
-- friendly to focused bugfix PRs with tests.
+- продуктом реально пользуются разработчики, AI builders или infra-команды;
+- есть активность за последние 7 дней;
+- баги можно воспроизвести локально или через fixture;
+- есть понятный test harness;
+- maintainers отвечают на issues/PR;
+- маленький bugfix PR может быть принят без недельного design process.
 
-Avoid as primary targets:
+Понижаем приоритет:
 
-- list-only repos, book collections, roadmaps, or pure docs catalogs;
-- repos with unclear maintainership or no recent merged PRs;
-- giant corporate repos where small external PRs drown unless issue is already well scoped.
+- спискам, awesome-репам, книгам и roadmaps;
+- репам без свежих merged PR;
+- огромным корпоративным репам без узкого воспроизводимого бага;
+- задачам без тестовой поверхности.
 
-## Candidate Lanes
+## Основные дорожки
 
-| Lane | Why it fits | Example repos |
+| Дорожка | Почему подходит | Примеры |
 |---|---|---|
-| AI agents / coding agents | Strong fit with our daily tooling and fast outage detection | `NousResearch/hermes-agent`, `anthropics/claude-code`, `anomalyco/opencode`, `google-gemini/gemini-cli` |
-| AI app/runtime frameworks | Bugs affect many builders, often reproducible with examples | `langchain-ai/langchain`, `langflow-ai/langflow`, `langgenius/dify`, `open-webui/open-webui` |
-| Data/document conversion | Clear fixtures and regression tests | `microsoft/markitdown`, `firecrawl/firecrawl` |
-| Developer UI/tools | High impact, but only pursue small scoped bugs | `microsoft/vscode`, `shadcn-ui/ui`, `excalidraw/excalidraw` |
-| Self-hosted products | Good for Docker/runtime bugs and release follow-up | `n8n-io/n8n`, `supabase/supabase`, `immich-app/immich` |
+| AI agents / coding agents | Близко к нашей ежедневной боли, легко ловить outage и provider bugs | `NousResearch/hermes-agent`, `anomalyco/opencode`, `google-gemini/gemini-cli` |
+| AI runtime frameworks | Много integration bugs и активных пользователей | `langchain-ai/langchain`, `langflow-ai/langflow`, `langgenius/dify`, `open-webui/open-webui` |
+| Конвертация документов и scraping | Хорошо чинится через fixtures и regression tests | `microsoft/markitdown`, `firecrawl/firecrawl` |
+| Self-hosted продукты | Хороши для Docker/runtime/release bugs | `n8n-io/n8n`, `supabase/supabase`, `immich-app/immich` |
 
-## Bug Discovery Loop
+## Цикл поиска бага
 
-1. Search live issue/PR streams for fresh pain:
-   - recent issues with `bug`, `regression`, `crash`, `TypeError`, `NoneType`, `cannot`, `fails`, `broken`;
-   - PRs closed as stale without fix;
-   - duplicate issues with many reactions;
-   - release regressions after a new version.
-2. Score candidates:
-   - reproducible locally: +3
-   - affects our own workflow: +3
-   - many reactions/comments/duplicates: +2
-   - likely small patch with test: +2
-   - maintainers active in last 48h: +2
-   - requires huge domain context: -3
-   - no test harness or hard external dependency: -2
-3. Dispatch subagents:
-   - Repo rules: contribution guide, tests, PR template, maintainer norms.
-   - Bug evidence: issue history, duplicates, user impact, reproduction.
-   - Patch surface: files, existing tests, likely minimal fix.
-4. Only start implementation when there is:
-   - a concrete repro or failing test;
-   - a scoped patch surface;
-   - a plausible targeted validation command.
+1. Сканировать свежие issues/PR:
+   - `bug`, `regression`, `crash`, `TypeError`, `NoneType`, `broken`, `fails`;
+   - много реакций/комментариев;
+   - дубликаты;
+   - регрессии после релиза.
+2. Оценивать кандидата:
+   - воспроизводится локально: `+3`;
+   - затрагивает наши workflows: `+3`;
+   - много реакций/дубликатов: `+2`;
+   - маленький patch + test: `+2`;
+   - maintainer active за 48 часов: `+2`;
+   - огромный domain context: `-3`;
+   - нет test harness: `-2`.
+3. Запускать субагентов:
+   - repo-fit;
+   - bug-signal;
+   - patchability.
+4. Открывать `candidate-bug` issue до реализации.
+5. Делать PR только когда есть repro или точный regression test.
 
-## Weekly Operating Rhythm
+## Ритм
 
-- Monday: refresh candidate repos and open/close tracking issues.
-- Daily: check active upstream watches and comments.
-- For each accepted bug: create a `duplicate-triage` issue if competing PRs exist.
-- After every PR outcome: update `watch/`, skill examples, and labels.
+- Раз в неделю: обновить candidate repos.
+- Ежедневно: проверить активные upstream watch issues.
+- При новом competing PR: duplicate triage через субагентов.
+- После каждого исхода PR: обновить watch note и skill.
 
-## Success Metrics
+## Метрики
 
-- PRs opened.
-- PRs merged or fixes landed upstream.
-- Bugs reproduced with tests.
-- Maintainer interactions.
-- Issues where our duplicate triage changed the outcome.
-- Lessons added to `/Users/ris/.codex/skills/open-source-pr-workflow`.
+- найденные candidate bugs;
+- воспроизведённые bugs;
+- открытые PR;
+- merged PR или landed upstream fixes;
+- maintainer interactions;
+- lessons, перенесённые в skills.
 

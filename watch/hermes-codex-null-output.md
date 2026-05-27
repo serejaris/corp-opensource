@@ -36,3 +36,23 @@ Maintainer selected the broader path via #32963. The useful process lesson is no
 - Watch openai-python PR #3315.
 - Keep local skill updated with duplicate triage and subagent rules.
 
+## SDK vs Hermes boundary - 2026-05-27
+
+Чат-сигнал и subagent triage показали важное разделение:
+
+- `openai-python` root-layer bug: SDK parser делает `for output in response.output` и падает, если terminal Responses object пришёл с `output=None` или missing `output`.
+- Hermes #32963: downstream recovery/workaround, а не SDK one-liner. Он восстанавливает output из уже полученных stream events в `agent/codex_runtime.py` и `agent/auxiliary_client.py`.
+- `openai/openai-python#3315`: upstream SDK cleanup, сейчас open; там уже есть не только `response.output or []`, но и stream-state preservation for terminal `output=None/[]`.
+
+Оставшийся риск в Hermes #32963:
+
+- main path ловит `TypeError` по строковому признаку `"NoneType"` + `"not iterable"`;
+- `except TypeError` стоит вокруг широкого блока stream handling;
+- если Hermes callback/event-processing код сам выбросит `TypeError: 'NoneType' object is not iterable` после уже полученных deltas/items, recovery может ошибочно вернуть partial response и скрыть локальный баг.
+
+Нужный follow-up:
+
+- сузить scope `except TypeError` до SDK stream iteration / final parser failure;
+- добавить regression: Hermes-side callback/handler `TypeError("NoneType ... not iterable")` должен пробрасываться, а не маскироваться recovery;
+- не спорить с #32963 как outage fix: он реально закрыл #11179.
+

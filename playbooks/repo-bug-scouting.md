@@ -1,14 +1,14 @@
-# Repo Bug Scouting Playbook
+# Разведка багов в репозиториях
 
-Use this to find the next open-source contribution target.
+Использовать, когда нужно найти следующий open-source contribution target.
 
-## Inputs
+## Вход
 
-- Language/runtime lanes: Python, TypeScript, AI agents, data conversion, self-hosted tools.
-- Time window: last 7 days for repo activity, last 30 days for issues.
-- Minimum signal: active maintainers plus reproducible bug.
+- дорожка: AI agents, AI runtime, conversion tools, self-hosted products;
+- окно активности: repo updated за 7 дней, issues за 30 дней;
+- минимальный сигнал: баг воспроизводим или есть достаточно данных для repro.
 
-## Search Commands
+## Команды
 
 ```bash
 gh search repos --language Python --stars '>50000' --sort stars --limit 20 --json fullName,description,stargazersCount,updatedAt,url
@@ -19,21 +19,21 @@ gh search issues 'repo:OWNER/REPO is:issue is:open regression OR crash OR TypeEr
 gh search prs 'repo:OWNER/REPO is:pr is:open bug OR regression OR crash' --limit 30
 ```
 
-## Subagents
+## Субагенты
 
-Run three parallel checks before picking a bug:
+Запускать параллельно:
 
-1. Repo fit: stars, recent activity, contribution rules, test harness, maintainer response speed.
-2. Bug signal: duplicates, reactions, user impact, reproduction details.
-3. Patchability: likely files, existing tests, local setup cost, risk of broad refactor.
+1. **Repo-fit**: contribution guide, test commands, recent merged PR, maintainer response.
+2. **Bug-signal**: свежие баги, реакции, дубликаты, user impact.
+3. **Patchability**: вероятные файлы, fixtures, targeted tests, риск большого refactor.
 
-## Output
+## Выход
 
-Create one issue per candidate with:
+Для каждого кандидата создать issue:
 
-- upstream repo and issue/PR links;
-- score and why;
-- reproduction state;
-- likely patch surface;
-- exact next command or investigation step.
+- upstream repo + ссылки;
+- score;
+- состояние repro;
+- patch surface;
+- следующий конкретный шаг.
 

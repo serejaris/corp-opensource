@@ -1,24 +1,24 @@
-# Duplicate PR Race Playbook
+# Гонка duplicate PR
 
-Use this when several PRs target the same upstream outage.
+Использовать, когда несколько PR чинят один upstream outage.
 
-## Subagents
+## Субагенты
 
-Run these in parallel:
+Запускать параллельно:
 
-1. Diff coverage: compare files, runtime paths, helper functions, and behavior.
-2. Test coverage: compare regression tests, fixtures, CI, and validation claims.
-3. Maintainer signal: read labels, comments, reviews, timeline, linked issues, reactions, and maintainer wording.
+1. **Diff coverage**: файлы, runtime paths, helper functions, поведение.
+2. **Test coverage**: regression tests, fixtures, CI, validation claims.
+3. **Maintainer signal**: labels, comments, reviews, timeline, linked issues, reactions.
 
-## Decision
+## Решение
 
-After synthesis, do exactly one:
+После синтеза сделать одно:
 
-- Port missing behavior/tests into the canonical PR.
-- Ask maintainers which PR should consolidate.
-- Post a duplicate-check update saying no extra behavior needs to be pulled in.
+- портировать недостающее поведение/тесты в canonical PR;
+- спросить maintainers, какой PR должен стать canonical;
+- написать duplicate-check update, что extra behavior не найдено.
 
-## Duplicate-check comment shape
+## Формат комментария
 
 ```text
 Duplicate check update: I compared the newer duplicate PRs #A and #B.

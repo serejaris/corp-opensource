@@ -1,41 +1,41 @@
-name: Candidate bug
-description: Evaluate a possible upstream bugfix contribution.
+name: Баг-кандидат
+description: Оценить возможный upstream bugfix contribution.
 title: "[candidate-bug] "
 labels: ["candidate-bug"]
 body:
   - type: input
     id: repo
     attributes:
-      label: Repository
-      description: OWNER/REPO plus URL.
+      label: Репозиторий
+      description: OWNER/REPO и ссылка.
     validations:
       required: true
   - type: textarea
     id: signal
     attributes:
-      label: Bug signal
-      description: Issues, PRs, reactions, duplicates, logs, release regression, or personal repro.
+      label: Сигнал бага
+      description: Issues, PRs, реакции, дубликаты, логи, release regression или личный repro.
     validations:
       required: true
   - type: textarea
     id: fit
     attributes:
-      label: Repo fit
-      description: Activity, contribution rules, tests, maintainer response.
+      label: Подходит ли репозиторий
+      description: Активность, contribution rules, tests, maintainer response.
     validations:
       required: true
   - type: textarea
     id: patch
     attributes:
       label: Patch surface
-      description: Likely files, tests, and validation command.
+      description: Вероятные файлы, тесты и validation command.
     validations:
       required: true
   - type: textarea
     id: next
     attributes:
-      label: Next action
-      description: Exact next command, repro, or subagent research task.
+      label: Следующее действие
+      description: Точная команда, repro или subagent research task.
     validations:
       required: true
 
