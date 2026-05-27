@@ -81,6 +81,8 @@
 
 Последний coding/computer-use/browser-MCP repo watch: [Cline / CUA / Playwright MCP scope](watch/cline-cua-playwright-mcp-scope-2026-05-27.md), tracker [#72](https://github.com/serejaris/corp-opensource/issues/72). Итог: 6 scouting subagents, parent repo/issue/PR/community/test gates, internal 3-role critique, 0 upstream PR/comment, final `next_status: WATCH`; `microsoft/playwright-mcp#1635` лучший immediate follow-up but already comment-first and approval-gated; `trycua/cua#1739` лучший future computer-use lead after macOS Retina/AVF repro; `cline/cline` остаётся saturated watch while `#11087` and nearby PR clusters are active.
 
+Последний agent/MCP framework repo watch: [FastMCP / OpenAI Agents / DeepAgents scope](watch/fastmcp-openai-agents-deepagents-scope-2026-05-27.md), tracker [#73](https://github.com/serejaris/corp-opensource/issues/73). Итог: 6 scouting subagents, parent repo/issue/PR/community/test gates, internal 3-role critique, 0 upstream PR/comment, final `next_status: WATCH`; `PrefectHQ/fastmcp#4246` лучший future MCP/server lead but blocked by maintainer PR `#4248` and assignment-first gate; `langchain-ai/deepagents#3639` лучший secret-free regression lead after current-main repro; `openai/openai-agents-python` остаётся post-merge gap watch because current lanes are PR-covered.
+
 | Проект | Upstream | Наш контур | Статус | Следующее действие |
 |---|---:|---:|---|---|
 | NousResearch/hermes-agent | [#32999](https://github.com/NousResearch/hermes-agent/pull/32999), [#32963](https://github.com/NousResearch/hermes-agent/pull/32963), [#33042](https://github.com/NousResearch/hermes-agent/pull/33042) | [#6](https://github.com/serejaris/corp-opensource/issues/6), [watch](watch/hermes-codex-null-output.md) | #32963 merged outage fix; #32999 closed obsolete after #33042 removed the SDK stream helper path entirely | Accept closure; keep boundary-regression lesson in skill/watch |
@@ -175,6 +177,7 @@
 - [#70 Browser-agent repo-scope watch](https://github.com/serejaris/corp-opensource/issues/70)
 - [#71 Pydantic AI / OpenHands / E2B top-tier repo watch](https://github.com/serejaris/corp-opensource/issues/71)
 - [#72 Cline / CUA / Playwright MCP repo-scope watch](https://github.com/serejaris/corp-opensource/issues/72)
+- [#73 FastMCP / OpenAI Agents / DeepAgents repo-scope watch](https://github.com/serejaris/corp-opensource/issues/73)
 - [#66 AI SDK / Agents repo scope watch](https://github.com/serejaris/corp-opensource/issues/66)
 - [#65 Docker MCP exact-validation scope watch](https://github.com/serejaris/corp-opensource/issues/65)
 - [#67 Hermes #15640 stale cleanup candidate](https://github.com/serejaris/corp-opensource/issues/67)
