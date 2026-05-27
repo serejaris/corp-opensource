@@ -41,10 +41,12 @@ LangGraph #7684 is a clean bug but a bad fresh-PR target today. In repos that au
 
 ## Next Best Action
 
-Take [corp-opensource#30](https://github.com/serejaris/corp-opensource/issues/30) first:
+Update after execution (`2026-05-27T08:27Z`): [corp-opensource#30](https://github.com/serejaris/corp-opensource/issues/30) produced a valid local regression and patch, but upstream [agno#8124](https://github.com/agno-agi/agno/pull/8124) was auto-closed as duplicate because [agno#8065](https://github.com/agno-agi/agno/pull/8065) and [agno#8084](https://github.com/agno-agi/agno/pull/8084) already referenced issue #8062. The useful delta is our integration-style MCP tool registration test; it was offered upstream in [this issue comment](https://github.com/agno-agi/agno/issues/8062#issuecomment-4552788085).
 
-1. Clone/update `agno-agi/agno`.
-2. Read contribution/test rules.
-3. Re-run duplicate scan.
-4. Add failing MCP tool regression for `stream=True` returning an async iterator.
-5. Only then patch `agno/os/mcp.py`.
+Process correction: text `gh search prs` is not enough for issue-based duplicate gates. Check linked/cross-referenced PRs on the target issue before coding and again before `gh pr create`.
+
+Next active candidates after #30:
+
+1. [corp-opensource#34](https://github.com/serejaris/corp-opensource/issues/34) goose `PR_SET_PDEATHSIG` / MCP subprocess lifecycle: Linux repro + maintainer approach first.
+2. [corp-opensource#32](https://github.com/serejaris/corp-opensource/issues/32) trycua `cua-driver mcp` SIGABRT: comment-first unless direct stdio launch support is confirmed.
+3. [corp-opensource#33](https://github.com/serejaris/corp-opensource/issues/33) Codex provider-history crash: watch/access-sensitive; avoid PR unless contribution path is clear.
