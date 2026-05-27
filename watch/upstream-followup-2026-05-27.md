@@ -1,5 +1,37 @@
 # Upstream Follow-up 2026-05-27
 
+## Check 23:20 UTC
+
+Bounded active-PR dashboard refresh: parent live gates через `gh pr view`, 6 read-only subagents, затем 3-role critique. Upstream action count: `0`. Не выполнялись upstream comment, rerun, rebase, force-push или close. Итоговый dashboard `next_status`: `WATCH`; все tracked PR остаются `PR-OPEN / monitor-only` или stale cleanup backlog.
+
+Runner/repro: не нужен в этом цикле, потому что нет новой code hypothesis, fixable code-check failure или перехода к `PR-READY`.
+
+| Upstream | Текущее состояние | Recheck condition / действие |
+|---|---|---|
+| `OpenHands/software-agent-sdk#3394` | Open, non-draft; `BLOCKED/MERGEABLE/CHANGES_REQUESTED`; PR-visible check rollup empty. Maintainer написал, что выглядит нормально, и запустил eval, но visible eval result / re-review / approval ещё нет после follow-up `3c8eae78`. | `PR-OPEN / WATCH`. Ждать maintainer eval, re-review или workflow approval. Повторный comment не нужен. |
+| `anomalyco/opencode#29565` | Open, non-draft; `BLOCKED/MERGEABLE`; visible duplicate/standards/compliance/contributor gates green; maintainer review отсутствует. | `PR-OPEN / WATCH`. Ждать maintainer review; не открывать третий opencode PR без отдельного сигнала. |
+| `anomalyco/opencode#29530` | Open, non-draft; `BLOCKED/MERGEABLE`; visible duplicate/standards/compliance gates green; contribution bot says guidelines satisfied; maintainer review отсутствует. | `PR-OPEN / WATCH`. Ждать maintainer review. |
+| `cline/cline#11087` | Open, non-draft; `BLOCKED/MERGEABLE`; visible SDK quality, Ubuntu/Windows Node 24 и Socket checks green/skipped после follow-up `e1ecc63a`; maintainer approval отсутствует. | `PR-OPEN / monitor only`. Ждать maintainer review. |
+| `CopilotKit/CopilotKit#5035` | Open, non-draft; `BLOCKED/MERGEABLE`, `REVIEW_REQUIRED`. Vercel docs preview green; `chat-with-your-data`, `form-filling`, `research-canvas`, `travel` contexts fail через team authorization URLs, не как proven code regression. | `WATCH / BLOCKED-UPSTREAM-AUTH`. Ждать maintainer review или team preview authorization; не делать rerun/comment с нашей стороны. |
+| `pydantic/pydantic-ai#5680` | Open, non-draft; `CLEAN/MERGEABLE`; visible lint/mypy/docs/test matrix/examples/coverage/smokeshow checks green, release jobs skipped; maintainer review отсутствует. | `PR-OPEN / monitor only`. Ждать maintainer/bot review или merge. |
+| `pydantic/pydantic-ai#5678` | Open, non-draft; `CLEAN/MERGEABLE`; visible lint/mypy/docs/test matrix/examples/coverage/smokeshow checks green, release jobs skipped; maintainer review отсутствует. | `PR-OPEN / monitor only`. Ждать maintainer/bot review или merge. |
+| `NousResearch/hermes-agent#15640` | Open, non-draft; `CLEAN/MERGEABLE`; stale since `2026-04-25`; no comments/reviews/checks. | `WATCH / stale`. Не ping/close/rebase в dashboard refresh; cleanup только отдельным Hermes cycle с fresh duplicate/process gates. |
+
+6-subagent synthesis:
+
+- Factology/status: ни один tracked PR не merged, approved или action-needed от нас; OpenHands остаётся blocked by visible eval/re-review gap.
+- Checks/review: pydantic PRs technically green/mergeable; Cline/opencode green enough for review wait; CopilotKit blocked by upstream team auth; у Hermes нет visible CI/review signal.
+- Process/noise: upstream ping/comment/rerun/rebase/close сейчас не разрешены; dashboard refresh остаётся monitor-only.
+- Stale cleanup: `NousResearch/hermes-agent#15640` остаётся stale backlog / `CLOSE-CANDIDATE`, но закрытие или ping требуют отдельного cleanup cycle.
+- Tracker consistency: README timestamp/status и этот watch block достаточны; issue comments не нужны, потому что action status не повышался.
+- Final synthesis: exactly one status — `WATCH`.
+
+3-role critique:
+
+- factology/duplicates: approve after corrections — использовать canonical repos `OpenHands/software-agent-sdk`, `anomalyco/opencode`, `NousResearch/hermes-agent`; CopilotKit current live state is `BLOCKED/MERGEABLE/REVIEW_REQUIRED`.
+- process gates: approve internal-only update; CopilotKit Vercel failures are team auth gates, not our rerun/comment lane; Hermes cleanup остаётся отдельным cycle.
+- actionability: достаточно обновить README + `watch/upstream-followup-2026-05-27.md`; issue comments и upstream actions не нужны.
+
 ## Check 23:01 UTC
 
 Bounded refresh active-PR dashboard: 6 read-only subagents, parent live gates через `gh pr view`, затем 3-subagent critique. Upstream PR/comment/rerun/rebase/close action не выполнялись. Итоговый dashboard `next_status`: `WATCH`; все tracked PR остаются monitor-only или stale cleanup backlog.
