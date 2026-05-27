@@ -1,0 +1,41 @@
+name: Candidate bug
+description: Evaluate a possible upstream bugfix contribution.
+title: "[candidate-bug] "
+labels: ["candidate-bug"]
+body:
+  - type: input
+    id: repo
+    attributes:
+      label: Repository
+      description: OWNER/REPO plus URL.
+    validations:
+      required: true
+  - type: textarea
+    id: signal
+    attributes:
+      label: Bug signal
+      description: Issues, PRs, reactions, duplicates, logs, release regression, or personal repro.
+    validations:
+      required: true
+  - type: textarea
+    id: fit
+    attributes:
+      label: Repo fit
+      description: Activity, contribution rules, tests, maintainer response.
+    validations:
+      required: true
+  - type: textarea
+    id: patch
+    attributes:
+      label: Patch surface
+      description: Likely files, tests, and validation command.
+    validations:
+      required: true
+  - type: textarea
+    id: next
+    attributes:
+      label: Next action
+      description: Exact next command, repro, or subagent research task.
+    validations:
+      required: true
+
