@@ -1,5 +1,27 @@
 # Upstream Follow-up 2026-05-27
 
+## Check 20:30 UTC
+
+Bounded active-PR dashboard refresh with 6 read-only subagents, parent live gates via `gh pr view` / `gh issue view`, and 3-subagent critique. One subagent output drifted into the prior Morph SDK cycle and was excluded from the active-PR synthesis. No upstream PR/comment/rerun/rebase/close action was taken. Final dashboard `next_status`: `WATCH`; item-level open PRs remain `PR-OPEN / monitor-only`.
+
+| Upstream | Current state | Action |
+|---|---|---|
+| `OpenHands/software-agent-sdk#3394` | Open, `MERGEABLE`; old bot `CHANGES_REQUESTED` remains. Maintainer said it looks fine and triggered eval; PR-visible check rollup is still empty and no eval pass is visible. | `PR-OPEN / WATCH`. Wait maintainer eval, re-review, or workflow approval. |
+| `anomalyco/opencode#29565/#29530` | Both open and non-draft. Visible duplicate/standards/compliance checks are green; current `gh pr view` reports mergeability `UNKNOWN`; no maintainer review yet. | `PR-OPEN / WATCH`. Wait maintainer review; no third opencode PR without distinct signal. |
+| `cline/cline#11087` | Open, `MERGEABLE`; visible quality, Ubuntu/Windows SDK tests and Socket checks green after follow-up `e1ecc63a1`; Greptile only commented; no approval. | `PR-OPEN / monitor only`. Wait maintainer review. |
+| `CopilotKit/CopilotKit#5035` | Open, review required; current `gh pr view` reports mergeability `UNKNOWN`. Vercel docs preview is green; other Vercel contexts require team authorization and are not a proven code failure. | `WATCH`. Wait maintainer review/team authorization. |
+| `pydantic-ai#5678/#5680` | Both open, `MERGEABLE`, visible CI/coverage/harness/checks green; Codex review quota warning only. | `PR-OPEN / monitor only`. Wait maintainer/bot review or merge. |
+| `NousResearch/hermes-agent#15640` | Open, `MERGEABLE`, clean, but stale since 2026-04-25 with no comments/reviews/checks. Outside the current Hermes/Codex outage flow. | Move to stale cleanup backlog; no ping/close in this monitoring cycle. |
+| `continuedev/continue#12334` | Issue still open; no new comments after our current-main evidence comment. Exact failing autocomplete path is still unknown. | `WATCH / needs reporter path`. No PR without a failing current-main path. |
+| `modelcontextprotocol/typescript-sdk#2115/#2116/#2138` | Issue still open. Exact competing PRs `#2116` and `#2138` are both open, `MERGEABLE`, review required, with green checks, tests, and changesets. | `WATCH / duplicate-race`. No duplicate PR; wait maintainer choice/merge/close. |
+| `aaif-goose/goose#9447` | Closed, not merged. Maintainer said fixed in `#9449`. | Keep historical/duplicate-race lesson only. |
+
+3-subagent critique:
+
+- factology: do not say `approved`, `merged`, `accepted`, or `ready to merge` unless GitHub state proves it. Use `UNKNOWN` mergeability where current `gh` returned it for opencode/CopilotKit.
+- process: upstream comment, rerun, rebase, close, or new PR is not justified. This is a monitor-only update; runner/repro is not needed because no new `PR-READY` candidate exists.
+- actionability: update internal dashboard/watch wording only; final status `WATCH`.
+
 ## Check 19:33 UTC
 
 Bounded active-PR dashboard refresh with 6 read-only scouting subagents, parent live gates via `gh pr view`, and 3-subagent critique. No upstream PR/comment/rerun/close action was taken. Final dashboard `next_status`: `WATCH`; item-level `PR-OPEN` remains monitor-only for still-open PRs.
