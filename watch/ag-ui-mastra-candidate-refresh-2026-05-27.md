@@ -7,6 +7,40 @@ Trackers: [#56](https://github.com/serejaris/corp-opensource/issues/56), [#58](h
 - `ag-ui-protocol/ag-ui#1635`: `COMMENT-FIRST` after runner-backed test card; no PR and no upstream comment in this cycle.
 - `mastra-ai/mastra#17118`: `CANDIDATE`; no PR and no upstream comment in this cycle.
 
+## Mastra follow-up 23:23 UTC
+
+Bounded refresh по `mastra-ai/mastra#17118`: parent live gates через `gh`, 6 read-only subagents, затем 3-role critique. Upstream action count: `0`.
+
+Live gates:
+
+- Issue `#17118` остаётся open и unassigned; labels: `bug`, `trio-tb`, `trio-wp`, `impact:medium`, `effort:medium`, `mastracode`.
+- Triage comment от `daneatmastra` просит MRE where possible. Это maintainer interest, но не assignment и не разрешение на PR.
+- Exact PR search по `17118`, `slash-command`, `slash command`, `autocomplete`, `Mastracode`, `terminal width`, `terminal-width` не нашёл covering PR.
+- Adjacent `#17002` closed после `#17005`; это `ask_user` option label crash/wrapping, не slash-command descriptions.
+- Adjacent `#17054` merged; он добавил ask_user picker option label wrapping with tests, но был merged до `#17118` и не является exact coverage для slash-command descriptions через `CombinedAutocompleteProvider` / `SelectList`.
+- Adjacent `#17083` open, `DIRTY/CONFLICTING`, broad Mastracode ask_user multi-select PR. Это overlap/conflict risk по TUI components, но не exact functional duplicate.
+
+6-role synthesis:
+
+- Factology/status: `#17118` остаётся свежим open bug candidate в активном repo.
+- Duplicate/adjacent: exact duplicate low; adjacent overlap medium из-за `#17054/#17083`.
+- Process: Mastra PR flow требует linked issue, clear problem/solution, tests и MRE-quality evidence. Triage/MRE request не является assignment нам.
+- Runner/repro: нет runner-backed fail-before evidence, terminal-width fixture, expected/actual screenshot/text capture или regression card.
+- Tracker: обновить README, этот watch note и issue `#58`; не трогать базовый `mastra-scouting`, если статусы не расходятся.
+- Final synthesis: ровно один status — `CANDIDATE`.
+
+3-role critique:
+
+- Factology/duplicates: approve с caveat не писать `PR-READY`; `#17083` — overlap/conflict risk, не duplicate.
+- Process gates: approve internal-only update; upstream comment/PR запрещены до runner MRE + regression card + fresh duplicate gate.
+- Actionability: issue `#58` comment justified because evidence changed materially, even though status remains `CANDIDATE`.
+
+Decision: keep `next_status: CANDIDATE`.
+
+Re-entry condition: move to `COMMENT-FIRST` only after runner-backed MRE, fresh linked PR/issue search, and 3-role critique; move to `PR-READY` only after fail-before/pass-after regression card, concrete terminal-width fixture, target test command, and process gate.
+
+Runner: next gate is secret-free Mastracode slash-command picker repro in `corp-opensource-runner`, with fixed terminal width, long command description, actual truncation, expected wrapping behavior, and targeted test path if reproducible. No local heavy repro in this cycle.
+
 ## Parent live gates
 
 ### `ag-ui-protocol/ag-ui#1635`
