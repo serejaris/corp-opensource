@@ -1,6 +1,6 @@
 # SWE-agent mini #826 follow-up, 2026-05-27
 
-Live state: parent `gh` pass на 2026-05-27 19:15-19:29 UTC.
+Live state: parent `gh` pass на 2026-05-27 19:15-19:29 UTC, refreshed 2026-05-27 23:27-23:30 UTC.
 
 Upstream: [`SWE-agent/mini-swe-agent#826`](https://github.com/SWE-agent/mini-swe-agent/issues/826).
 Internal tracker: [`corp-opensource#53`](https://github.com/serejaris/corp-opensource/issues/53).
@@ -13,6 +13,18 @@ Final `next_status`: `WATCH`.
 Это bounded follow-up к cycle 27. Цель была не открыть PR, а перепроверить старые blockers: live issue state, duplicate/PR search после прежнего GitHub Search rate limit, relationship to merged timeout PR `#832`, contribution/test surface, runner gate и regression-card readiness.
 
 Required skills `open-source-bug-scouting` и `open-source-pr-workflow` в текущем session skills list недоступны. Использован documented fallback: 6 read-only scouting subagents, parent live gates через GitHub CLI/API, затем 3-subagent critique.
+
+## Follow-up 23:30 UTC
+
+Повторный bounded heartbeat не меняет статус и не открывает upstream action. Parent live gates: `#826` всё ещё open, label `bug`, без assignee/comments; `SWE-agent/mini-swe-agent` pushed `2026-05-25T21:55:36Z`, latest release `v2.3.0`; targeted PR search по `#826` / timeout / orphan / `LocalEnvironment` / `subprocess.run` не нашёл exact competing PR.
+
+Internal tracker comment: [`corp-opensource#53`](https://github.com/serejaris/corp-opensource/issues/53#issuecomment-4559536109).
+
+Новые уточнения по overlap: `#803` является closed issue, не PR; `#807` closed/not merged и maintainer указал на merged `#832`; `#843` fresh broad issue "Various issues" упоминает cleanup через `__del__`, но не является exact duplicate для child-process leak из `#826`. `#832` остаётся adjacent wall-clock/container timeout fix, но без runner-backed current-main repro нельзя утверждать ни что он закрывает `#826`, ни что `#826` still reproduces after `#832`.
+
+6-subagent synthesis: все роли рекомендуют `WATCH`. Issue валидно выглядит как strong compact-harness lane, exact PR duplicate сейчас не виден, contribution path открыт, но runner gate не закрыт и regression card не заполнена.
+
+3-subagent critique: factology/duplicates approve only `WATCH`; process gate разрешает только tracker update, не upstream comment/PR; actionability требует убрать overclaim "still reproduces" до dedicated runner evidence. Upstream actions: 0 PR, 0 comments.
 
 ## Parent Live Gates
 
