@@ -46,6 +46,7 @@
 | BerriAI/litellm | [#28971](https://github.com/BerriAI/litellm/issues/28971), [#28970](https://github.com/BerriAI/litellm/pull/28970) | [#39](https://github.com/serejaris/corp-opensource/issues/39), [cycle 10](watch/ai-native-frameworks-scouting-2026-05-27-cycle-10.md) | Comment-first / missing-regression-offered; #28970 is adjacent `/apply_guardrail`, not exact `/v1/responses` spend-log path | Wait maintainer signal before PR |
 | e2b-dev/E2B | [#1349](https://github.com/e2b-dev/E2B/issues/1349), [#1354](https://github.com/e2b-dev/E2B/pull/1354) | [#39](https://github.com/serejaris/corp-opensource/issues/39), [cycle 10](watch/ai-native-frameworks-scouting-2026-05-27-cycle-10.md) | PR open, ready, mergeable; red/green regression proved; CLA check failing | Sign E2B CLA, then `@cla-bot check`; watch CI/review |
 | openai/codex | [#24725](https://github.com/openai/codex/issues/24725) | [#41](https://github.com/serejaris/corp-opensource/issues/41), [cycle 11](watch/ai-native-frameworks-scouting-2026-05-27-cycle-11.md) | Regression-first candidate, but upstream external PRs are invitation-only | Watch/comment-first; no PR without maintainer signal |
+| anomalyco/opencode | [#15226](https://github.com/anomalyco/opencode/issues/15226) | [#42](https://github.com/serejaris/corp-opensource/issues/42), [cycle 12](watch/ai-native-frameworks-scouting-2026-05-27-cycle-12.md), [PR-readiness](watch/ai-native-frameworks-scouting-2026-05-27-cycle-12-pr-readiness.md) | Best fresh low-duplicate candidate: provider request-shape bug around structured output + thinking; needs local repro before branch | Reproduce final provider payload locally; rerun duplicate gate before code |
 | langchain-ai/deepagents | [#3568](https://github.com/langchain-ai/deepagents/issues/3568) | [scouting](watch/ai-native-frameworks-scouting-2026-05-27-cycle-2.md) | Small prompt/schema bug, but reporter has local fix and assignment gate risk | Watch/comment only if maintainers ask |
 
 ## Рабочие issues
@@ -91,6 +92,7 @@
 - [#39 Cycle 10 scouting: LiteLLM guardrail duplicate gate and E2B next repro](https://github.com/serejaris/corp-opensource/issues/39)
 - [#40 Cycle 11 scouting: regression-first AI-native bug targets](https://github.com/serejaris/corp-opensource/issues/40)
 - [#41 Codex plugin-namespaced skills exceed MAX_NAME_LEN](https://github.com/serejaris/corp-opensource/issues/41)
+- [#42 Cycle 12 scouting: unblock next AI-native contribution target](https://github.com/serejaris/corp-opensource/issues/42)
 
 ## Правила
 
@@ -103,6 +105,7 @@
 - Не начинаем PR без воспроизведения или понятного failing/regression test.
 - Для bugfix PR сначала доказываем, что regression test реально ловит старый баг: временно возвращаем старое поведение или запускаем тест на pre-fix state и записываем точный failing assertion/error.
 - Для schema/runtime mismatch regression пишем через raw wire/tool boundary: передаём тот же payload, который видит runtime/модель (`null`, missing default, etc.), а не только typed helper.
+- Для downstream recovery вокруг SDK/dependency parser failures тест обязан доказать две стороны границы: SDK failure восстанавливается через публичный runtime path, а app-side callback/handler `TypeError` с таким же текстом не проглатывается. Helper predicate test здесь недостаточен.
 - Для publish/release багов проверяем не только helper, но и внешний артефакт/контракт: registry metadata, package manifest, install/runtime symptom или closest publishable fixture.
 - Если есть competing PR, ведём duplicate triage публично: что сравнили, что портировали, чего не хватает.
 - Duplicate scan повторяем прямо перед кодом. Если candidate уже закрыт open/mergeable PR с тестами, переключаемся в watch/review/validation.
@@ -122,6 +125,8 @@
 - [AI-native frameworks scouting cycle 9](watch/ai-native-frameworks-scouting-2026-05-27-cycle-9.md)
 - [AI-native frameworks scouting cycle 10](watch/ai-native-frameworks-scouting-2026-05-27-cycle-10.md)
 - [AI-native frameworks scouting cycle 11](watch/ai-native-frameworks-scouting-2026-05-27-cycle-11.md)
+- [AI-native frameworks scouting cycle 12](watch/ai-native-frameworks-scouting-2026-05-27-cycle-12.md)
+- [AI-native frameworks scouting cycle 12 PR-readiness](watch/ai-native-frameworks-scouting-2026-05-27-cycle-12-pr-readiness.md)
 - [Goose #9332 PDEATHSIG MCP subprocess lifecycle](watch/goose-9332-pdeathsig-mcp-subprocess.md)
 
 ## Метки

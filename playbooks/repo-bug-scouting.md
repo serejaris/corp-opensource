@@ -76,6 +76,13 @@ gh search prs 'repo:OWNER/REPO is:pr is:open bug OR regression OR crash' --limit
 
 Для streaming adapter bugs synthetic event histories недостаточны, если maintainer просит real traffic evidence. Regression должен доказывать wire stream shape через VCR/cassette или recorded provider chunks: какие `output_item.added/done/completed` события реально пришли, и где именно adapter backfill нужен. Hand-crafted sequence годится только как дополнительный unit test.
 
+Для downstream recovery вокруг SDK/dependency parser failures тестировать надо не строковый predicate, а границу ответственности. Урок Hermes/Codex #32999: если recovery ловит `TypeError("'NoneType' object is not iterable")`, regression обязан доказать:
+
+- SDK/dependency failure на публичном stream/runtime path действительно recover;
+- app-side callback/handler/post-processing `TypeError` с тем же class/message пробрасывается наружу;
+- тест падает на старом широком `try/except`, потому что именно placement recovery-блока был багом;
+- если upstream переписал архитектуру и больше не ходит через сломанный SDK helper, PR можно закрыть, но boundary-regression lesson остаётся в playbook/skill.
+
 Для SSE/wire-framing багов не тестировать внешний timeout как основной контракт, если timeout живёт в клиенте или UI. Сначала выделить deterministic SDK boundary: какие байты/строки транспорт пишет в wire. Пример: U+2028/U+2029 валидны внутри JSON string, но не должны выходить literal внутри одной SSE `data:` line; regression должен проверять raw frame (`data:` содержит `\\u2028`/`\\u2029`) и round-trip через `JSON.parse`, а не ждать 300 секунд Claude/UI timeout.
 
 Для invitation-only репозиториев отдельный gate: без явного приглашения не открывать upstream PR, даже если fix очевиден. В таком случае полезная работа — watch note, issue, duplicate/test analysis и короткий upstream comment только при наличии нового факта.
