@@ -87,3 +87,33 @@ Actionability:
 ## Decision
 
 No new upstream PR or comment from this cycle. The only tracker status change is `modelcontextprotocol/typescript-sdk#2115` from `COMMENT-FIRST / candidate` to `WATCH / duplicate-race`.
+
+## Follow-up 23:11 UTC
+
+Bounded duplicate-race refresh for `modelcontextprotocol/typescript-sdk#2115`: 6 read-only subagents, parent live gates via `gh`, then 3-role critique. No upstream PR/comment/ping was made.
+
+Tracker update: [#51 comment](https://github.com/serejaris/corp-opensource/issues/51#issuecomment-4559436572).
+
+Live gates:
+
+- Issue `#2115`: open, unassigned, no labels. Our upstream test-plan comment from `2026-05-27T13:25:46Z` remains the latest non-minimized substantive comment.
+- Exact PR `#2116`: open, non-draft, `MERGEABLE/BLOCKED/REVIEW_REQUIRED`; visible checks green; changes `packages/core/src/shared/protocol.ts`, adds a changeset for `@modelcontextprotocol/core`, and adds regression coverage in `packages/core/test/shared/protocol.test.ts`; updated `2026-05-25T18:21:41Z`.
+- Exact PR `#2138`: open, non-draft, `MERGEABLE/BLOCKED/REVIEW_REQUIRED`; visible checks green; changes `packages/core/src/shared/protocol.ts`, adds a changeset for `@modelcontextprotocol/core`, and adds regression coverage in `packages/core/test/shared/protocol.test.ts`; updated `2026-05-27T10:47:01Z` after rebase and broader local validation notes.
+- Adjacent cancellation/request PRs such as `#1932`, `#2141`, and `#2028` are context only; `#2116/#2138` remain the exact duplicate coverage for the `requestId: 0` cancel path.
+
+6-subagent synthesis:
+
+- Factology: `WATCH`, not `COMMENT-FIRST` or `PR-READY`; do not claim either PR is merged, approved, or selected by maintainers.
+- Duplicate/race: direct coverage is high; a third PR would be duplicate noise.
+- Process: our historical upstream comment already covered comment-first; no maintainer assignment/direction followed.
+- PR comparison: `#2138` is the freshest duplicate lane / primary watch target by update time and validation envelope, but not an upstream-selected winner.
+- Runner/repro: no runner needed for this internal duplicate-race refresh; exact competing PRs already have tests, changesets, and green checks.
+- Final synthesis: `next_status: WATCH`; wait maintainer review/selection/merge/close.
+
+3-role critique:
+
+- Factology/duplicates: approved with wording guardrail: use "freshest duplicate lane", not "best" or "selected".
+- Process: approved. This is tracker-only; no upstream action, no runner, no PR workflow.
+- Actionability: approved. Re-open actionability only if both exact PRs close unmerged, maintainer asks for evidence/implementation, CI regresses, or a new uncovered edge appears outside the current `requestId: 0` path.
+
+Decision remains `next_status: WATCH`.
