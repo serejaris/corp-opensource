@@ -1,5 +1,25 @@
 # Upstream Follow-up 2026-05-27
 
+## Check 18:20 UTC
+
+Bounded follow-up with 6 subagents over active PRs, comment-first/watch lanes, duplicate-race lanes, repo-candidate queue, tracker consistency, and process gates. Parent live gates used `gh pr view` / `gh issue view`; GitHub Search API for `SWE-agent/mini-swe-agent#826` is still rate-limited. 3-subagent critique chose final `next_status: WATCH`. No upstream PR/comment opened. Tracker comments: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4557412645), `mini-swe-agent#826` lane [#53](https://github.com/serejaris/corp-opensource/issues/53#issuecomment-4557410943).
+
+| Upstream | Current state | Action |
+|---|---|---|
+| `aaif-goose/goose#9447` | Open, `MERGEABLE`, review required, merge-state blocked. `changes` still failed from GitHub diff API transient; `check-quarantined` and `machete` green. | `WATCH`. Wait maintainer rerun/review; no duplicate CI comment. |
+| `OpenHands/software-agent-sdk#3394` | Open, `MERGEABLE`, merge-state blocked; GitHub still reports old `CHANGES_REQUESTED`; check rollup empty. Maintainer eval/re-review remains the gate. | `WATCH`. Wait eval or maintainer review. |
+| `opencode#29565/#29530` | Both open; duplicate/standards/compliance checks green; no maintainer review yet. Parent `gh` returned mergeability for `#29565` inconsistently across checks, so do not overclaim mergeability. | `WATCH`. Wait review; no third opencode PR without a distinct signal. |
+| `cline#11087` | Open, `MERGEABLE`, merge-state blocked; SDK quality checks, Ubuntu/Windows tests, and Socket checks green after follow-up. | `PR-OPEN` / monitor only. Wait maintainer review. |
+| `CopilotKit#5035` | Open, `MERGEABLE`, review required. Docs Vercel preview green; other Vercel contexts are team authorization gates. | `WATCH`. Wait maintainer review/team auth. |
+| `pydantic-ai#5678/#5680` | Both open, `MERGEABLE`, merge-state clean, full CI/coverage/harness green. | `PR-OPEN`. Ready for maintainer review/merge; monitor only. |
+| `E2B#1355` | Open maintainer/superset PR for JS + Python `fromDockerfile`/`from_dockerfile`; all visible SDK/CLI/CodeQL/Vercel/CLA checks green; review required, merge-state blocked. | `WATCH #1355`; no action on closed `#1354`. |
+| `pydantic-ai#5688`, `google/adk-python#5864`, `langgraph#7688`, `continue#12334`, `goose#9136/#9332`, `MCP python-sdk#2702`, `cline#10931`, `OpenHands#14563` | No new maintainer/reporter signal that changes actionability. `google/adk-python#5864` is closest to actionable, but still assigned/request-clarification and needs reporter/maintainer direction. | `WATCH` / `COMMENT-FIRST` only; no upstream comment/PR now. |
+| `trycua#1725/#1737`, MCP TS `#2115/#2116/#2138`, MCP Python `#2687/#2701`, `browser-use#4796/#4815`, `SWE-agent/mini-swe-agent#826` | Competing/open PRs remain active for most lanes. `mini-swe-agent#826` is still open with no comments, but broader search is rate-limited and adjacent timeout PR `#832` has merged, so retest is required before any claim. | `WATCH`. Do not duplicate; comment only with new verification or maintainer request. |
+
+Repo-candidate queue: `microsoft/playwright-mcp` is proposed as the next bounded scouting target, not a PR/comment target in this cycle. Start with `#1635`, contribution/assignment gate, duplicate PR search, and repo-source location; keep `#1636` as secondary watch. Final `next_status`: `WATCH`.
+
+3-subagent critique: factology rejected any `duplicate clean` wording for `mini-swe-agent#826` because GitHub Search API is rate-limited. Process gate passed for internal tracker/watch update only; upstream PR/comment fails without a new fact, maintainer request, repro, or CI diagnosis. Actionability selected exactly `WATCH`.
+
 ## Check 18:00 UTC
 
 Bounded follow-up with 6 subagents over active PRs, stale/closed lanes, comment-first watch, duplicate-race lanes, repo-candidate queue, and tracker consistency. Parent live gates used `gh pr view` / `gh issue view`. No upstream PR/comment opened.
