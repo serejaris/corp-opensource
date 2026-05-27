@@ -101,4 +101,10 @@ Post-push check:
 - GitHub still reports old `CHANGES_REQUESTED` from the previous OpenHands bot review;
 - checks list is empty immediately after follow-up push, so there is no new CI/eval signal yet.
 
+Workflow run check:
+
+- `gh run list --repo OpenHands/software-agent-sdk --branch fix/2806-reduce-tmux-session-size --limit 10` shows runs for commit `3c8eae78`;
+- all visible runs are `completed` with `conclusion=action_required`;
+- this means fork workflows are waiting for maintainer approval, not failing due to code.
+
 Следующее действие: дождаться новых CI/eval результатов и maintainer response; не пушить дальше без нового actionable review.
