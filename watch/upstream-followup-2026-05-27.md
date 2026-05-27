@@ -1,5 +1,25 @@
 # Upstream Follow-up 2026-05-27
 
+## Check 21:13 UTC
+
+Bounded active-PR dashboard refresh with 6 read-only subagents and parent live gates via `gh pr view`. No upstream PR/comment/rerun/rebase/close action was taken. Final dashboard `next_status`: `WATCH`; item-level open PRs remain `PR-OPEN / monitor-only` or stale backlog.
+
+| Upstream | Current state | Action |
+|---|---|---|
+| `OpenHands/software-agent-sdk#3394` | Open, non-draft; `mergeStateStatus=BLOCKED`, `reviewDecision=CHANGES_REQUESTED`; check rollup empty. Maintainer previously said it looks fine and triggered eval, but no visible eval pass or re-review is present. | `PR-OPEN / WATCH`. Wait maintainer eval, re-review, or workflow approval. No repeat comment. |
+| `anomalyco/opencode#29565/#29530` | Both open, non-draft; `mergeStateStatus=BLOCKED`; visible duplicate/standards/compliance checks are green. No maintainer review yet. | `PR-OPEN / WATCH`. Wait maintainer review; no third opencode PR without distinct signal. |
+| `cline/cline#11087` | Open, non-draft; `mergeStateStatus=BLOCKED`; visible SDK quality, Ubuntu/Windows Node 24 tests and Socket checks are green. Greptile only commented, and the follow-up already addressed that gap. | `PR-OPEN / monitor only`. Wait maintainer review. |
+| `CopilotKit/CopilotKit#5035` | Open, non-draft; `mergeStateStatus=BLOCKED`, review required. Vercel docs preview is green; other Vercel contexts fail on team authorization URLs and are not a proven code failure. Claude review is disabled for the fork unless maintainers trigger it. | `WATCH`. Wait maintainer review/team authorization. |
+| `pydantic-ai#5678/#5680` | Both open, non-draft, `MERGEABLE`, `mergeStateStatus=CLEAN`; broad CI/harness/coverage/smokeshow checks are green. No maintainer review yet. | `PR-OPEN / monitor only`. Wait maintainer/bot review or merge. |
+| `NousResearch/hermes-agent#15640` | Open, non-draft, `MERGEABLE`, `mergeStateStatus=CLEAN`; stale since `2026-04-25`, no comments/reviews/checks. | Keep in stale cleanup backlog. Do not ping/rebase/close in this dashboard refresh; use a separate cleanup cycle if needed. |
+
+6-subagent synthesis / critique:
+
+- Factology: none of the tracked PRs is merged, approved, or ready-to-merge. For blocked PRs, record the process/review gate instead of saying only "mergeable".
+- Process: upstream comment, CI rerun, rebase, force-push, close, or replacement PR is not justified. This is a monitor-only dashboard heartbeat.
+- Verification: local tests/runner are not needed because no new code change or fixable code-check failure exists. GitHub checks are sufficient for dashboard state; OpenHands and Hermes lack visible CI/eval evidence, but their blockers are upstream process/staleness.
+- Actionability: final status `WATCH`; the only non-monitor item is `hermes-agent#15640`, which remains a separate stale cleanup decision.
+
 ## Check 20:48 UTC
 
 Bounded active-PR dashboard refresh with 6 read-only subagents, parent live gates via `gh pr view` / `gh issue view`, and 3-subagent critique. No upstream PR/comment/rerun/rebase/close action was taken. Final dashboard `next_status`: `WATCH`; item-level open PRs remain `PR-OPEN / monitor-only`.
