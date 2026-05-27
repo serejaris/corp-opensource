@@ -38,6 +38,7 @@
 | aaif-goose/goose | [#9332](https://github.com/aaif-goose/goose/issues/9332) | [#34](https://github.com/serejaris/corp-opensource/issues/34), [watch](watch/goose-9332-pdeathsig-mcp-subprocess.md) | Comment-first; no duplicate PR; maintainer-alignment comment posted | Wait direction or run Linux repro on runner |
 | BerriAI/litellm | [#28962](https://github.com/BerriAI/litellm/issues/28962) | [#35](https://github.com/serejaris/corp-opensource/issues/35), [cycle 9](watch/ai-native-frameworks-scouting-2026-05-27-cycle-9.md) | No-go / release-followup; mocked current branch maps Gemini 503 `MaskedHTTPStatusError` to `ServiceUnavailableError` | Watch reporter/upstream; no PR unless exact leaking path is confirmed |
 | microsoft/playwright-mcp | [#1635](https://github.com/microsoft/playwright-mcp/issues/1635) | [#36](https://github.com/serejaris/corp-opensource/issues/36), [cycle 9](watch/ai-native-frameworks-scouting-2026-05-27-cycle-9.md) | Comment-first / assignment-gated; [regression offer posted](https://github.com/microsoft/playwright-mcp/issues/1635#issuecomment-4552993898) | Wait maintainer direction; no PR without approval |
+| modelcontextprotocol/typescript-sdk | [#2155](https://github.com/modelcontextprotocol/typescript-sdk/issues/2155), [#1925](https://github.com/modelcontextprotocol/typescript-sdk/pull/1925), [#1926](https://github.com/modelcontextprotocol/typescript-sdk/pull/1926) | [#37](https://github.com/serejaris/corp-opensource/issues/37), [cycle 9](watch/ai-native-frameworks-scouting-2026-05-27-cycle-9.md) | Duplicate-triage; server-side SSE escaping already covered by open mergeable PRs with tests | Watch maintainer review; validate only uncovered client fail-fast / JSON-response gap |
 | langchain-ai/deepagents | [#3568](https://github.com/langchain-ai/deepagents/issues/3568) | [scouting](watch/ai-native-frameworks-scouting-2026-05-27-cycle-2.md) | Small prompt/schema bug, but reporter has local fix and assignment gate risk | Watch/comment only if maintainers ask |
 
 ## Рабочие issues
@@ -78,6 +79,7 @@
 - [#34 goose PR_SET_PDEATHSIG kills stdio MCP subprocesses](https://github.com/serejaris/corp-opensource/issues/34)
 - [#35 LiteLLM Gemini AI Studio 5xx error mapping](https://github.com/serejaris/corp-opensource/issues/35)
 - [#36 Playwright MCP browser_navigate_back CDP timeout](https://github.com/serejaris/corp-opensource/issues/36)
+- [#37 MCP TypeScript SDK U+2028/U+2029 SSE timeout duplicate triage](https://github.com/serejaris/corp-opensource/issues/37)
 
 ## Правила
 

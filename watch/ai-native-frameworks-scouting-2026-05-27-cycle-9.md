@@ -13,7 +13,7 @@ Six-subagent scouting pass plus local duplicate/rules checks where needed.
 | 1 | [BerriAI/litellm#28962](https://github.com/BerriAI/litellm/issues/28962) Gemini AI Studio 5xx leaks as `MaskedHTTPStatusError` | `NO-GO / release-followup` | Fresh probes show current branch already maps mocked Gemini 503 `MaskedHTTPStatusError` to `ServiceUnavailableError` through `exception_type` and public `acompletion` | Watch reporter/upstream; do not open a PR unless the exact leaking path is confirmed |
 | 2 | [modelcontextprotocol/python-sdk#2687](https://github.com/modelcontextprotocol/python-sdk/issues/2687) `AnyUrl` vs `AnyHttpUrl` OAuth redirect mismatch | `COMMENT-FIRST / rules-gated` | Very patchable, but repo rules say comment before starting and ideally wait for maintainer feedback / `ready for work` | Watch/comment only unless maintainers invite PR |
 | 3 | [microsoft/playwright-mcp#1635](https://github.com/microsoft/playwright-mcp/issues/1635) `browser_navigate_back` timeout after URL changed | `CANDIDATE / needs repro` | Excellent repo fit and deterministic browser/MCP surface; needs local repro and duplicate check before code | Add to future queue after current active PR load |
-| 4 | [modelcontextprotocol/typescript-sdk#2155](https://github.com/modelcontextprotocol/typescript-sdk/issues/2155) `U+2028/U+2029` tool response timeout | `CANDIDATE / needs repro matrix` | Strong wire/protocol bug signal, no direct PR found by subagent | Repro matrix before PR |
+| 4 | [modelcontextprotocol/typescript-sdk#2155](https://github.com/modelcontextprotocol/typescript-sdk/issues/2155) `U+2028/U+2029` tool response timeout | `WATCH / duplicate-triage` | Strong wire/protocol bug signal, but open PRs [#1925](https://github.com/modelcontextprotocol/typescript-sdk/pull/1925) and [#1926](https://github.com/modelcontextprotocol/typescript-sdk/pull/1926) already cover server-side SSE escaping with tests and green CI | Watch maintainer review; only pursue uncovered client fail-fast / JSON-response gap |
 | 5 | [cline/cline#9848](https://github.com/cline/cline/issues/9848) raw XML tool invocation leaks into chat | `COMMENT-FIRST` | High agent-runtime impact, but maintainer already said code location identified and another contributor asked to take it | Wait/polite comment only with concrete test plan |
 
 ## Regression-first Lesson
@@ -56,3 +56,18 @@ Checked after cloning `microsoft/playwright-mcp` at `2026-05-27T09:35Z`.
 - Local wrapper checkout has only `src/README.md`; meaningful source/test work likely belongs in the Playwright monorepo under `packages/playwright/src/mcp` and `tests/mcp`.
 
 Decision: create [corp-opensource#36](https://github.com/serejaris/corp-opensource/issues/36) as `COMMENT-FIRST / assignment-gated`. Upstream regression offer posted in [playwright-mcp#1635](https://github.com/microsoft/playwright-mcp/issues/1635#issuecomment-4552993898). Do not open a PR unless maintainers approve or assign.
+
+## Execution Update: MCP TypeScript SDK #2155
+
+Checked after cloning `modelcontextprotocol/typescript-sdk` at `2026-05-27T10:10Z`.
+
+- Upstream issue is open, labeled `bug`, with no assignee and no linked PR in the issue timeline.
+- Duplicate PR search found two exact server-side fixes:
+  - [#1925](https://github.com/modelcontextprotocol/typescript-sdk/pull/1925) for `main` / v2: `packages/server/src/server/streamableHttp.ts`, regression test, changeset, mergeable, CI green, review required.
+  - [#1926](https://github.com/modelcontextprotocol/typescript-sdk/pull/1926) for `v1.x`: `src/server/sse.ts`, `src/server/webStandardStreamableHttp.ts`, regression test, changeset, mergeable, CI green, review required.
+- Repo rules say to comment before starting work to avoid duplicate effort; straightforward bugfixes can skip discussion only when not already contested.
+- [Upstream triage comment](https://github.com/modelcontextprotocol/typescript-sdk/issues/2155#issuecomment-4553051842) posted linking #1925/#1926 and suggesting pkg-pr-new validation plus raw/escaped, stdio/Streamable HTTP, JSON-looking/plain text matrix.
+
+Decision: create [corp-opensource#37](https://github.com/serejaris/corp-opensource/issues/37) as `WATCH / duplicate-triage`. Do not open a fresh PR for SSE escaping. A non-duplicate path needs proof of an uncovered client fail-fast or JSON-response-mode gap.
+
+Regression-first lesson from this case: the useful test contract is not "Claude.AI should not hang", because that is outside the SDK and takes 300s to observe. The SDK-side regression is the deterministic wire contract: SSE transport must not emit literal U+2028/U+2029 inside a `data:` line; it should emit `\\u2028` / `\\u2029`, and `JSON.parse(data)` must still round-trip the original text.
