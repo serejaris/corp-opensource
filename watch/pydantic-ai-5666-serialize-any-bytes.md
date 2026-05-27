@@ -77,6 +77,19 @@ CI repair:
 - Amended and force-pushed branch to commit `be323816`.
 - New CI run started; checks are pending again.
 
+Third check:
+
+- New CI run for `be323816` is still in progress.
+- Passed after the Pyright fix:
+  - `mypy`
+  - `docs`
+  - `harness compat`
+  - `pydantic-ai-slim` tests on Python 3.10/3.11/3.12/3.13/3.14
+  - `pydantic-evals` tests on Python 3.10/3.11/3.12/3.13/3.14
+  - examples on Python 3.11/3.12/3.13/3.14
+- Still pending: `lint`, broader standard/all-extras/lowest-versions matrix.
+- Do not open another upstream PR until this CI result is known.
+
 ## Next
 
 Watch CI and maintainer / bot review. If maintainers prefer an explicit wrapper shape for binary values instead of raw base64 strings, adapt the branch.
