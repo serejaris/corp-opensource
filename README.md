@@ -62,7 +62,7 @@
 
 Последний bug-target scouting: [Popular AI-native / Paperclip-like scouting, 2026-05-27](watch/ai-native-popular-repos-paperclip-scouting-2026-05-27.md), tracker [#52](https://github.com/serejaris/corp-opensource/issues/52). Итог: 3 цикла по 6 агентов, 0 upstream PR/comment. Главная immediate-дорожка: `trycua/cua#1724` после локального macOS repro. Главные maintainer-signal дорожки: `OpenHands#14563`, `MCP python-sdk#2702`, `cline#10931`.
 
-Последний repo-universe update: [cycle 23](watch/ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-23-repo-universe.md) и [repo-card queue](watch/repo-cards-ai-native-2026-05-27.md), tracker [#52](https://github.com/serejaris/corp-opensource/issues/52). Итог последнего repo-level блока: 6 subagent discovery/fit ролей, parent live gates, 3-subagent critique, 0 upstream PR/comment. Next repo-level lanes: `pydantic/pydantic-ai`, `OpenHands/OpenHands`, `e2b-dev/E2B`, `cline/cline`, `trycua/cua`, `microsoft/playwright-mcp`, `langchain-ai/deepagents`; high-churn strategic watch: `openai/codex`, `anomalyco/opencode`, `google-gemini/gemini-cli`, `daytonaio/daytona`.
+Последний repo-universe update: [cycle 24](watch/ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-24-repo-universe.md) и [repo-card queue](watch/repo-cards-ai-native-2026-05-27.md), tracker [#52](https://github.com/serejaris/corp-opensource/issues/52). Итог последнего repo-level блока: 6 subagent discovery/fit ролей, parent live gates, 3-subagent critique, 0 upstream PR/comment, final `next_status: WATCH`. Новый promoted repo-level lane: `openai/openai-agents-python`. Новые strategic/active watch clusters: MCP official `registry`/`inspector`/`servers`/`modelcontextprotocol`, `aaif-goose/goose`, `ComposioHQ/composio`, `promptfoo/promptfoo`, `SWE-agent` repos, `Skyvern-AI/skyvern`, `BloopAI/vibe-kanban`. Blind PR hunting из этого цикла запрещён.
 
 | Проект | Upstream | Наш контур | Статус | Следующее действие |
 |---|---:|---:|---|---|
@@ -217,6 +217,7 @@
 - [Paperclip-adjacent repo map 2026-05-27](watch/paperclip-adjacent-repo-map-2026-05-27.md)
 - [Popular AI-native / Paperclip-like scouting 2026-05-27](watch/ai-native-popular-repos-paperclip-scouting-2026-05-27.md)
 - [Popular AI-native repo universe cycle 23](watch/ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-23-repo-universe.md)
+- [Popular AI-native repo universe cycle 24](watch/ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-24-repo-universe.md)
 - [Repo cards: AI-native universe 2026-05-27](watch/repo-cards-ai-native-2026-05-27.md)
 - [google/adk-python #5864 Vertex AI optional dependency import guard](watch/google-adk-5864-vertexai-import-guard.md)
 - [pydantic-ai #5688 MCPToolset http_client follow_redirects patch prep](watch/pydantic-ai-5688-mcp-http-client-follow-redirects.md)

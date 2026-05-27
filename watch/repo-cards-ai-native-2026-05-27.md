@@ -1,6 +1,6 @@
 # Repo cards: AI-native universe, 2026-05-27
 
-Source: [cycle 23 repo-universe update](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-23-repo-universe.md).
+Source: [cycle 23 repo-universe update](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-23-repo-universe.md) и [cycle 24 repo-universe update](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-24-repo-universe.md).
 
 Purpose: make the next hourly repo-scouting block concrete. These are repo-level cards, not bug candidates.
 
@@ -34,3 +34,30 @@ Purpose: make the next hourly repo-scouting block concrete. These are repo-level
 | `morph-labs/morph-typescript-sdk` | 3 | demote | Morph-specific watch only | low | cloud account likely | 2026-05-27 17:18 UTC | direct user/requested target |
 | `docker/mcp-gateway` | 3 | demote | gateway validation/config only | high | Docker runtime | 2026-05-27 17:18 UTC | narrow repro and low duplicate risk |
 | `docker/mcp-registry` | 3 | demote | registry metadata validation only | very high | usually no runner | 2026-05-27 17:18 UTC | exact validation bug |
+
+## Cycle 24 overlay
+
+Эти rows явно добавляют `avoid_pr_hunting`. Это repo-level cards, не bug candidates.
+
+| Repo | Tier | Next action | Scan lane | Duplicate risk | Runner need | Last checked | avoid_pr_hunting | Promotion gate |
+|---|---|---|---|---|---|---|---|---|
+| `openai/openai-agents-python` | 1A | promote | SDK/runtime/tool-call/handoff regressions with unit-test surface | medium | local tests first | 2026-05-27 17:39 UTC | fixture-only | exact commit/version + issue/PR duplicate sweep + regression card |
+| `modelcontextprotocol/registry` | 1B | update scope | registry metadata/API/discovery/trust | medium | local Go tests likely | 2026-05-27 17:39 UTC | comment-first | separate registry bugs from spec/server bugs |
+| `modelcontextprotocol/inspector` | 1B | update scope | MCP inspector UI/runtime/auth/transport debugging | high | local/browser runtime likely | 2026-05-27 17:39 UTC | comment-first | affected-area PR search after hotfix cadence check |
+| `modelcontextprotocol/servers` | 1B | watch | server implementation/catalog regressions | very high | repo-specific | 2026-05-27 17:39 UTC | yes | no PR without open PR/recent timeline sweep |
+| `modelcontextprotocol/modelcontextprotocol` | 1B | watch | MCP spec/docs semantics | high | usually no runner | 2026-05-27 17:39 UTC | comment-first | spec issue discussion before code/docs PR |
+| `aaif-goose/goose` | 1B | watch | existing PR/follow-up lanes only | medium-high | repo-specific | 2026-05-27 17:39 UTC | yes | no new goose PR while `#9447` is open and `#9136/#9332` remain gated |
+| `ComposioHQ/composio` | 2 | update scope | package-specific tool/auth/integration bugs | medium-high | local tests likely | 2026-05-27 17:39 UTC | comment-first | package/path named, default branch `next` checked |
+| `promptfoo/promptfoo` | 2 | update scope | provider/evaluator/assertion/plugin regressions | very high | local tests likely | 2026-05-27 17:39 UTC | comment-first | targeted PR search by provider/evaluator area |
+| `SWE-agent/SWE-agent` | 2 | update scope | benchmark runner, Docker/env, docs drift | medium | Docker/runner likely | 2026-05-27 17:39 UTC | fixture-only | cross-check `mini-swe-agent` issues/PRs |
+| `SWE-agent/mini-swe-agent` | 2 | update scope | compact terminal-agent harness regressions | low-medium | local tests likely | 2026-05-27 17:39 UTC | fixture-only | cross-check `SWE-agent/SWE-agent` overlap |
+| `Skyvern-AI/skyvern` | 2 | watch | browser/vision/RPA agent regressions | high | browser/service stack likely | 2026-05-27 17:39 UTC | comment-first | distinct from `browser-use`/`stagehand`/`playwright-mcp` lanes |
+| `BloopAI/vibe-kanban` | 2 | watch | Paperclip-like control-plane/session UX | high | local app likely | 2026-05-27 17:39 UTC | comment-first | maintainer rhythm + contribution docs + narrow issue |
+| `QwenLM/qwen-code` | 2/3 | verify-first | terminal coding-agent runtime bugs | very high | local tests likely | 2026-05-27 17:39 UTC | yes | exact version + duplicate search + language/process gate |
+| `gptme/gptme` | 2/3 | verify-first | lower-noise terminal-agent CLI bugs | low | local tests likely | 2026-05-27 17:39 UTC | fixture-only | maintainer rhythm and test harness check |
+| `awslabs/cli-agent-orchestrator` | 2/3 | verify-first | multi-agent CLI orchestration | medium | local tests likely | 2026-05-27 17:39 UTC | comment-first | contribution docs + maintainer responsiveness |
+| `Open-ACP/OpenACP` | 2/3 | verify-first | ACP bridge/session protocol | low | local tests likely | 2026-05-27 17:39 UTC | comment-first | evidence surface grows beyond early ecosystem watch |
+| `microsoft/Webwright` | 3 | scope/watch | browser-agent framework reference | low | browser runtime | 2026-05-27 17:39 UTC | yes | contribution docs/release maturity verified |
+| `ServiceNow/BrowserGym` | 3 | scope/watch | web-agent benchmark environment | medium | browser/runtime env | 2026-05-27 17:39 UTC | yes | maintainer responsiveness + direct eval repro |
+| `dagger/dagger` | 3 | scope/watch | agent-runner execution graph only | medium | container runtime | 2026-05-27 17:39 UTC | yes | direct Paperclip runner breakage |
+| `devcontainers/cli` | 3 | scope/watch | workspace/devcontainer CLI only | high | container runtime | 2026-05-27 17:39 UTC | yes | direct Paperclip workspace failure |
