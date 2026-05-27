@@ -56,3 +56,38 @@ No runner repro was run in this cycle because this was repo-scope scouting. `cor
    - Node SDK `symbols({ files: [...] })`
 4. Capture stdout, stderr, exit code and first 200 bytes parsed by the wrapper.
 5. If fail-before is confirmed, repeat duplicate search over `#568`, `symbols`, `stdout`, `json`, `#205`, `#109`; then decide between `COMMENT-FIRST` with evidence or `PR-READY` with targeted regression test.
+
+## Probe #568 follow-up, 23:07 UTC
+
+Bounded refresh по `probelabs/probe#568`: 6 read-only subagents, parent live gates через `gh`, затем 3-role critique. Upstream PR/comment не создавались.
+
+Tracker update: [#80 comment](https://github.com/serejaris/corp-opensource/issues/80#issuecomment-4559411989).
+
+### Parent live gates
+
+- Issue: `probelabs/probe#568` open, unassigned, labels `bug` + `external`, updated `2026-05-27T15:17:13Z`.
+- Upstream response: `probelabs` / Visor подтвердил общий bug-shape, но прямо запросил exact command/API call, env/verbose flags и consistency. Комментарий без этих данных будет шумом.
+- Duplicate PR gate: exact open PR под `symbols` stdout/JSON pollution не найден; live search вернул unrelated open `#264` и merged historical/context PRs. `#205`, `#546`, `#560` считать precedent/context, не coverage.
+- Repo gate: `probelabs/probe` остаётся small viable code-search lane: Apache-2.0 root license, default branch `main`, `616` stars, `13` open issues, `2` open PRs, pushed `2026-05-21T17:02:13Z`.
+- Runner gate: repro не запускался. `ssh corp-server ...` сейчас failed with `Could not resolve hostname corp-server`, dedicated `corp-opensource-runner` не подтверждён, CT `216` не применим because this is not Hermes-specific.
+
+### 6-subagent synthesis
+
+| Роль | Вывод |
+|---|---|
+| Factology/root cause | Симптом конкретный и likely связан с stdout/stderr pollution, но exact path не доказан; `symbols.rs::handle_symbols` может быть JSON-clean, а `Pattern:`/`Path:` likely из search/debug path. |
+| Duplicate/race | Exact open duplicate PR не найден; historical merged JSON/stdout PRs are precedent only. |
+| Process/community | `COMMENT-FIRST` без runner-backed exact command/API/env не allowed, потому что upstream уже запросил именно эти details. |
+| Repro/runner | Нужен runner fail-before на `@probelabs/probe@0.6.0-rc319` и current `main`, CLI + Node SDK, stdout/stderr/exit/parse capture. |
+| Patch/test surface | Patch likely small only after repro; test card must prove JSON stdout clean for `symbols --format json` and debug/progress routed to stderr without breaking text output. |
+| Final synthesis | `CANDIDATE`, not `COMMENT-FIRST` and not `PR-READY`, until exact repro evidence exists. |
+
+### 3-role critique
+
+- Factology/duplicates: approve revised. Use `CANDIDATE`; no exact open PR found; historical `#205/#546/#560` are precedent/context; runner gap must be recorded.
+- Process: approve. 6-subagent synthesis and parent live gates complete; no upstream action; CT `216` must not be used for Probe.
+- Actionability: approve. Next step is runner-backed fail-before, then repeat duplicate search and decide between `COMMENT-FIRST` with evidence vs `PR-READY`.
+
+Decision: `next_status: CANDIDATE`.
+
+Unblock event: in `corp-opensource-runner`, capture exact command/API/env for `0.6.0-rc319` and current `main`, raw stdout/stderr, exit code, JSON parse result, and repeat duplicate PR search immediately before any upstream comment or PR.
