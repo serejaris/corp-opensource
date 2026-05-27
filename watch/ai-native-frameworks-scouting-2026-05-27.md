@@ -118,3 +118,29 @@ Outcome:
 | `E2B#1352` | Fresh sandbox stdout bug, low public duplicate risk, but linked internal Linear. | `WATCH`; wait for public maintainer signal or local SDK repro. |
 
 Operational lesson: small packaging/release bugs can be valid first PRs when they have a strong regression test and low duplicate risk, even if they are less directly “agentic” than runtime bugs. The strategy should still prefer agent/harness bugs, but not ignore clean unblockers in the same ecosystem.
+
+## Fourth Scouting Cycle - 2026-05-27 03:00 -03
+
+Six subagents reran repo-fit, bug-signal, repro-path, patchability, duplicate-race, and PR-readiness after the CopilotKit PR was opened.
+
+Follow-up state:
+
+| Existing work | Current state | Decision |
+|---|---|---|
+| `pydantic/pydantic-ai#5678` | Open, mergeable, CI/coverage green; no human review yet. | Watch; no code action. |
+| `pydantic/pydantic-ai#5680` | Open, mergeable, CI/coverage green; no human review yet. | Watch; no code action. |
+| `CopilotKit/CopilotKit#5035` | Open, mergeable; `Vercel docs` green; other Vercel contexts require team authorization for fork deploys. | Watch maintainer review/auth. |
+| `cline/cline#10737` | No maintainer response after duplicate-triage comment. | Do not open a fresh duplicate PR. |
+
+New scouting outcome:
+
+| Candidate | Current state | Decision |
+|---|---|---|
+| `langchain-ai/deepagents#3587` | Fresh subagent/tool-call-id bug on OpenAI-compatible Qwen; no comments, no assignee, no matching PR found. Local checkout created at `/Users/ris/Documents/GitHub/deepagents-3587`; current code raises when `runtime.tool_call_id` is missing. | `CANDIDATE / NEEDS-REPRO`; internal [#20](https://github.com/serejaris/corp-opensource/issues/20). Build synthetic fake-model repro before any PR. |
+| `OpenHands/OpenHands#14476` | Resolver conversation metadata race; no comments, no assignee, no matching PR found. | `WATCH / CANDIDATE`; internal [#21](https://github.com/serejaris/corp-opensource/issues/21). Only pursue if DB/service unit repro is possible without SaaS/private infra. |
+| `langchain-ai/deepagents#3568` | Very small prompt/schema mismatch, but two participants already offered local fixes in issue comments. | `NO FRESH PR`; avoid racing. |
+| `langchain-ai/deepagents#3436` | Repro exists, but comments reframed it as StoreBackend contract/docs/API design. | `NO-GO until maintainer steer`. |
+| `OpenHands/OpenHands#14563` | Relevant skills mount gap, but design-race with related skills/issues. | Watch only. |
+| `browser-use/browser-use#4801` | Relevant browser-agent a11y/tooling failure, but needs synthetic fixture and may be partly app-side accessibility. | Watch/needs-repro. |
+
+Operational lesson: when a failure is caused by missing `tool_call_id`, do not paper over it in the downstream tool. First prove where the ID is lost and whether a `ToolMessage` can still be matched to the original model tool call.
