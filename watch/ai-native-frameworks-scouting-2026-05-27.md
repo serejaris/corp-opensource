@@ -87,3 +87,18 @@ Hermes/Codex acceleration should be treated as worker capacity, not as student i
 - CT `216` remains Hermes-specific smoke/test only.
 - General workload target remains `corp-opensource-runner`.
 - Additional Codex/Hermes worker container needs `corp-server` issue/runbook, not ad hoc provisioning.
+
+## Second Scouting Cycle - 2026-05-27 02:13 -03
+
+Six subagents reran repo-fit, bug-signal, repro-path, patchability, duplicate-race, and PR-readiness over the current top candidates.
+
+Outcome:
+
+| Candidate | Current state | Decision |
+|---|---|---|
+| `pydantic/pydantic-ai#5671` | Strong bug, but competing PR [#5681](https://github.com/pydantic/pydantic-ai/pull/5681) is now open, ready, mergeable, and CI/coverage/check green. | `WATCH / review only`; do not open duplicate PR. |
+| `cline/cline#10737` | Strong MCP/tool boundary bug, but same class appears in `#8256`, `#9684`, `#9919`, `#10426` and stale/conflicting PRs `#9951`, `#9542`, `#8589`. | `DUPLICATE TRIAGE`; do not open fresh PR until existing PR path is resolved. |
+| `trycua/cua#1725` | Current `main` appears to include the fix through `#1718` / `#1720`; issue still open. | `VERIFY`; Windows smoke only. |
+| `browser-use/browser-use#4580` | Concrete Windows MCP startup bug, but existing PR `#4657` and related startup PRs/issues exist. | `WATCH`; needs Windows repro against current main. |
+
+Operational lesson: when subagents find a clean bug, re-run duplicate search immediately before starting implementation. `pydantic-ai#5671` became occupied during the scouting cycle.
