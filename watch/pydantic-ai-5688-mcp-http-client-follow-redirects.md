@@ -53,7 +53,7 @@ def factory(
     headers: dict[str, str] | None = None,
     timeout: httpx.Timeout | None = None,
     auth: httpx.Auth | None = None,
-    **kwargs: Any,
+    **_kwargs: Any,
 ) -> httpx.AsyncClient:
     return http_client
 ```
