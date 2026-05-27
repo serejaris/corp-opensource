@@ -20,6 +20,16 @@ Bounded active-PR dashboard refresh with 6 read-only subagents and parent live g
 - Verification: local tests/runner are not needed because no new code change or fixable code-check failure exists. GitHub checks are sufficient for dashboard state; OpenHands and Hermes lack visible CI/eval evidence, but their blockers are upstream process/staleness.
 - Actionability: final status `WATCH`; the only non-monitor item is `hermes-agent#15640`, which remains a separate stale cleanup decision.
 
+## Check 21:15 UTC: Hermes #15640 cleanup
+
+Follow-up stale cleanup note: [Hermes #15640 stale cleanup](hermes-15640-stale-cleanup-2026-05-27.md), tracker [#67](https://github.com/serejaris/corp-opensource/issues/67).
+
+`NousResearch/hermes-agent#15640` / `#15636` was moved from generic stale backlog to internal `CLOSE-CANDIDATE`. Upstream action remained 0.
+
+Live state: PR is still open, non-draft, `MERGEABLE`, `mergeStateStatus=CLEAN`, with labels `type/bug`, `comp/cli`, `comp/gateway`, `P2`; no comments/reviews/checks; stale since `2026-04-25`. Issue `#15636` is also open with no comments/assignee.
+
+Decision: do not close, ping, rebase, rerun, or force-push in this dashboard cycle. Exact duplicate was not found, but the gateway/launchd queue is crowded and the PR lacks fresh macOS launchd revalidation. A separate cleanup cycle must choose close vs one useful maintainer ping vs keep watch.
+
 ## Check 20:48 UTC
 
 Bounded active-PR dashboard refresh with 6 read-only subagents, parent live gates via `gh pr view` / `gh issue view`, and 3-subagent critique. No upstream PR/comment/rerun/rebase/close action was taken. Final dashboard `next_status`: `WATCH`; item-level open PRs remain `PR-OPEN / monitor-only`.

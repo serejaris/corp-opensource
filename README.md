@@ -20,7 +20,7 @@
 
 | Upstream PR | Что сделано | Текущий статус | Следующее действие |
 |---|---|---|---|
-| [NousResearch/hermes-agent#15640](https://github.com/NousResearch/hermes-agent/pull/15640) | Старый Hermes gateway fix: macOS launchd plist должен регистрировать Login Item как `hermes`, не `python`. | Open, `mergeStateStatus: CLEAN`, but stale since 2026-04-25; нет comments/reviews/checks; вне текущего Hermes/Codex outage потока. | Cleanup decision отдельным явным cycle: close as stale/out-of-current-scope, rebase/ping only with fresh reason, or keep stale backlog. |
+| [NousResearch/hermes-agent#15640](https://github.com/NousResearch/hermes-agent/pull/15640) | Старый Hermes gateway fix: macOS launchd plist должен регистрировать Login Item как `hermes`, не `python`. | `CLOSE-CANDIDATE` via [#67](https://github.com/serejaris/corp-opensource/issues/67) / [watch](watch/hermes-15640-stale-cleanup-2026-05-27.md): open, `mergeStateStatus: CLEAN`, stale since 2026-04-25; no comments/reviews/checks; exact duplicate not found, but gateway/launchd queue is crowded. | Не закрывать/пинговать в dashboard heartbeat; отдельный cleanup cycle должен выбрать close vs one useful ping vs keep watch after fresh gates. |
 
 ### В работе сейчас
 
@@ -162,6 +162,7 @@
 - [#52 Popular AI-native / Paperclip-like repo scouting 2026-05-27](https://github.com/serejaris/corp-opensource/issues/52)
 - [#66 AI SDK / Agents repo scope watch](https://github.com/serejaris/corp-opensource/issues/66)
 - [#65 Docker MCP exact-validation scope watch](https://github.com/serejaris/corp-opensource/issues/65)
+- [#67 Hermes #15640 stale cleanup candidate](https://github.com/serejaris/corp-opensource/issues/67)
 - [#53 SWE-agent mini #826 timeout leaves child processes running](https://github.com/serejaris/corp-opensource/issues/53)
 - [#28 goose repeated tool calls bypass RepetitionInspector](https://github.com/serejaris/corp-opensource/issues/28)
 - [#29 pydantic-ai multi-MCP discovery AG-UI stalls](https://github.com/serejaris/corp-opensource/issues/29)
