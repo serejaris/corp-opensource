@@ -73,6 +73,8 @@
 
 Последний repo-scope watch: [Qwen Code / Agent Framework scope watch](watch/qwen-code-agent-framework-scouting-2026-05-27.md), tracker [#68](https://github.com/serejaris/corp-opensource/issues/68). Итог: 6 scouting subagents, parent repo/issue/PR/community/license gates, internal 3-role critique, 0 upstream PR/comment, final `next_status: WATCH`; `QwenLM/qwen-code` остаётся verify-first terminal-agent lane because `#4450/#4466/#4363/#4364` are already covered by active PRs or nearby work, and `microsoft/agent-framework` остаётся exact Python/.NET subsystem watch with best later lanes `#6120/#6006`, blocked on runner repro and fresh duplicate search.
 
+Последний verify-first repo watch: [gptme / CAO / OpenACP scope](watch/gptme-cao-openacp-verify-first-2026-05-27.md), tracker [#69](https://github.com/serejaris/corp-opensource/issues/69). Итог: 6 scouting subagents, parent repo/issue/PR/community/test gates, internal 3-role critique, 0 upstream PR/comment, final `next_status: WATCH`; `awslabs/cli-agent-orchestrator` поднят как главный follow-up lane for inbox/tmux/status delivery `#131/#78/#164`, но blocked by `#115/#251` overlap and missing runner repro; `gptme/gptme` остаётся passive low-noise terminal-agent watch, `Open-ACP/OpenACP` остаётся ACP ecosystem watch.
+
 | Проект | Upstream | Наш контур | Статус | Следующее действие |
 |---|---:|---:|---|---|
 | NousResearch/hermes-agent | [#32999](https://github.com/NousResearch/hermes-agent/pull/32999), [#32963](https://github.com/NousResearch/hermes-agent/pull/32963), [#33042](https://github.com/NousResearch/hermes-agent/pull/33042) | [#6](https://github.com/serejaris/corp-opensource/issues/6), [watch](watch/hermes-codex-null-output.md) | #32963 merged outage fix; #32999 closed obsolete after #33042 removed the SDK stream helper path entirely | Accept closure; keep boundary-regression lesson in skill/watch |
@@ -163,6 +165,7 @@
 - [#51 MCP TypeScript SDK requestId 0 cancellation candidate](https://github.com/serejaris/corp-opensource/issues/51)
 - [#52 Popular AI-native / Paperclip-like repo scouting 2026-05-27](https://github.com/serejaris/corp-opensource/issues/52)
 - [#68 Qwen Code / Agent Framework repo-scope watch](https://github.com/serejaris/corp-opensource/issues/68)
+- [#69 gptme / CAO / OpenACP verify-first watch](https://github.com/serejaris/corp-opensource/issues/69)
 - [#66 AI SDK / Agents repo scope watch](https://github.com/serejaris/corp-opensource/issues/66)
 - [#65 Docker MCP exact-validation scope watch](https://github.com/serejaris/corp-opensource/issues/65)
 - [#67 Hermes #15640 stale cleanup candidate](https://github.com/serejaris/corp-opensource/issues/67)
