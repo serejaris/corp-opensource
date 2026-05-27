@@ -51,8 +51,15 @@ Regression draft:
 
 No upstream PR or comment this cycle.
 
+Follow-up on `langgraph#7688` after local clone:
+
+- `langgraph dev` in `libs/cli/langgraph_cli/cli.py` imports `run_server` from `langgraph_api.cli` and passes `host` / `port` through.
+- No obvious port-availability helper was found in the open `libs/cli` source.
+- `langgraph-api` is an optional dependency (`langgraph-cli[inmem]`), not source code in this checkout.
+- Therefore `langgraph#7688` is downgraded from `candidate` to `WATCH / needs-repro` until we can prove the bug belongs in open `langgraph-cli` or inspect the relevant `langgraph-api` test surface.
+
 Next concrete work:
 
-1. For `langgraph#7688`, clone/read repo rules and find the exact port-resolution test surface.
-2. Try a local pre-fix regression. If it fails cleanly, prepare a regression card and ask for assignment/confirmation if repo rules require it.
+1. For `langgraph#7688`, inspect installed `langgraph-api` package source after `uv sync --extra inmem`, if practical.
+2. If no open test surface exists, do not upstream-comment or PR.
 3. Keep `pydantic-ai#5688` and `google/adk-python#5864` hot but do not race maintainers.

@@ -25,10 +25,28 @@ This is an AI-native dev/runtime harness bug: local agent/runtime servers become
 - Likely command: targeted pytest around CLI/server port resolution once local test surface is identified.
 - Risk: OS socket semantics may differ; prefer Linux runner (`corp-opensource-runner`) when available.
 
+## Local repo reconnaissance
+
+Checkout:
+
+`~/Documents/GitHub/langgraph-7688`
+
+Findings:
+
+- `langgraph dev` is implemented in `libs/cli/langgraph_cli/cli.py`.
+- The command does not appear to perform its own port-availability check.
+- It imports `run_server` from `langgraph_api.cli` and passes `host` / `port` through.
+- `langgraph-api` is an optional dependency of `langgraph-cli[inmem]`, not source code in this checkout:
+  - `libs/cli/pyproject.toml`: `langgraph-api>=0.5.35,<0.9.0`.
+- A broad local `rg` did not find an obvious `TIME_WAIT` / `already in use` / socket listener helper inside `libs/cli`.
+
+Current classification: `WATCH / needs-repro`.
+
+This may be a `langgraph-api` behavior rather than a patchable bug in the open `langgraph` repo. A PR is only appropriate if a preflight fix belongs in `langgraph-cli` or if the relevant `langgraph-api` source/test surface is available.
+
 ## Next action
 
-1. Read LangGraph contribution rules and exact test harness.
-2. Clone/check current `main`.
-3. Find port-resolution code path.
-4. Prove pre-fix failure with smallest targeted test.
-5. If no clean pre-fix failure, keep `WATCH / needs-repro` and do not comment upstream.
+1. Inspect installed `langgraph-api` package source locally if available after `uv sync --extra inmem`.
+2. If the port check lives in `langgraph-api`, do not open a PR in `langgraph` unless maintainers say that package source is contribution-available here.
+3. If a CLI-side preflight is viable, prove pre-fix failure with the smallest targeted test.
+4. If no clean pre-fix failure, keep `WATCH / needs-repro` and do not comment upstream.
