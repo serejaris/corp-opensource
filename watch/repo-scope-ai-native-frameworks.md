@@ -40,6 +40,8 @@ These are allowed for regular weekly scouting.
 | `langchain-ai/deepagents` | `23391` stars, pushed `2026-05-27` | Agent harness with LangChain maintainership; likely tool/memory/runtime tests. |
 | `e2b-dev/E2B` | `12371` stars, pushed `2026-05-27` | Secure sandbox/runtime layer for agents. |
 | `microsoft/playwright-mcp` | `33098` stars, pushed `2026-05-23`; parent count `5` open issues / `4` open PRs on `2026-05-27` | Canonical browser automation MCP server; small backlog and concrete tool/protocol regression surface. |
+| `ChromeDevTools/chrome-devtools-mcp` | `41969` stars, pushed `2026-05-27`; parent count `65` open issues / `16` open PRs on `2026-05-27` | Chrome DevTools MCP browser/debugging runtime for coding agents; separate lane from Playwright MCP. |
+| `PrefectHQ/fastmcp` | `25344` stars, pushed `2026-05-27`; parent count `218` open issues / `15` open PRs on `2026-05-27` | Popular MCP framework/runtime with local fixture-friendly client/server/tool surfaces; avoid spec-design PRs without maintainer signal. |
 | `google/adk-python` | Issue `#5864` active on `2026-05-27`; repo has contribution guide, PR template, unit tests, tox, and recent optional-dependency import PRs | Agent Development Kit: agent runtime/framework, code execution, memory, evaluation, Vertex AI integrations. Good for dependency-boundary and harness reliability bugs when repo gates allow. |
 | `openai/openai-agents-python` | `26705` stars, pushed `2026-05-26`; parent count `45` open issues / `68` open PRs on `2026-05-27` | Agent SDK/runtime with tools, handoffs, tracing and testable unit-level surfaces. Good for narrow runtime/tool-call regressions after exact commit/version and duplicate gate. |
 
@@ -67,7 +69,6 @@ These can produce good candidates, but the next step must be repo-specific gates
 |---|---|
 | `browser-use/browser-use` | Strong browser-agent fit, but parent count `66` open issues / `177` open PRs and high duplicate race. |
 | `browserbase/stagehand` | AI browser SDK with active queue; avoid broad SDK PRs without maintainer confirmation. |
-| `PrefectHQ/fastmcp` | Popular MCP framework/runtime; less spec-canonical than official SDKs, good for user-facing repro bugs. |
 | `modelcontextprotocol/python-sdk` | Official SDK, but parent count `251` open issues / `241` open PRs and spec churn. |
 | `modelcontextprotocol/typescript-sdk` | Official SDK, but parent count `222` open issues / `207` open PRs and duplicate-heavy PR flow. |
 | `langchain-ai/langgraph` | Active graph/runtime ecosystem; crowded, fast-moving, only crisp regressions. |
@@ -84,6 +85,16 @@ These can produce good candidates, but the next step must be repo-specific gates
 | `gptme/gptme` | Lower-noise terminal agent; verify maintainer rhythm before promotion. |
 | `awslabs/cli-agent-orchestrator` | Multi-agent CLI control-plane; lower popularity but relevant control-plane watch. |
 | `Open-ACP/OpenACP` | ACP bridge/control-plane; early ecosystem watch with low evidence surface. |
+| `ag-ui-protocol/ag-ui` | Agent UI/control-plane protocol; active but high churn, use for SDK/protocol conformance only after subsystem gate. |
+| `mcp-use/mcp-use` | MCP app/client/server framework; useful integration surface, but compare against official SDK behavior before calling a bug. |
+| `microsoft/agent-framework` | Microsoft Python/.NET agent framework; high backlog means exact package/subsystem gate only. |
+| `mastra-ai/mastra` | TypeScript agent framework/workflows; useful watch but high issue/PR flow. |
+| `langfuse/langfuse` | LLM tracing/eval/observability for agent workflows; avoid generic product support issues. |
+| `comet-ml/opik` | LLM tracing/eval/observability; use only scoped SDK/integration/eval-runner bugs. |
+| `confident-ai/deepeval` | LLM eval framework; relevant only when directly tied to agent/eval harness reliability. |
+| `langchain-ai/openevals` | Smaller LangChain eval harness; low duplicate risk but verify maintainer rhythm before promotion. |
+| `huggingface/smolagents` | Lightweight agent framework; significant but crowded, comment-first without concrete regression. |
+| `microsoft/magentic-ui` | Experimental browser/local-file agent UI; intake and contribution surface need validation. |
 
 ## Tier 3: Opportunistic / Verify Only
 
@@ -110,6 +121,8 @@ These can become Tier 1 only after identity and repo-health validation.
 | `ServiceNow/BrowserGym` | Web-agent benchmark environment; research/benchmark watch, not default PR lane. |
 | `dagger/dagger` | Execution graph/container infra; only direct agent-runner breakages belong here. |
 | `devcontainers/cli` | Workspace/devcontainer CLI; only direct Paperclip runner/workspace failures belong here. |
+| `openai/evals` | Historical eval reference; prefer newer eval targets unless a direct OpenAI Evals bug appears. |
+| `anthropics/claude-code` | Canonical coding-agent reference but extreme issue/PR volume; no fresh scouting unless explicitly requested with an ultra-narrow repro lane. |
 
 ## Out Of Scope By Default
 
@@ -152,4 +165,4 @@ Weekly scouting must update this scope only when:
 
 Record removed or demoted repos with a reason.
 
-Latest repo-universe update: [cycle 24](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-24-repo-universe.md). Repo-card queue: [repo cards 2026-05-27](repo-cards-ai-native-2026-05-27.md).
+Latest repo-universe update: [cycle 28](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-28-repo-universe.md). Repo-card queue: [repo cards 2026-05-27](repo-cards-ai-native-2026-05-27.md).

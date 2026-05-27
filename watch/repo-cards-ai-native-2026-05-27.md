@@ -1,6 +1,6 @@
 # Repo cards: AI-native universe, 2026-05-27
 
-Source: [cycle 23 repo-universe update](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-23-repo-universe.md), [cycle 24 repo-universe update](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-24-repo-universe.md), [cycle 25 openai-agents scan](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-25-openai-agents.md) и [cycle 27 SWE-agent mini scan](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-27-swe-mini.md).
+Source: [cycle 23 repo-universe update](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-23-repo-universe.md), [cycle 24 repo-universe update](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-24-repo-universe.md), [cycle 25 openai-agents scan](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-25-openai-agents.md), [cycle 27 SWE-agent mini scan](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-27-swe-mini.md) и [cycle 28 repo-universe update](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-28-repo-universe.md).
 
 Purpose: make the next bounded repo-scouting block concrete. These are repo-level cards, not bug candidates.
 
@@ -61,3 +61,24 @@ Purpose: make the next bounded repo-scouting block concrete. These are repo-leve
 | `ServiceNow/BrowserGym` | 3 | scope/watch | web-agent benchmark environment | medium | browser/runtime env | 2026-05-27 17:39 UTC | yes | maintainer responsiveness + direct eval repro |
 | `dagger/dagger` | 3 | scope/watch | agent-runner execution graph only | medium | container runtime | 2026-05-27 17:39 UTC | yes | direct Paperclip runner breakage |
 | `devcontainers/cli` | 3 | scope/watch | workspace/devcontainer CLI only | high | container runtime | 2026-05-27 17:39 UTC | yes | direct Paperclip workspace failure |
+
+## Cycle 28 overlay
+
+These rows are repo-level cards only. They do not authorize upstream comments or PRs.
+
+| Repo | Tier | Next action | Scan lane | Duplicate risk | Runner need | Last checked | avoid_pr_hunting | Promotion gate |
+|---|---|---|---|---|---|---|---|---|
+| `ChromeDevTools/chrome-devtools-mcp` | 1A | promote | Chrome DevTools MCP browser/session/tool lifecycle regressions | medium | browser runtime likely | 2026-05-27 18:14 UTC | fixture-only | issue-level duplicate sweep + linked PR/release-note check + tiny browser fixture |
+| `PrefectHQ/fastmcp` | 1A | promote | MCP client/server/tool framework regressions | medium | local tests likely | 2026-05-27 18:14 UTC | fixture-only | avoid spec-design PRs; require official SDK behavior comparison when protocol semantics are involved |
+| `ag-ui-protocol/ag-ui` | 2 | create repo-card | Agent UI protocol / SDK conformance / examples | high | local tests likely | 2026-05-27 18:14 UTC | comment-first | subsystem lane selected + issue/PR search by SDK/protocol area |
+| `mcp-use/mcp-use` | 2 | create repo-card | MCP app/client/server integration framework | medium | local tests likely | 2026-05-27 18:14 UTC | comment-first | compare against official MCP SDK behavior before calling a bug |
+| `microsoft/agent-framework` | 2/3 | watch | enterprise multi-agent Python/.NET framework | high | local tests likely | 2026-05-27 18:14 UTC | comment-first | exact package/subsystem gate due 676 issues / 268 PRs |
+| `langfuse/langfuse` | 2/3 | watch | LLM tracing/eval/observability integrations | high | service stack likely | 2026-05-27 18:14 UTC | comment-first | agent-trace/eval-runner lane only, not generic product support |
+| `comet-ml/opik` | 2/3 | watch | tracing/eval/observability for agents | medium | local tests first | 2026-05-27 18:14 UTC | comment-first | scoped SDK/integration/eval-runner bug class |
+| `mastra-ai/mastra` | 2/3 | watch | TypeScript agent framework/workflows | high | local tests likely | 2026-05-27 18:14 UTC | comment-first | choose subsystem lane before issue-level scouting |
+| `confident-ai/deepeval` | 2/3 | watch | LLM eval framework | medium | local tests likely | 2026-05-27 18:14 UTC | fixture-only | agent/eval harness relevance must be direct |
+| `langchain-ai/openevals` | 2/3 | low-touch watch | small eval library/harness | low | local tests likely | 2026-05-27 18:14 UTC | fixture-only | smaller repo; verify maintainer rhythm before promotion |
+| `huggingface/smolagents` | 2/3 | watch | lightweight Python agent framework | high | local tests likely | 2026-05-27 18:14 UTC | comment-first | crowded queue; no promotion without concrete regression card |
+| `microsoft/magentic-ui` | 3 | watch | experimental browser/local-file agent UI | unknown | browser/runtime likely | 2026-05-27 18:14 UTC | yes | intake/contribution surface unclear because issue count is 0 |
+| `openai/evals` | 3 | demote | archival eval reference | medium | local tests likely | 2026-05-27 18:14 UTC | yes | use newer eval targets first unless direct OpenAI Evals issue appears |
+| `anthropics/claude-code` | 3 | no new card | terminal coding-agent reference only | extreme | repo-specific | 2026-05-27 18:14 UTC | yes | only explicitly requested ultra-narrow repro lanes |

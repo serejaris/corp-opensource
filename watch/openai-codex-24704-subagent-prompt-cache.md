@@ -5,6 +5,7 @@ Date: 2026-05-27
 ## Links
 
 - Upstream issue: https://github.com/openai/codex/issues/24704
+- Internal tracker: https://github.com/serejaris/corp-opensource/issues/18
 - Reference implementation from reporter: https://github.com/john-lu-ptc/codex/pull/1
 - Related closed upstream PR: https://github.com/openai/codex/pull/20909
 - Earlier closed upstream PR: https://github.com/openai/codex/pull/17248
