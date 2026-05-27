@@ -14,6 +14,7 @@
 | Проект | Upstream | Наш контур | Статус | Следующее действие |
 |---|---:|---:|---|---|
 | NousResearch/hermes-agent | [#32884](https://github.com/NousResearch/hermes-agent/pull/32884) | [fork branch](https://github.com/serejaris/hermes-agent/tree/fix/codex-null-output-stream) | Закрыт как duplicate после merge через [#32963](https://github.com/NousResearch/hermes-agent/pull/32963) | Проверить релиз, `openai-python#3315`, и hardening follow-up по broad `TypeError` recovery |
+| pydantic/pydantic-ai | [#5678](https://github.com/pydantic/pydantic-ai/pull/5678) | [#14](https://github.com/serejaris/corp-opensource/issues/14) | Open, mergeable, CI pending at first check | Watch CI and maintainer/bot review |
 
 ## Рабочие issues
 
@@ -30,6 +31,7 @@
 - [#11 Weekly AI-native framework top scan](https://github.com/serejaris/corp-opensource/issues/11)
 - [#12 Design Hermes/Codex worker pool for parallel scouting](https://github.com/serejaris/corp-opensource/issues/12)
 - [#13 Scout Paperclip-like harness expansion opportunities](https://github.com/serejaris/corp-opensource/issues/13)
+- [#14 pydantic-ai serialize_any loses binary data](https://github.com/serejaris/corp-opensource/issues/14)
 
 ## Правила
 
