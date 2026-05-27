@@ -58,7 +58,9 @@
 
 ## Активный watchlist
 
-Последний popular-repo scouting: [Popular AI-native / Paperclip-like scouting, 2026-05-27](watch/ai-native-popular-repos-paperclip-scouting-2026-05-27.md), tracker [#52](https://github.com/serejaris/corp-opensource/issues/52). Итог: 3 цикла по 6 агентов, 0 upstream PR/comment. Главная immediate-дорожка: `trycua/cua#1724` после локального macOS repro. Главные maintainer-signal дорожки: `OpenHands#14563`, `MCP python-sdk#2702`, `cline#10931`.
+Последний repo-map scouting: [Paperclip-adjacent repo map, 2026-05-27](watch/paperclip-adjacent-repo-map-2026-05-27.md). Anchor: `paperclipai/paperclip`. Core set: `OpenHands`, `deer-flow`, `multica`, `vibe-kanban`, `opencode`, `cline`, `goose`, `browser-use`, `trycua/cua`, MCP SDKs.
+
+Последний bug-target scouting: [Popular AI-native / Paperclip-like scouting, 2026-05-27](watch/ai-native-popular-repos-paperclip-scouting-2026-05-27.md), tracker [#52](https://github.com/serejaris/corp-opensource/issues/52). Итог: 3 цикла по 6 агентов, 0 upstream PR/comment. Главная immediate-дорожка: `trycua/cua#1724` после локального macOS repro. Главные maintainer-signal дорожки: `OpenHands#14563`, `MCP python-sdk#2702`, `cline#10931`.
 
 | Проект | Upstream | Наш контур | Статус | Следующее действие |
 |---|---:|---:|---|---|
@@ -210,6 +212,7 @@
 - [AI-native frameworks scouting cycle 18](watch/ai-native-frameworks-scouting-2026-05-27-cycle-18.md)
 - [AI-native frameworks scouting cycle 19](watch/ai-native-frameworks-scouting-2026-05-27-cycle-19.md)
 - [AI-native frameworks scouting cycle 22](watch/ai-native-frameworks-scouting-2026-05-27-cycle-22.md)
+- [Paperclip-adjacent repo map 2026-05-27](watch/paperclip-adjacent-repo-map-2026-05-27.md)
 - [Popular AI-native / Paperclip-like scouting 2026-05-27](watch/ai-native-popular-repos-paperclip-scouting-2026-05-27.md)
 - [google/adk-python #5864 Vertex AI optional dependency import guard](watch/google-adk-5864-vertexai-import-guard.md)
 - [pydantic-ai #5688 MCPToolset http_client follow_redirects patch prep](watch/pydantic-ai-5688-mcp-http-client-follow-redirects.md)
