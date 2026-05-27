@@ -117,3 +117,32 @@ Live gates:
 - Actionability: approved. Re-open actionability only if both exact PRs close unmerged, maintainer asks for evidence/implementation, CI regresses, or a new uncovered edge appears outside the current `requestId: 0` path.
 
 Decision remains `next_status: WATCH`.
+
+## Follow-up 23:37 UTC
+
+Bounded duplicate-race heartbeat for `modelcontextprotocol/typescript-sdk#2115`: 6 read-only subagents, parent live gates via `gh`, then 3-role critique. No upstream PR/comment/ping was made.
+
+Tracker update: [#51 comment](https://github.com/serejaris/corp-opensource/issues/51#issuecomment-4559578452).
+
+Live gates:
+
+- Issue `#2115`: still open, unassigned, no labels; no maintainer signal after our historical test-plan comment from `2026-05-27T13:25:46Z`.
+- Exact PR `#2116`: open, non-draft, `MERGEABLE/BLOCKED/REVIEW_REQUIRED`; visible checks green; patch changeset for `@modelcontextprotocol/core`; regression coverage for `requestId: 0` in `packages/core/test/shared/protocol.test.ts`; latest commit `0d4e4115ce03381a8228c3a921bde0648d4f7de9`.
+- Exact PR `#2138`: open, non-draft, `MERGEABLE/BLOCKED/REVIEW_REQUIRED`; visible checks green; patch changeset for `@modelcontextprotocol/core`; regression coverage for `requestId: 0`; latest commit `553b6b696fc5f59b6b930aeba1368a3a48e4e99f`; freshest duplicate lane by update/comment time, not an upstream-selected winner.
+- Adjacent `relatedRequestId: 0` / debounce PRs `#2120`, `#2135`, and `#2141` remain separate `#2117` context, not a new uncovered `#2115` gap.
+
+6-subagent synthesis:
+
+- Factology: `#2115` bug shape remains valid, but comment-first already happened and maintainer direction is absent.
+- Duplicate/race: `#2116` and `#2138` both cover the same `_oncancel` / `requestId: 0` contract with tests, changesets, and green CI.
+- Process: a third PR or repeated upstream comment would be duplicate noise.
+- Actionability: runner/repro is not needed for this heartbeat because the gate is upstream selection/review, not missing local evidence.
+- Final synthesis: `next_status: WATCH / duplicate-race`; `upstream_action_count: 0`.
+
+3-role critique:
+
+- Factology/duplicates: approved; adjacent `relatedRequestId: 0` lanes are separate and do not reopen `#2115`.
+- Process gates: approved for internal tracker/watch update only; no upstream comment, PR, or ping.
+- Actionability: approved. Re-open only if both exact PRs close unmerged, maintainers ask for another approach/evidence, relevant CI regresses, a new uncovered edge appears, or one exact PR merges and the internal watch should close as absorbed.
+
+Decision remains `next_status: WATCH`.
