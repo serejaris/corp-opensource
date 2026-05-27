@@ -1,5 +1,32 @@
 # Upstream Follow-up 2026-05-27
 
+## Check 23:01 UTC
+
+Bounded refresh active-PR dashboard: 6 read-only subagents, parent live gates через `gh pr view`, затем 3-subagent critique. Upstream PR/comment/rerun/rebase/close action не выполнялись. Итоговый dashboard `next_status`: `WATCH`; все tracked PR остаются monitor-only или stale cleanup backlog.
+
+| Upstream | Текущее состояние | Действие |
+|---|---|---|
+| `OpenHands/software-agent-sdk#3394` | Open, non-draft; `BLOCKED/MERGEABLE/CHANGES_REQUESTED`; PR-visible check rollup empty. Maintainer сказал, что выглядит нормально, и запустил eval, но eval result/re-review ещё не видны после follow-up `3c8eae78`. | `PR-OPEN / WATCH`. Ждать maintainer eval, re-review или workflow approval. No repeat comment. |
+| `anomalyco/opencode#29565/#29530` | Оба open, non-draft; `UNKNOWN/UNKNOWN`; visible duplicate/standards/compliance gates green. У `#29565` также green contributor-label gate; у `#29530` есть contribution bot confirmation. Maintainer review ещё нет. | `PR-OPEN / WATCH`. Ждать maintainer review; не открывать третий opencode PR без отдельного сигнала. |
+| `cline/cline#11087` | Open, non-draft; `BLOCKED/MERGEABLE`; visible quality, Ubuntu/Windows Node 24 и Socket checks green/skipped после follow-up `e1ecc63a`. Greptile только комментировал; maintainer approval нет. | `PR-OPEN / monitor only`. Ждать maintainer review. |
+| `CopilotKit/CopilotKit#5035` | Open, non-draft; `UNKNOWN/UNKNOWN`, `REVIEW_REQUIRED`. Vercel docs preview green; другие Vercel contexts team-authorization gated. Claude review disabled for fork, пока maintainers не trigger it. | `WATCH`. Ждать maintainer review/team authorization. |
+| `pydantic-ai#5678/#5680` | Оба open, non-draft; `CLEAN/MERGEABLE`; visible lint/mypy/docs/test matrix/examples/coverage/smokeshow checks green, release jobs skipped. Maintainer review ещё нет. | `PR-OPEN / monitor only`. Ждать maintainer/bot review или merge. |
+| `NousResearch/hermes-agent#15640` | Open, non-draft; `UNKNOWN/UNKNOWN`; stale since `2026-04-25`, no comments/reviews/checks. Exact duplicate не найден в previous notes. | Оставить в stale cleanup backlog. Не ping/rebase/close в этом dashboard refresh; нужен отдельный cleanup cycle с fresh gates. |
+
+6-subagent synthesis:
+
+- OpenHands: blocker — старый bot `CHANGES_REQUESTED` плюс отсутствующий eval/re-review; duplicate risk сейчас не active issue.
+- opencode: duplicate/standards/compliance policy gates green, но у обоих PR `UNKNOWN` mergeability и нет maintainer review.
+- pydantic-ai: оба PR technically clean/mergeable с broad green visible CI; единственный blocker — maintainer review.
+- Cline/CopilotKit: оба upstream-process gated; CopilotKit preview failures являются auth/team gates, Cline ждёт maintainer approval.
+- Hermes: stale cleanup остаётся отдельным решением; no ping/close from dashboard heartbeat.
+
+3-subagent critique:
+
+- factology/duplicates: approve с wording corrections. Не называть opencode broadly "CI green"; описывать только duplicate/standards/compliance/contributor gates. Для opencode, CopilotKit и Hermes использовать `UNKNOWN/UNKNOWN`; для pydantic-ai — `CLEAN/MERGEABLE`.
+- process: approve. 6-subagent synthesis и parent live gates complete; runner не нужен, потому что нет `PR-READY` или repro/test action; upstream actions не justified.
+- actionability: approve. Ждать concrete external signals: OpenHands eval/re-review, maintainer review для opencode/pydantic/Cline, CopilotKit review или Vercel team authorization, отдельный Hermes cleanup cycle при необходимости.
+
 ## Check 21:13 UTC
 
 Bounded active-PR dashboard refresh with 6 read-only subagents and parent live gates via `gh pr view`. No upstream PR/comment/rerun/rebase/close action was taken. Final dashboard `next_status`: `WATCH`; item-level open PRs remain `PR-OPEN / monitor-only` or stale backlog.
