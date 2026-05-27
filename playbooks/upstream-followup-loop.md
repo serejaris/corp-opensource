@@ -63,6 +63,15 @@ If an upstream repo has strict coverage gates, do not rely only on a targeted `-
 
 Example from `pydantic-ai#5678`: the targeted binary serialization test passed, but upstream coverage failed at `99.99` because tuple handling lines were not exercised. The fixed regression now covers mapping bytes and tuple/list nested bytes before push.
 
+## Recovery Boundary Test Lesson
+
+For downstream recovery around dependency/SDK parser failures, write the first regression at the public runtime boundary and prove both allowed and forbidden recovery:
+
+- allowed: the dependency failure that users hit is recovered through the normal stream/request path;
+- forbidden: an app-local callback, handler, or post-processing exception with the same exception class/message is not swallowed.
+
+Do not rely on a helper-only predicate test when the bug is the placement of `try/except` or the breadth of a recovery block. The test must fail before the fix because the real runtime recovered something it should have propagated.
+
 ## Example: Hermes Codex Null Output
 
 On 2026-05-27:
@@ -72,6 +81,7 @@ On 2026-05-27:
 - #32999 remained open for a distinct callback-error hardening regression.
 - #33017 appeared as a usage-preservation follow-up touching overlapping files.
 - Action: commented on #32999 explaining that #33017 and #32999 are complementary and offering to rebase if #33017 lands first.
+- Later check: #32999 and #33017 both became conflicting while more duplicate PRs appeared. Action: no new upstream noise; keep the boundary regression as the reusable asset and wait for maintainer consolidation/rebase direction.
 
 ## Example: OpenHands Global Skills In Docker Serve
 

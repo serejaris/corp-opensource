@@ -124,3 +124,24 @@ Interpretation:
 
 - No new upstream comment needed yet: the distinction between #32999 and #33017 is already documented on #32999.
 - Next action is still to watch merge order. If #33017 lands first, rebase #32999 onto the merged recovery shape and preserve only the callback-error regression/hardening.
+
+## Follow-up loop check - 2026-05-27 08:00Z
+
+- #32999 remains open but is now `CONFLICTING`.
+- #33017 remains open, also `CONFLICTING`; its substantive checks were green before conflict state.
+- Additional duplicate PRs appeared around the same Codex null-output outage, including #33021, #33038, #33050, #33091, #33103 and others.
+- `iqdoctor` left a support comment on #32999 confirming the narrow recovery boundary is the healthier interim shape while `openai-python#3315` handles the root SDK invariant.
+- `alt-glitch` commented on #33017 that it competes with #33025 and recommended consolidation.
+
+Interpretation:
+
+- Do not open another Hermes PR for this outage.
+- Do not treat reactions/support as maintainer approval; wait for maintainer consolidation direction or rebase only after the canonical branch/PR is clear.
+- The durable value of #32999 is the boundary regression: SDK null-output errors are recoverable, but Hermes callback/local processing `TypeError("'NoneType' object is not iterable")` must propagate.
+
+Testing lesson:
+
+- For downstream recovery around dependency parser failures, the first regression must prove both sides of the boundary:
+  - dependency/SDK failure recovers through the intended public stream path;
+  - same-looking app-side callback/handler failure does not recover.
+- A helper-only predicate test would have missed this bug because the failure was the placement of `except TypeError`, not the string predicate itself.
