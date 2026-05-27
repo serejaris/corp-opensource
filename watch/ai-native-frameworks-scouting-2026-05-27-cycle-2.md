@@ -11,7 +11,7 @@
 | opencode [#29530](https://github.com/anomalyco/opencode/pull/29530) | Open, mergeable, duplicate/compliance/standards checks green | Wait maintainer review |
 | OpenHands SDK [#3394](https://github.com/OpenHands/software-agent-sdk/pull/3394) | Open, mergeable; maintainer suggestion applied in `efdff15b` | Re-check reviews/status checks |
 | CopilotKit [#5035](https://github.com/CopilotKit/CopilotKit/pull/5035) | Open, mergeable; docs preview green, other Vercel previews need team auth | Wait maintainer review/auth |
-| Cline [#11087](https://github.com/cline/cline/pull/11087) | Open, mergeable; Greptile gap addressed in `e1ecc63a1`; Quality Checks green, Ubuntu/Windows matrix pending | Monitor CI/review |
+| Cline [#11087](https://github.com/cline/cline/pull/11087) | Open, mergeable; Greptile gap addressed in `e1ecc63a1`; Quality Checks + Ubuntu/Windows matrix green | Wait maintainer review |
 | pydantic-ai [#5678](https://github.com/pydantic/pydantic-ai/pull/5678) | Open, mergeable, CI green | Wait maintainer/bot review |
 | pydantic-ai [#5680](https://github.com/pydantic/pydantic-ai/pull/5680) | Open, mergeable, CI green | Wait maintainer/bot review |
 | deepagents [#3616](https://github.com/langchain-ai/deepagents/pull/3616) | Closed by assignment gate | Wait issue assignment/reopen |
@@ -36,7 +36,7 @@
 | Rank | Issue | Решение |
 |---:|---|---|
 | 1 | Cline [#11086](https://github.com/cline/cline/issues/11086) — CLI sends `reasoning: {exclude:true}` to OpenAI-compatible GLM endpoints | PR opened: [cline/cline#11087](https://github.com/cline/cline/pull/11087). Repro found in SDK CLI `createGatewayApiHandler.createMessage` path. Follow-up covers `thinking=false` and `thinking=true` strict endpoint cases |
-| 2 | E2B [#1352](https://github.com/e2b-dev/E2B/issues/1352) — resumed sandbox `commands.connect` stops stdout after large response | Strategic but may need paid/live sandbox; track first |
+| 2 | E2B [#1352](https://github.com/e2b-dev/E2B/issues/1352) — resumed sandbox `commands.connect` stops stdout after large response | WATCH / live-repro-needed. Public SDK path is a thin envd stream wrapper; no server-side fix surface found in repo and no `E2B_API_KEY` is available locally |
 | 3 | deepagents [#3568](https://github.com/langchain-ai/deepagents/issues/3568) — `read_file` prompt/schema mismatch | Small patch, but reporter has local fix and another contributor asked assignment; do not jump in |
 | 4 | pydantic-ai [#5671](https://github.com/pydantic/pydantic-ai/issues/5671) — Google cached content forbidden fields | Good test surface, but competing [#5681](https://github.com/pydantic/pydantic-ai/pull/5681) exists |
 | 5 | OpenHands [#14563](https://github.com/OpenHands/OpenHands/issues/14563) — global skills not loaded in CLI/Docker/WebUI | Strategic, but larger container semantics |
@@ -51,5 +51,5 @@
 ## Next
 
 1. Re-check OpenHands SDK #3394 after follow-up push.
-2. Monitor Cline [#11087](https://github.com/cline/cline/pull/11087): Ubuntu/Windows matrix and maintainer review.
-3. Create internal issues for Cline #11086 and E2B #1352 if not already present.
+2. Monitor Cline [#11087](https://github.com/cline/cline/pull/11087): maintainer review.
+3. E2B [#1352](https://github.com/e2b-dev/E2B/issues/1352): only resume after live E2B key/runner is available or maintainers expose server-side fix surface.
