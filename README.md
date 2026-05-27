@@ -228,6 +228,7 @@
 - [Popular AI-native repo universe cycle 24](watch/ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-24-repo-universe.md)
 - [Popular AI-native openai-agents cycle 25](watch/ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-25-openai-agents.md)
 - [Popular AI-native SWE-agent mini cycle 27](watch/ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-27-swe-mini.md)
+- [Popular AI-native repo universe cycle 29](watch/ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-29-repo-universe.md)
 - [Repo cards: AI-native universe 2026-05-27](watch/repo-cards-ai-native-2026-05-27.md)
 - [Playwright MCP #1635 CDP back-navigation timeout](watch/playwright-mcp-1635-cdp-back-navigation.md)
 - [google/adk-python #5864 Vertex AI optional dependency import guard](watch/google-adk-5864-vertexai-import-guard.md)
