@@ -81,7 +81,9 @@
 
 Последний coding/computer-use/browser-MCP repo watch: [Cline / CUA / Playwright MCP scope](watch/cline-cua-playwright-mcp-scope-2026-05-27.md), tracker [#72](https://github.com/serejaris/corp-opensource/issues/72). Итог: 6 scouting subagents, parent repo/issue/PR/community/test gates, internal 3-role critique, 0 upstream PR/comment, final `next_status: WATCH`; `microsoft/playwright-mcp#1635` лучший immediate follow-up but already comment-first and approval-gated; `trycua/cua#1739` лучший future computer-use lead after macOS Retina/AVF repro; `cline/cline` остаётся saturated watch while `#11087` and nearby PR clusters are active.
 
-Последний agent/MCP framework repo watch: [FastMCP / OpenAI Agents / DeepAgents scope](watch/fastmcp-openai-agents-deepagents-scope-2026-05-27.md), tracker [#73](https://github.com/serejaris/corp-opensource/issues/73). Итог: 6 scouting subagents, parent repo/issue/PR/community/test gates, internal 3-role critique, 0 upstream PR/comment, final `next_status: WATCH`; `PrefectHQ/fastmcp#4246` лучший future MCP/server lead but blocked by maintainer PR `#4248` and assignment-first gate; `langchain-ai/deepagents#3639` лучший secret-free regression lead after current-main repro; `openai/openai-agents-python` остаётся post-merge gap watch because current lanes are PR-covered.
+Последний high-churn terminal/runner repo watch: [Codex / opencode / Gemini CLI / Daytona scope](watch/high-churn-terminal-runner-scope-2026-05-27.md), tracker [#74](https://github.com/serejaris/corp-opensource/issues/74). Итог: 6 scouting subagents, parent repo/issue/PR/community/test gates, internal 3-role critique, 0 upstream PR/comment, final `next_status: WATCH`; `daytonaio/daytona` лучший later follow-up after runner-backed gap scan, `google-gemini/gemini-cli` только help-wanted/approved issue path, `openai/codex` evidence/comment-only unless invited, `anomalyco/opencode` no new PR while current opencode PRs await review and same-day queue stays saturated.
+
+Предыдущий agent/MCP framework repo watch: [FastMCP / OpenAI Agents / DeepAgents scope](watch/fastmcp-openai-agents-deepagents-scope-2026-05-27.md), tracker [#73](https://github.com/serejaris/corp-opensource/issues/73). Итог: 6 scouting subagents, parent repo/issue/PR/community/test gates, internal 3-role critique, 0 upstream PR/comment, final `next_status: WATCH`; `PrefectHQ/fastmcp#4246` лучший future MCP/server lead but blocked by maintainer PR `#4248` and assignment-first gate; `langchain-ai/deepagents#3639` лучший secret-free regression lead after current-main repro; `openai/openai-agents-python` остаётся post-merge gap watch because current lanes are PR-covered.
 
 | Проект | Upstream | Наш контур | Статус | Следующее действие |
 |---|---:|---:|---|---|
@@ -178,6 +180,7 @@
 - [#71 Pydantic AI / OpenHands / E2B top-tier repo watch](https://github.com/serejaris/corp-opensource/issues/71)
 - [#72 Cline / CUA / Playwright MCP repo-scope watch](https://github.com/serejaris/corp-opensource/issues/72)
 - [#73 FastMCP / OpenAI Agents / DeepAgents repo-scope watch](https://github.com/serejaris/corp-opensource/issues/73)
+- [#74 High-churn terminal runner repo watch](https://github.com/serejaris/corp-opensource/issues/74)
 - [#66 AI SDK / Agents repo scope watch](https://github.com/serejaris/corp-opensource/issues/66)
 - [#65 Docker MCP exact-validation scope watch](https://github.com/serejaris/corp-opensource/issues/65)
 - [#67 Hermes #15640 stale cleanup candidate](https://github.com/serejaris/corp-opensource/issues/67)
