@@ -188,6 +188,7 @@
 - [Goose #9332 PDEATHSIG MCP subprocess lifecycle](watch/goose-9332-pdeathsig-mcp-subprocess.md)
 - [Goose #9446 response.completed missing output](watch/goose-9446-response-completed-missing-output.md)
 - [Continue #12334 OpenRouter autocomplete extraBodyProperties](watch/continue-12334-openrouter-autocomplete-extra-body.md)
+- [Retrospective: scouting cycles 18-20](watch/retrospective-2026-05-27-cycles-18-20.md)
 
 ## Метки
 
