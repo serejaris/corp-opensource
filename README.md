@@ -139,6 +139,7 @@
 - [AI-native frameworks scouting cycle 13](watch/ai-native-frameworks-scouting-2026-05-27-cycle-13.md)
 - [AI-native frameworks scouting cycle 14](watch/ai-native-frameworks-scouting-2026-05-27-cycle-14.md)
 - [AI-native frameworks scouting cycle 15](watch/ai-native-frameworks-scouting-2026-05-27-cycle-15.md)
+- [AI-native frameworks scouting cycle 16 duplicate gate](watch/ai-native-frameworks-scouting-2026-05-27-cycle-16.md)
 - [Goose #9332 PDEATHSIG MCP subprocess lifecycle](watch/goose-9332-pdeathsig-mcp-subprocess.md)
 
 ## Метки

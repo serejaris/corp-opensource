@@ -33,3 +33,18 @@ Live follow-up after cycle 15 scouting.
 | `E2B#1354` | Still CLA-blocked for `serejaris`; Vercel auth is team-side. | User must sign CLA, then comment `@cla-bot check`. |
 
 Decision: no new PR now. Best next technical branch is `pydantic-ai#5688`, but only after assignment/confirmation because bot delegation is already in flight.
+
+## Check 08:25 -03
+
+Live duplicate gate on the fallback candidates from cycle 15.
+
+| Candidate | Current state | Action |
+|---|---|---|
+| `cline#11065` | Covered by `cline#11084` from the issue author. | No PR. |
+| `modelcontextprotocol/python-sdk#2689` | Covered by `python-sdk#2698`. | No PR. |
+| `opencode#29544` | Covered by `opencode#29541`. | No PR. |
+| `CopilotKit#4935` | Covered by `CopilotKit#4947` and overlapping `#4948`. | No PR. |
+| `pydantic-ai#5688` | Still open, no assignment, no exact PR found; our availability comment remains latest. | Watch; do not race pydanty delegation. |
+| `google/adk-python#5864` | Still `request clarification`; no reply to our PR offer. | Watch. |
+
+Decision: keep the queue in watch mode. The next implementation opportunity is still `pydantic-ai#5688`, but only after repo gate opens or after comparing the delegated PR if it appears.
