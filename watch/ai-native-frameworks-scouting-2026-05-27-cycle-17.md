@@ -56,10 +56,13 @@ Follow-up on `langgraph#7688` after local clone:
 - `langgraph dev` in `libs/cli/langgraph_cli/cli.py` imports `run_server` from `langgraph_api.cli` and passes `host` / `port` through.
 - No obvious port-availability helper was found in the open `libs/cli` source.
 - `langgraph-api` is an optional dependency (`langgraph-cli[inmem]`), not source code in this checkout.
-- Therefore `langgraph#7688` is downgraded from `candidate` to `WATCH / needs-repro` until we can prove the bug belongs in open `langgraph-cli` or inspect the relevant `langgraph-api` test surface.
+- After `uv sync --extra inmem`, installed `langgraph-api==0.8.0` contains `langgraph_api.cli._is_port_available()` / `_resolve_port()`.
+- Local pre-fix reproduction: `_is_port_available()` returns `False` for a port in `TIME_WAIT`, while binding the same port with `SO_REUSEADDR` succeeds; `_resolve_port()` raises the reported `Port ... is already in use` error.
+- Upstream evidence comment posted: https://github.com/langchain-ai/langgraph/issues/7688#issuecomment-4554205543
+- Therefore `langgraph#7688` is now `WATCH / reproduced / needs maintainer package-surface direction`, not a ready PR. The failing code is in installed `langgraph-api`, not open `libs/cli`.
 
 Next concrete work:
 
-1. For `langgraph#7688`, inspect installed `langgraph-api` package source after `uv sync --extra inmem`, if practical.
-2. If no open test surface exists, do not upstream-comment or PR.
+1. For `langgraph#7688`, wait for maintainer direction on the right `langgraph-api` contribution surface.
+2. If maintainers confirm it is patchable publicly, prepare regression-first patch around `_is_port_available()` / `_resolve_port()`.
 3. Keep `pydantic-ai#5688` and `google/adk-python#5864` hot but do not race maintainers.

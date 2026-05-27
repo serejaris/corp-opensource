@@ -44,9 +44,50 @@ Current classification: `WATCH / needs-repro`.
 
 This may be a `langgraph-api` behavior rather than a patchable bug in the open `langgraph` repo. A PR is only appropriate if a preflight fix belongs in `langgraph-cli` or if the relevant `langgraph-api` source/test surface is available.
 
+## Installed package repro
+
+Command setup:
+
+```bash
+cd ~/Documents/GitHub/langgraph-7688/libs/cli
+uv sync --extra inmem
+```
+
+Resolved package:
+
+- `langgraph-api==0.8.0`
+- Source path: `.venv/lib/python3.12/site-packages/langgraph_api/cli.py`
+
+Relevant functions:
+
+- `_is_port_available(host, port)` binds without `SO_REUSEADDR`.
+- `_resolve_port(host, port)` raises `OSError("Port ... is already in use")` when `_is_port_available()` returns false.
+
+Pre-fix reproduction:
+
+```text
+available_without_reuseaddr False
+bind_with_reuseaddr True
+```
+
+Explicit `_resolve_port()` failure:
+
+```text
+OSError: Port 62819 is already in use. Please specify a different port or omit the port argument to auto-discover an available one.
+```
+
+Interpretation:
+
+The bug is reproduced in the installed `langgraph-api` package. A server-side active close can leave the local port in `TIME_WAIT`; `langgraph_api.cli._is_port_available()` then reports the port unavailable, while binding the same port with `SO_REUSEADDR` succeeds.
+
+Upstream evidence comment:
+
+https://github.com/langchain-ai/langgraph/issues/7688#issuecomment-4554205543
+
+Current classification: `WATCH / reproduced / needs maintainer package-surface direction`.
+
 ## Next action
 
-1. Inspect installed `langgraph-api` package source locally if available after `uv sync --extra inmem`.
-2. If the port check lives in `langgraph-api`, do not open a PR in `langgraph` unless maintainers say that package source is contribution-available here.
-3. If a CLI-side preflight is viable, prove pre-fix failure with the smallest targeted test.
-4. If no clean pre-fix failure, keep `WATCH / needs-repro` and do not comment upstream.
+1. Wait for maintainer direction on whether the `langgraph-api` package source is contribution-available in this repo or another public repo.
+2. If maintainers confirm the right surface, prepare a regression-first patch around `_is_port_available()` / `_resolve_port()`.
+3. Do not open a PR before that confirmation, because the failing source is not in the open `libs/cli` tree.
