@@ -23,6 +23,7 @@
 | CopilotKit/CopilotKit | [#5035](https://github.com/CopilotKit/CopilotKit/pull/5035) | [#19](https://github.com/serejaris/corp-opensource/issues/19), [watch](watch/copilotkit-4911-workspace-deps.md) | Open, mergeable; Vercel fork auth pending | Watch maintainer review |
 | langchain-ai/deepagents | [#3616](https://github.com/langchain-ai/deepagents/pull/3616), [#3587](https://github.com/langchain-ai/deepagents/issues/3587) | [#20](https://github.com/serejaris/corp-opensource/issues/20), [watch](watch/deepagents-3587-qwen-tool-call-id.md) | PR auto-closed by assignment guard; approach posted on issue | Wait for maintainer assignment/reopen |
 | OpenHands/OpenHands | [#14476](https://github.com/OpenHands/OpenHands/issues/14476) | [#21](https://github.com/serejaris/corp-opensource/issues/21), [watch](watch/openhands-14476-conversation-metadata-race.md) | Candidate/watch; no competing PR found; SaaS semantics risk | Only pursue if unit repro is possible |
+| browser-use/browser-use | [#4877](https://github.com/browser-use/browser-use/issues/4877), [#4801](https://github.com/browser-use/browser-use/issues/4801), [#4846](https://github.com/browser-use/browser-use/issues/4846) | [scouting](watch/ai-native-frameworks-scouting-2026-05-27.md) | Good repo, but top candidates already covered by open mergeable PRs | Watch/review only; no duplicate PR |
 
 ## Рабочие issues
 
@@ -59,6 +60,7 @@
 - Для bugfix PR сначала доказываем, что regression test реально ловит старый баг: временно возвращаем старое поведение или запускаем тест на pre-fix state и записываем точный failing assertion/error.
 - Для publish/release багов проверяем не только helper, но и внешний артефакт/контракт: registry metadata, package manifest, install/runtime symptom или closest publishable fixture.
 - Если есть competing PR, ведём duplicate triage публично: что сравнили, что портировали, чего не хватает.
+- Duplicate scan повторяем прямо перед кодом. Если candidate уже закрыт open/mergeable PR с тестами, переключаемся в watch/review/validation.
 - Реакции и лайки считаем impact-сигналом, но не approval и не CI.
 
 ## Playbooks

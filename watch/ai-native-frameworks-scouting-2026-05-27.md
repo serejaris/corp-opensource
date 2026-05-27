@@ -144,3 +144,21 @@ New scouting outcome:
 | `browser-use/browser-use#4801` | Relevant browser-agent a11y/tooling failure, but needs synthetic fixture and may be partly app-side accessibility. | Watch/needs-repro. |
 
 Operational lesson: when a failure is caused by missing `tool_call_id`, do not paper over it in the downstream tool. First prove where the ID is lost and whether a `ToolMessage` can still be matched to the original model tool call.
+
+## Fifth Scouting Cycle - 2026-05-27 - browser-use duplicate gate
+
+Six subagents checked `browser-use/browser-use` after it looked like a good next AI-native harness target.
+
+Outcome:
+
+| Candidate | Current state | Decision |
+|---|---|---|
+| `browser-use/browser-use#4877` | Strict dependency pins are already covered by open mergeable PR [#4882](https://github.com/browser-use/browser-use/pull/4882), CLA green, CI green. | `WATCH / review only`; do not open duplicate PR. |
+| `browser-use/browser-use#4801` | Icon-only button accessibility/selector issue is already covered by open mergeable PR [#4880](https://github.com/browser-use/browser-use/pull/4880), CLA green, CI green; older [#4835](https://github.com/browser-use/browser-use/pull/4835) also exists. | `WATCH / review only`; no fresh PR. |
+| `browser-use/browser-use#4846` | MCP CDP lifecycle failure is covered by open mergeable PR [#4881](https://github.com/browser-use/browser-use/pull/4881), CLA green, CI green; [#4847](https://github.com/browser-use/browser-use/pull/4847) also overlaps. | `WATCH / validation only`; no fresh PR. |
+| `browser-use/browser-use#4742` | Screenshot blob/context poisoning has open overlapping PRs [#4743](https://github.com/browser-use/browser-use/pull/4743) and [#4751](https://github.com/browser-use/browser-use/pull/4751), plus issue comment claiming work. | `NO FRESH PR`; only compare/review if useful. |
+| `browser-use/browser-use#4579` | Remote CDP hangs are already covered by open PRs [#4862](https://github.com/browser-use/browser-use/pull/4862) and [#4875](https://github.com/browser-use/browser-use/pull/4875). | `NO FRESH PR`; only review/validation. |
+
+Decision: `browser-use` is useful to watch, but not a clean new PR lane right now. Best next lane is `OpenHands/OpenHands`, where maintainer response is fresher and there are small issue paths without the same duplicate pressure.
+
+Operational lesson: duplicate search must be repeated immediately before implementation. A candidate that looked clean in scouting can become occupied by an open mergeable PR with tests; in that case the right contribution is validation/review/watch, not another PR.
