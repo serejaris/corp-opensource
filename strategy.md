@@ -26,10 +26,16 @@
 
 | Дорожка | Почему подходит | Примеры |
 |---|---|---|
-| AI agents / coding agents | Близко к нашей ежедневной боли, легко ловить outage и provider bugs | `NousResearch/hermes-agent`, `anomalyco/opencode`, `google-gemini/gemini-cli` |
-| AI runtime frameworks | Много integration bugs и активных пользователей | `langchain-ai/langchain`, `langflow-ai/langflow`, `langgenius/dify`, `open-webui/open-webui` |
+| AI-native company frameworks | Прямо похоже на Paperclip/Symphony: agents, tasks, harnesses, memory, browser/computer-use, evals | `OpenHands/OpenHands`, `cline/cline`, `pydantic/pydantic-ai`, `trycua/cua`, `CopilotKit/CopilotKit` |
+| Coding-agent runtimes | Близко к ежедневной боли Hermes/Codex/OpenCode; легко ловить provider/tool bugs | `NousResearch/hermes-agent`, `anomalyco/opencode`, `cline/cline`, `OpenHands/OpenHands` |
+| Harness / eval / sandbox инфраструктура | Можно расширять test harness, replay, fixtures, isolated runners и CI | `trycua/cua`, `browser-use/browser-use`, `browser-use/web-ui`, `e2b-dev/*` |
+| AI runtime frameworks | Много integration bugs и активных пользователей | `langchain-ai/langchain`, `langflow-ai/langflow`, `langgenius/dify`, `open-webui/open-webui`, `pydantic/pydantic-ai` |
 | Конвертация документов и scraping | Хорошо чинится через fixtures и regression tests | `microsoft/markitdown`, `firecrawl/firecrawl` |
-| Self-hosted продукты | Хороши для Docker/runtime/release bugs | `n8n-io/n8n`, `supabase/supabase`, `immich-app/immich` |
+
+Понизить приоритет до нового сигнала:
+
+- `google-gemini/gemini-cli` — не считать актуальным lane по умолчанию; возвращать только если свежий scouting показывает сильный bug/repro.
+- Однодневные star-spike репозитории без устойчивых issues/maintainer loop — сначала проверять реальную активность, не верить звёздам как качеству.
 
 ## Цикл поиска бага
 
@@ -68,7 +74,8 @@
 
 ## Ритм
 
-- Раз в неделю: обновить candidate repos.
+- Раз в неделю: обновить candidate repos через live GitHub search по top stars, recently updated и новым `topic:ai-agent` / `topic:coding-agent` / `topic:agent-framework` repos.
+- Раз в неделю: отдельно смотреть Paperclip-like harness/framework repos: Cline, OpenHands, OpenClaw/openclaude-подобные, CUA/browser-use, Pydantic AI, CopilotKit, новые agent harness проекты.
 - Ежедневно: проверить активные upstream watch issues.
 - При новом competing PR: duplicate triage через субагентов.
 - После каждого исхода PR: обновить watch note и skill.

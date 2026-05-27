@@ -21,7 +21,7 @@ Source: live `gh search repos` on 2026-05-27.
 |---:|---|---|---|
 | 1 | [NousResearch/hermes-agent#32963 follow-up](https://github.com/serejaris/corp-opensource/issues/6) | Broad `TypeError` recovery may mask app-side callback errors | Done: repro confirmed, upstream PR [#32999](https://github.com/NousResearch/hermes-agent/pull/32999) opened. |
 | 2 | [anomalyco/opencode#29428](https://github.com/anomalyco/opencode/issues/29428) | Bedrock/LiteLLM Task subagents fail with `UnsupportedParamsError`; `tools=` not passed | Real remaining gap, but no fresh PR yet: similar PR #29474 was closed unmerged on 2026-05-27. Ask maintainer what was wrong before reopening. |
-| 3 | [firecrawl#3614](https://github.com/firecrawl/firecrawl/issues/3614) | Cancel crawl floods webhook with `crawl.failed` for every queued URL | Good API semantics bug with likely unit/integration test surface. |
+| 3 | [firecrawl#3614](https://github.com/firecrawl/firecrawl/issues/3614) | Cancel crawl floods webhook with per-page failures for queued URLs | Real bug and clear test surface, but no fresh PR now: #3615 and #3623 already cover it. Left duplicate-triage comment and offered a regression test. |
 | 4 | [google-gemini/gemini-cli#27466](https://github.com/google-gemini/gemini-cli/issues/27466) | `-p/--print` returns no stdout on Windows despite API answer | High reputation target, but requires Windows repro or diagnostic-first PR. |
 | 5 | [microsoft/markitdown#1894](https://github.com/microsoft/markitdown/issues/1894) | `IpynbConverter.accepts()` crashes on non-ASCII bytes with `UnicodeDecodeError` | Repro confirmed, but no-go for new PR now: #1895 open and #1910 closed unmerged. Left duplicate-triage comment on #1895. |
 
@@ -32,7 +32,7 @@ Repo-fit conclusion:
 - Fastest clean first merge lane was `microsoft/markitdown`, but #1894 is occupied by duplicate PRs; keep as upstream-watch until maintainer asks for a split PR.
 - Existing relationship lane: `NousResearch/hermes-agent`.
 
-Decision: Hermes hardening moved to upstream PR. MarkItDown #1894 moved to upstream-watch/no-go. Opencode #29428 moved to maintainer-signal watch because #29474 already attempted the likely fix and was closed unmerged. Next clean implementation candidate: Firecrawl #3614 unless opencode maintainer clarifies an acceptable narrower patch.
+Decision: Hermes hardening moved to upstream PR. MarkItDown #1894 moved to upstream-watch/no-go. Opencode #29428 moved to maintainer-signal watch because #29474 already attempted the likely fix and was closed unmerged. Firecrawl #3614 moved to duplicate-triage/no fresh PR because #3615 and #3623 already exist. Next clean implementation candidate: Gemini CLI #27466 only if Windows repro is feasible; otherwise rescout new candidates.
 
 ## Lower Priority Despite Stars
 
