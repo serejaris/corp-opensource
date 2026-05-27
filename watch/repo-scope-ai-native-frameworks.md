@@ -96,6 +96,7 @@ These can produce good candidates, but the next step must be repo-specific gates
 | `langchain-ai/openevals` | Smaller LangChain eval harness; low duplicate risk but verify maintainer rhythm before promotion. |
 | `huggingface/smolagents` | Lightweight agent framework; significant but crowded, comment-first without concrete regression. |
 | `microsoft/magentic-ui` | Experimental browser/local-file agent UI; intake and contribution surface need validation. |
+| `vercel/ai` | High-value AI SDK watch after [#66](https://github.com/serejaris/corp-opensource/issues/66) / [watch](ai-sdk-agents-repo-scope-2026-05-27.md): exact provider/schema/tool-call/streaming validation bugs only. Very duplicate-heavy; promote only after targeted PR search and fixture/unit repro in a Node/pnpm runner. |
 
 ## Tier 3: Opportunistic / Verify Only
 
@@ -118,6 +119,7 @@ These can become Tier 1 only after identity and repo-health validation.
 | `morph-labs/morph-typescript-sdk` | `NO-GO` for generic scouting after [#64](https://github.com/serejaris/corp-opensource/issues/64) / [watch](morph-sdk-generic-scope-closure-2026-05-27.md): low public surface, stale issues with maintainer replies, stale/conflict-heavy PR queue, cloud/API-key repro risk. Revisit only for Morph-specific request or fresh current-main bug card. |
 | `docker/mcp-gateway` | `WATCH` after [#65](https://github.com/serejaris/corp-opensource/issues/65) / [watch](docker-mcp-scope-2026-05-27.md): useful MCP distribution/gateway reference, but exact validation/config only. Watch leads such as `#442` and `#430` require one-issue duplicate gate, runner repro and regression card before any promotion. |
 | `docker/mcp-registry` | `NO-GO` for generic scouting after [#65](https://github.com/serejaris/corp-opensource/issues/65) / [watch](docker-mcp-scope-2026-05-27.md): registry/catalog queue is noisy and PR-heavy; keep only as reference / exact metadata-validation target by concrete linked card. |
+| `cloudflare/agents` | `WATCH` after [#66](https://github.com/serejaris/corp-opensource/issues/66) / [watch](ai-sdk-agents-repo-scope-2026-05-27.md): high-fit agent runtime/MCP/streaming/compaction reference, but upstream README says external PRs are not accepted currently. Use issue-first / maintainer-signal only. |
 | `microsoft/Webwright` | Browser-agent framework; reference/watch until contribution docs and release maturity are clearer. |
 | `ServiceNow/BrowserGym` | Web-agent benchmark environment; research/benchmark watch, not default PR lane. |
 | `dagger/dagger` | Execution graph/container infra; only direct agent-runner breakages belong here. |
@@ -166,4 +168,4 @@ Weekly scouting must update this scope only when:
 
 Record removed or demoted repos with a reason.
 
-Latest repo-universe update: [Docker MCP scope check](docker-mcp-scope-2026-05-27.md), after [Morph SDK generic scope closure](morph-sdk-generic-scope-closure-2026-05-27.md), [OpenClaw/OpenClaude identity scan](openclaw-openclaude-identity-scouting-2026-05-27.md) and [cycle 29](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-29-repo-universe.md). Repo-card queue: [repo cards 2026-05-27](repo-cards-ai-native-2026-05-27.md).
+Latest repo-universe update: [AI SDK / Agents repo scope check](ai-sdk-agents-repo-scope-2026-05-27.md), after [Docker MCP scope check](docker-mcp-scope-2026-05-27.md), [Morph SDK generic scope closure](morph-sdk-generic-scope-closure-2026-05-27.md), [OpenClaw/OpenClaude identity scan](openclaw-openclaude-identity-scouting-2026-05-27.md) and [cycle 29](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-29-repo-universe.md). Repo-card queue: [repo cards 2026-05-27](repo-cards-ai-native-2026-05-27.md).
