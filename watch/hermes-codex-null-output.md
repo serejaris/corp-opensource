@@ -56,3 +56,31 @@ Maintainer selected the broader path via #32963. The useful process lesson is no
 - добавить regression: Hermes-side callback/handler `TypeError("NoneType ... not iterable")` должен пробрасываться, а не маскироваться recovery;
 - не спорить с #32963 как outage fix: он реально закрыл #11179.
 
+## Follow-up PR - 2026-05-27
+
+- Upstream PR: https://github.com/NousResearch/hermes-agent/pull/32999
+- Internal issue: https://github.com/serejaris/corp-opensource/issues/6
+- Branch: `serejaris:codex/hermes-typeerror-hardening`
+- Commit: `7f23f8b61 fix(codex): narrow null-output stream recovery`
+
+Что изменено:
+
+- recovery на `TypeError("NoneType ... not iterable")` перенесён внутрь SDK-boundary:
+  - `next(stream_iter)`;
+  - `stream.get_final_response()`.
+- Hermes-side callback/body `TypeError` больше не попадает в null-output recovery.
+- Добавлены regressions:
+  - SDK null-output при stream iteration продолжает recover;
+  - SDK null-output при `get_final_response()` продолжает recover;
+  - callback `TypeError("'NoneType' object is not iterable")` пробрасывается.
+
+Validation:
+
+- Local syntax: `python3 -m py_compile agent/codex_runtime.py tests/run_agent/test_run_agent_codex_responses.py`
+- CT216 targeted: `scripts/run_tests.sh tests/run_agent/test_run_agent_codex_responses.py -- -q -k 'null_output or callback_type_error'` -> `3 passed`
+- CT216 full file: `scripts/run_tests.sh tests/run_agent/test_run_agent_codex_responses.py -- -q` -> `68 passed`
+
+PR state after create:
+
+- Open, ready for review, mergeable.
+- Checks: no checks reported on branch at first check; keep monitoring.
