@@ -103,8 +103,8 @@ These can become Tier 1 only after identity and repo-health validation.
 
 | Repo | Why verify first |
 |---|---|
-| `openclaw/openclaw` | Search reports unusually high stars; verify releases, commits, issue quality, and maintainer loop before trusting. |
-| `Gitlawb/openclaude` | OpenClaude-like target, but identity/canonical status needs validation. |
+| `openclaw/openclaw` | `NO-GO` after [#63](https://github.com/serejaris/corp-opensource/issues/63) / [watch](openclaw-openclaude-identity-scouting-2026-05-27.md): high identity/provenance and duplicate-race risk. Not proven noncanonical, but requires external canonical validation and manual process proof before any contribution lane. |
+| `Gitlawb/openclaude` | `NO-GO` after [#63](https://github.com/serejaris/corp-opensource/issues/63) / [watch](openclaw-openclaude-identity-scouting-2026-05-27.md): explicit proprietary-derived-code provenance/license blocker; no PR/comment/repro lane without external legal/provenance clearance. |
 | `Infisical/agent-vault` | Relevant credential proxy/vault for agents; bounded scan [#60](https://github.com/serejaris/corp-opensource/issues/60) / [watch](agent-vault-scouting-2026-05-27.md) kept final `WATCH`. Best lead `#194` is Codex/Agent Vault WebSocket proxy compatibility, but Agent Vault-owned patch surface is unproven until secret-free v0.22.0/current-main runner repro and owner-boundary gate. |
 | `HKUDS/OpenHarness` | Active verify-first harness watch via [#61](https://github.com/serejaris/corp-opensource/issues/61) / [watch](openharness-scouting-2026-05-27.md). High AI-native fit, but current open queue is feature/discussion-heavy and PR queue is conflict-heavy; promote only after a reproducible current-main harness bug and duplicate gate. |
 | `langchain-ai/deepagentsjs` | High-fit active watch via [#62](https://github.com/serejaris/corp-opensource/issues/62) / [watch](deepagentsjs-scouting-2026-05-27.md). Strongest uncovered lead is `#547` (`StateBackend` instance vs factory), but final status stayed `WATCH` because LangChain requires maintainer-approved solutions before PR and runner/current-main repro is still missing. |
@@ -166,4 +166,4 @@ Weekly scouting must update this scope only when:
 
 Record removed or demoted repos with a reason.
 
-Latest repo-universe update: [cycle 29](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-29-repo-universe.md). Repo-card queue: [repo cards 2026-05-27](repo-cards-ai-native-2026-05-27.md).
+Latest repo-universe update: [OpenClaw/OpenClaude identity scan](openclaw-openclaude-identity-scouting-2026-05-27.md), after [cycle 29](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-29-repo-universe.md). Repo-card queue: [repo cards 2026-05-27](repo-cards-ai-native-2026-05-27.md).
