@@ -55,3 +55,16 @@ The correct next actions are:
 - если patch легко пишется, но repo требует maintainer assignment, результат остаётся `COMMENT-FIRST / WAIT`, а не PR.
 
 `Patchability` не является разрешением на PR. Это только один из шести сигналов.
+
+## Post-cycle targeted check - MCP TypeScript `#2126`
+
+После восстановления GitHub Search API проверен потенциальный PR-ready candidate:
+
+- Issue: `modelcontextprotocol/typescript-sdk#2126` — OAuth metadata discovery should continue after `200 OK` with non-JSON body.
+- Duplicate scan found:
+  - `#2140` open: `fix: continue auth discovery after invalid JSON metadata`;
+  - `#2127` closed duplicate in favor of `#2140`.
+- `#2140` includes the reported regression path, changeset, and validation notes.
+- CI state at check time: mostly green, but `test (22)` failed in `test/server/cloudflareWorkers.test.ts` with `SdkHttpError: Error POSTing to endpoint: Error: Network connection lost.` This does not look related to the auth metadata patch surface.
+
+Decision: `WATCH / DUPLICATE-COVERED`. Do not open a PR. Only comment upstream if a concrete missing auth-discovery regression appears.
