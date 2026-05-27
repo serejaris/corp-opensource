@@ -71,6 +71,8 @@
 
 Последний candidate refresh: [AG-UI / Mastra candidate refresh](watch/ag-ui-mastra-candidate-refresh-2026-05-27.md). Итог: 6 scouting subagents, parent live gates, 3-subagent critique, 0 upstream PR/comment; `ag-ui-protocol/ag-ui#1635` переведён в `COMMENT-FIRST` after runner-backed test card because AG-UI is assignment-first and nearby Mastra adapter PRs `#1253/#837/#1727/#1468` create collision risk; `mastra-ai/mastra#17118` остаётся `CANDIDATE`, blocked on secret-free Mastracode TUI/autocomplete runner repro and repeat duplicate gate.
 
+Последний repo-scope watch: [Qwen Code / Agent Framework scope watch](watch/qwen-code-agent-framework-scouting-2026-05-27.md), tracker [#68](https://github.com/serejaris/corp-opensource/issues/68). Итог: 6 scouting subagents, parent repo/issue/PR/community/license gates, internal 3-role critique, 0 upstream PR/comment, final `next_status: WATCH`; `QwenLM/qwen-code` остаётся verify-first terminal-agent lane because `#4450/#4466/#4363/#4364` are already covered by active PRs or nearby work, and `microsoft/agent-framework` остаётся exact Python/.NET subsystem watch with best later lanes `#6120/#6006`, blocked on runner repro and fresh duplicate search.
+
 | Проект | Upstream | Наш контур | Статус | Следующее действие |
 |---|---:|---:|---|---|
 | NousResearch/hermes-agent | [#32999](https://github.com/NousResearch/hermes-agent/pull/32999), [#32963](https://github.com/NousResearch/hermes-agent/pull/32963), [#33042](https://github.com/NousResearch/hermes-agent/pull/33042) | [#6](https://github.com/serejaris/corp-opensource/issues/6), [watch](watch/hermes-codex-null-output.md) | #32963 merged outage fix; #32999 closed obsolete after #33042 removed the SDK stream helper path entirely | Accept closure; keep boundary-regression lesson in skill/watch |
@@ -160,6 +162,7 @@
 - [#27 browser-use boolean index action schema](https://github.com/serejaris/corp-opensource/issues/27)
 - [#51 MCP TypeScript SDK requestId 0 cancellation candidate](https://github.com/serejaris/corp-opensource/issues/51)
 - [#52 Popular AI-native / Paperclip-like repo scouting 2026-05-27](https://github.com/serejaris/corp-opensource/issues/52)
+- [#68 Qwen Code / Agent Framework repo-scope watch](https://github.com/serejaris/corp-opensource/issues/68)
 - [#66 AI SDK / Agents repo scope watch](https://github.com/serejaris/corp-opensource/issues/66)
 - [#65 Docker MCP exact-validation scope watch](https://github.com/serejaris/corp-opensource/issues/65)
 - [#67 Hermes #15640 stale cleanup candidate](https://github.com/serejaris/corp-opensource/issues/67)

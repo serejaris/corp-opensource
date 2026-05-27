@@ -82,13 +82,13 @@ These can produce good candidates, but the next step must be repo-specific gates
 | `SWE-agent/mini-swe-agent` | Promoted to Tier 1A after cycle 29; kept here only as a reminder to cross-check with `SWE-agent/SWE-agent` before treating a candidate as independent. |
 | `Skyvern-AI/skyvern` | Browser/vision/RPA agent; take only distinct browser-agent issues not already covered by current browser lanes. |
 | `BloopAI/vibe-kanban` | Paperclip-like control-plane for coding agents; [bounded scan](vibe-kanban-scouting-2026-05-27.md) kept `WATCH` because repo is sunsetting, README asks for discussion before PR, and maintainer rhythm is weak. `#3329` is lead-after-repro only; no PR hunting. |
-| `QwenLM/qwen-code` | Terminal coding agent; verify-first due to high issue/PR volume and likely duplicate reports. |
+| `QwenLM/qwen-code` | `WATCH` after [#68](https://github.com/serejaris/corp-opensource/issues/68) / [watch](qwen-code-agent-framework-scouting-2026-05-27.md): terminal coding agent, but verify-first only. Strongest lanes `#4450/#4466/#4363/#4364` are covered by active PRs or nearby work; promote only after one exact issue, fresh PR search, Node >=22 runner repro and targeted test/preflight card. |
 | `gptme/gptme` | Lower-noise terminal agent; verify maintainer rhythm before promotion. |
 | `awslabs/cli-agent-orchestrator` | Multi-agent CLI control-plane; lower popularity but relevant control-plane watch. |
 | `Open-ACP/OpenACP` | ACP bridge/control-plane; early ecosystem watch with low evidence surface. |
 | `ag-ui-protocol/ag-ui` | Agent UI/control-plane protocol; active but high churn, use for SDK/protocol conformance only after subsystem gate. |
 | `mcp-use/mcp-use` | MCP app/client/server framework; useful integration surface, but compare against official SDK behavior before calling a bug. |
-| `microsoft/agent-framework` | Microsoft Python/.NET agent framework; high backlog means exact package/subsystem gate only. |
+| `microsoft/agent-framework` | `WATCH` after [#68](https://github.com/serejaris/corp-opensource/issues/68) / [watch](qwen-code-agent-framework-scouting-2026-05-27.md): Microsoft Python/.NET agent framework; high backlog and active internal PR flow mean exact package/subsystem gate only. Best later lanes are `#6120/#6006`; Python Foundry, inline skill args, AG-UI chunks and hosted MCP lanes are already assigned or covered by active PRs. |
 | `mastra-ai/mastra` | TypeScript agent framework/workflows; useful watch but high issue/PR flow. |
 | `langfuse/langfuse` | LLM tracing/eval/observability for agent workflows; avoid generic product support issues. |
 | `comet-ml/opik` | LLM tracing/eval/observability; use only scoped SDK/integration/eval-runner bugs. |
@@ -168,4 +168,4 @@ Weekly scouting must update this scope only when:
 
 Record removed or demoted repos with a reason.
 
-Latest repo-universe update: [AI SDK / Agents repo scope check](ai-sdk-agents-repo-scope-2026-05-27.md), after [Docker MCP scope check](docker-mcp-scope-2026-05-27.md), [Morph SDK generic scope closure](morph-sdk-generic-scope-closure-2026-05-27.md), [OpenClaw/OpenClaude identity scan](openclaw-openclaude-identity-scouting-2026-05-27.md) and [cycle 29](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-29-repo-universe.md). Repo-card queue: [repo cards 2026-05-27](repo-cards-ai-native-2026-05-27.md).
+Latest repo-universe update: [Qwen Code / Agent Framework scope watch](qwen-code-agent-framework-scouting-2026-05-27.md), after [AI SDK / Agents repo scope check](ai-sdk-agents-repo-scope-2026-05-27.md), [Docker MCP scope check](docker-mcp-scope-2026-05-27.md), [Morph SDK generic scope closure](morph-sdk-generic-scope-closure-2026-05-27.md), [OpenClaw/OpenClaude identity scan](openclaw-openclaude-identity-scouting-2026-05-27.md) and [cycle 29](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-29-repo-universe.md). Repo-card queue: [repo cards 2026-05-27](repo-cards-ai-native-2026-05-27.md).
