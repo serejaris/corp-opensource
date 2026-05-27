@@ -55,4 +55,6 @@ gh search prs 'repo:OWNER/REPO is:pr is:open bug OR regression OR crash' --limit
 
 Для container/runtime visibility багов тест должен стоять на границе, где ломается пользовательский контракт: Docker volumes, env passthrough, CLI command generation, request payload или wire protocol. Helper-level тест на parser/loader недостаточен, если реальный баг в том, что helper не получает нужный filesystem/path/env внутри container.
 
+Для browser-agent action/schema багов тест должен начинаться с raw model/tool payload, который реально пришёл в систему. Если модель прислала `{"input_text": {"index": true}}`, regression должен проверить validation/normalization/execution boundary: reject или structured warning, сохранение `raw_action`, `validated_action`, и невозможность молча выполнить действие по элементу `1` без trace. Helper-level pydantic/zod test полезен только после boundary test.
+
 Для invitation-only репозиториев отдельный gate: без явного приглашения не открывать upstream PR, даже если fix очевиден. В таком случае полезная работа — watch note, issue, duplicate/test analysis и короткий upstream comment только при наличии нового факта.
