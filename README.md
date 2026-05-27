@@ -46,7 +46,7 @@
 | BerriAI/litellm | [#28971](https://github.com/BerriAI/litellm/issues/28971), [#28970](https://github.com/BerriAI/litellm/pull/28970) | [#39](https://github.com/serejaris/corp-opensource/issues/39), [cycle 10](watch/ai-native-frameworks-scouting-2026-05-27-cycle-10.md) | Comment-first / missing-regression-offered; #28970 is adjacent `/apply_guardrail`, not exact `/v1/responses` spend-log path | Wait maintainer signal before PR |
 | e2b-dev/E2B | [#1349](https://github.com/e2b-dev/E2B/issues/1349), [#1354](https://github.com/e2b-dev/E2B/pull/1354) | [#39](https://github.com/serejaris/corp-opensource/issues/39), [cycle 10](watch/ai-native-frameworks-scouting-2026-05-27-cycle-10.md) | PR open, ready, mergeable; red/green regression proved; CLA check failing | Sign E2B CLA, then `@cla-bot check`; watch CI/review |
 | openai/codex | [#24725](https://github.com/openai/codex/issues/24725) | [#41](https://github.com/serejaris/corp-opensource/issues/41), [cycle 11](watch/ai-native-frameworks-scouting-2026-05-27-cycle-11.md) | Regression-first candidate, but upstream external PRs are invitation-only | Watch/comment-first; no PR without maintainer signal |
-| anomalyco/opencode | [#15226](https://github.com/anomalyco/opencode/issues/15226) | [#42](https://github.com/serejaris/corp-opensource/issues/42), [cycle 12](watch/ai-native-frameworks-scouting-2026-05-27-cycle-12.md), [PR-readiness](watch/ai-native-frameworks-scouting-2026-05-27-cycle-12-pr-readiness.md) | Best fresh low-duplicate candidate: provider request-shape bug around structured output + thinking; needs local repro before branch | Reproduce final provider payload locally; rerun duplicate gate before code |
+| anomalyco/opencode | [#15226](https://github.com/anomalyco/opencode/issues/15226), [#29565](https://github.com/anomalyco/opencode/pull/29565) | [#44](https://github.com/serejaris/corp-opensource/issues/44), [watch](watch/opencode-15226-structured-output-thinking.md), [cycle 12](watch/ai-native-frameworks-scouting-2026-05-27-cycle-12.md) | PR open, ready, mergeable; standards/compliance/duplicate checks green | Watch maintainer review and user reports |
 | langchain-ai/deepagents | [#3568](https://github.com/langchain-ai/deepagents/issues/3568) | [scouting](watch/ai-native-frameworks-scouting-2026-05-27-cycle-2.md) | Small prompt/schema bug, but reporter has local fix and assignment gate risk | Watch/comment only if maintainers ask |
 
 ## Рабочие issues
@@ -93,6 +93,7 @@
 - [#40 Cycle 11 scouting: regression-first AI-native bug targets](https://github.com/serejaris/corp-opensource/issues/40)
 - [#41 Codex plugin-namespaced skills exceed MAX_NAME_LEN](https://github.com/serejaris/corp-opensource/issues/41)
 - [#42 Cycle 12 scouting: unblock next AI-native contribution target](https://github.com/serejaris/corp-opensource/issues/42)
+- [#44 opencode structured output conflicts with thinking tool_choice](https://github.com/serejaris/corp-opensource/issues/44)
 
 ## Правила
 
