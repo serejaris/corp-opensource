@@ -81,3 +81,13 @@ On 2026-05-27:
 - Six-agent triage found the loader already requests `load_user=True`; the likely break is Docker visibility: host `~/.openhands` is not mounted into the agent-server container.
 - Related #14121/#14273 may be the intended Settings/personal-repo direction, so a runtime PR without maintainer direction risks design conflict.
 - Action: posted a clarification/comment-first update and tracked internally in `corp-opensource#26`.
+
+## Example: Goose Repeated Tool Calls
+
+On 2026-05-27:
+
+- goose #9136 was open, unassigned, and the snooze date had expired.
+- Maintainer had already called it a real bug and gave a small one-shot fix plan.
+- Six-agent triage found no active duplicate PR, but the maintainer wording said “before we pick this up”.
+- Action: posted a comment-first assignment ask instead of opening a drive-by PR, and tracked internally in `corp-opensource#28`.
+- Test lesson: for runtime guard bugs, helper-level coverage is insufficient. The regression must exercise the public guard path (`inspect()` over a batch of `ToolRequest`s), because the bug was stale state across requests, not the helper predicate itself.
