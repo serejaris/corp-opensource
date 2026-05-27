@@ -44,11 +44,20 @@ gh search prs 'repo:OWNER/REPO is:pr is:open bug OR regression OR crash' --limit
 
 Для bugfix PR сначала ищем контракт, который реально сломан у пользователя, и пишем/проверяем regression test на этом контракте.
 
+Порядок обязателен:
+
+1. fresh duplicate gate: issue timeline, linked/cross-referenced PRs, text PR search;
+2. regression card в issue/watch note;
+3. pre-fix failing test или reverted-fix failing test;
+4. минимальный patch;
+5. повторный duplicate gate прямо перед `gh pr create`.
+
 Нельзя считать PR готовым, если:
 
 - есть только helper-level unit test, а пользовательский путь не покрыт;
 - test был запущен только после фикса и не показал pre-fix failure;
 - reference PR существует, но мы не сравнили его тесты и не поняли, какой контракт он доказывает;
+- fresh duplicate gate нашёл открытый PR, но мы не сравнили, покрывает ли он наш user-facing contract;
 - upstream `main` уже выглядит исправленным, но мы всё равно начинаем ветку без duplicate triage.
 
 Минимальный стандарт: targeted test падает на текущем сломанном состоянии или на reverted fix, затем проходит после patch. Если это дорого, фиксируем `WATCH / needs-repro`, а не открываем PR.
@@ -70,3 +79,9 @@ gh search prs 'repo:OWNER/REPO is:pr is:open bug OR regression OR crash' --limit
 Для SSE/wire-framing багов не тестировать внешний timeout как основной контракт, если timeout живёт в клиенте или UI. Сначала выделить deterministic SDK boundary: какие байты/строки транспорт пишет в wire. Пример: U+2028/U+2029 валидны внутри JSON string, но не должны выходить literal внутри одной SSE `data:` line; regression должен проверять raw frame (`data:` содержит `\\u2028`/`\\u2029`) и round-trip через `JSON.parse`, а не ждать 300 секунд Claude/UI timeout.
 
 Для invitation-only репозиториев отдельный gate: без явного приглашения не открывать upstream PR, даже если fix очевиден. В таком случае полезная работа — watch note, issue, duplicate/test analysis и короткий upstream comment только при наличии нового факта.
+
+Если candidate стал duplicate во время разведки, не считать работу потерянной. Сохранить test contract и сравнить с существующим PR:
+
+- если существующий PR покрывает contract и тест — `WATCH / duplicate-covered`;
+- если покрывает patch, но не тест — предложить missing regression в issue/PR;
+- если покрывает соседний path, но не reported path — comment-first с точной regression card.

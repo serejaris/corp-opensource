@@ -40,6 +40,8 @@
 | microsoft/playwright-mcp | [#1635](https://github.com/microsoft/playwright-mcp/issues/1635) | [#36](https://github.com/serejaris/corp-opensource/issues/36), [cycle 9](watch/ai-native-frameworks-scouting-2026-05-27-cycle-9.md) | Comment-first / assignment-gated; [regression offer posted](https://github.com/microsoft/playwright-mcp/issues/1635#issuecomment-4552993898) | Wait maintainer direction; no PR without approval |
 | modelcontextprotocol/typescript-sdk | [#2155](https://github.com/modelcontextprotocol/typescript-sdk/issues/2155), [#1925](https://github.com/modelcontextprotocol/typescript-sdk/pull/1925), [#1926](https://github.com/modelcontextprotocol/typescript-sdk/pull/1926) | [#37](https://github.com/serejaris/corp-opensource/issues/37), [cycle 9](watch/ai-native-frameworks-scouting-2026-05-27-cycle-9.md) | Duplicate-triage; server-side SSE escaping already covered by open mergeable PRs with tests | Watch maintainer review; validate only uncovered client fail-fast / JSON-response gap |
 | modelcontextprotocol/python-sdk | [#2687](https://github.com/modelcontextprotocol/python-sdk/issues/2687) | [#38](https://github.com/serejaris/corp-opensource/issues/38), [cycle 9](watch/ai-native-frameworks-scouting-2026-05-27-cycle-9.md) | Comment-first / maintainer-gated; pre-fix `AnyHttpUrl` vs `AnyUrl` redirect mismatch reproduced and [PR offer posted](https://github.com/modelcontextprotocol/python-sdk/issues/2687#issuecomment-4553121932) | Wait maintainer confirmation/assignment before PR |
+| BerriAI/litellm | [#28971](https://github.com/BerriAI/litellm/issues/28971), [#28970](https://github.com/BerriAI/litellm/pull/28970) | [#39](https://github.com/serejaris/corp-opensource/issues/39), [cycle 10](watch/ai-native-frameworks-scouting-2026-05-27-cycle-10.md) | Watch / duplicate-triage; fresh PR #28970 covers adjacent guardrail logging pipeline with tests | Compare exact `/v1/responses` spend log contract before any PR |
+| e2b-dev/E2B | [#1349](https://github.com/e2b-dev/E2B/issues/1349) | [#39](https://github.com/serejaris/corp-opensource/issues/39), [cycle 10](watch/ai-native-frameworks-scouting-2026-05-27-cycle-10.md) | Candidate; no exact open PR found, likely fixture-friendly Dockerfile parser/build bug | Local repro/test card before code |
 | langchain-ai/deepagents | [#3568](https://github.com/langchain-ai/deepagents/issues/3568) | [scouting](watch/ai-native-frameworks-scouting-2026-05-27-cycle-2.md) | Small prompt/schema bug, but reporter has local fix and assignment gate risk | Watch/comment only if maintainers ask |
 
 ## Рабочие issues
@@ -82,6 +84,7 @@
 - [#36 Playwright MCP browser_navigate_back CDP timeout](https://github.com/serejaris/corp-opensource/issues/36)
 - [#37 MCP TypeScript SDK U+2028/U+2029 SSE timeout duplicate triage](https://github.com/serejaris/corp-opensource/issues/37)
 - [#38 MCP Python SDK AnyUrl/AnyHttpUrl OAuth redirect mismatch](https://github.com/serejaris/corp-opensource/issues/38)
+- [#39 Cycle 10 scouting: LiteLLM guardrail duplicate gate and E2B next repro](https://github.com/serejaris/corp-opensource/issues/39)
 
 ## Правила
 
@@ -110,6 +113,7 @@
 - [AI-native frameworks scouting cycle 7](watch/ai-native-frameworks-scouting-2026-05-27-cycle-7.md)
 - [AI-native frameworks scouting cycle 8](watch/ai-native-frameworks-scouting-2026-05-27-cycle-8.md)
 - [AI-native frameworks scouting cycle 9](watch/ai-native-frameworks-scouting-2026-05-27-cycle-9.md)
+- [AI-native frameworks scouting cycle 10](watch/ai-native-frameworks-scouting-2026-05-27-cycle-10.md)
 - [Goose #9332 PDEATHSIG MCP subprocess lifecycle](watch/goose-9332-pdeathsig-mcp-subprocess.md)
 
 ## Метки
