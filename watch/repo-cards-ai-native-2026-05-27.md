@@ -1,6 +1,6 @@
 # Repo cards: AI-native universe, 2026-05-27
 
-Source: [cycle 23 repo-universe update](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-23-repo-universe.md), [cycle 24 repo-universe update](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-24-repo-universe.md) и [cycle 25 openai-agents scan](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-25-openai-agents.md).
+Source: [cycle 23 repo-universe update](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-23-repo-universe.md), [cycle 24 repo-universe update](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-24-repo-universe.md), [cycle 25 openai-agents scan](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-25-openai-agents.md) и [cycle 27 SWE-agent mini scan](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-27-swe-mini.md).
 
 Purpose: make the next bounded repo-scouting block concrete. These are repo-level cards, not bug candidates.
 
@@ -50,7 +50,7 @@ Purpose: make the next bounded repo-scouting block concrete. These are repo-leve
 | `ComposioHQ/composio` | 2 | update scope | package-specific tool/auth/integration bugs | medium-high | local tests likely | 2026-05-27 17:39 UTC | comment-first | package/path named, default branch `next` checked |
 | `promptfoo/promptfoo` | 2 | update scope | provider/evaluator/assertion/plugin regressions | very high | local tests likely | 2026-05-27 17:39 UTC | comment-first | targeted PR search by provider/evaluator area |
 | `SWE-agent/SWE-agent` | 2 | update scope | benchmark runner, Docker/env, docs drift | medium | Docker/runner likely | 2026-05-27 17:39 UTC | fixture-only | cross-check `mini-swe-agent` issues/PRs |
-| `SWE-agent/mini-swe-agent` | 2 | candidate | compact terminal-agent harness regressions: timeout child processes, bash-vs-dash runner, tool-call parser FormatError | low-medium | local tests first; runner if Docker/backend-heavy | 2026-05-27 18:02 UTC | fixture-only | cross-check `SWE-agent/SWE-agent`, repeat PR search, then secret-free repro |
+| `SWE-agent/mini-swe-agent` | 2 | watch | compact terminal-agent harness regressions: `#826` timeout child processes, `#829` bash-vs-dash runner, tool-call parser FormatError | medium | runner for timeout process-tree repro before upstream action | 2026-05-27 18:05 UTC | fixture-only | `#826` runner repro + repeat GitHub search after rate-limit + regression card |
 | `Skyvern-AI/skyvern` | 2 | watch | browser/vision/RPA agent regressions | high | browser/service stack likely | 2026-05-27 17:39 UTC | comment-first | distinct from `browser-use`/`stagehand`/`playwright-mcp` lanes |
 | `BloopAI/vibe-kanban` | 2 | watch | Paperclip-like control-plane/session UX | high | local app likely | 2026-05-27 17:39 UTC | comment-first | maintainer rhythm + contribution docs + narrow issue |
 | `QwenLM/qwen-code` | 2/3 | verify-first | terminal coding-agent runtime bugs | very high | local tests likely | 2026-05-27 17:39 UTC | yes | exact version + duplicate search + language/process gate |
