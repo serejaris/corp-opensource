@@ -22,7 +22,7 @@
 
 | Upstream | Что делаем | Статус |
 |---|---|---|
-| [continuedev/continue#12334](https://github.com/continuedev/continue/issues/12334) | OpenRouter autocomplete должен прокидывать `requestOptions.extraBodyProperties`; regression card: [watch](watch/continue-12334-openrouter-autocomplete-extra-body.md), tracker [#50](https://github.com/serejaris/corp-opensource/issues/50). | Upstream plan comment posted; duplicate gate clean; first clone attempt hit GitHub HTTP 502 and was stopped cleanly. |
+| [continuedev/continue#12334](https://github.com/continuedev/continue/issues/12334) | OpenRouter autocomplete должен прокидывать `requestOptions.extraBodyProperties`; regression card: [watch](watch/continue-12334-openrouter-autocomplete-extra-body.md), tracker [#50](https://github.com/serejaris/corp-opensource/issues/50). | WATCH / needs reporter path: current `main` already preserves `reasoning` on tested raw completion path; [evidence comment](https://github.com/continuedev/continue/issues/12334#issuecomment-4554830611) posted. |
 
 ### Закрытые / не пошло
 
@@ -87,7 +87,7 @@
 | openai/codex | [#24725](https://github.com/openai/codex/issues/24725) | [#41](https://github.com/serejaris/corp-opensource/issues/41), [cycle 11](watch/ai-native-frameworks-scouting-2026-05-27-cycle-11.md) | Regression-first candidate, but upstream external PRs are invitation-only | Watch/comment-first; no PR without maintainer signal |
 | anomalyco/opencode | [#15226](https://github.com/anomalyco/opencode/issues/15226), [#29565](https://github.com/anomalyco/opencode/pull/29565) | [#44](https://github.com/serejaris/corp-opensource/issues/44), [watch](watch/opencode-15226-structured-output-thinking.md), [cycle 12](watch/ai-native-frameworks-scouting-2026-05-27-cycle-12.md) | PR open, ready, mergeable; standards/compliance/duplicate checks green | Watch maintainer review; no extra opencode PR until review or distinct gap |
 | langchain-ai/deepagents | [#3568](https://github.com/langchain-ai/deepagents/issues/3568) | [scouting](watch/ai-native-frameworks-scouting-2026-05-27-cycle-2.md) | Small prompt/schema bug, but reporter has local fix and assignment gate risk | Watch/comment only if maintainers ask |
-| continuedev/continue | [#12334](https://github.com/continuedev/continue/issues/12334) | [#50](https://github.com/serejaris/corp-opensource/issues/50), [watch](watch/continue-12334-openrouter-autocomplete-extra-body.md) | Candidate in progress; duplicate gate clean; upstream plan comment posted | Build regression-first PR if local test surface confirms |
+| continuedev/continue | [#12334](https://github.com/continuedev/continue/issues/12334) | [#50](https://github.com/serejaris/corp-opensource/issues/50), [watch](watch/continue-12334-openrouter-autocomplete-extra-body.md) | WATCH / needs reporter path; current `main` at `cb273098` preserves `reasoning` on tested raw completion path; upstream evidence comment posted | Wait reporter version/path or exact outbound body before PR |
 
 ## Рабочие issues
 
