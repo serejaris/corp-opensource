@@ -66,5 +66,10 @@ session_history-limit 10000
 
 - PR open, mergeable;
 - review required;
-- only `pr-review` check visible and skipped at creation time;
-- follow-up: re-check CI/reviews and avoid pushing unless checks or review ask for changes.
+- maintainer suggestion from VascoSch92 applied in `efdff15b`: pin exact constants in regression test;
+- validation after suggestion:
+  - `uv run pytest tests/tools/terminal/test_tmux_pane_pool.py::test_tmux_session_viewport_is_smaller_than_scrollback -q` -> 1 passed;
+  - `uv run pytest tests/tools/terminal/test_tmux_pane_pool.py tests/tools/terminal/test_observation_truncation.py tests/tools/terminal/test_ps1_corruption.py tests/tools/terminal/test_heredoc_chunked_send.py -q` -> 44 passed;
+  - `uv run pre-commit run --files openhands-tools/openhands/tools/terminal/constants.py tests/tools/terminal/test_tmux_pane_pool.py` -> passed;
+- replied on review thread with validation;
+- status checks list became empty after follow-up push; follow-up: re-check checks/reviews and avoid pushing unless asked.

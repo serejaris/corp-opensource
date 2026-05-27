@@ -79,7 +79,8 @@ Checked after opening PR #5035:
 - mergeable;
 - review decision: `REVIEW_REQUIRED`;
 - Claude review disabled because PR is from a fork;
-- Vercel preview statuses show `FAILURE` because a CopilotKit team member must authorize fork deployments. Treat this as maintainer authorization pending, not a code failure.
+- `Vercel - docs` preview is green;
+- other Vercel preview statuses show `FAILURE` because a CopilotKit team member must authorize fork deployments. Treat this as maintainer authorization pending, not a code failure.
 
 ## Next action
 

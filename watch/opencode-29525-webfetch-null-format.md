@@ -37,6 +37,7 @@ Post-fix:
 
 ## Следующее
 
-- Проверить `check-duplicates`, `check-standards`, `check-compliance`.
+- `check-duplicates`, `check-standards`, `check-compliance`, `add-contributor-label` прошли 2026-05-27.
+- PR body сначала не совпал с upstream template; body переписан строго под `.github/pull_request_template.md`, bot подтвердил compliance.
 - Если duplicate bot найдёт старый PR, сравнить: old optional-default fix vs new nullable-runtime fix.
 - Если maintainer попросит убрать nested nullable schema, предложить альтернативу: убрать `null` из JSON schema converter for this field либо нормализовать schema output.
