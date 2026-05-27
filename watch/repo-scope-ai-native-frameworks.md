@@ -116,8 +116,8 @@ These can become Tier 1 only after identity and repo-health validation.
 | `steel-dev/steel-browser` | Relevant smaller browser sandbox; verify maintainer rhythm before promotion. |
 | `morph-labs/morph-python-sdk` | `NO-GO` for generic scouting after [#64](https://github.com/serejaris/corp-opensource/issues/64) / [watch](morph-sdk-generic-scope-closure-2026-05-27.md): low public surface, 0 open issues, weak contribution process, cloud/API-key repro risk. Revisit only for Morph-specific request or fresh current-main bug card. |
 | `morph-labs/morph-typescript-sdk` | `NO-GO` for generic scouting after [#64](https://github.com/serejaris/corp-opensource/issues/64) / [watch](morph-sdk-generic-scope-closure-2026-05-27.md): low public surface, stale issues with maintainer replies, stale/conflict-heavy PR queue, cloud/API-key repro risk. Revisit only for Morph-specific request or fresh current-main bug card. |
-| `docker/mcp-gateway` | Useful MCP distribution/gateway reference, but demoted to exact validation/config bugs only. |
-| `docker/mcp-registry` | Registry/catalog queue is noisy; demoted to exact metadata validation bugs only. |
+| `docker/mcp-gateway` | `WATCH` after [#65](https://github.com/serejaris/corp-opensource/issues/65) / [watch](docker-mcp-scope-2026-05-27.md): useful MCP distribution/gateway reference, but exact validation/config only. Watch leads such as `#442` and `#430` require one-issue duplicate gate, runner repro and regression card before any promotion. |
+| `docker/mcp-registry` | `NO-GO` for generic scouting after [#65](https://github.com/serejaris/corp-opensource/issues/65) / [watch](docker-mcp-scope-2026-05-27.md): registry/catalog queue is noisy and PR-heavy; keep only as reference / exact metadata-validation target by concrete linked card. |
 | `microsoft/Webwright` | Browser-agent framework; reference/watch until contribution docs and release maturity are clearer. |
 | `ServiceNow/BrowserGym` | Web-agent benchmark environment; research/benchmark watch, not default PR lane. |
 | `dagger/dagger` | Execution graph/container infra; only direct agent-runner breakages belong here. |
@@ -166,4 +166,4 @@ Weekly scouting must update this scope only when:
 
 Record removed or demoted repos with a reason.
 
-Latest repo-universe update: [Morph SDK generic scope closure](morph-sdk-generic-scope-closure-2026-05-27.md), after [OpenClaw/OpenClaude identity scan](openclaw-openclaude-identity-scouting-2026-05-27.md) and [cycle 29](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-29-repo-universe.md). Repo-card queue: [repo cards 2026-05-27](repo-cards-ai-native-2026-05-27.md).
+Latest repo-universe update: [Docker MCP scope check](docker-mcp-scope-2026-05-27.md), after [Morph SDK generic scope closure](morph-sdk-generic-scope-closure-2026-05-27.md), [OpenClaw/OpenClaude identity scan](openclaw-openclaude-identity-scouting-2026-05-27.md) and [cycle 29](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-29-repo-universe.md). Repo-card queue: [repo cards 2026-05-27](repo-cards-ai-native-2026-05-27.md).
