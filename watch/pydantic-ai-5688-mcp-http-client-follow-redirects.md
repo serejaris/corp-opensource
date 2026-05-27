@@ -8,11 +8,31 @@ Local branch: `codex/5688-mcp-http-client-follow-redirects`
 
 ## Status
 
-Local regression-first patch prepared. Do not submit upstream yet: Pydantic AI repo rules and the live issue state still point to comment-first / maintainer-confirmed PR flow.
+WATCH / duplicate-covered by `pydantic/pydantic-ai#5694`. Не отправлять upstream PR/comment от нас, пока открыт покрывающий PR.
 
 Upstream comment offer already posted:
 
 https://github.com/pydantic/pydantic-ai/issues/5688#issuecomment-4554005692
+
+## Follow-up 2026-05-27
+
+Live gates:
+
+- `pydantic/pydantic-ai#5688` остаётся open и unassigned с labels `bug`, `MCP`, `httpx`, `pydanty:bug`.
+- `pydanty` подтвердил root cause и пометил issue как PR-ready, но maintainer assignment или confirmation для нас нет.
+- Наш upstream offer comment был условным: внешний PR только если maintainers хотят этого и нет активного pydanty/delegated opener.
+- `pydantic/pydantic-ai#5694` открыт, non-draft, exact covering PR для FastMCP HTTP factory kwargs / `follow_redirects`; visible CI green/skipped, `mergeStateStatus=CLEAN`, `mergeable=MERGEABLE`, review decision пока не записан.
+- Смежный `#5664` — `httpx2` prep, не exact fix для `#5688`.
+
+6-role scouting fallback и 3-role critique выбрали ровно один status:
+
+`next_status: WATCH`
+
+Decision: local regression-first patch и verification остаются только historical evidence. Сейчас не делать duplicate PR и не оставлять повторный upstream comment. Мониторить review/merge/close по `#5694`.
+
+Re-entry condition: возвращаться к `COMMENT-FIRST` или `PR-READY` только если `#5694` закроют без merge, maintainers явно попросят alternative patch/regression, или merged fix не покроет `MCPToolset(url, http_client=...)` `follow_redirects` path.
+
+Runner: новый runner repro в этом цикле не нужен, потому что duplicate gate блокирует upstream action раньше repro. Повторять current-main repro в `corp-opensource-runner` только после re-entry condition.
 
 ## Contract
 
