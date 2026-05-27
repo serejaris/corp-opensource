@@ -6,7 +6,7 @@
 - PR: https://github.com/pydantic/pydantic-ai/pull/5678
 - Local checkout: `/Users/ris/Documents/GitHub/pydantic-ai-5666`
 - Branch: `codex/serialize-any-bytes`
-- Commit: `9e712842 fix: preserve binary data in instrumentation serialization`
+- Commit: `be323816 fix: preserve binary data in instrumentation serialization`
 
 ## Why In Scope
 
@@ -57,10 +57,25 @@ Second check:
 - `mypy`: passed.
 - `Guard`: passed.
 - `harness compat`: passed.
+- `docs`: passed.
 - PR bots category/size/apply: passed.
-- several example tests already passed.
+- examples on Python 3.11/3.12/3.13/3.14: passed.
+- `pydantic-ai-slim` tests on Python 3.10/3.11/3.12/3.13/3.14: passed.
+- `pydantic-evals` tests on Python 3.10/3.11/3.12/3.13/3.14: passed.
 - broader Python matrix still pending.
 - `chatgpt-codex-connector` posted that code review usage limits were reached; no code action required.
+
+CI repair:
+
+- First CI `lint` job failed inside the pre-commit `typecheck` hook, not Ruff.
+- Cause: Pyright reported partially unknown types in `_json_safe_bytes()` for `Mapping`, `tuple`, and `list` iterations.
+- Fix: added local casts before iterating those containers.
+- New local validation:
+  - `uv run pyright pydantic_ai_slim/pydantic_ai/_instrumentation.py` -> `0 errors, 0 warnings, 0 informations`
+  - `uv run pytest tests/models/test_instrumented.py -q -k 'serialize_any_preserves_binary_data or messages_to_otel_events_serialization_errors'` -> `2 passed`
+  - `uv run ruff check ...` and `uv run ruff format --check ...` -> passed
+- Amended and force-pushed branch to commit `be323816`.
+- New CI run started; checks are pending again.
 
 ## Next
 

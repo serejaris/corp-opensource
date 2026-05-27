@@ -113,3 +113,14 @@ Next check:
 - Watch whether #33017 merges before #32999.
 - If #33017 lands first, rebase #32999 and rerun `tests/run_agent/test_run_agent_codex_responses.py`.
 - If maintainers close #32999 as duplicate, compare whether callback-error regression is covered before accepting closure.
+
+## Follow-up loop check - 2026-05-27 04:14Z
+
+- #32999 remains open, ready, mergeable, with no checks reported.
+- #33017 remains open and mergeable.
+- #33017 checks are now complete: all substantive checks passed; only follow-on merge/move/save jobs are skipped.
+
+Interpretation:
+
+- No new upstream comment needed yet: the distinction between #32999 and #33017 is already documented on #32999.
+- Next action is still to watch merge order. If #33017 lands first, rebase #32999 onto the merged recovery shape and preserve only the callback-error regression/hardening.
