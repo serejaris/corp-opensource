@@ -73,3 +73,32 @@ session_history-limit 10000
   - `uv run pre-commit run --files openhands-tools/openhands/tools/terminal/constants.py tests/tools/terminal/test_tmux_pane_pool.py` -> passed;
 - replied on review thread with validation;
 - status checks list became empty after follow-up push; follow-up: re-check checks/reviews and avoid pushing unless asked.
+
+## Follow-up после OpenHands review
+
+2026-05-27:
+
+- human maintainer `VascoSch92` написал, что change looks fine, но хочет прогнать eval;
+- `run-eval-50` был triggered;
+- OpenHands bot оставил `CHANGES_REQUESTED` по тесту:
+  - exact-value assertions были слишком хрупкими для test name;
+  - `HISTORY_LIMIT == 10_000` был unrelated assertion внутри viewport test;
+  - нужно явно зафиксировать wrap trade-off в комментарии;
+- follow-up commit `3c8eae78` pushed:
+  - test переименован в `test_tmux_session_viewport_is_bounded`;
+  - assertions стали `TMUX_SESSION_WIDTH <= 256`, `TMUX_SESSION_HEIGHT <= 200`;
+  - unrelated `HISTORY_LIMIT` assertion удалён;
+  - comment добавлен: output шире `TMUX_SESSION_WIDTH` будет wrap, это принятый tradeoff против oversized `1000x1000` grid;
+- reviewer suggestion `TMUX_SESSION_WIDTH * TMUX_SESSION_HEIGHT < HISTORY_LIMIT` не применён, потому что при целевых значениях он false: `256 * 200 = 51200`, `HISTORY_LIMIT = 10000`;
+- validation после rebase на свежую fork branch:
+  - `uv run pytest tests/tools/terminal/test_tmux_pane_pool.py::test_tmux_session_viewport_is_bounded -q` -> 1 passed;
+  - `uv run pre-commit run --files openhands-tools/openhands/tools/terminal/constants.py tests/tools/terminal/test_tmux_pane_pool.py` -> passed;
+- PR comment: https://github.com/OpenHands/software-agent-sdk/pull/3394#issuecomment-4553490302.
+
+Post-push check:
+
+- PR remains open and mergeable;
+- GitHub still reports old `CHANGES_REQUESTED` from the previous OpenHands bot review;
+- checks list is empty immediately after follow-up push, so there is no new CI/eval signal yet.
+
+Следующее действие: дождаться новых CI/eval результатов и maintainer response; не пушить дальше без нового actionable review.

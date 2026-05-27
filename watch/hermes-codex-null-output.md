@@ -145,3 +145,22 @@ Testing lesson:
   - dependency/SDK failure recovers through the intended public stream path;
   - same-looking app-side callback/handler failure does not recover.
 - A helper-only predicate test would have missed this bug because the failure was the placement of `except TypeError`, not the string predicate itself.
+
+## Final follow-up for #32999 - 2026-05-27
+
+Upstream closed #32999 as obsolete:
+
+- Close comment: https://github.com/NousResearch/hermes-agent/pull/32999#issuecomment-4552945709
+- Maintainer explanation: #33042 merged commit `cb38ce28c` removes `client.responses.stream(...)` from both Codex call sites and uses `client.responses.create(stream=True)` raw event iteration, assembling final content from `response.output_item.done`.
+- Because Hermes no longer reads terminal `response.completed.output` for content reconstruction, the original SDK `output=null` TypeError path is structurally impossible in those Codex call sites.
+
+Decision:
+
+- Accept closure; do not reopen or argue.
+- The practical outage fix landed through #32963 and later architectural replacement through #33042.
+- Keep the durable lesson from #32999: recovery around dependency parser failures needs a boundary regression proving that app-side callback/local processing `TypeError("'NoneType' object is not iterable")` still propagates.
+
+Next:
+
+- No Hermes PR action pending for this outage.
+- Continue watching `openai/openai-python#3315` as the root SDK invariant cleanup.
