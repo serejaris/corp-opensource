@@ -13,7 +13,7 @@
 
 | Проект | Upstream | Наш контур | Статус | Следующее действие |
 |---|---:|---:|---|---|
-| NousResearch/hermes-agent | [#32884](https://github.com/NousResearch/hermes-agent/pull/32884) | [fork branch](https://github.com/serejaris/hermes-agent/tree/fix/codex-null-output-stream) | Закрыт как duplicate после merge через [#32963](https://github.com/NousResearch/hermes-agent/pull/32963) | Проверить релиз, `openai-python#3315`, и hardening follow-up по broad `TypeError` recovery |
+| NousResearch/hermes-agent | [#32999](https://github.com/NousResearch/hermes-agent/pull/32999), [#32963](https://github.com/NousResearch/hermes-agent/pull/32963) | [#6](https://github.com/serejaris/corp-opensource/issues/6), [watch](watch/hermes-codex-null-output.md) | #32963 merged outage fix; #32999 open/conflicting as distinct recovery-boundary hardening | Wait maintainer consolidation before rebase/noise |
 | pydantic/pydantic-ai | [#5678](https://github.com/pydantic/pydantic-ai/pull/5678) | [#14](https://github.com/serejaris/corp-opensource/issues/14) | Open, mergeable, CI green; Codex review quota warning only | Watch maintainer/bot review |
 | pydantic/pydantic-ai | [#5680](https://github.com/pydantic/pydantic-ai/pull/5680) | [#16](https://github.com/serejaris/corp-opensource/issues/16), [watch](watch/pydantic-ai-5679-textcontent-metadata.md) | Open, mergeable, CI green; Codex review quota warning only | Watch maintainer/bot review |
 | pydantic/pydantic-ai | [#5681](https://github.com/pydantic/pydantic-ai/pull/5681) | [watch](watch/pydantic-ai-5671-google-cached-content.md) | Competing PR open, mergeable, CI green | Watch/review only; do not duplicate |
@@ -22,12 +22,20 @@
 | openai/codex | [#24704](https://github.com/openai/codex/issues/24704) | [watch](watch/openai-codex-24704-subagent-prompt-cache.md) | Strong subagent/cache bug; reporter has reference PR | Watch; no duplicate PR unless maintainers ask |
 | CopilotKit/CopilotKit | [#5035](https://github.com/CopilotKit/CopilotKit/pull/5035) | [#19](https://github.com/serejaris/corp-opensource/issues/19), [watch](watch/copilotkit-4911-workspace-deps.md) | Open, mergeable; docs preview green; other Vercel previews need team authorization | Watch maintainer review |
 | langchain-ai/deepagents | [#3616](https://github.com/langchain-ai/deepagents/pull/3616), [#3587](https://github.com/langchain-ai/deepagents/issues/3587) | [#20](https://github.com/serejaris/corp-opensource/issues/20), [watch](watch/deepagents-3587-qwen-tool-call-id.md) | PR auto-closed by assignment guard; approach posted on issue | Wait for maintainer assignment/reopen |
-| OpenHands/OpenHands | [#14476](https://github.com/OpenHands/OpenHands/issues/14476) | [#21](https://github.com/serejaris/corp-opensource/issues/21), [watch](watch/openhands-14476-conversation-metadata-race.md) | Candidate/watch; no competing PR found; SaaS semantics risk | Only pursue if unit repro is possible |
+| OpenHands/OpenHands | [#14563](https://github.com/OpenHands/OpenHands/issues/14563) | [#26](https://github.com/serejaris/corp-opensource/issues/26) | Watch / maintainer-direction-needed; container visibility vs personal skills roadmap | Wait maintainer direction |
 | browser-use/browser-use | [#4877](https://github.com/browser-use/browser-use/issues/4877), [#4801](https://github.com/browser-use/browser-use/issues/4801), [#4846](https://github.com/browser-use/browser-use/issues/4846) | [scouting](watch/ai-native-frameworks-scouting-2026-05-27.md) | Good repo, but top candidates already covered by open mergeable PRs | Watch/review only; no duplicate PR |
+| browser-use/browser-use | [#4796](https://github.com/browser-use/browser-use/issues/4796), [#4815](https://github.com/browser-use/browser-use/pull/4815) | [#27](https://github.com/serejaris/corp-opensource/issues/27) | Duplicate-covered; PR open/mergeable/green in tracked state | Watch/review only |
 | OpenHands/software-agent-sdk | [#3394](https://github.com/OpenHands/software-agent-sdk/pull/3394), [#2806](https://github.com/OpenHands/software-agent-sdk/issues/2806) | [#22](https://github.com/serejaris/corp-opensource/issues/22), [watch](watch/openhands-sdk-2806-tmux-viewport.md) | PR open, mergeable, review required; `pr-review` skipped | Watch maintainer review |
 | anomalyco/opencode | [#29530](https://github.com/anomalyco/opencode/pull/29530), [#29525](https://github.com/anomalyco/opencode/issues/29525) | [#23](https://github.com/serejaris/corp-opensource/issues/23), [watch](watch/opencode-29525-webfetch-null-format.md) | PR open, mergeable; duplicate/compliance/standards checks green | Watch maintainer review |
 | cline/cline | [#11087](https://github.com/cline/cline/pull/11087), [#11086](https://github.com/cline/cline/issues/11086) | [#24](https://github.com/serejaris/corp-opensource/issues/24), [scouting](watch/ai-native-frameworks-scouting-2026-05-27-cycle-7.md) | PR open, mergeable; Greptile gap addressed; Quality Checks + Ubuntu/Windows SDK tests green | Watch maintainer review |
 | e2b-dev/E2B | [#1352](https://github.com/e2b-dev/E2B/issues/1352) | [#25](https://github.com/serejaris/corp-opensource/issues/25), [scouting](watch/ai-native-frameworks-scouting-2026-05-27-cycle-2.md) | Strategic sandbox reconnect candidate; may need live sandbox | Track; avoid PR until repro/test surface clear |
+| aaif-goose/goose | [#9136](https://github.com/aaif-goose/goose/issues/9136) | [#28](https://github.com/serejaris/corp-opensource/issues/28) | Real bug; no duplicate PR; comment-first assignment ask posted | Wait maintainer assignment |
+| pydantic/pydantic-ai | [#5419](https://github.com/pydantic/pydantic-ai/issues/5419), [#5443](https://github.com/pydantic/pydantic-ai/pull/5443) | [#29](https://github.com/serejaris/corp-opensource/issues/29) | Duplicate-covered; PR open/mergeable but coverage/check failing in tracked state | Watch existing PR, no duplicate |
+| agno-agi/agno | [#8062](https://github.com/agno-agi/agno/issues/8062) | [#30](https://github.com/serejaris/corp-opensource/issues/30), [cycle 8](watch/ai-native-frameworks-scouting-2026-05-27-cycle-8.md) | New candidate; no duplicate PR found; needs local repro | Clone/read rules, failing test first |
+| langchain-ai/langgraph | [#7684](https://github.com/langchain-ai/langgraph/issues/7684) | [#31](https://github.com/serejaris/corp-opensource/issues/31), [cycle 8](watch/ai-native-frameworks-scouting-2026-05-27-cycle-8.md) | No-go; three assignment-gated PRs already closed | Watch only |
+| trycua/cua | [#1724](https://github.com/trycua/cua/issues/1724) | [#32](https://github.com/serejaris/corp-opensource/issues/32), [cycle 8](watch/ai-native-frameworks-scouting-2026-05-27-cycle-8.md) | Comment-first; direct stdio launch support needs confirmation | Repro/comment only with new evidence |
+| openai/codex | [#24612](https://github.com/openai/codex/issues/24612) | [#33](https://github.com/serejaris/corp-opensource/issues/33), [cycle 8](watch/ai-native-frameworks-scouting-2026-05-27-cycle-8.md) | Candidate/watch; no direct PR found; provider-history sanitizer bug | Watch/access-sensitive |
+| aaif-goose/goose | [#9332](https://github.com/aaif-goose/goose/issues/9332) | [#34](https://github.com/serejaris/corp-opensource/issues/34), [cycle 8](watch/ai-native-frameworks-scouting-2026-05-27-cycle-8.md) | Comment-first; no direct PR found; design-sensitive runtime cleanup | Need Linux repro + maintainer approach |
 | langchain-ai/deepagents | [#3568](https://github.com/langchain-ai/deepagents/issues/3568) | [scouting](watch/ai-native-frameworks-scouting-2026-05-27-cycle-2.md) | Small prompt/schema bug, but reporter has local fix and assignment gate risk | Watch/comment only if maintainers ask |
 
 ## Рабочие issues
@@ -57,6 +65,15 @@
 - [#23 opencode webfetch nullable format mismatch](https://github.com/serejaris/corp-opensource/issues/23)
 - [#24 cline CLI sends unsupported reasoning field to OpenAI-compatible GLM endpoints](https://github.com/serejaris/corp-opensource/issues/24)
 - [#25 E2B resumed sandbox stdout stream wedges after large response](https://github.com/serejaris/corp-opensource/issues/25)
+- [#26 OpenHands global skills не видны в openhands serve](https://github.com/serejaris/corp-opensource/issues/26)
+- [#27 browser-use boolean index action schema](https://github.com/serejaris/corp-opensource/issues/27)
+- [#28 goose repeated tool calls bypass RepetitionInspector](https://github.com/serejaris/corp-opensource/issues/28)
+- [#29 pydantic-ai multi-MCP discovery AG-UI stalls](https://github.com/serejaris/corp-opensource/issues/29)
+- [#30 agno MCP tools crash when stream=True returns async iterator](https://github.com/serejaris/corp-opensource/issues/30)
+- [#31 LangGraph PostgresStore numeric filters assignment-gated](https://github.com/serejaris/corp-opensource/issues/31)
+- [#32 trycua cua-driver mcp SIGABRT before handshake](https://github.com/serejaris/corp-opensource/issues/32)
+- [#33 Codex web_search_call history crashes custom provider after model switch](https://github.com/serejaris/corp-opensource/issues/33)
+- [#34 goose PR_SET_PDEATHSIG kills stdio MCP subprocesses](https://github.com/serejaris/corp-opensource/issues/34)
 
 ## Правила
 
@@ -83,6 +100,7 @@
 - [Runner-контейнер на corp-server](playbooks/runner-container.md)
 - [AI-native frameworks scouting cycle 2](watch/ai-native-frameworks-scouting-2026-05-27-cycle-2.md)
 - [AI-native frameworks scouting cycle 7](watch/ai-native-frameworks-scouting-2026-05-27-cycle-7.md)
+- [AI-native frameworks scouting cycle 8](watch/ai-native-frameworks-scouting-2026-05-27-cycle-8.md)
 
 ## Метки
 
