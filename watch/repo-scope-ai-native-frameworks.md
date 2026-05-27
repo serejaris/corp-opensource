@@ -41,9 +41,10 @@ These are allowed for regular weekly scouting.
 | `e2b-dev/E2B` | `12371` stars, pushed `2026-05-27` | Secure sandbox/runtime layer for agents. |
 | `microsoft/playwright-mcp` | `33098` stars, pushed `2026-05-23`; parent count `5` open issues / `4` open PRs on `2026-05-27` | Canonical browser automation MCP server; small backlog and concrete tool/protocol regression surface. |
 | `ChromeDevTools/chrome-devtools-mcp` | `41969` stars, pushed `2026-05-27`; parent count `65` open issues / `16` open PRs on `2026-05-27` | Chrome DevTools MCP browser/debugging runtime for coding agents; separate lane from Playwright MCP. |
-| `PrefectHQ/fastmcp` | `25344` stars, pushed `2026-05-27`; parent count `218` open issues / `15` open PRs on `2026-05-27` | Popular MCP framework/runtime with local fixture-friendly client/server/tool surfaces; avoid spec-design PRs without maintainer signal. |
+| `PrefectHQ/fastmcp` | `25346` stars, pushed `2026-05-27`; parent count `218` open issues / `15` open PRs on `2026-05-27` | Popular MCP framework/runtime with local fixture-friendly client/server/tool surfaces; assignment-first and no spec-design PR without maintainer signal. |
 | `google/adk-python` | Issue `#5864` active on `2026-05-27`; repo has contribution guide, PR template, unit tests, tox, and recent optional-dependency import PRs | Agent Development Kit: agent runtime/framework, code execution, memory, evaluation, Vertex AI integrations. Good for dependency-boundary and harness reliability bugs when repo gates allow. |
 | `openai/openai-agents-python` | `26705` stars, pushed `2026-05-26`; parent count `45` open issues / `68` open PRs on `2026-05-27` | Agent SDK/runtime with tools, handoffs, tracing and testable unit-level surfaces. Good for narrow runtime/tool-call regressions after exact commit/version and duplicate gate. |
+| `SWE-agent/mini-swe-agent` | `4617` stars, pushed `2026-05-25`; parent count `17` open issues / `9` open PRs on `2026-05-27` | Compact terminal-agent and eval/harness target; small enough for full issue sweep, but runner repro and duplicate search are required before upstream action. |
 
 ## Tier 1B: Strategic Watch, Not Blind PR Hunting
 
@@ -78,9 +79,9 @@ These can produce good candidates, but the next step must be repo-specific gates
 | `ComposioHQ/composio` | Tool registry/auth/integration monorepo; package/path-specific only because default branch is `next` and release tags can describe one package. |
 | `promptfoo/promptfoo` | Eval/harness/provider assertion and plugin surface; high PR collision risk, targeted PR search required. |
 | `SWE-agent/SWE-agent` | Coding-agent harness and runner; useful for benchmark runner, Docker/env and docs drift bugs. |
-| `SWE-agent/mini-swe-agent` | Compact terminal-agent harness; cross-check with `SWE-agent/SWE-agent` before treating a candidate as independent. |
+| `SWE-agent/mini-swe-agent` | Promoted to Tier 1A after cycle 29; kept here only as a reminder to cross-check with `SWE-agent/SWE-agent` before treating a candidate as independent. |
 | `Skyvern-AI/skyvern` | Browser/vision/RPA agent; take only distinct browser-agent issues not already covered by current browser lanes. |
-| `BloopAI/vibe-kanban` | Paperclip-like control-plane for coding agents; strong fit but noisy queue, comment-first until contribution surface is validated. |
+| `BloopAI/vibe-kanban` | Paperclip-like control-plane for coding agents; scoped control-plane watch after cycle 29, but activity/maintainer rhythm and contribution surface must be validated before issue-level work. |
 | `QwenLM/qwen-code` | Terminal coding agent; verify-first due to high issue/PR volume and likely duplicate reports. |
 | `gptme/gptme` | Lower-noise terminal agent; verify maintainer rhythm before promotion. |
 | `awslabs/cli-agent-orchestrator` | Multi-agent CLI control-plane; lower popularity but relevant control-plane watch. |
@@ -104,7 +105,7 @@ These can become Tier 1 only after identity and repo-health validation.
 |---|---|
 | `openclaw/openclaw` | Search reports unusually high stars; verify releases, commits, issue quality, and maintainer loop before trusting. |
 | `Gitlawb/openclaude` | OpenClaude-like target, but identity/canonical status needs validation. |
-| `Infisical/agent-vault` | Relevant credential proxy/vault for agents, smaller/newer repo; validate activity and test harness. |
+| `Infisical/agent-vault` | Relevant credential proxy/vault for agents, smaller/newer repo; cycle 29 created an infra-adjacent watch card, but license text and secret-boundary gates are required before PR work. |
 | `HKUDS/OpenHarness` | Appears in agent-harness search; validate real usage and maintainership. |
 | `langchain-ai/deepagentsjs` | JS sibling of DeepAgents; validate maturity and issue quality. |
 | `OpenHands/software-agent-sdk` | Suggested by OpenHands maintainers; validate separately from monorepo issues. |
@@ -113,10 +114,10 @@ These can become Tier 1 only after identity and repo-health validation.
 | `microsoft/autogen` | Large Microsoft framework; lower current push freshness and high backlog/triage risk. |
 | `seleniumbase/SeleniumBase` | Strong browser automation substrate, but not AI-native by default. |
 | `steel-dev/steel-browser` | Relevant smaller browser sandbox; verify maintainer rhythm before promotion. |
-| `morph-labs/morph-python-sdk` | Very low public stars/activity; keep only as Morph-specific watch. |
-| `morph-labs/morph-typescript-sdk` | Very low public stars/activity; keep only as Morph-specific watch. |
-| `docker/mcp-gateway` | Useful MCP distribution/gateway watch, but less direct than SDK/runtime work. |
-| `docker/mcp-registry` | Registry/catalog queue is noisy; only exact metadata validation bugs. |
+| `morph-labs/morph-python-sdk` | Very low public stars/activity; close generic scouting scope unless a Morph-specific target is requested. |
+| `morph-labs/morph-typescript-sdk` | Very low public stars/activity; close generic scouting scope unless a Morph-specific target is requested. |
+| `docker/mcp-gateway` | Useful MCP distribution/gateway reference, but demoted to exact validation/config bugs only. |
+| `docker/mcp-registry` | Registry/catalog queue is noisy; demoted to exact metadata validation bugs only. |
 | `microsoft/Webwright` | Browser-agent framework; reference/watch until contribution docs and release maturity are clearer. |
 | `ServiceNow/BrowserGym` | Web-agent benchmark environment; research/benchmark watch, not default PR lane. |
 | `dagger/dagger` | Execution graph/container infra; only direct agent-runner breakages belong here. |
@@ -165,4 +166,4 @@ Weekly scouting must update this scope only when:
 
 Record removed or demoted repos with a reason.
 
-Latest repo-universe update: [cycle 28](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-28-repo-universe.md). Repo-card queue: [repo cards 2026-05-27](repo-cards-ai-native-2026-05-27.md).
+Latest repo-universe update: [cycle 29](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-29-repo-universe.md). Repo-card queue: [repo cards 2026-05-27](repo-cards-ai-native-2026-05-27.md).
