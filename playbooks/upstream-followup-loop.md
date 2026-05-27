@@ -56,6 +56,12 @@ Every check updates the relevant `corp-opensource` issue/watch note with:
 - whether an upstream comment was posted;
 - next check/action.
 
+## Pre-Push Test Lesson
+
+If an upstream repo has strict coverage gates, do not rely only on a targeted `-k` regression run before force-push. Run the smallest full owner test file/module that can cover all new branches, and make the regression include every data shape touched by the patch.
+
+Example from `pydantic-ai#5678`: the targeted binary serialization test passed, but upstream coverage failed at `99.99` because tuple handling lines were not exercised. The fixed regression now covers mapping bytes and tuple/list nested bytes before push.
+
 ## Example: Hermes Codex Null Output
 
 On 2026-05-27:

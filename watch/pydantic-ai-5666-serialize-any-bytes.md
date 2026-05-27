@@ -6,7 +6,7 @@
 - PR: https://github.com/pydantic/pydantic-ai/pull/5678
 - Local checkout: `/Users/ris/Documents/GitHub/pydantic-ai-5666`
 - Branch: `codex/serialize-any-bytes`
-- Commit: `be323816 fix: preserve binary data in instrumentation serialization`
+- Commit: `eec87ea0 fix: preserve binary data in instrumentation serialization`
 
 ## Why In Scope
 
@@ -105,6 +105,40 @@ Fourth check:
   - all-extras on Python 3.10/3.11/3.12
   - lowest-versions on Python 3.10/3.11/3.13
 - No upstream comment needed while CI is still running and no maintainer action is requested.
+
+Coverage repair:
+
+- The full test matrix passed, then the final coverage job failed because total coverage was `99.99`, below `fail-under=100.00`.
+- Missing lines were `_json_safe_bytes()` tuple handling (`_instrumentation.py:105-106`).
+- Added a minimal assertion covering tuple/list nested bytes:
+  - `serialize_any((b'\xff', [b'\x00'])) == ['/w==', ['AA==']]`
+- Local validation after repair:
+  - targeted `test_instrumented.py` selection -> `2 passed`
+  - full `tests/models/test_instrumented.py` -> `45 passed`
+  - `pyright` on `_instrumentation.py` -> `0 errors`
+  - `ruff check` and `ruff format --check` -> passed
+- Amended and force-pushed branch to commit `eec87ea0`.
+- New CI run started; wait for fresh result.
+
+Fifth check, 2026-05-27 01:32 -03:
+
+- Fresh CI run is for commit `eec87ea0`.
+- Confirmed green so far:
+  - `mypy`
+  - `harness compat`
+  - PR bots category/size
+  - examples on Python 3.11/3.12/3.13/3.14
+  - `pydantic-ai-slim` tests on Python 3.10/3.11/3.12/3.13/3.14
+  - `pydantic-evals` tests on Python 3.10/3.11/3.12/3.13/3.14
+- Still pending:
+  - `lint`
+  - `docs`
+  - standard/all-extras/lowest-versions matrix
+- No upstream comment posted; nothing is actionable for maintainers while the fresh run is still pending.
+
+Process lesson captured:
+
+- Updated local `open-source-pr-workflow` skill and `corp-opensource` follow-up playbook: when upstream has strict coverage gates, targeted `-k` tests are not enough before push. Run the smallest full owner test file/module and cover every new branch/data shape touched by the patch.
 
 ## Next
 
