@@ -94,6 +94,7 @@
 - [#41 Codex plugin-namespaced skills exceed MAX_NAME_LEN](https://github.com/serejaris/corp-opensource/issues/41)
 - [#42 Cycle 12 scouting: unblock next AI-native contribution target](https://github.com/serejaris/corp-opensource/issues/42)
 - [#44 opencode structured output conflicts with thinking tool_choice](https://github.com/serejaris/corp-opensource/issues/44)
+- [#45 Cycle 13 scouting: no safe new PR after six-agent triage](https://github.com/serejaris/corp-opensource/issues/45)
 
 ## Правила
 
@@ -129,6 +130,7 @@
 - [AI-native frameworks scouting cycle 11](watch/ai-native-frameworks-scouting-2026-05-27-cycle-11.md)
 - [AI-native frameworks scouting cycle 12](watch/ai-native-frameworks-scouting-2026-05-27-cycle-12.md)
 - [AI-native frameworks scouting cycle 12 PR-readiness](watch/ai-native-frameworks-scouting-2026-05-27-cycle-12-pr-readiness.md)
+- [AI-native frameworks scouting cycle 13](watch/ai-native-frameworks-scouting-2026-05-27-cycle-13.md)
 - [Goose #9332 PDEATHSIG MCP subprocess lifecycle](watch/goose-9332-pdeathsig-mcp-subprocess.md)
 
 ## Метки
