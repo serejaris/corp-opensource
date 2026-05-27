@@ -43,6 +43,7 @@
 | modelcontextprotocol/typescript-sdk | [#2108](https://github.com/modelcontextprotocol/typescript-sdk/issues/2108), [#2111](https://github.com/modelcontextprotocol/typescript-sdk/pull/2111) | [cycle 10](watch/ai-native-frameworks-scouting-2026-05-27-cycle-10.md) | Duplicate-covered; #2111 covers both mismatch directions plus match/absent initialize cases with green checks | Watch maintainer review; no PR |
 | modelcontextprotocol/typescript-sdk | [#2126](https://github.com/modelcontextprotocol/typescript-sdk/issues/2126), [#2140](https://github.com/modelcontextprotocol/typescript-sdk/pull/2140), [#2127](https://github.com/modelcontextprotocol/typescript-sdk/pull/2127) | [cycle 13](watch/ai-native-frameworks-scouting-2026-05-27-cycle-13.md) | Duplicate-covered by #2140; #2127 closed duplicate; #2140 has regression + changeset but one unrelated-looking integration job red | Watch #2140; no PR |
 | modelcontextprotocol/python-sdk | [#2687](https://github.com/modelcontextprotocol/python-sdk/issues/2687) | [#38](https://github.com/serejaris/corp-opensource/issues/38), [cycle 9](watch/ai-native-frameworks-scouting-2026-05-27-cycle-9.md) | Comment-first / maintainer-gated; pre-fix `AnyHttpUrl` vs `AnyUrl` redirect mismatch reproduced and [PR offer posted](https://github.com/modelcontextprotocol/python-sdk/issues/2687#issuecomment-4553121932) | Wait maintainer confirmation/assignment before PR |
+| google/adk-python | [#5864](https://github.com/google/adk-python/issues/5864) | [#46](https://github.com/serejaris/corp-opensource/issues/46), [cycle 14](watch/ai-native-frameworks-scouting-2026-05-27-cycle-14.md) | Best fresh candidate, but comment-first: issue has `request clarification`, maintainer asked reporter to validate full test pass; no duplicate PR found | Wait maintainer/reporter direction before PR |
 | modelcontextprotocol/python-sdk | [#2578](https://github.com/modelcontextprotocol/python-sdk/issues/2578), [#2590](https://github.com/modelcontextprotocol/python-sdk/pull/2590), [#2645](https://github.com/modelcontextprotocol/python-sdk/pull/2645), [#2646](https://github.com/modelcontextprotocol/python-sdk/pull/2646) | [cycle 10](watch/ai-native-frameworks-scouting-2026-05-27-cycle-10.md) | Duplicate-covered; all three linked PRs cover refresh resource omission + trailing slash normalization with green checks | Watch maintainer selection; no PR |
 | BerriAI/litellm | [#28971](https://github.com/BerriAI/litellm/issues/28971), [#28970](https://github.com/BerriAI/litellm/pull/28970) | [#39](https://github.com/serejaris/corp-opensource/issues/39), [cycle 10](watch/ai-native-frameworks-scouting-2026-05-27-cycle-10.md) | Comment-first / missing-regression-offered; #28970 is adjacent `/apply_guardrail`, not exact `/v1/responses` spend-log path | Wait maintainer signal before PR |
 | e2b-dev/E2B | [#1349](https://github.com/e2b-dev/E2B/issues/1349), [#1354](https://github.com/e2b-dev/E2B/pull/1354) | [#39](https://github.com/serejaris/corp-opensource/issues/39), [cycle 10](watch/ai-native-frameworks-scouting-2026-05-27-cycle-10.md) | PR open, ready, mergeable; red/green regression proved; CLA check failing | Sign E2B CLA, then `@cla-bot check`; watch CI/review |
@@ -96,6 +97,7 @@
 - [#42 Cycle 12 scouting: unblock next AI-native contribution target](https://github.com/serejaris/corp-opensource/issues/42)
 - [#44 opencode structured output conflicts with thinking tool_choice](https://github.com/serejaris/corp-opensource/issues/44)
 - [#45 Cycle 13 scouting: no safe new PR after six-agent triage](https://github.com/serejaris/corp-opensource/issues/45)
+- [#46 google-adk vertexai optional dependency import guard](https://github.com/serejaris/corp-opensource/issues/46)
 
 ## Правила
 
@@ -110,6 +112,7 @@
 - Для schema/runtime mismatch regression пишем через raw wire/tool boundary: передаём тот же payload, который видит runtime/модель (`null`, missing default, etc.), а не только typed helper.
 - Для downstream recovery вокруг SDK/dependency parser failures тест обязан доказать две стороны границы: SDK failure восстанавливается через публичный runtime path, а app-side callback/handler `TypeError` с таким же текстом не проглатывается. Helper predicate test здесь недостаточен.
 - Для publish/release багов проверяем не только helper, но и внешний артефакт/контракт: registry metadata, package manifest, install/runtime symptom или closest publishable fixture.
+- Для optional dependency import bugs regression должен проверять публичную границу импорта и понятный missing-extra/install-extra error. Helper-only тест недостаточен, если пользовательский симптом — raw `ModuleNotFoundError` при импорте.
 - Если есть competing PR, ведём duplicate triage публично: что сравнили, что портировали, чего не хватает.
 - Duplicate scan повторяем прямо перед кодом. Если candidate уже закрыт open/mergeable PR с тестами, переключаемся в watch/review/validation.
 - Реакции и лайки считаем impact-сигналом, но не approval и не CI.
@@ -132,6 +135,7 @@
 - [AI-native frameworks scouting cycle 12](watch/ai-native-frameworks-scouting-2026-05-27-cycle-12.md)
 - [AI-native frameworks scouting cycle 12 PR-readiness](watch/ai-native-frameworks-scouting-2026-05-27-cycle-12-pr-readiness.md)
 - [AI-native frameworks scouting cycle 13](watch/ai-native-frameworks-scouting-2026-05-27-cycle-13.md)
+- [AI-native frameworks scouting cycle 14](watch/ai-native-frameworks-scouting-2026-05-27-cycle-14.md)
 - [Goose #9332 PDEATHSIG MCP subprocess lifecycle](watch/goose-9332-pdeathsig-mcp-subprocess.md)
 
 ## Метки

@@ -42,6 +42,7 @@ These are allowed for regular weekly scouting.
 | `langchain-ai/deepagents` | `23391` stars, pushed `2026-05-27` | Agent harness with LangChain maintainership; likely tool/memory/runtime tests. |
 | `e2b-dev/E2B` | `12371` stars, pushed `2026-05-27` | Secure sandbox/runtime layer for agents. |
 | `openai/codex` | `86061` stars, pushed `2026-05-27` | Coding-agent runtime, subagents, prompt-cache, sandbox, app-server, and test harness patterns directly relevant to Hermes/Paperclip workflows. |
+| `google/adk-python` | Issue `#5864` active on `2026-05-27`; repo has contribution guide, PR template, unit tests, tox, and recent optional-dependency import PRs | Agent Development Kit: agent runtime/framework, code execution, memory, evaluation, Vertex AI integrations. Good for dependency-boundary and harness reliability bugs when repo gates allow. |
 
 ## Tier 2: Watch / Verify Before Bug Scouting
 
