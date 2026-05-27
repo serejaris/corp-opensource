@@ -91,3 +91,12 @@ On 2026-05-27:
 - Six-agent triage found no active duplicate PR, but the maintainer wording said “before we pick this up”.
 - Action: posted a comment-first assignment ask instead of opening a drive-by PR, and tracked internally in `corp-opensource#28`.
 - Test lesson: for runtime guard bugs, helper-level coverage is insufficient. The regression must exercise the public guard path (`inspect()` over a batch of `ToolRequest`s), because the bug was stale state across requests, not the helper predicate itself.
+
+## Example: Closing Stale Internal Candidates
+
+On 2026-05-27:
+
+- Internal `corp-opensource#21` still described OpenHands #14476 as a candidate with no competing PR.
+- Fresh live check found OpenHands #14489 open/mergeable with regression tests and green Python/lint checks.
+- Action: commented with exact PR/check evidence and closed the internal candidate as `duplicate-covered`.
+- Rule: do not keep stale candidate issues open just because the bug is interesting. If upstream has sufficient active coverage, close or relabel internal work as watch-only.
