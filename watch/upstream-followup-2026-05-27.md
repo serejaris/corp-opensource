@@ -1,5 +1,23 @@
 # Upstream Follow-up 2026-05-27
 
+## Check 09:05 -03
+
+Live follow-up after cycle 18 scouting and E2B duplicate cleanup.
+
+| Upstream | Current state | Action |
+|---|---|---|
+| `e2b-dev/E2B#1354` | Closed by us as superseded. It only covered JS `Template.fromDockerfile` and was CLA-blocked. | Done. Track `#1355` instead. |
+| `e2b-dev/E2B#1355` | Open maintainer/superset PR. Covers JS `Template.fromDockerfile` and Python `Template.from_dockerfile`, includes multi-source `COPY`/`ADD` regressions, CLA and Vercel green; SDK checks still in progress in tracked state. | Watch `#1355`; no duplicate PR. |
+| `modelcontextprotocol/python-sdk#2701` | Open, mergeable. Covers `#2687` with redirect URI normalization and shared auth regression; most CI green, one Windows locked job failed while all-green reported success. | Watch existing PR; no new PR for `#2687`. |
+| `pydantic-ai#5678/#5680/#5681` | Open, mergeable, CI green in tracked state. | Watch. |
+| `pydantic-ai#5688` | Still open, no assignee, pydanty root-cause comment + our offer; no exact PR found in tracked state. | Wait assignment/confirmation; local patch prep exists. |
+| `google/adk-python#5864` | Still open, assigned, `request clarification`; no reply after our offer. | Wait maintainer/reporter direction; local patch prep exists. |
+| `langgraph#7688` | Still open; our TIME_WAIT repro comment now has one thumbs-up; no maintainer direction yet. | Watch for package-surface direction. |
+| `OpenHands/software-agent-sdk#3394` | Open, mergeable, maintainer wants eval; reviewDecision still `CHANGES_REQUESTED` due earlier bot review despite follow-up. | Wait eval/human maintainer. |
+| `opencode#29530/#29565`, `cline#11087`, `CopilotKit#5035` | Still open; no new code-action comments in tracked state. | Watch maintainer review. |
+
+Decision: no fresh upstream PR this pass. The productive move was closing the now-duplicate E2B PR and recording new candidates for the next regression-first pass.
+
 ## Check 10:35 -03
 
 Live follow-up after opening `opencode#29565`.
