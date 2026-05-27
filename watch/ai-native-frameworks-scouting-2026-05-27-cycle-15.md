@@ -63,3 +63,32 @@ Next action:
 ## Process lesson
 
 `PR-ready` from a repo bot is not permission to race the bot or maintainer workflow. Treat it as a strong technical signal, then check the repo's social gate. If the issue says a PR opener is being delegated, leave a concise availability comment and wait.
+
+## Local patch prep
+
+Prepared a local regression-first branch without upstream submission:
+
+- Local checkout: `~/Documents/GitHub/pydantic-ai-5688`
+- Branch: `codex/5688-mcp-http-client-follow-redirects`
+- Watch note: [pydantic-ai #5688 MCPToolset http_client follow_redirects patch prep](pydantic-ai-5688-mcp-http-client-follow-redirects.md)
+
+Pre-fix failure after adding public-constructor regression:
+
+```text
+TypeError: _make_httpx_client_factory.<locals>.factory() got an unexpected keyword argument 'follow_redirects'
+```
+
+Post-fix verification:
+
+```text
+uv run pytest tests/test_mcp_toolset.py -k "http_client_kwarg_uses_factory or sse_url_with_http_client_uses_factory"
+2 passed, 84 deselected
+
+uv run ruff check pydantic_ai_slim/pydantic_ai/mcp.py tests/test_mcp_toolset.py
+All checks passed!
+
+PYRIGHT_PYTHON_IGNORE_WARNINGS=1 uv run pyright pydantic_ai_slim/pydantic_ai/mcp.py tests/test_mcp_toolset.py
+0 errors, 0 warnings, 0 informations
+```
+
+Lesson added to `open-source-pr-workflow`: user-supplied client/callback/factory adapter bugs need a public constructor/config regression plus the actual downstream callback shape.
