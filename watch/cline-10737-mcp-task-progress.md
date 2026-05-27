@@ -4,6 +4,7 @@
 
 - Issue: https://github.com/cline/cline/issues/10737
 - Internal issue: https://github.com/serejaris/corp-opensource/issues/17
+- Upstream triage comment: https://github.com/cline/cline/issues/10737#issuecomment-4551559976
 - Repo: `cline/cline`
 - Status checked: 2026-05-27 02:13 -03
 
@@ -46,9 +47,21 @@ Do not use that broken checkout as evidence of repo state until `git-lfs` is ins
 
 Source files were later readable after disabling the LFS filter for a restore command, but the checkout index still reports a broken delete/untracked state. Treat source reads as source-only evidence, not as a clean working tree.
 
+A clean source checkout was then created at `/Users/ris/Documents/GitHub/cline-10737-clean` with LFS filters disabled at clone time:
+
+```bash
+git -c filter.lfs.process= -c filter.lfs.required=false -c filter.lfs.clean= -c filter.lfs.smudge= clone https://github.com/cline/cline.git /Users/ris/Documents/GitHub/cline-10737-clean
+```
+
+Status:
+
+```text
+## main...origin/main
+```
+
 ## Current Main Source Audit
 
-Checked source on 2026-05-27 after restoring readable files:
+Checked source on 2026-05-27 from the clean no-LFS checkout:
 
 - `apps/vscode/src/core/task/tools/handlers/UseMcpToolHandler.ts:67` parses `block.params.arguments` into `parsedArguments`.
 - `apps/vscode/src/core/task/tools/handlers/UseMcpToolHandler.ts:168` passes `parsedArguments` directly to `config.services.mcpHub.callTool(server_name, tool_name, parsedArguments, config.ulid)`.
@@ -56,6 +69,14 @@ Checked source on 2026-05-27 after restoring readable files:
 - Prompt text still tells the model that `task_progress` is supported by every tool call, including `use_mcp_tool`, while also saying it must be a separate parameter and not inside `arguments`.
 
 This confirms the bug class still appears present on current readable source, but does not by itself justify a fresh PR because the duplicate PR queue is already messy.
+
+## PR Comparison
+
+- `#9951`: adds guarded `delete parsedArguments.task_progress`, but targets old `src/core/task/tools/handlers/UseMcpToolHandler.ts`; current repo path is `apps/vscode/src/core/task/tools/handlers/UseMcpToolHandler.ts`, so the PR is now conflicting/stale.
+- `#9542`: same minimal handler idea, also old path/conflicting.
+- `#8589`: mergeable, but its current diff only adds `.changeset/mcp-task-progress-filter.md`; it does not apply the behavior.
+
+Posted upstream triage comment on `#10737` with this comparison and stated that a fourth PR should wait for maintainer preference.
 
 ## Decision
 
