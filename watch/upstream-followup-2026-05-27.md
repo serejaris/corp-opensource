@@ -16,6 +16,15 @@ Live follow-up after cycle 18 scouting and E2B duplicate cleanup.
 | `OpenHands/software-agent-sdk#3394` | Open, mergeable, maintainer wants eval; reviewDecision still `CHANGES_REQUESTED` due earlier bot review despite follow-up. | Wait eval/human maintainer. |
 | `opencode#29530/#29565`, `cline#11087`, `CopilotKit#5035` | Still open; no new code-action comments in tracked state. | Watch maintainer review. |
 
+## Check 09:20 -03
+
+Live follow-up after opening `goose#9447`.
+
+| Upstream | Current state | Action |
+|---|---|---|
+| `aaif-goose/goose#9447` | Open, ready, mergeable, review required. `check-quarantined` and `machete` passed. `changes` failed because GitHub API returned `diff temporarily unavailable due to heavy server load`; dependent Rust/release/live-provider jobs skipped. Rerun attempt via `gh run rerun --failed` was not allowed. Local `cargo clippy -p goose --lib -- -D warnings` passed; PR comment posted with CI note. | Watch CI/review; ask maintainer rerun if needed. |
+| `aaif-goose/goose#9446` | PR `#9447` linked as fix for the missing `response.output` parser failure. | Track through PR. |
+
 Decision: no fresh upstream PR this pass. The productive move was closing the now-duplicate E2B PR and recording new candidates for the next regression-first pass.
 
 ## Check 10:35 -03

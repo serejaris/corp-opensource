@@ -57,12 +57,13 @@ Next concrete pass should start with `goose#9446` because it is Codex/Hermes-adj
 
 ## Goose #9446 patch prep
 
-Local regression-first patch prepared after this cycle:
+Local regression-first patch prepared after this cycle, then opened upstream PR:
 
 - Watch note: [goose-9446-response-completed-missing-output.md](goose-9446-response-completed-missing-output.md)
 - Branch: `/Users/ris/Documents/GitHub/goose` -> `codex/9446-openai-response-completed-default-output`
 - Commit: `f4d5dd6b2 fix(providers): tolerate missing Responses output`
+- PR: https://github.com/aaif-goose/goose/pull/9447
 - Pre-fix fail: `Failed to parse Responses stream event: missing field output`
-- Post-fix: targeted regression passed; `cargo fmt --check` passed.
+- Post-fix: targeted regression passed; all `providers::formats::openai_responses::tests` passed; `cargo fmt --check` passed.
 
-No upstream PR opened yet; next step is final PR-readiness + duplicate gate.
+Initial PR state: open, ready, mergeable; checks pending/skipped in tracked state.

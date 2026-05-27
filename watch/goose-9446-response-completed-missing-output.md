@@ -5,6 +5,7 @@ Date: 2026-05-27
 ## Upstream
 
 - Issue: https://github.com/aaif-goose/goose/issues/9446
+- PR: https://github.com/aaif-goose/goose/pull/9447
 - Internal tracker: https://github.com/serejaris/corp-opensource/issues/49
 - State checked on 2026-05-27: open, no assignee, no comments, no labels.
 - Duplicate scan checked on 2026-05-27: no PR found for `#9446`, `response.completed output`, `openai_responses`, or `chatgpt_codex` missing output.
@@ -51,14 +52,19 @@ cargo fmt --check
 Results:
 
 - targeted regression: passed
+- `cargo test -p goose providers::formats::openai_responses::tests -- --nocapture`: `31 passed`
 - `cargo fmt --check`: passed
+- `cargo clippy -p goose --lib -- -D warnings`: passed
 - Existing warning observed during tests: `method clear_env is never used` in `crates/goose/tests/providers.rs`; unrelated to this patch.
 
 ## Next gate
 
-Before upstream PR:
+PR opened after final duplicate and repo-rule gate:
 
-1. Re-run duplicate search and issue timeline.
-2. Re-read PR template if present and current repo rules.
-3. Decide whether targeted test + `cargo fmt --check` is enough for draft, or run broader `cargo test -p goose`.
-4. Use signed commit (`git commit -s` required by repo AGENTS).
+- PR URL: https://github.com/aaif-goose/goose/pull/9447
+- PR state after creation: open, ready, mergeable, review required.
+- Initial checks in tracked state: `check-quarantined` and `machete` passed; `changes` failed because GitHub API returned `diff temporarily unavailable due to heavy server load`; several downstream Rust/release/live-provider jobs were skipped because they depend on `changes`.
+- Attempted `gh run rerun 26510596648 --repo aaif-goose/goose --failed`, but GitHub CLI reported the workflow cannot be rerun by this actor.
+- PR comment with CI note posted: https://github.com/aaif-goose/goose/pull/9447#issuecomment-4554433919
+
+Next action: watch CI/review; if the transient `changes` failure persists, ask a maintainer to rerun or push a tiny follow-up only if there is a real code/review reason.
