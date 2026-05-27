@@ -9,6 +9,8 @@ Safe new ready PR: none yet.
 
 Best fresh candidate: `google/adk-python#5864`, but current action is comment-first/watch, not immediate PR.
 
+Update: local patch prep exists, but upstream PR is still intentionally blocked by the assignment/clarification gate.
+
 ## Upstream state
 
 - Issue: https://github.com/google/adk-python/issues/5864
@@ -17,6 +19,7 @@ Best fresh candidate: `google/adk-python#5864`, but current action is comment-fi
 - Status: open; labels `core`, `request clarification`; assigned to `surajksharma07`.
 - Maintainer signal: collaborator suggested wrapping the three imports in `google/adk/dependencies/vertexai.py` with `try/except ImportError`, but addressed the reporter and asked them to validate and run a full test pass.
 - Duplicate scan: no open/closed PR found for `#5864`, `dependencies/vertexai.py`, `vertexai` optional dependency, or `google-adk[gcp]` / `google-adk[all]` missing-extra guard.
+- Local patch prep: [google-adk-5864-vertexai-import-guard.md](google-adk-5864-vertexai-import-guard.md), branch `codex/5864-vertexai-import-guard`, commit `70820eea`.
 
 ## Regression card
 
@@ -63,6 +66,30 @@ Next action:
 3. Add regression-first test for missing `vertexai`.
 4. Patch only `src/google/adk/dependencies/vertexai.py`.
 5. Run targeted pytest and record whether full `tox` was run locally or deferred because of runtime cost.
+
+## Local patch prep result
+
+- Pre-fix regression was proved through public import boundary:
+
+```text
+AssertionError: assert 'google-adk[gcp]' in 'import of vertexai halted; None in sys.modules'
+```
+
+- Post-fix verification:
+
+```text
+uv run python -m pytest tests/unittests/test_optional_dependencies.py -k vertexai_dependency_shim
+# 1 passed, 11 deselected
+
+uv run python -m pytest tests/unittests/test_optional_dependencies.py
+# 4 passed, 8 skipped
+
+uv run pyink --check src/google/adk/dependencies/vertexai.py tests/unittests/test_optional_dependencies.py
+# unchanged
+
+uv run isort --check-only src/google/adk/dependencies/vertexai.py tests/unittests/test_optional_dependencies.py
+# passed
+```
 
 ## Lesson
 

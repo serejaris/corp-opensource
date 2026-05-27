@@ -85,6 +85,8 @@ gh search prs 'repo:OWNER/REPO is:pr is:open bug OR regression OR crash' --limit
 
 Для SSE/wire-framing багов не тестировать внешний timeout как основной контракт, если timeout живёт в клиенте или UI. Сначала выделить deterministic SDK boundary: какие байты/строки транспорт пишет в wire. Пример: U+2028/U+2029 валидны внутри JSON string, но не должны выходить literal внутри одной SSE `data:` line; regression должен проверять raw frame (`data:` содержит `\\u2028`/`\\u2029`) и round-trip через `JSON.parse`, а не ждать 300 секунд Claude/UI timeout.
 
+Для optional dependency import bugs тест должен начинаться с публичного import boundary: импортируем тот module/shim, который ломается у пользователя, и проверяем понятный install-extra hint. Пример: для `google/adk-python#5864` regression временно подменяет `sys.modules["vertexai"] = None`, импортирует `google.adk.dependencies.vertexai` и требует `google-adk[gcp]` / `google-adk[all]` в ошибке. Helper-only тест здесь не доказывает, что пользователь перестал видеть raw missing-module failure.
+
 Для invitation-only репозиториев отдельный gate: без явного приглашения не открывать upstream PR, даже если fix очевиден. В таком случае полезная работа — watch note, issue, duplicate/test analysis и короткий upstream comment только при наличии нового факта.
 
 Если candidate стал duplicate во время разведки, не считать работу потерянной. Сохранить test contract и сравнить с существующим PR:
