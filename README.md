@@ -2,21 +2,20 @@
 
 ## Что уже сделано: PR dashboard
 
-Последняя live-проверка dashboard: 2026-05-27 18:20 UTC. Это snapshot; перед новым upstream comment/PR нужно перепроверить конкретную строку через `gh pr view` / `gh issue view`.
+Последняя live-проверка dashboard: 2026-05-27 19:33 UTC. Это snapshot; перед новым upstream comment/PR нужно перепроверить конкретную строку через `gh pr view` / `gh issue view`.
 
 ### Активные upstream PR
 
 | Upstream PR | Что сделано | Текущий статус | Следующее действие |
 |---|---|---|---|
-| [aaif-goose/goose#9447](https://github.com/aaif-goose/goose/pull/9447) | Codex/OpenAI Responses parser: `response.completed` может приходить без `output`; добавлен regression-first parser test. | Open, mergeable, review required; `check-quarantined` и `machete` passed; `changes` failed из-за GitHub diff API transient, dependent jobs skipped. | Ждать maintainer/rerun/review; кодовых действий нет. |
-| [OpenHands/software-agent-sdk#3394](https://github.com/OpenHands/software-agent-sdk/pull/3394) | Уменьшен tmux viewport `1000x1000 -> 256x200`, добавлен regression на bounded viewport; review feedback закрыт follow-up commit `3c8eae78`. | Open, mergeable, merge-state blocked; GitHub всё ещё показывает старый `CHANGES_REQUESTED`; latest check rollup пустой, eval/re-review остаётся gate. | Ждать maintainer eval / workflow approval. |
-| [anomalyco/opencode#29565](https://github.com/anomalyco/opencode/pull/29565) | Structured output + thinking models: loosen tool-choice handling. | Open; duplicate/standards/compliance checks passed; no maintainer review yet. | Ждать maintainer review; не открывать третий opencode PR без отдельного сигнала. |
-| [cline/cline#11087](https://github.com/cline/cline/pull/11087) | OpenAI-compatible GLM: не отправлять unsupported reasoning controls. | Open, mergeable; SDK quality checks, Ubuntu/Windows tests and Socket checks passed after follow-up `e1ecc63a1`. | Ждать maintainer review. |
-| [anomalyco/opencode#29530](https://github.com/anomalyco/opencode/pull/29530) | Webfetch: `format=null` трактуется как default, а не как schema error. | Open, mergeable; duplicate/standards/compliance checks passed; contribution bot says guidelines satisfied. | Ждать maintainer review. |
-| [CopilotKit/CopilotKit#5035](https://github.com/CopilotKit/CopilotKit/pull/5035) | Release bump не должен публиковать workspace deps. | Open, mergeable, review required; docs Vercel preview green; other Vercel previews require team authorization. | Ждать maintainer review; Vercel auth failures не считать code failures. |
+| [OpenHands/software-agent-sdk#3394](https://github.com/OpenHands/software-agent-sdk/pull/3394) | Уменьшен tmux viewport `1000x1000 -> 256x200`, добавлен regression на bounded viewport; review feedback закрыт follow-up commit `3c8eae78`. | Open, mergeable, merge-state blocked; старый `CHANGES_REQUESTED` всё ещё активен; maintainer сказал looks fine, eval triggered, latest check rollup пустой. | Ждать maintainer eval / re-review / workflow approval. |
+| [anomalyco/opencode#29565](https://github.com/anomalyco/opencode/pull/29565) | Structured output + thinking models: loosen tool-choice handling. | Open, non-draft; visible duplicate/standards/compliance checks green; merge-state blocked, no maintainer review yet. | Ждать maintainer review; не открывать третий opencode PR без отдельного сигнала. |
+| [cline/cline#11087](https://github.com/cline/cline/pull/11087) | OpenAI-compatible GLM: не отправлять unsupported reasoning controls. | PR-OPEN / monitor only: open, mergeable, merge-state blocked; visible SDK quality, Ubuntu/Windows tests and Socket checks green after follow-up `e1ecc63a1`. | Ждать maintainer review; upstream comments не нужны. |
+| [anomalyco/opencode#29530](https://github.com/anomalyco/opencode/pull/29530) | Webfetch: `format=null` трактуется как default, а не как schema error. | Open, non-draft; visible duplicate/standards/compliance checks green; contribution bot says guidelines satisfied; merge-state blocked. | Ждать maintainer review. |
+| [CopilotKit/CopilotKit#5035](https://github.com/CopilotKit/CopilotKit/pull/5035) | Release bump не должен публиковать workspace deps. | Open, mergeable, review required; Vercel docs preview green; other Vercel previews require team authorization, not a proven code failure. | Ждать maintainer review / team preview authorization. |
 | [pydantic/pydantic-ai#5680](https://github.com/pydantic/pydantic-ai/pull/5680) | Сохранение `TextContent` metadata в UI adapter round-trip. | PR-OPEN: open, mergeable, merge-state clean; CI/harness/coverage green. | Ждать maintainer/bot review. |
 | [pydantic/pydantic-ai#5678](https://github.com/pydantic/pydantic-ai/pull/5678) | Instrumentation serialization не теряет binary data. | PR-OPEN: open, mergeable, merge-state clean; CI/harness/coverage green. | Ждать maintainer/bot review. |
-| [NousResearch/hermes-agent#15640](https://github.com/NousResearch/hermes-agent/pull/15640) | Старый Hermes gateway fix: macOS launchd plist должен регистрировать Login Item как `hermes`, не `python`. | Open; stale since 2026-04-25. | Отдельно решить: оживлять, закрывать или оставить вне текущего Codex/Hermes outage потока. |
+| [NousResearch/hermes-agent#15640](https://github.com/NousResearch/hermes-agent/pull/15640) | Старый Hermes gateway fix: macOS launchd plist должен регистрировать Login Item как `hermes`, не `python`. | Open, stale since 2026-04-25; вне текущего Hermes/Codex outage потока. | Cleanup decision отдельно: ping/rebase, close as abandoned, или вынести из active dashboard в stale backlog. |
 
 ### В работе сейчас
 
@@ -30,6 +29,7 @@
 | Upstream PR | Итог | Почему | Что трекаем дальше |
 |---|---|---|---|
 | [e2b-dev/E2B#1354](https://github.com/e2b-dev/E2B/pull/1354) | Closed, not merged. | Наш PR был CLA-blocked и покрывал только JS SDK; maintainer/superset [#1355](https://github.com/e2b-dev/E2B/pull/1355) покрывает JS + Python. | Watch #1355; наш #1354 закрыт как superseded. |
+| [aaif-goose/goose#9447](https://github.com/aaif-goose/goose/pull/9447) | Closed, not merged. | Maintainer closed as superseded/fixed in [#9449](https://github.com/aaif-goose/goose/pull/9449); наш PR не был merged. | No action; keep lesson as duplicate-race / faster upstream follow-up. |
 | [agno-agi/agno#8124](https://github.com/agno-agi/agno/pull/8124) | Closed, not merged. | Duplicate/auto-close: issue already had referenced PRs `#8065/#8084`. | Watch existing upstream PRs; не плодить duplicate. |
 | [langchain-ai/deepagents#3616](https://github.com/langchain-ai/deepagents/pull/3616) | Closed, not merged. | Assignment gate plus stronger technical gate: issue [#3587](https://github.com/langchain-ai/deepagents/issues/3587) is `waiting-on-author` for raw Qwen/LiteLLM tool-call payload details. | Ждать author/provider evidence; не PR'ить empty-id acceptance без доказательства Deep Agents contract bug. |
 | [NousResearch/hermes-agent#32999](https://github.com/NousResearch/hermes-agent/pull/32999) | Closed obsolete. | После [#32963](https://github.com/NousResearch/hermes-agent/pull/32963) и [#33042](https://github.com/NousResearch/hermes-agent/pull/33042) upstream убрал SDK helper path; наш downstream recovery стал не нужен. | Урок перенесён в skill: regression должен проверять public runtime boundary и не глотать app-side `TypeError`. |

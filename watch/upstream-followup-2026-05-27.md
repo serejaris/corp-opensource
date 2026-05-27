@@ -1,5 +1,25 @@
 # Upstream Follow-up 2026-05-27
 
+## Check 19:33 UTC
+
+Bounded active-PR dashboard refresh with 6 read-only scouting subagents, parent live gates via `gh pr view`, and 3-subagent critique. No upstream PR/comment/rerun/close action was taken. Final dashboard `next_status`: `WATCH`; item-level `PR-OPEN` remains monitor-only for still-open PRs.
+
+| Upstream | Current state | Action |
+|---|---|---|
+| `aaif-goose/goose#9447` | Closed, not merged. Maintainer comment says fixed in `#9449`; historical `changes` CI failure is no longer actionable. | Move out of active PRs into closed/superseded lessons. No upstream action. |
+| `OpenHands/software-agent-sdk#3394` | Open, `MERGEABLE`, merge-state blocked; old `CHANGES_REQUESTED` still active. Maintainer said it looks fine but wants eval; eval was triggered, check rollup is empty in `gh pr view`. | `PR-OPEN / WATCH`. Wait eval/re-review/workflow approval. |
+| `anomalyco/opencode#29565/#29530` | Both open and non-draft. Visible duplicate/standards/compliance checks are green; merge-state remains blocked and there is no maintainer review yet. | `PR-OPEN / WATCH`. Wait maintainer review; no third opencode PR without a distinct signal. |
+| `cline/cline#11087` | Open, `MERGEABLE`, merge-state blocked. Visible quality/SDK Ubuntu+Windows/Socket checks are green after follow-up `e1ecc63a1`; no approval yet. | `PR-OPEN / monitor only`. Wait maintainer review. |
+| `CopilotKit/CopilotKit#5035` | Open, `MERGEABLE`, review required. Vercel docs preview is available; other Vercel previews require team authorization and are not a proven code failure. | `WATCH`. Wait maintainer review/team authorization. |
+| `pydantic-ai#5678/#5680` | Both open, `MERGEABLE`, merge-state clean, visible CI/coverage/harness checks green; Codex review quota warning only. | `PR-OPEN / monitor only`. Wait maintainer review/merge. |
+| `NousResearch/hermes-agent#15640` | Open and stale since 2026-04-25; no comments/reviews/assignee. This old macOS launchd/Login Item fix is outside the current Hermes/Codex outage flow. | Keep as stale backlog cleanup decision: ping/rebase, close as abandoned, or remove from active dashboard later. |
+
+3-subagent critique:
+
+- factology: do not say `goose#9447` merged or accepted; correct wording is superseded/fixed by `#9449`. Do not say opencode/cline are approved or ready to merge while merge-state is blocked.
+- process: no upstream comment, rerun, close, or new PR is justified from this monitoring cycle.
+- actionability: update dashboard/watch/tracker only; no lane becomes `PR-READY`.
+
 ## Check 18:20 UTC
 
 Bounded follow-up with 6 subagents over active PRs, comment-first/watch lanes, duplicate-race lanes, repo-candidate queue, tracker consistency, and process gates. Parent live gates used `gh pr view` / `gh issue view`; GitHub Search API for `SWE-agent/mini-swe-agent#826` is still rate-limited. 3-subagent critique chose final `next_status: WATCH`. No upstream PR/comment opened. Tracker comments: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4557412645), `mini-swe-agent#826` lane [#53](https://github.com/serejaris/corp-opensource/issues/53#issuecomment-4557410943).
