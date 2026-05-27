@@ -61,11 +61,24 @@ Before opening candidate bugs:
 
 | Rank | Repo | First scouting target |
 |---:|---|---|
-| 1 | `cline/cline` | recent bugs around tool execution, checkpoints, provider adapters, MCP, terminal/browser harnesses |
-| 2 | `OpenHands/OpenHands` | sandbox/runtime/eval bugs with small tests |
-| 3 | `pydantic/pydantic-ai` | model/provider/tool-call regressions with typed tests |
-| 4 | `trycua/cua` | computer-use sandbox and benchmark reproducibility issues |
-| 5 | OpenClaw/openclaude-like repos | verify canonical repo before issue scouting |
+| 1 | `pydantic/pydantic-ai` | [#5679](https://github.com/pydantic/pydantic-ai/issues/5679): preserve `TextContent.metadata` across Vercel AI / AG-UI adapter round-trip after #5678 final CI |
+| 2 | `trycua/cua` | [#1725](https://github.com/trycua/cua/issues/1725): Windows Rust recorder missing `click.png` for `element_index` clicks; needs Windows/runtime proof |
+| 3 | `cline/cline` | [#10737](https://github.com/cline/cline/issues/10737): `task_progress` leaks into MCP tool args; strong signal but heavier VS Code/e2e repo |
+| 4 | `pydantic/pydantic-ai` | [#5671](https://github.com/pydantic/pydantic-ai/issues/5671): Google cached content config bug; clean unit-level provider candidate |
+| 5 | `browser-use/browser-use` | [#4580](https://github.com/browser-use/browser-use/issues/4580): MCP startup failure on Windows; watch until Windows runner/repro exists |
+
+## Six-agent Scouting Result
+
+Run on 2026-05-27:
+
+- **Repo-fit:** best repo quality remains `pydantic/pydantic-ai`; best next Paperclip-like repo is `trycua/cua`; `OpenHands/software-agent-sdk` should be promoted for separate validation; `cline/cline` is useful but heavier.
+- **Bug-signal:** strongest new candidates are `pydantic-ai#5679`, `trycua/cua#1725`, `cline#10737`, `pydantic-ai#5671`, and `browser-use#4580`.
+- **Repro-path:** `pydantic-ai#5679` has the cleanest local repro/test path; `trycua/cua#1725` has a clear issue repro but needs Windows evidence for marker placement.
+- **Patchability:** `pydantic-ai#5679` is likely a localized adapter fix; `trycua/cua#1725` is localized but coordinate conversion must be handled carefully.
+- **Duplicate-race:** no open duplicate PR found for `pydantic-ai#5679` or `trycua/cua#1725`; no-go duplicates include `pydantic-ai#5672`, `trycua/cua#1722`, `trycua/cua#1501`, and `browser-use#4846`.
+- **PR-readiness:** do not open another upstream PR until `pydantic-ai#5678` final CI is known. For pydantic, run owner test files and coverage-aware checks; for CUA, record OS/runtime evidence.
+
+Decision: next implementation candidate is `pydantic-ai#5679` after `#5678` finishes. `trycua/cua#1725` is the next CUA/harness candidate once a Windows runner path is available.
 
 ## Runner / Parallelism Note
 

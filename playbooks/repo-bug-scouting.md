@@ -25,7 +25,10 @@ gh search prs 'repo:OWNER/REPO is:pr is:open bug OR regression OR crash' --limit
 
 1. **Repo-fit**: contribution guide, test commands, recent merged PR, maintainer response.
 2. **Bug-signal**: свежие баги, реакции, дубликаты, user impact.
-3. **Patchability**: вероятные файлы, fixtures, targeted tests, риск большого refactor.
+3. **Repro-path**: минимальный script, fixture, CLI command, Docker или failing test.
+4. **Patchability**: вероятные файлы, fixtures, targeted tests, риск большого refactor.
+5. **Duplicate-race**: открытые/смерженные конкурирующие PR, linked issues, похожие fixes.
+6. **PR-readiness**: CONTRIBUTING, PR template, fork workflow, required checks, draft-vs-ready.
 
 ## Выход
 
@@ -36,4 +39,3 @@ gh search prs 'repo:OWNER/REPO is:pr is:open bug OR regression OR crash' --limit
 - состояние repro;
 - patch surface;
 - следующий конкретный шаг.
-

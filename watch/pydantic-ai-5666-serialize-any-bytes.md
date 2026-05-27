@@ -140,6 +140,21 @@ Process lesson captured:
 
 - Updated local `open-source-pr-workflow` skill and `corp-opensource` follow-up playbook: when upstream has strict coverage gates, targeted `-k` tests are not enough before push. Run the smallest full owner test file/module and cover every new branch/data shape touched by the patch.
 
+Final CI check, 2026-05-27 01:41 -03:
+
+- Fresh CI for commit `eec87ea0` is green.
+- Confirmed passed:
+  - `lint`
+  - `mypy`
+  - `docs`
+  - `coverage`
+  - summary `check`
+  - harness compat
+  - examples on Python 3.11/3.12/3.13/3.14
+  - `pydantic-ai-slim`, `pydantic-evals`, `standard`, `all-extras`, and `lowest-versions` matrix on Python 3.10/3.11/3.12/3.13/3.14
+- Skipped jobs are release/deploy/review automation and do not require code action.
+- PR remains open and mergeable; next action is maintainer/bot review monitoring.
+
 ## Next
 
-Watch CI and maintainer / bot review. If maintainers prefer an explicit wrapper shape for binary values instead of raw base64 strings, adapt the branch.
+Watch maintainer / bot review. If maintainers prefer an explicit wrapper shape for binary values instead of raw base64 strings, adapt the branch.
