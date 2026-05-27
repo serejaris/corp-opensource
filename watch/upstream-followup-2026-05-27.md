@@ -1,5 +1,26 @@
 # Upstream Follow-up 2026-05-27
 
+## Check 18:00 UTC
+
+Bounded follow-up with 6 subagents over active PRs, stale/closed lanes, comment-first watch, duplicate-race lanes, repo-candidate queue, and tracker consistency. Parent live gates used `gh pr view` / `gh issue view`. No upstream PR/comment opened.
+
+| Upstream | Current state | Action |
+|---|---|---|
+| `aaif-goose/goose#9447` | Open, `MERGEABLE`, review required, merge-state blocked. `changes` still failed from GitHub diff API transient; dependent jobs skipped; `check-quarantined` and `machete` green. | `WATCH`. Wait maintainer rerun/review; no duplicate CI comment. |
+| `OpenHands/software-agent-sdk#3394` | Open; GitHub still reports old `CHANGES_REQUESTED`; mergeability unknown in latest view, check rollup empty. Maintainer eval/re-review remains the gate. | `WATCH`. Wait eval or maintainer review. |
+| `opencode#29565/#29530` | Both open; duplicate/standards/compliance checks green; no maintainer review yet. | `WATCH`. Wait review; no third opencode PR without a distinct signal. |
+| `cline#11087` | Open, `MERGEABLE`, CI green; formal approval still absent. | `WATCH`. Wait maintainer/Greptile re-review. |
+| `CopilotKit#5035` | Open, review required. Docs preview green; other Vercel contexts are team authorization gates. | `WATCH`. Wait maintainer review/team auth. |
+| `pydantic-ai#5678/#5680` | Both open, `MERGEABLE`, merge-state clean, full CI/coverage green. | `PR-OPEN`. Ready for maintainer review/merge; monitor only. |
+| `E2B#1355` | Open maintainer/superset PR for JS + Python `fromDockerfile`/`from_dockerfile`; all visible SDK/CLI/CodeQL checks green; review required, merge-state blocked. | `WATCH #1355`; no action on closed `#1354`. |
+| `deepagents#3587/#3616` | Issue `#3587` is open with `waiting-on-author`; maintainer needs raw Qwen/LiteLLM tool-call payload/provider details. PR `#3616` remains closed by assignment guard. | `WATCH / NO PR`. Do not PR empty-id acceptance without proof this is Deep Agents contract, not provider payload. |
+| `pydantic-ai#5688`, `google/adk-python#5864`, `langgraph#7688`, `continue#12334`, `goose#9136/#9332` | No new maintainer/reporter signal that changes actionability. LangGraph repro comment remains minimized; Continue still needs reporter path; goose lanes remain assignment/design-sensitive. | `WATCH` / `COMMENT-FIRST` only; no upstream comment/PR now. |
+| `trycua#1725/#1737`, MCP TS `#2115/#2116/#2138`, MCP Python `#2687/#2701`, `browser-use#4796/#4815` | Competing/open PRs still active; issues remain open. MCP TS has two green competing PRs; MCP Python `#2701` has one Windows locked failure but aggregate `all-green` success. | `WATCH`. Do not duplicate; comment only with new verification or maintainer request. |
+
+Repo-candidate queue: next best bounded scouting target is `SWE-agent/mini-swe-agent` at repo-level `CANDIDATE`, not PR-ready. It has lower noise than the broader `SWE-agent/SWE-agent` repo and candidate lanes around timeout child processes, bash-vs-dash runner behavior, and tool-call parser `FormatError`. Future cycle must cross-check `SWE-agent/SWE-agent`, repeat PR search, and produce a fresh secret-free repro before any upstream action.
+
+Tracker consistency actions for this pass: update README dashboard timestamp/status, add explicit `openai/openai-agents-python` WATCH row, mark old E2B rows as historical/superseded, and update repo-card wording after cycle 25. Final `next_status`: `WATCH`.
+
 ## Check 17:15 UTC
 
 Bounded cycle with 6 subagents, parent live gates, and 3-subagent critique. No upstream PR/comment opened.
@@ -22,7 +43,7 @@ Live follow-up after cycle 18 scouting and E2B duplicate cleanup.
 | Upstream | Current state | Action |
 |---|---|---|
 | `e2b-dev/E2B#1354` | Closed by us as superseded. It only covered JS `Template.fromDockerfile` and was CLA-blocked. | Done. Track `#1355` instead. |
-| `e2b-dev/E2B#1355` | Open maintainer/superset PR. Covers JS `Template.fromDockerfile` and Python `Template.from_dockerfile`, includes multi-source `COPY`/`ADD` regressions, CLA and Vercel green; SDK checks still in progress in tracked state. | Watch `#1355`; no duplicate PR. |
+| `e2b-dev/E2B#1355` | Open maintainer/superset PR. Covers JS `Template.fromDockerfile` and Python `Template.from_dockerfile`, includes multi-source `COPY`/`ADD` regressions. Historical note: later 18:00 UTC follow-up saw all visible SDK/CLI checks green while PR remained review-required. | Watch `#1355`; no duplicate PR. |
 | `modelcontextprotocol/python-sdk#2701` | Open, mergeable. Covers `#2687` with redirect URI normalization and shared auth regression; most CI green, one Windows locked job failed while all-green reported success. | Watch existing PR; no new PR for `#2687`. |
 | `pydantic-ai#5678/#5680/#5681` | Open, mergeable, CI green in tracked state. | Watch. |
 | `pydantic-ai#5688` | Still open, no assignee, pydanty root-cause comment + our offer; no exact PR found in tracked state. | Wait assignment/confirmation; local patch prep exists. |
@@ -51,13 +72,13 @@ Live follow-up after opening `opencode#29565`.
 | `anomalyco/opencode#29565` | Open, ready, mergeable. `check-standards`, `check-compliance`, `check-duplicates`, `add-contributor-label` all green. No comments/reviews yet. | Watch maintainer review; do not open another opencode PR unless a distinct gap appears. |
 | `anomalyco/opencode#29530` | Open, mergeable. Duplicate/compliance/standards checks green; GitHub bot says contribution guidelines pass. | Watch maintainer review. |
 | `OpenHands/software-agent-sdk#3394` | Open. Maintainer said it looks fine but wants eval. Latest fork workflows on `3c8eae78` are still `action_required`, no jobs. | Wait maintainer eval/workflow approval. No code action. |
-| `e2b-dev/E2B#1354` | Open, mergeable, review required. CLA check still `ERROR`; Vercel auth still team-side. | User must sign E2B CLA, then comment `@cla-bot check`. |
+| `e2b-dev/E2B#1354` | Historical snapshot before cleanup: PR was still open and CLA-blocked. Superseded later by maintainer/superset `#1355`; `#1354` is now closed. | Historical only; track `#1355`, no action on `#1354`. |
 | `cline/cline#11087` | Open, mergeable. Greptile gap addressed; visible SDK/quality/security checks green or skipped intentionally. | Watch maintainer review. |
 | `CopilotKit/CopilotKit#5035` | Open, mergeable, review required. Docs Vercel preview green; other Vercel previews need team authorization; Claude automated review disabled for fork. | Watch maintainer review / team preview authorization. |
 | `pydantic/pydantic-ai#5678` | Open, mergeable. CI matrix, coverage, smokeshow green. Codex review quota warning only. | Watch maintainer review. |
 | `pydantic/pydantic-ai#5680` | Open, mergeable. CI matrix, coverage, smokeshow green. Codex review quota warning only. | Watch maintainer review. |
 | `pydantic/pydantic-ai#5681` | Open, mergeable. CI matrix, coverage, smokeshow green. | Watch/review only; duplicate-covered lane. |
-| `langchain-ai/deepagents#3616` | Closed by assignment guard. Checks cancelled/failing because PR was auto-closed, not code signal. | No second PR until maintainer assignment/reopen. |
+| `langchain-ai/deepagents#3616` | Closed by assignment guard. Checks cancelled/failing because PR was auto-closed, not code signal. Later follow-up moved the gate to issue `#3587` waiting on raw Qwen/LiteLLM payload details. | No second PR; wait author/provider evidence. |
 
 ## Decision
 
@@ -72,7 +93,7 @@ Live follow-up after cycle 15 scouting.
 | `pydantic-ai#5688` | Open; pydanty confirmed root cause and says `PR-ready -> delegating to PR opener`; no exact open PR found. | Comment-offer posted; wait assignment/confirmation or pydanty PR before opening anything. |
 | `google/adk-python#5864` | Open; our comment-offer is the latest external action; still `request clarification`. | Wait maintainer/reporter direction. |
 | `OpenHands/software-agent-sdk#3394` | Open/mergeable; no status checks reported; maintainer wants eval; old bot `CHANGES_REQUESTED` review remains in GitHub reviewDecision. | Wait eval / maintainer action. |
-| `E2B#1354` | Still CLA-blocked for `serejaris`; Vercel auth is team-side. | User must sign CLA, then comment `@cla-bot check`. |
+| `E2B#1354` | Historical snapshot before cleanup: CLA-blocked at the time; superseded later by maintainer/superset `#1355` and closed. | Historical only; no action on `#1354`. |
 
 Decision: no new PR now. Best next technical branch is `pydantic-ai#5688`, but only after assignment/confirmation because bot delegation is already in flight.
 

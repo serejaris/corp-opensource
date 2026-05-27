@@ -2,7 +2,7 @@
 
 Source: [cycle 23 repo-universe update](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-23-repo-universe.md), [cycle 24 repo-universe update](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-24-repo-universe.md) и [cycle 25 openai-agents scan](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-25-openai-agents.md).
 
-Purpose: make the next hourly repo-scouting block concrete. These are repo-level cards, not bug candidates.
+Purpose: make the next bounded repo-scouting block concrete. These are repo-level cards, not bug candidates.
 
 | Repo | Tier | Next action | Scan lane | Duplicate risk | Runner need | Last checked | Promotion gate |
 |---|---|---|---|---|---|---|---|
@@ -12,7 +12,7 @@ Purpose: make the next hourly repo-scouting block concrete. These are repo-level
 | `cline/cline` | 1A | promote | deterministic extension/CLI/MCP/provider bugs | high | local checkout, possible extension harness | 2026-05-27 17:20 UTC | Linear/linked PR/duplicate gate clean |
 | `trycua/cua` | 1A | promote | computer-use driver/replay/benchmark issues | high | native/runner required for platform bugs | 2026-05-27 17:24 UTC | current platform repro before PR |
 | `microsoft/playwright-mcp` | 1A | promote | protocol/tool behavior regressions with tiny fixture | medium-low | browser runtime likely | 2026-05-27 17:20 UTC | issue-first or minimal repro with maintainer-aligned scope |
-| `langchain-ai/deepagents` | 1A | promote | filesystem/subagent/tool-call harness regressions | medium | local tests likely enough | 2026-05-27 17:20 UTC | assignment/maintainer gate clean |
+| `langchain-ai/deepagents` | 1A | watch | filesystem/subagent/tool-call harness regressions | medium | local tests likely enough | 2026-05-27 18:00 UTC | raw provider payload needed before PR on Qwen/LiteLLM tool-call id lane |
 | `openai/codex` | 1B | watch | churn, linked PRs, duplicate risk only | extreme | repo-specific | 2026-05-27 17:24 UTC | maintainer signal + ultra-narrow repro |
 | `anomalyco/opencode` | 1B | watch | churn, existing PR lane interaction, duplicate risk | extreme | local tests likely, but avoid piling on | 2026-05-27 17:24 UTC | no new candidate promotion this cycle unless distinct stable signal |
 | `google-gemini/gemini-cli` | 1B | watch | corporate/high-churn terminal-agent issues | high | local tests likely | 2026-05-27 17:20 UTC | maintainer ack + no competing PR |
@@ -35,7 +35,7 @@ Purpose: make the next hourly repo-scouting block concrete. These are repo-level
 | `docker/mcp-gateway` | 3 | demote | gateway validation/config only | high | Docker runtime | 2026-05-27 17:18 UTC | narrow repro and low duplicate risk |
 | `docker/mcp-registry` | 3 | demote | registry metadata validation only | very high | usually no runner | 2026-05-27 17:18 UTC | exact validation bug |
 
-## Cycle 24 overlay
+## Cycle 24/25 overlay
 
 Эти rows явно добавляют `avoid_pr_hunting`. Это repo-level cards, не bug candidates.
 
@@ -50,7 +50,7 @@ Purpose: make the next hourly repo-scouting block concrete. These are repo-level
 | `ComposioHQ/composio` | 2 | update scope | package-specific tool/auth/integration bugs | medium-high | local tests likely | 2026-05-27 17:39 UTC | comment-first | package/path named, default branch `next` checked |
 | `promptfoo/promptfoo` | 2 | update scope | provider/evaluator/assertion/plugin regressions | very high | local tests likely | 2026-05-27 17:39 UTC | comment-first | targeted PR search by provider/evaluator area |
 | `SWE-agent/SWE-agent` | 2 | update scope | benchmark runner, Docker/env, docs drift | medium | Docker/runner likely | 2026-05-27 17:39 UTC | fixture-only | cross-check `mini-swe-agent` issues/PRs |
-| `SWE-agent/mini-swe-agent` | 2 | update scope | compact terminal-agent harness regressions | low-medium | local tests likely | 2026-05-27 17:39 UTC | fixture-only | cross-check `SWE-agent/SWE-agent` overlap |
+| `SWE-agent/mini-swe-agent` | 2 | candidate | compact terminal-agent harness regressions: timeout child processes, bash-vs-dash runner, tool-call parser FormatError | low-medium | local tests first; runner if Docker/backend-heavy | 2026-05-27 18:02 UTC | fixture-only | cross-check `SWE-agent/SWE-agent`, repeat PR search, then secret-free repro |
 | `Skyvern-AI/skyvern` | 2 | watch | browser/vision/RPA agent regressions | high | browser/service stack likely | 2026-05-27 17:39 UTC | comment-first | distinct from `browser-use`/`stagehand`/`playwright-mcp` lanes |
 | `BloopAI/vibe-kanban` | 2 | watch | Paperclip-like control-plane/session UX | high | local app likely | 2026-05-27 17:39 UTC | comment-first | maintainer rhythm + contribution docs + narrow issue |
 | `QwenLM/qwen-code` | 2/3 | verify-first | terminal coding-agent runtime bugs | very high | local tests likely | 2026-05-27 17:39 UTC | yes | exact version + duplicate search + language/process gate |
