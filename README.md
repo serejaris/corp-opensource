@@ -18,6 +18,12 @@
 | [pydantic/pydantic-ai#5678](https://github.com/pydantic/pydantic-ai/pull/5678) | Instrumentation serialization не теряет binary data. | Open, mergeable; CI/harness/coverage green. | Ждать maintainer/bot review. |
 | [NousResearch/hermes-agent#15640](https://github.com/NousResearch/hermes-agent/pull/15640) | Старый Hermes gateway fix: macOS launchd plist должен регистрировать Login Item как `hermes`, не `python`. | Open; stale since 2026-04-25. | Отдельно решить: оживлять, закрывать или оставить вне текущего Codex/Hermes outage потока. |
 
+### В работе сейчас
+
+| Upstream | Что делаем | Статус |
+|---|---|---|
+| [continuedev/continue#12334](https://github.com/continuedev/continue/issues/12334) | OpenRouter autocomplete должен прокидывать `requestOptions.extraBodyProperties`; regression card: [watch](watch/continue-12334-openrouter-autocomplete-extra-body.md), tracker [#50](https://github.com/serejaris/corp-opensource/issues/50). | Upstream plan comment posted; duplicate gate clean; first clone attempt hit GitHub HTTP 502 and was stopped cleanly. |
+
 ### Закрытые / не пошло
 
 | Upstream PR | Итог | Почему | Что трекаем дальше |
@@ -81,6 +87,7 @@
 | openai/codex | [#24725](https://github.com/openai/codex/issues/24725) | [#41](https://github.com/serejaris/corp-opensource/issues/41), [cycle 11](watch/ai-native-frameworks-scouting-2026-05-27-cycle-11.md) | Regression-first candidate, but upstream external PRs are invitation-only | Watch/comment-first; no PR without maintainer signal |
 | anomalyco/opencode | [#15226](https://github.com/anomalyco/opencode/issues/15226), [#29565](https://github.com/anomalyco/opencode/pull/29565) | [#44](https://github.com/serejaris/corp-opensource/issues/44), [watch](watch/opencode-15226-structured-output-thinking.md), [cycle 12](watch/ai-native-frameworks-scouting-2026-05-27-cycle-12.md) | PR open, ready, mergeable; standards/compliance/duplicate checks green | Watch maintainer review; no extra opencode PR until review or distinct gap |
 | langchain-ai/deepagents | [#3568](https://github.com/langchain-ai/deepagents/issues/3568) | [scouting](watch/ai-native-frameworks-scouting-2026-05-27-cycle-2.md) | Small prompt/schema bug, but reporter has local fix and assignment gate risk | Watch/comment only if maintainers ask |
+| continuedev/continue | [#12334](https://github.com/continuedev/continue/issues/12334) | [#50](https://github.com/serejaris/corp-opensource/issues/50), [watch](watch/continue-12334-openrouter-autocomplete-extra-body.md) | Candidate in progress; duplicate gate clean; upstream plan comment posted | Build regression-first PR if local test surface confirms |
 
 ## Рабочие issues
 
@@ -180,6 +187,7 @@
 - [LangGraph #7688 TIME_WAIT port false-positive](watch/langgraph-7688-timewait-port.md)
 - [Goose #9332 PDEATHSIG MCP subprocess lifecycle](watch/goose-9332-pdeathsig-mcp-subprocess.md)
 - [Goose #9446 response.completed missing output](watch/goose-9446-response-completed-missing-output.md)
+- [Continue #12334 OpenRouter autocomplete extraBodyProperties](watch/continue-12334-openrouter-autocomplete-extra-body.md)
 
 ## Метки
 
