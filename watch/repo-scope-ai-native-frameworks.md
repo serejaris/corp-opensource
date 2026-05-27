@@ -27,7 +27,7 @@ Last updated: 2026-05-27
 | `~/Documents/GitHub/corp-server` | Runner/worker/container infra owner. |
 | `~/Documents/GitHub/corp-hermes` / Hermes checkouts | Runtime reference for Telegram/Hermes/Codex failures. |
 
-## Tier 1: Core External Targets
+## Tier 1A: Core External Targets For Active Scouting
 
 These are allowed for regular weekly scouting.
 
@@ -37,15 +37,39 @@ These are allowed for regular weekly scouting.
 | `OpenHands/OpenHands` | `74995` stars, pushed `2026-05-27` | AI-driven development platform, skills, resolver, sandbox, browser, self-hosting, worker lifecycle. |
 | `pydantic/pydantic-ai` | `17327` stars, pushed `2026-05-27` | Typed agent framework, providers/tools/model settings, strong fixture/test culture. |
 | `trycua/cua` | active bug queue on `2026-05-27` | Computer-use agent infrastructure, sandboxes, benchmarks, trajectory recording. |
-| `browser-use/browser-use` | `95723` stars, pushed `2026-05-26` | Browser automation for agents; replay/DOM/screenshot/tooling bugs. |
-| `CopilotKit/CopilotKit` | `31776` stars, pushed `2026-05-27` | Frontend stack/protocol for agents and generative UI. |
 | `langchain-ai/deepagents` | `23391` stars, pushed `2026-05-27` | Agent harness with LangChain maintainership; likely tool/memory/runtime tests. |
-| `langchain-ai/langgraph` | Issue `#7688` open on `2026-05-27` with `bug`/`external` labels; active LangChain/LangGraph runtime ecosystem | Agent graph/dev runtime and local server harness; useful for deterministic CLI/runtime bugs such as TIME_WAIT port detection. |
 | `e2b-dev/E2B` | `12371` stars, pushed `2026-05-27` | Secure sandbox/runtime layer for agents. |
-| `openai/codex` | `86061` stars, pushed `2026-05-27` | Coding-agent runtime, subagents, prompt-cache, sandbox, app-server, and test harness patterns directly relevant to Hermes/Paperclip workflows. |
+| `microsoft/playwright-mcp` | `33098` stars, pushed `2026-05-23`; parent count `5` open issues / `4` open PRs on `2026-05-27` | Canonical browser automation MCP server; small backlog and concrete tool/protocol regression surface. |
 | `google/adk-python` | Issue `#5864` active on `2026-05-27`; repo has contribution guide, PR template, unit tests, tox, and recent optional-dependency import PRs | Agent Development Kit: agent runtime/framework, code execution, memory, evaluation, Vertex AI integrations. Good for dependency-boundary and harness reliability bugs when repo gates allow. |
 
-## Tier 2: Watch / Verify Before Bug Scouting
+## Tier 1B: Strategic Watch, Not Blind PR Hunting
+
+These repos are strategically important but too noisy for random bug hunting. Use only after strict live gates and a narrow repro.
+
+| Repo | Current live signal | Why watch-first |
+|---|---|---|
+| `openai/codex` | `86281` stars, pushed `2026-05-27`; parent count `4944` open issues / `301` open PRs | Direct terminal coding-agent reference, but duplicate/churn risk is extreme. |
+| `anomalyco/opencode` | `166083` stars, pushed `2026-05-27`; parent count `5265` open issues / `940` open PRs | Huge active terminal-agent ecosystem; repo already has multiple local upstream PR lanes open. |
+| `google-gemini/gemini-cli` | `104656` stars, pushed `2026-05-27`; parent count `1198` open issues / `302` open PRs | Official Gemini CLI agent; corporate/high-churn process makes comment-first the default. |
+| `daytonaio/daytona` | `72452` stars, pushed `2026-05-27`; parent count `275` open issues / `130` open PRs | Secure dev env / runner/session control-plane; high velocity and broad infra surface require tight scope. |
+
+## Tier 2: Watch / Comment-First Before Bug Scouting
+
+These can produce good candidates, but the next step must be repo-specific gates and issue/PR search rather than broad PR hunting.
+
+| Repo | Why watch first |
+|---|---|
+| `browser-use/browser-use` | Strong browser-agent fit, but parent count `66` open issues / `177` open PRs and high duplicate race. |
+| `browserbase/stagehand` | AI browser SDK with active queue; avoid broad SDK PRs without maintainer confirmation. |
+| `PrefectHQ/fastmcp` | Popular MCP framework/runtime; less spec-canonical than official SDKs, good for user-facing repro bugs. |
+| `modelcontextprotocol/python-sdk` | Official SDK, but parent count `251` open issues / `241` open PRs and spec churn. |
+| `modelcontextprotocol/typescript-sdk` | Official SDK, but parent count `222` open issues / `207` open PRs and duplicate-heavy PR flow. |
+| `langchain-ai/langgraph` | Active graph/runtime ecosystem; crowded, fast-moving, only crisp regressions. |
+| `CopilotKit/CopilotKit` | Frontend stack/protocol for agents and generative UI; continue existing PR/watch lanes. |
+| `continuedev/continue` | IDE/CLI/CI agent workflow; verify product-direction fit before heavy scouting. |
+| `crewAIInc/crewAI` | Popular orchestration framework, but PR queue is saturated; comment-first. |
+
+## Tier 3: Opportunistic / Verify Only
 
 These can become Tier 1 only after identity and repo-health validation.
 
@@ -58,6 +82,14 @@ These can become Tier 1 only after identity and repo-health validation.
 | `langchain-ai/deepagentsjs` | JS sibling of DeepAgents; validate maturity and issue quality. |
 | `OpenHands/software-agent-sdk` | Suggested by OpenHands maintainers; validate separately from monorepo issues. |
 | `OpenHands/OpenHands-CLI` | Suggested by OpenHands maintainers; validate separately from monorepo issues. |
+| `Aider-AI/aider` | Mature terminal pair-programming baseline, but slower current release signal and lower immediate Paperclip payoff. |
+| `microsoft/autogen` | Large Microsoft framework; lower current push freshness and high backlog/triage risk. |
+| `seleniumbase/SeleniumBase` | Strong browser automation substrate, but not AI-native by default. |
+| `steel-dev/steel-browser` | Relevant smaller browser sandbox; verify maintainer rhythm before promotion. |
+| `morph-labs/morph-python-sdk` | Very low public stars/activity; keep only as Morph-specific watch. |
+| `morph-labs/morph-typescript-sdk` | Very low public stars/activity; keep only as Morph-specific watch. |
+| `docker/mcp-gateway` | Useful MCP distribution/gateway watch, but less direct than SDK/runtime work. |
+| `docker/mcp-registry` | Registry/catalog queue is noisy; only exact metadata validation bugs. |
 
 ## Out Of Scope By Default
 
@@ -99,3 +131,5 @@ Weekly scouting must update this scope only when:
 4. The repo is not just a tutorial/list/wrapper.
 
 Record removed or demoted repos with a reason.
+
+Latest repo-universe update: [cycle 23](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-23-repo-universe.md). Repo-card queue: [repo cards 2026-05-27](repo-cards-ai-native-2026-05-27.md).
