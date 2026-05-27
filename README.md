@@ -37,6 +37,7 @@
 | openai/codex | [#24612](https://github.com/openai/codex/issues/24612) | [#33](https://github.com/serejaris/corp-opensource/issues/33), [cycle 8](watch/ai-native-frameworks-scouting-2026-05-27-cycle-8.md) | Candidate/watch; no direct PR found; provider-history sanitizer bug | Watch/access-sensitive |
 | aaif-goose/goose | [#9332](https://github.com/aaif-goose/goose/issues/9332) | [#34](https://github.com/serejaris/corp-opensource/issues/34), [watch](watch/goose-9332-pdeathsig-mcp-subprocess.md) | Comment-first; no duplicate PR; maintainer-alignment comment posted | Wait direction or run Linux repro on runner |
 | BerriAI/litellm | [#28962](https://github.com/BerriAI/litellm/issues/28962) | [#35](https://github.com/serejaris/corp-opensource/issues/35), [cycle 9](watch/ai-native-frameworks-scouting-2026-05-27-cycle-9.md) | No-go / release-followup; mocked current branch maps Gemini 503 `MaskedHTTPStatusError` to `ServiceUnavailableError` | Watch reporter/upstream; no PR unless exact leaking path is confirmed |
+| microsoft/playwright-mcp | [#1635](https://github.com/microsoft/playwright-mcp/issues/1635) | [#36](https://github.com/serejaris/corp-opensource/issues/36), [cycle 9](watch/ai-native-frameworks-scouting-2026-05-27-cycle-9.md) | Comment-first / assignment-gated; [regression offer posted](https://github.com/microsoft/playwright-mcp/issues/1635#issuecomment-4552993898) | Wait maintainer direction; no PR without approval |
 | langchain-ai/deepagents | [#3568](https://github.com/langchain-ai/deepagents/issues/3568) | [scouting](watch/ai-native-frameworks-scouting-2026-05-27-cycle-2.md) | Small prompt/schema bug, but reporter has local fix and assignment gate risk | Watch/comment only if maintainers ask |
 
 ## Рабочие issues
@@ -76,6 +77,7 @@
 - [#33 Codex web_search_call history crashes custom provider after model switch](https://github.com/serejaris/corp-opensource/issues/33)
 - [#34 goose PR_SET_PDEATHSIG kills stdio MCP subprocesses](https://github.com/serejaris/corp-opensource/issues/34)
 - [#35 LiteLLM Gemini AI Studio 5xx error mapping](https://github.com/serejaris/corp-opensource/issues/35)
+- [#36 Playwright MCP browser_navigate_back CDP timeout](https://github.com/serejaris/corp-opensource/issues/36)
 
 ## Правила
 

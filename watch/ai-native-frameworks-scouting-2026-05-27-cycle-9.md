@@ -45,3 +45,14 @@ Checked after cloning `BerriAI/litellm` at `2026-05-27T09:20Z`.
 - A `v1.85.1` worktree probe using the same public-boundary mock also mapped to `ServiceUnavailableError`.
 
 Decision: no PR today. The next useful action is release/reporter follow-up only; if a real path still leaks, regression must reproduce that exact path, not only helper-level exception mapping.
+
+## Execution Update: Playwright MCP #1635
+
+Checked after cloning `microsoft/playwright-mcp` at `2026-05-27T09:35Z`.
+
+- Upstream issue is open with a fresh CDP reproduction: `connectOverCDP` times out for default/`domcontentloaded`, but `waitUntil: "commit"` succeeds.
+- Open PR search for `1635 OR browser_navigate_back waitUntil commit timeout` returned empty.
+- `playwright-mcp` CONTRIBUTING says the MCP core moved to `microsoft/playwright` and unsolicited PRs without linked issue plus assignment/approval will be closed.
+- Local wrapper checkout has only `src/README.md`; meaningful source/test work likely belongs in the Playwright monorepo under `packages/playwright/src/mcp` and `tests/mcp`.
+
+Decision: create [corp-opensource#36](https://github.com/serejaris/corp-opensource/issues/36) as `COMMENT-FIRST / assignment-gated`. Upstream regression offer posted in [playwright-mcp#1635](https://github.com/microsoft/playwright-mcp/issues/1635#issuecomment-4552993898). Do not open a PR unless maintainers approve or assign.
