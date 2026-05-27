@@ -2,7 +2,7 @@
 
 ## Что уже сделано: PR dashboard
 
-Последняя live-проверка dashboard: 2026-05-27 23:30 UTC. Это snapshot; перед новым upstream comment/PR нужно перепроверить конкретную строку через `gh pr view` / `gh issue view`.
+Последняя live-проверка dashboard: 2026-05-27 23:34 UTC. Это snapshot; перед новым upstream comment/PR нужно перепроверить конкретную строку через `gh pr view` / `gh issue view`.
 
 ### Активные upstream PR
 

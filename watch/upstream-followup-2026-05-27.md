@@ -1,5 +1,37 @@
 # Upstream Follow-up 2026-05-27
 
+## Check 23:34 UTC
+
+Bounded active-PR dashboard refresh: parent live gates через `gh pr view`, 6 read-only subagents, затем 3-role critique. Upstream action count: `0`. Не выполнялись upstream comment, rerun, rebase, force-push или close. Итоговый dashboard `next_status`: `WATCH`; tracked PRs остаются `PR-OPEN / monitor-only`, Hermes остаётся stale cleanup backlog.
+
+Runner/repro: не нужен в этом цикле, потому что нет новой code hypothesis, fixable code-check failure или перехода к `PR-READY`.
+
+| Upstream | Текущее состояние | Recheck condition / действие |
+|---|---|---|
+| `OpenHands/software-agent-sdk#3394` | Open, non-draft; `BLOCKED/MERGEABLE/CHANGES_REQUESTED`; PR-visible check rollup empty. Maintainer уже написал, что выглядит нормально, и запустил eval, но visible eval result / re-review / approval всё ещё нет после follow-up `3c8eae78`. | `PR-OPEN / WATCH`. Ждать maintainer eval, re-review или workflow approval. Повторный comment не нужен. |
+| `anomalyco/opencode#29565` | Open, non-draft; `BLOCKED/MERGEABLE`; visible `check-duplicates`, `check-standards`, `check-compliance`, `add-contributor-label` green; maintainer review отсутствует. | `PR-OPEN / WATCH`. Ждать maintainer review; не открывать третий opencode PR без отдельного сигнала. |
+| `anomalyco/opencode#29530` | Open, non-draft; `BLOCKED/MERGEABLE`; visible duplicate/standards/compliance gates green; contribution bot says guidelines satisfied; maintainer review отсутствует. | `PR-OPEN / WATCH`. Ждать maintainer review. |
+| `cline/cline#11087` | Open, non-draft; `BLOCKED/MERGEABLE`; visible SDK quality, Ubuntu/Windows Node 24 и Socket checks green/skipped после follow-up `e1ecc63a1`; maintainer approval отсутствует. | `PR-OPEN / monitor only`. Ждать maintainer review; новый comment не нужен. |
+| `CopilotKit/CopilotKit#5035` | Open, non-draft; `BLOCKED/MERGEABLE`, `REVIEW_REQUIRED`. Vercel docs preview green; `chat-with-your-data`, `form-filling`, `research-canvas`, `travel` contexts fail через team authorization URLs, не как proven code regression. | `WATCH / BLOCKED-UPSTREAM-AUTH`. Ждать maintainer review или team preview authorization; не делать rerun/comment с нашей стороны. |
+| `pydantic/pydantic-ai#5680` | Open, non-draft; `CLEAN/MERGEABLE`; labels `bug`, `size: S`; visible lint/mypy/docs/test matrix/examples/coverage/smokeshow/harness checks green; maintainer review отсутствует. | `PR-OPEN / monitor only`. Ждать maintainer/bot review или merge. |
+| `pydantic/pydantic-ai#5678` | Open, non-draft; `CLEAN/MERGEABLE`; labels `bug`, `size: S`; visible lint/mypy/docs/test matrix/examples/coverage/smokeshow/harness checks green; maintainer review отсутствует. | `PR-OPEN / monitor only`. Ждать maintainer/bot review или merge. |
+| `NousResearch/hermes-agent#15640` | Open, non-draft; `CLEAN/MERGEABLE`; stale since `2026-04-25`; no comments/reviews/checks. Tracker `#67` открыт, comments нет. | `WATCH / stale` plus lane-specific `CLOSE-CANDIDATE`. Не ping/close/rebase в dashboard refresh; cleanup только отдельным Hermes cycle с fresh duplicate/process gates. |
+
+6-subagent synthesis:
+
+- OpenHands/CopilotKit: оба blocked by upstream process, не локальным code-failure. OpenHands ждёт eval/re-review; CopilotKit ждёт review/team Vercel authorization.
+- opencode: оба PR прошли visible policy gates, но это не maintainer approval; no ping/rerun/rebase.
+- Cline: review gap закрыт follow-up и visible checks green; blocker — maintainer approval.
+- pydantic-ai: оба PR technically clean/mergeable with broad green CI; blocker — maintainer/bot review.
+- Hermes: stale lane remains separate from dashboard heartbeat; no close/ping without cleanup cycle.
+- Final synthesis: exactly one dashboard status — `WATCH`; `upstream_action_count: 0`.
+
+3-role critique:
+
+- factology/duplicates: approve `WATCH/action 0`; do not call green checks "approval", and do not claim OpenHands is unblocked while GitHub still shows `CHANGES_REQUESTED/BLOCKED`.
+- process gates: no upstream comment, rerun, rebase, force-push, close, or replacement PR is justified.
+- actionability: internal heartbeat only; README + this watch block are enough, and issue comments are unnecessary because no material status changed.
+
 ## Check 23:20 UTC
 
 Bounded active-PR dashboard refresh: parent live gates через `gh pr view`, 6 read-only subagents, затем 3-role critique. Upstream action count: `0`. Не выполнялись upstream comment, rerun, rebase, force-push или close. Итоговый dashboard `next_status`: `WATCH`; все tracked PR остаются `PR-OPEN / monitor-only` или stale cleanup backlog.
