@@ -1,6 +1,6 @@
 # Repo cards: AI-native universe, 2026-05-27
 
-Source: [cycle 23 repo-universe update](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-23-repo-universe.md) и [cycle 24 repo-universe update](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-24-repo-universe.md).
+Source: [cycle 23 repo-universe update](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-23-repo-universe.md), [cycle 24 repo-universe update](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-24-repo-universe.md) и [cycle 25 openai-agents scan](ai-native-popular-repos-paperclip-scouting-2026-05-27-cycle-25-openai-agents.md).
 
 Purpose: make the next hourly repo-scouting block concrete. These are repo-level cards, not bug candidates.
 
@@ -41,7 +41,7 @@ Purpose: make the next hourly repo-scouting block concrete. These are repo-level
 
 | Repo | Tier | Next action | Scan lane | Duplicate risk | Runner need | Last checked | avoid_pr_hunting | Promotion gate |
 |---|---|---|---|---|---|---|---|---|
-| `openai/openai-agents-python` | 1A | promote | SDK/runtime/tool-call/handoff regressions with unit-test surface | medium | local tests first | 2026-05-27 17:39 UTC | fixture-only | exact commit/version + issue/PR duplicate sweep + regression card |
+| `openai/openai-agents-python` | 1A | watch | SDK/runtime/tool-call/handoff/realtime regressions with unit-test surface | high | local tests first; realtime leads may need runner/live API gate | 2026-05-27 17:57 UTC | fixture-only | fresh current-main repro + clean duplicate/competing-PR gate + regression card |
 | `modelcontextprotocol/registry` | 1B | update scope | registry metadata/API/discovery/trust | medium | local Go tests likely | 2026-05-27 17:39 UTC | comment-first | separate registry bugs from spec/server bugs |
 | `modelcontextprotocol/inspector` | 1B | update scope | MCP inspector UI/runtime/auth/transport debugging | high | local/browser runtime likely | 2026-05-27 17:39 UTC | comment-first | affected-area PR search after hotfix cadence check |
 | `modelcontextprotocol/servers` | 1B | watch | server implementation/catalog regressions | very high | repo-specific | 2026-05-27 17:39 UTC | yes | no PR without open PR/recent timeline sweep |
