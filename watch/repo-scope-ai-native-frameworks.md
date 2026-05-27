@@ -40,6 +40,7 @@ These are allowed for regular weekly scouting.
 | `browser-use/browser-use` | `95723` stars, pushed `2026-05-26` | Browser automation for agents; replay/DOM/screenshot/tooling bugs. |
 | `CopilotKit/CopilotKit` | `31776` stars, pushed `2026-05-27` | Frontend stack/protocol for agents and generative UI. |
 | `langchain-ai/deepagents` | `23391` stars, pushed `2026-05-27` | Agent harness with LangChain maintainership; likely tool/memory/runtime tests. |
+| `langchain-ai/langgraph` | Issue `#7688` open on `2026-05-27` with `bug`/`external` labels; active LangChain/LangGraph runtime ecosystem | Agent graph/dev runtime and local server harness; useful for deterministic CLI/runtime bugs such as TIME_WAIT port detection. |
 | `e2b-dev/E2B` | `12371` stars, pushed `2026-05-27` | Secure sandbox/runtime layer for agents. |
 | `openai/codex` | `86061` stars, pushed `2026-05-27` | Coding-agent runtime, subagents, prompt-cache, sandbox, app-server, and test harness patterns directly relevant to Hermes/Paperclip workflows. |
 | `google/adk-python` | Issue `#5864` active on `2026-05-27`; repo has contribution guide, PR template, unit tests, tox, and recent optional-dependency import PRs | Agent Development Kit: agent runtime/framework, code execution, memory, evaluation, Vertex AI integrations. Good for dependency-boundary and harness reliability bugs when repo gates allow. |

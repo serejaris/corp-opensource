@@ -31,6 +31,7 @@
 | cline/cline | [#11087](https://github.com/cline/cline/pull/11087), [#11086](https://github.com/cline/cline/issues/11086) | [#24](https://github.com/serejaris/corp-opensource/issues/24), [scouting](watch/ai-native-frameworks-scouting-2026-05-27-cycle-7.md) | PR open, mergeable; Greptile gap addressed; Quality Checks + Ubuntu/Windows SDK tests green | Watch maintainer review |
 | cline/cline | [#10139](https://github.com/cline/cline/issues/10139), [#10384](https://github.com/cline/cline/pull/10384), [#10140](https://github.com/cline/cline/pull/10140), [#10141](https://github.com/cline/cline/pull/10141) | [cycle 10](watch/ai-native-frameworks-scouting-2026-05-27-cycle-10.md) | Duplicate-race; #10384 has strongest configurable fix/tests but all competing PRs conflict | Watch maintainer consolidation; no PR |
 | e2b-dev/E2B | [#1352](https://github.com/e2b-dev/E2B/issues/1352) | [#25](https://github.com/serejaris/corp-opensource/issues/25), [scouting](watch/ai-native-frameworks-scouting-2026-05-27-cycle-2.md) | Strategic sandbox reconnect candidate; may need live sandbox | Track; avoid PR until repro/test surface clear |
+| langchain-ai/langgraph | [#7688](https://github.com/langchain-ai/langgraph/issues/7688) | [#48](https://github.com/serejaris/corp-opensource/issues/48), [watch](watch/langgraph-7688-timewait-port.md), [cycle 17](watch/ai-native-frameworks-scouting-2026-05-27-cycle-17.md) | New repro-first candidate: `langgraph dev` may misclassify TIME_WAIT as active port use | Find test surface and prove pre-fix regression before any upstream comment/PR |
 | aaif-goose/goose | [#9136](https://github.com/aaif-goose/goose/issues/9136) | [#28](https://github.com/serejaris/corp-opensource/issues/28) | Real bug; no duplicate PR; comment-first assignment ask posted | Wait maintainer assignment |
 | pydantic/pydantic-ai | [#5419](https://github.com/pydantic/pydantic-ai/issues/5419), [#5443](https://github.com/pydantic/pydantic-ai/pull/5443) | [#29](https://github.com/serejaris/corp-opensource/issues/29) | Duplicate-covered; PR open/mergeable but coverage/check failing in tracked state | Watch existing PR, no duplicate |
 | agno-agi/agno | [#8062](https://github.com/agno-agi/agno/issues/8062), [#8124](https://github.com/agno-agi/agno/pull/8124) | [#30](https://github.com/serejaris/corp-opensource/issues/30), [cycle 8](watch/ai-native-frameworks-scouting-2026-05-27-cycle-8.md) | Duplicate-covered; our repro/patch worked, but #8124 auto-closed because #8065/#8084 already referenced #8062 | Watch #8065/#8084; offer integration-style MCP tool test if maintainers ask |
@@ -100,6 +101,7 @@
 - [#45 Cycle 13 scouting: no safe new PR after six-agent triage](https://github.com/serejaris/corp-opensource/issues/45)
 - [#46 google-adk vertexai optional dependency import guard](https://github.com/serejaris/corp-opensource/issues/46)
 - [#47 pydantic-ai MCPToolset http_client follow_redirects guard](https://github.com/serejaris/corp-opensource/issues/47)
+- [#48 LangGraph dev TIME_WAIT port false-positive](https://github.com/serejaris/corp-opensource/issues/48)
 
 ## Правила
 
@@ -141,7 +143,9 @@
 - [AI-native frameworks scouting cycle 14](watch/ai-native-frameworks-scouting-2026-05-27-cycle-14.md)
 - [AI-native frameworks scouting cycle 15](watch/ai-native-frameworks-scouting-2026-05-27-cycle-15.md)
 - [AI-native frameworks scouting cycle 16 duplicate gate](watch/ai-native-frameworks-scouting-2026-05-27-cycle-16.md)
+- [AI-native frameworks scouting cycle 17](watch/ai-native-frameworks-scouting-2026-05-27-cycle-17.md)
 - [pydantic-ai #5688 MCPToolset http_client follow_redirects patch prep](watch/pydantic-ai-5688-mcp-http-client-follow-redirects.md)
+- [LangGraph #7688 TIME_WAIT port false-positive](watch/langgraph-7688-timewait-port.md)
 - [Goose #9332 PDEATHSIG MCP subprocess lifecycle](watch/goose-9332-pdeathsig-mcp-subprocess.md)
 
 ## Метки
