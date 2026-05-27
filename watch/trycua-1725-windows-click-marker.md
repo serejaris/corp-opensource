@@ -5,8 +5,8 @@
 - Issue: https://github.com/trycua/cua/issues/1725
 - Internal issue: https://github.com/serejaris/corp-opensource/issues/15
 - Repo: `trycua/cua`
-- Status: open bug
-- Internal priority: candidate, but requires Windows/Rust recorder proof.
+- Status: open bug with competing PR
+- Internal priority: watch; do not open a competing PR while `#1737` is pending review.
 
 ## Why In Scope
 
@@ -51,6 +51,27 @@ Follow-up comments:
 - Internal tracker: https://github.com/serejaris/corp-opensource/issues/15#issuecomment-4551471214
 - Upstream source-audit note: https://github.com/trycua/cua/issues/1725#issuecomment-4551472165
 
+Rechecked on 2026-05-27 17:15 UTC:
+
+```text
+gh issue view 1725 --repo trycua/cua --json state,assignees,labels,comments,updatedAt,url
+OPEN, no assignee, label bug
+
+gh pr view 1737 --repo trycua/cua --json state,isDraft,mergeable,reviewDecision,mergeStateStatus,statusCheckRollup,files,updatedAt,url,body,title
+OPEN, non-draft, MERGEABLE, REVIEW_REQUIRED, BLOCKED
+body: Closes #1725
+files:
+- libs/cua-driver/rust/crates/cua-driver-core/src/recording.rs
+- libs/cua-driver/rust/crates/cua-driver-core/src/recording_loader.rs
+- libs/cua-driver/rust/crates/cua-driver/src/main.rs
+- libs/cua-driver/rust/crates/platform-windows/src/recording_hooks.rs
+checks/status: CodeRabbit success; Vercel failure is team authorization, not a code test failure
+```
+
+`#1737` claims the exact issue contract: `element_index` clicks should produce `click.png` in the Windows `cua-driver-rs` trajectory recorder. It overlaps the same recorder/Windows hook surface and adds test-oriented changes per the PR summary. This makes a fresh PR from us a duplicate-risk action.
+
+Important caveat: this is not verified closure. `#1737` is still open, review-required, merge-state blocked, and there is no independent Windows recording smoke from this cycle.
+
 ## Current Main Source Audit
 
 Current upstream `main` appears to already include the code path this issue asked for:
@@ -94,8 +115,43 @@ Expected regression shape:
 
 ## PR Readiness
 
-This is no longer a clean PR target without first proving current `main` still fails. Source audit suggests `#1718` / `#1720` may have already covered the missing path, while issue `#1725` remained open.
+This is not a clean PR target. A competing PR now explicitly closes `#1725` and covers the same recorder/Windows path. Do not open a competing PR unless `#1737` is closed without merge, maintainers ask for an alternate fix, or Windows smoke shows the PR/current main still fails the marker contract.
 
 ## Decision
 
-`WATCH / likely fixed on main pending Windows smoke`: do not open a PR now. Next useful action is a Windows recording smoke or a precise upstream comment saying current `main` appears to cover the issue and asking whether Windows verification is still needed.
+`next_status: WATCH`
+
+Reason: competing PR `trycua/cua#1737` is open and pending maintainer review / Windows smoke. No upstream PR or comment from us in this cycle.
+
+Unblock events:
+
+- `#1737` merged or closed;
+- maintainer asks for validation or alternate patch;
+- Windows recording smoke on `#1737` or current main proves `element_index` clicks still miss `click.png`.
+
+## Cycle 2026-05-27 17:15 UTC
+
+### 6-subagent synthesis
+
+- Repo-fit / PR-readiness: active PRs mostly remain watch-only; no code follow-up on our PRs. `goose#9447`, `opencode#29530`, and `CopilotKit#5035` are now live `MERGEABLE`, but blocked by review/rerun/team auth gates.
+- Bug-signal: no new maintainer/reporter signal on Continue, MCP TypeScript, pydantic-ai, OpenHands, or google/adk candidates that would justify a new comment or PR.
+- Repro-path: `trycua#1725` still needs Windows smoke for final proof; Linux runner is not sufficient for the real acceptance path.
+- Patchability: `trycua#1725` would be patchable, but `#1737` now covers the same path, so patchability does not imply PR-readiness.
+- Duplicate-race: `#1737` is the decisive duplicate/competing PR for this candidate.
+- PR-readiness: no fresh PR; watch `#1737` review/merge and avoid duplicate work.
+
+### Parent live gates
+
+- Issue state: `trycua/cua#1725` open, label `bug`, no assignee.
+- Linked/timeline PR: `trycua/cua#1737` open from 2026-05-27, body says `Closes #1725`.
+- PR state: non-draft, `mergeable=MERGEABLE`, `reviewDecision=REVIEW_REQUIRED`, `mergeStateStatus=BLOCKED`.
+- Checks/status: CodeRabbit success; Vercel status failure requires Cua team authorization.
+- Files touched: recorder core, recording loader, driver registry wiring, Windows recording hooks.
+- Regression card: still requires Windows smoke (`find <recording-dir> -name click.png`) before claiming fixed.
+- Runner gate: no dedicated Windows/macOS runner used in this cycle; acceptable because status is `WATCH`, not `PR-READY`.
+
+### 3-subagent critique
+
+- Fact-check: do not say fixed or duplicate-covered; correct wording is competing PR pending review. Windows smoke is not proven.
+- Process-gate: order satisfied: 6-subagent scouting, parent live gates, 3-subagent critique, then tracker/watch update. Keep `next_status` exactly `WATCH`.
+- Actionability: no upstream comment. The actionable unblock event is `#1737` merge/close, maintainer request, or Windows smoke result.

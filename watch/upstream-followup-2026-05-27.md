@@ -1,5 +1,20 @@
 # Upstream Follow-up 2026-05-27
 
+## Check 17:15 UTC
+
+Bounded cycle with 6 subagents, parent live gates, and 3-subagent critique. No upstream PR/comment opened.
+
+| Upstream | Current state | Action |
+|---|---|---|
+| `trycua/cua#1725` / `#1737` | Issue `#1725` is still open, label `bug`, no assignee. New PR `#1737` is open, non-draft, `MERGEABLE`, review required, merge-state blocked. Its body says `Closes #1725` and it touches the recorder core, recording loader, driver registry wiring, and Windows recording hooks. CodeRabbit is green; Vercel failure is team authorization. Windows smoke is not independently proven. | `next_status: WATCH`. Watch `#1737` review/merge or Windows smoke. Do not open competing PR/comment unless maintainers ask, `#1737` closes without merge, or smoke proves the contract still fails. |
+| `aaif-goose/goose#9447` | Open, mergeable, review required. `changes` still failed from GitHub diff API transient; dependent jobs skipped; `check-quarantined` and `machete` green. | Wait maintainer rerun/review; no code action. |
+| `anomalyco/opencode#29530` | Open, mergeable; duplicate/standards/compliance checks green. | Watch maintainer review. |
+| `CopilotKit/CopilotKit#5035` | Open, mergeable, review required. Docs preview green; other Vercel contexts need team authorization. | Watch maintainer review/team auth; not a code failure. |
+| `OpenHands/software-agent-sdk#3394` | Open, mergeable, old `CHANGES_REQUESTED` still visible after follow-up; check rollup empty and eval not visible as a completed gate. | Wait maintainer eval/workflow approval. |
+| `pydantic-ai#5688`, `google/adk-python#5864`, `continue#12334`, `MCP TypeScript#2115` | No new maintainer/reporter signal that changes actionability. MCP TypeScript remains duplicate-race with `#2116/#2138`; Continue remains needs-reporter-path. | Watch only. |
+
+Critique result: fact-check rejected `duplicate-covered` wording for `trycua#1725`; correct wording is competing PR pending review. Process gate passed because the tracker update follows 6-subagent scouting and parent live gates. Actionability chose exactly `WATCH` with unblock event `#1737` merge/close, maintainer request, or Windows smoke result.
+
 ## Check 09:05 -03
 
 Live follow-up after cycle 18 scouting and E2B duplicate cleanup.
