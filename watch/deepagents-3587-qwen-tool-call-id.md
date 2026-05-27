@@ -11,7 +11,7 @@ Date: 2026-05-27
 
 ## Status
 
-`PR OPEN / CI IN PROGRESS`.
+`PR AUTO-CLOSED BY ASSIGNMENT GUARD / WAITING MAINTAINER`.
 
 No open or closed competing PR was found via `gh search prs` for:
 
@@ -96,15 +96,23 @@ Results:
 
 Checked after opening:
 
-- state: open;
-- ready, not draft;
-- mergeable;
+- state: closed by automation;
+- reason: external author is not assigned to linked issue;
 - title lint: green;
-- lockfile check / full CI: in progress.
+- lockfile check: green;
+- local tests: green;
+- Corridor Review: green;
+- CI jobs were cancelled after the assignment guard closed the PR.
 
 ## Next Action
 
-Watch CI and maintainer review.
+Wait for maintainer response on issue #3587.
+
+Posted upstream issue comment:
+
+https://github.com/langchain-ai/deepagents/issues/3587#issuecomment-4551838560
+
+The comment explains the root cause, why `None` should still raise, the local verification, and asks maintainers to confirm whether this direction matches the intended contract.
 
 ## Original Next Action
 
