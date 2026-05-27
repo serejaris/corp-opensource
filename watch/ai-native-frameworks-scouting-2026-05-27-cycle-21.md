@@ -2,6 +2,8 @@
 
 Checked at `2026-05-27T13:19Z`.
 
+Update from cycle 22: the `modelcontextprotocol/typescript-sdk#2115` duplicate gate below is stale. Parent live gate later found exact competing PRs [#2116](https://github.com/modelcontextprotocol/typescript-sdk/pull/2116) and [#2138](https://github.com/modelcontextprotocol/typescript-sdk/pull/2138), both open/mergeable/review required with tests and changesets. Current status is `WATCH / duplicate-race`; see [cycle 22](ai-native-frameworks-scouting-2026-05-27-cycle-22.md).
+
 ## Method
 
 Six-subagent scouting pass:
