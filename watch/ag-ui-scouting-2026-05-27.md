@@ -86,3 +86,11 @@ Therefore `#1635` can be internal `CANDIDATE`, but not `PR-READY` until runner e
 2. Re-run duplicate gate for `#1635`, `data-workspace-metadata`, `missing payload`, `Malformed stream chunk`, `Mastra 1.31`, and related `#1253/#1727/#836`.
 3. If repro holds and duplicate gate stays clean, draft upstream assignment/approval comment before code or PR.
 4. Only after maintainer approval/assignment, prepare minimal patch and tests; do not broaden to full Mastra 1.31 chunk semantics without maintainer direction.
+
+## Refresh 2026-05-27 21:07 UTC
+
+Follow-up note: [AG-UI / Mastra candidate refresh](ag-ui-mastra-candidate-refresh-2026-05-27.md).
+
+Live refresh kept `#1635` open, unassigned, unlabeled and uncommented. Exact duplicate PR still not found for `data-workspace-metadata` / payload-less custom chunks, but near-collision set is broader than the original note: `#1253`, `#837`, `#1727`, and `#1468`.
+
+Updated decision: `COMMENT-FIRST` after runner-backed test card. Do not post upstream and do not open PR in this cycle; first prove the secret-free `@ag-ui/mastra` unit regression in runner, then ask maintainers whether a narrow payload-less custom chunk fix should land separately or fold into the broader Mastra adapter work.

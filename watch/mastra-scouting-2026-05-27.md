@@ -87,3 +87,13 @@ Actionability: `#17118` is the cleanest single lane because it is narrow, unassi
 - Runner/unit repro does not reproduce on current `main`.
 - A broad Mastracode TUI/autocomplete PR appears and overlaps the picker path.
 - `#17137` gets maintainer clarification and `#17118` becomes occupied.
+
+## Refresh 2026-05-27 21:07 UTC
+
+Follow-up note: [AG-UI / Mastra candidate refresh](ag-ui-mastra-candidate-refresh-2026-05-27.md).
+
+Live refresh kept `#17118` open and unassigned with labels `bug`, `mastracode`, `impact:medium`, `effort:medium`, `trio-tb`, `trio-wp`. No exact PR or issue was found for slash-command picker description wrapping.
+
+Near precedent/collision set to track before promotion: closed `#17002`, merged `#17005`, merged `#17054`, and open `#17083`. These support the wrapping implementation direction but do not prove the slash-command path is fixed.
+
+Updated decision: keep `CANDIDATE`, not `PR-READY`. Next gate is secret-free runner repro or focused test discovery around Mastra Code slash-command autocomplete rendering, then repeat duplicate gate.
