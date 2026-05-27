@@ -81,6 +81,8 @@
 
 Последний coding/computer-use/browser-MCP repo watch: [Cline / CUA / Playwright MCP scope](watch/cline-cua-playwright-mcp-scope-2026-05-27.md), tracker [#72](https://github.com/serejaris/corp-opensource/issues/72). Итог: 6 scouting subagents, parent repo/issue/PR/community/test gates, internal 3-role critique, 0 upstream PR/comment, final `next_status: WATCH`; `microsoft/playwright-mcp#1635` лучший immediate follow-up but already comment-first and approval-gated; `trycua/cua#1739` лучший future computer-use lead after macOS Retina/AVF repro; `cline/cline` остаётся saturated watch while `#11087` and nearby PR clusters are active.
 
+Последний low-code agent/workflow builder repo watch: [Dify / Flowise / Langflow / n8n / Activepieces scope](watch/low-code-agent-workflow-builder-scope-2026-05-27.md), tracker [#78](https://github.com/serejaris/corp-opensource/issues/78). Итог: 6 scouting subagents, parent repo/issue/PR/community/test gates, internal 3-role critique, 0 upstream PR/comment, final `next_status: WATCH`; strong control-plane fit, but best fresh lanes are PR-covered (`Flowise#6428 -> #6429`, `activepieces#13418 -> #13420`) or blocked by Linear/team/release-branch/runner gates.
+
 Последний RAG / memory / retrieval repo watch: [LlamaIndex / Haystack / Mem0 / Qdrant / LanceDB scope](watch/rag-memory-retrieval-repo-scope-2026-05-27.md), tracker [#77](https://github.com/serejaris/corp-opensource/issues/77). Итог: 6 scouting subagents, parent repo/issue/PR/community/test gates, internal 3-role critique, 0 upstream PR/comment, final `next_status: WATCH`; strong repo fit, but best fresh lanes are PR-covered (`llama_index#21750 -> #21785`, Haystack `#11409 -> #11413/#11414`, Mem0 `#5220 -> #5258`, Qdrant `#9201 -> #9202`, LanceDB `#3447 -> #3454`) or need runner-backed repro.
 
 Последний observability/eval harness repo watch: [Langfuse / Opik / DeepEval / OpenEvals / smolagents scope](watch/observability-eval-harness-repo-scope-2026-05-27.md), tracker [#76](https://github.com/serejaris/corp-opensource/issues/76). Итог: 6 scouting subagents, parent repo/issue/PR/community/test gates, internal 3-role critique, 0 upstream PR/comment, final `next_status: WATCH`; `langfuse/langfuse` и `comet-ml/opik` остаются стратегическими observability/eval lanes только после exact issue/PR gate и runner-backed repro, `confident-ai/deepeval`/`huggingface/smolagents` лучше подходят для узких future repro, `langchain-ai/openevals` остаётся low-noise watch.
@@ -190,6 +192,7 @@
 - [#75 MCP ecosystem repo-scope watch](https://github.com/serejaris/corp-opensource/issues/75)
 - [#76 Observability / eval harness repo-scope watch](https://github.com/serejaris/corp-opensource/issues/76)
 - [#77 RAG / memory retrieval infra repo-scope watch](https://github.com/serejaris/corp-opensource/issues/77)
+- [#78 Low-code agent workflow builder repo-scope watch](https://github.com/serejaris/corp-opensource/issues/78)
 - [#66 AI SDK / Agents repo scope watch](https://github.com/serejaris/corp-opensource/issues/66)
 - [#65 Docker MCP exact-validation scope watch](https://github.com/serejaris/corp-opensource/issues/65)
 - [#67 Hermes #15640 stale cleanup candidate](https://github.com/serejaris/corp-opensource/issues/67)
