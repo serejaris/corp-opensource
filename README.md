@@ -24,6 +24,7 @@
 | langchain-ai/deepagents | [#3616](https://github.com/langchain-ai/deepagents/pull/3616), [#3587](https://github.com/langchain-ai/deepagents/issues/3587) | [#20](https://github.com/serejaris/corp-opensource/issues/20), [watch](watch/deepagents-3587-qwen-tool-call-id.md) | PR auto-closed by assignment guard; approach posted on issue | Wait for maintainer assignment/reopen |
 | OpenHands/OpenHands | [#14476](https://github.com/OpenHands/OpenHands/issues/14476) | [#21](https://github.com/serejaris/corp-opensource/issues/21), [watch](watch/openhands-14476-conversation-metadata-race.md) | Candidate/watch; no competing PR found; SaaS semantics risk | Only pursue if unit repro is possible |
 | browser-use/browser-use | [#4877](https://github.com/browser-use/browser-use/issues/4877), [#4801](https://github.com/browser-use/browser-use/issues/4801), [#4846](https://github.com/browser-use/browser-use/issues/4846) | [scouting](watch/ai-native-frameworks-scouting-2026-05-27.md) | Good repo, but top candidates already covered by open mergeable PRs | Watch/review only; no duplicate PR |
+| OpenHands/software-agent-sdk | [#3394](https://github.com/OpenHands/software-agent-sdk/pull/3394), [#2806](https://github.com/OpenHands/software-agent-sdk/issues/2806) | [#22](https://github.com/serejaris/corp-opensource/issues/22), [watch](watch/openhands-sdk-2806-tmux-viewport.md) | PR open, mergeable, review required; checks mostly not started yet | Watch CI/review |
 
 ## Рабочие issues
 
@@ -48,6 +49,7 @@
 - [#19 CopilotKit workspace protocol deps leak into published package](https://github.com/serejaris/corp-opensource/issues/19)
 - [#20 deepagents subagent task fails without tool_call_id on OpenAI-compatible Qwen](https://github.com/serejaris/corp-opensource/issues/20)
 - [#21 OpenHands conversation metadata race hides started resolver conversations](https://github.com/serejaris/corp-opensource/issues/21)
+- [#22 OpenHands SDK tmux 1000x1000 viewport burns CPU](https://github.com/serejaris/corp-opensource/issues/22)
 
 ## Правила
 

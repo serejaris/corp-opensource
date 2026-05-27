@@ -162,3 +162,21 @@ Outcome:
 Decision: `browser-use` is useful to watch, but not a clean new PR lane right now. Best next lane is `OpenHands/OpenHands`, where maintainer response is fresher and there are small issue paths without the same duplicate pressure.
 
 Operational lesson: duplicate search must be repeated immediately before implementation. A candidate that looked clean in scouting can become occupied by an open mergeable PR with tests; in that case the right contribution is validation/review/watch, not another PR.
+
+## Sixth Scouting Cycle - 2026-05-27 - OpenHands / SDK split
+
+Six subagents checked `OpenHands/OpenHands` as the next lane after `browser-use`.
+
+Outcome:
+
+| Candidate | Current state | Decision |
+|---|---|---|
+| `OpenHands/OpenHands#14563` | Strong Paperclip/Hermes/Codex relevance: CLI/Docker global skills are invisible to agent-server container. Maintainer confirmed root cause, but linked related design/workstream issues. | `WATCH / ask first`; no code PR without maintainer direction on mount/config behavior. |
+| `OpenHands/OpenHands#14523` | Env propagation for `ALLOW_INSECURE_GIT_ACCESS`; already has open PRs [#14531](https://github.com/OpenHands/OpenHands/pull/14531), [#14535](https://github.com/OpenHands/OpenHands/pull/14535), plus docs PR. | `NO FRESH PR`; review/watch. |
+| `OpenHands/OpenHands#14499` | Process sandbox readiness failure; open PR [#14540](https://github.com/OpenHands/OpenHands/pull/14540) exists. | `NO FRESH PR`; review/watch. |
+| `OpenHands/OpenHands#14476` | Conversation metadata race; open PR [#14489](https://github.com/OpenHands/OpenHands/pull/14489) exists. | `NO FRESH PR`; review/watch. |
+| `OpenHands/OpenHands#14047` | Attachment-only chat submission has many open competing PRs. | `NO FRESH PR`; maintainer needs to pick canonical branch. |
+| `OpenHands/OpenHands#13769` | Repo picker exact match has stale conflicting PR [#13899](https://github.com/OpenHands/OpenHands/pull/13899). | `WATCH`; do not open blind duplicate. |
+| `OpenHands/software-agent-sdk#2806` | Canonical owner for tmux `1000x1000` CPU bug; `help wanted`; maintainer invited PR; no competing PR found. | `IMPLEMENTED`; upstream PR [#3394](https://github.com/OpenHands/software-agent-sdk/pull/3394) opened. |
+
+Decision: OpenHands main repo is valuable but currently duplicate-heavy for the obvious bugs. The clean contribution moved to the SDK owner repo, where the bug is smaller, accepted by maintainer signal, and directly relevant to agent/eval runtime efficiency.
