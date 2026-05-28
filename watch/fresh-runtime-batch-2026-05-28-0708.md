@@ -5,6 +5,7 @@
 Trackers:
 
 - Umbrella: https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4561586615
+- Follow-up: https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4561756753
 
 Статус: `CANDIDATE`
 
@@ -63,3 +64,19 @@ Existing runner order remains unchanged: Probe, Gemini, Vercel `#15652`, LangCha
 `next_status: CANDIDATE`
 
 Track Hermes `#33712` as a fresh packaging/runtime candidate. Keep Codex `#24879`, Claude `#63025`, and TensorRT-LLM `#14676` in watch lanes.
+
+## Follow-up, 2026-05-28 07:34 UTC
+
+Live delta after the original gate:
+
+- `NousResearch/hermes-agent#33712` is still open, unassigned, and has no comments, but upstream added labels `type/bug`, `comp/cli`, `area/nix`, and `P3` at `2026-05-28T07:24:35Z`.
+- This confirms upstream triaged the lane as a CLI/Nix bug, while `P3` keeps it a lower-urgency candidate.
+- Exact PR cover still was not found; adjacent `#33311` remains a dashboard-auth reverse-proxy login URL PR, not a missing `hermes_cli.dashboard_auth` package-module fix.
+
+Claude cluster delta:
+
+- `anthropics/claude-code#63028` is a fresh Web/plugin lead: declared plugins are inactive during the first Claude Code Web cloud session, with labels `bug`, `has repro`, `area:hooks`, `area:claude-code-web`, `platform:web`, and `area:plugins`. No exact PR cover found. Keep as `WATCH / comment-first only with new evidence`; not a local PR lane.
+- `anthropics/claude-code#63025` received a detailed third-party comment showing the same "No messages yet" UI symptom while the `projects` map remains intact. This weakens the original null-`projects` root-cause framing and broadens the likely SSH Remote rehydration surface. Keep as `WATCH / diagnostic thread`.
+- `anthropics/claude-code#63029` is a weaker Web archive-restore data-loss report; duplicate/process risk is high, so keep only as passive watch.
+
+Decision remains: `next_status: CANDIDATE` for Hermes `#33712`, upstream actions `0`, runner actions `0`. No upstream comment/PR without Nix/container package-surface repro. Runner `#10` remains unavailable.

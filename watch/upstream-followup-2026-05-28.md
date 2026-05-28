@@ -758,3 +758,19 @@ Runner action count: `0`.
 Selected candidate: `huggingface/candle#3567`. It is open, unassigned, unlabeled, with no comments at gate time. It reports that Qwen2 `prepare_attention_mask` becomes bidirectional when `attn_mask` is provided because it lacks a causal triangle, causing silent wrong outputs in batched eval/training. No exact PR cover was found.
 
 Watch lanes: `candle#3568/#3569` are valid autograd no-bwd reports around `rope` and `softmax_last_dim`, but they are coordination-sensitive because open PR `#3526` already addresses the same `apply_op*_no_bwd` family for RmsNorm `#2168`. Keep them as `WATCH / coordination-first`, not cold PR targets.
+
+## Hermes and Claude live delta, 2026-05-28 07:34 UTC
+
+Detailed note: [Fresh runtime batch 2026-05-28 07:08 UTC](fresh-runtime-batch-2026-05-28-0708.md).
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4561756753).
+
+`next_status: CANDIDATE`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Material delta: `NousResearch/hermes-agent#33712` was triaged upstream with labels `type/bug`, `comp/cli`, `area/nix`, and `P3`. It remains open, unassigned, with no comments and no exact PR cover. This confirms the bug/CLI/Nix shape but does not make it `PR-READY`; useful action still requires Nix/container package-surface repro.
+
+Claude side watch: `anthropics/claude-code#63028` is a fresh Web/plugin `has repro` lead, `#63025` gained a third-party diagnostic comment showing the same SSH Remote UI symptom with intact `projects`, and `#63029` is a weaker Web archive-restore data-loss report with duplicate/process risk. No upstream comments or PRs.
