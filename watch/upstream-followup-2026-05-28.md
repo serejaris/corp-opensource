@@ -92,6 +92,43 @@ Tracker comments: umbrella [#52](https://github.com/serejaris/corp-opensource/is
 
 3-role critique: factology found no approval/merge/close, actionable failing CI, exact supersede, merge conflict, or maintainer ask. Process gates allow only internal tracker/watch updates. Actionability remains monitor-only across all tracked PR lanes.
 
+## Active PR dashboard refresh, 2026-05-28 01:54 UTC
+
+Bounded active-PR dashboard refresh over tracked upstream PRs and duplicate-covered watch lanes: `OpenHands/software-agent-sdk#3394`, `anomalyco/opencode#29565/#29530`, `cline/cline#11087`, `CopilotKit/CopilotKit#5035`, `pydantic/pydantic-ai#5678/#5680`, stale-clean `NousResearch/hermes-agent#15640`, `stablyai/orca#2948`, and `colbymchenry/codegraph#345`.
+
+Process: parent live `gh pr view` gates, 6 read-only roles in two waves, then 3-role critique. This is a monitor-only dashboard refresh, so runner repro was not required. Upstream action count: `0`.
+
+No upstream comment, rerun, rebase, force-push, close, or new adjacent PR was made.
+
+`next_status: WATCH`.
+
+| Lane | Live result | Next action |
+|---|---|---|
+| `OpenHands/software-agent-sdk#3394` | Open, non-draft, `MERGEABLE/BLOCKED`, old `CHANGES_REQUESTED`, status rollup empty; maintainer eval/re-review still not visible. | Wait maintainer eval / re-review / workflow approval. No repeat comment. |
+| `opencode#29565` | Open, non-draft; duplicate/standards/compliance/contributor checks green; current `gh` mergeability `UNKNOWN`; no maintainer review. | Wait maintainer review; no third opencode PR without distinct signal. |
+| `opencode#29530` | Open, non-draft, `MERGEABLE/BLOCKED`; duplicate/standards/compliance/contributor-management checks green, but not full test CI; no maintainer review. | Wait maintainer review. |
+| `cline#11087` | Open, non-draft, `MERGEABLE/BLOCKED`; visible SDK quality, Ubuntu/Windows Node 24 tests, and Socket checks green/skipped as expected; Greptile only commented, no approval. | Wait maintainer review; no new provider-routing work. |
+| `CopilotKit#5035` | Open, non-draft, `MERGEABLE/BLOCKED`, `REVIEW_REQUIRED`; docs Vercel preview green; other Vercel contexts fail through team authorization URLs, not proven code failures. | Wait maintainer review / Vercel team authorization. |
+| `pydantic-ai#5678` | Open, non-draft, `MERGEABLE/CLEAN`; broad CI/harness/coverage/smokeshow green; no approval. | Wait maintainer/bot review. |
+| `pydantic-ai#5680` | Open, non-draft, `MERGEABLE/CLEAN`; broad CI/harness/coverage/smokeshow green; no approval. | Wait maintainer/bot review; no new UI adapter work. |
+| `Hermes#15640` | Open, non-draft; current `gh` mergeability `UNKNOWN`; no comments/reviews/checks; stale since `2026-04-25`. | Keep `PR-OPEN / WATCH-stale-clean`; no ping/close/rebase without fresh macOS validation or maintainer signal. |
+| `orca#2948` | Open upstream cover for `orca#2930`; `MERGEABLE/UNSTABLE`; only visible check is `track-community-pr` green; `#2930` remains open. | `WATCH / duplicate-covered`; re-enter only if `#2948` closes without merge, stalls with maintainer signal, or lands incomplete. |
+| `codegraph#345` | Open exact-fix cover for `codegraph#507`, but now `CONFLICTING/DIRTY`, `REVIEW_REQUIRED`, no checks; `#507` remains open. | `WATCH / stale-conflicting coverage`; do not re-enter while `#345` is live unless maintainer asks, PR closes, or fresh repro proves an uncovered gap. |
+
+6-role synthesis:
+
+- Owned active PRs remain monitor-only; no approval/merge/close, actionable failing CI, maintainer ask, or superseding PR was found.
+- `opencode#29530` can now be written as live `MERGEABLE/BLOCKED`, but its green checks are template/management checks, not a full test suite.
+- `Hermes#15640` should not be described as currently `CLEAN/MERGEABLE`; latest `gh` reports mergeability `UNKNOWN`.
+- `orca#2948` still blocks re-entry into `orca#2930`, but the live check set is light.
+- `codegraph#345` still blocks re-entry into `#507` by exact-fix coverage, but its state is now stale/conflicting rather than clean coverage.
+
+3-role critique:
+
+- Factology: no contradiction blocks the internal `WATCH` update. Wording should say `codegraph#345` covers `#507` by exact fix, not that it explicitly closes it.
+- Process: internal README/watch update is enough; tracker comments are unnecessary because no upstream-facing candidate status changed and no upstream action was taken.
+- Actionability: no comment/rerun/rebase/ping/close/new PR is warranted. `codegraph#507` must not be re-entered while exact-cover PR `#345` remains live, even if conflicted.
+
 ## Repo-universe candidate refresh, 2026-05-28 01:45 UTC
 
 Bounded Paperclip-like / AI-native scouting refresh over browser/control-plane, terminal-agent and MCP/SDK repos.
