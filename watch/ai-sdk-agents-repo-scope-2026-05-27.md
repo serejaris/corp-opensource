@@ -91,6 +91,8 @@ Upstream action count remains `0`; no cold PR/comment before duplicate gate, run
 
 `vercel/ai#15652` remains open, unassigned, and uncommented. No exact PR was found for Anthropic `structuredOutputMode: "jsonTool"` forcing `disableParallelToolUse: true`. Source-path confidence is high in `packages/anthropic/src/anthropic-language-model.ts`, but adjacent provider/structured-output PRs `#10274/#15112/#10812/#12903` remain watch risks.
 
+Cycle 38 follow-up `2026-05-28 04:07 UTC`: [watch note](ai-native-popular-repos-paperclip-scouting-2026-05-28-cycle-38-fresh-discovery.md), selected tracker [#86](https://github.com/serejaris/corp-opensource/issues/86), umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560779972). Six read-only roles plus 3-role critique selected `vercel/ai#15652` as the internal package-fixture `CANDIDATE`; upstream action count remained `0`. Caveat: a fixture can prove request serialization ignores the user override, but it must not overclaim that maintainers must accept parallel real-tool fan-out on the synthetic `jsonTool` path.
+
 Decision remains `next_status: CANDIDATE`; upstream action count `0`. Promotion requires a Node/pnpm current-main package fixture, patch changeset/signed-commit readiness, and fresh adjacent PR search.
 
 ## Final decision
