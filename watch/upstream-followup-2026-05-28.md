@@ -129,6 +129,42 @@ No upstream comment, rerun, rebase, force-push, close, or new adjacent PR was ma
 - Process: internal README/watch update is enough; tracker comments are unnecessary because no upstream-facing candidate status changed and no upstream action was taken.
 - Actionability: no comment/rerun/rebase/ping/close/new PR is warranted. `codegraph#507` must not be re-entered while exact-cover PR `#345` remains live, even if conflicted.
 
+## Active PR dashboard refresh, 2026-05-28 02:35 UTC
+
+Bounded active-PR dashboard refresh over tracked upstream PRs: `OpenHands/software-agent-sdk#3394`, `anomalyco/opencode#29565/#29530`, `cline/cline#11087`, `CopilotKit/CopilotKit#5035`, `pydantic/pydantic-ai#5678/#5680`, and stale-clean `NousResearch/hermes-agent#15640`.
+
+Process: parent live `gh pr view` gates, 6 read-only roles in two waves, then 3-role critique. This is a monitor-only dashboard refresh, so runner repro was not required. Required `open-source-pr-workflow` is unavailable here; this used documented fallback.
+
+`next_status: WATCH`
+
+Upstream action count: `0`.
+
+No upstream comment, rerun, rebase, force-push, close, or new adjacent PR was made.
+
+| Lane | Live result | Next action |
+|---|---|---|
+| `OpenHands/software-agent-sdk#3394` | Open, non-draft, `MERGEABLE/BLOCKED`, old `CHANGES_REQUESTED`, status rollup empty; maintainer eval/re-review still not visible. | Wait maintainer eval / re-review / workflow approval. No repeat comment. |
+| `opencode#29565` | Open, non-draft, `MERGEABLE/BLOCKED`; duplicate/standards/compliance/contributor checks green; no review. Adjacent `#29632` changes structured-output retry/format flow and may interact semantically, but is not an exact cover. | Wait maintainer review; watch `#29632`. |
+| `opencode#29530` | Open, non-draft, `MERGEABLE/BLOCKED`; duplicate/standards/compliance/contributor-management checks green, but not full test CI; no review. | Wait maintainer review. |
+| `cline#11087` | Open, non-draft, `MERGEABLE/BLOCKED`; visible SDK quality, Ubuntu/Windows Node 24 tests, and Socket checks green; Greptile only commented, no approval. | Wait maintainer review; no new provider-routing work. |
+| `CopilotKit#5035` | Open, non-draft, `MERGEABLE/BLOCKED`, `REVIEW_REQUIRED`; docs Vercel preview green; other Vercel contexts fail through team authorization URLs, not proven code failures. Release PR `#5069` is not a supersede, but can trigger published-package recheck if it merges first. | Wait maintainer review / Vercel team authorization; watch release timing. |
+| `pydantic-ai#5678` | Open, non-draft, `MERGEABLE/CLEAN`; broad CI/harness/coverage/smokeshow green; no approval. | Wait maintainer/bot review. |
+| `pydantic-ai#5680` | Open, non-draft, `MERGEABLE/CLEAN`; broad CI/harness/coverage/smokeshow green; no approval. Same-file overlap risk with open `#5602/#5605` in `pydantic_ai_slim/pydantic_ai/ui/ag_ui/_adapter.py`. | Wait maintainer/bot review; recheck if `#5602/#5605` merge first. |
+| `Hermes#15640` | Open, non-draft, `MERGEABLE/CLEAN`; no comments/reviews/checks; stale since `2026-04-25`. Fresh `#29673` touches `hermes_cli/gateway.py` and gateway tests with launchd naming overlap, but is not a proven supersede. | Keep `PR-OPEN / WATCH-stale-clean`; no ping/close/rebase without fresh macOS validation or maintainer signal; watch `#29673`. |
+
+6-role synthesis:
+
+- No tracked PR was merged, closed, approved, superseded, or given a new maintainer ask.
+- Live wording updates: `opencode#29565` and `opencode#29530` should be recorded as `MERGEABLE/BLOCKED`; `Hermes#15640` should be recorded as `MERGEABLE/CLEAN`.
+- Main race watches: `opencode#29632` for structured-output semantics, `pydantic-ai#5602/#5605` for AG-UI adapter same-file overlap, `CopilotKit#5069` for release timing, and `Hermes#29673` for gateway/launchd naming overlap.
+- One subagent drifted to `OpenHands/OpenHands#3394`; parent live gate and critique confirmed the canonical tracked PR is `OpenHands/software-agent-sdk#3394`.
+
+3-role critique:
+
+- Factology: no exact supersede or actionable failing CI found. `CopilotKit` Vercel failures are team authorization, not author-fixable. `Hermes#29673` is overlap risk, not a proven replacement.
+- Process: internal dashboard update and one umbrella heartbeat are allowed; per-PR tracker comments and all upstream actions are unnecessary.
+- Actionability: no comment, rerun, rebase, ping, close, or new PR is warranted. Continue monitor-only.
+
 ## Repo-universe candidate refresh, 2026-05-28 01:45 UTC
 
 Bounded Paperclip-like / AI-native scouting refresh over browser/control-plane, terminal-agent and MCP/SDK repos.
