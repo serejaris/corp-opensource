@@ -809,3 +809,29 @@ Runner action count: `0`.
 Material delta: duplicate/race refresh нашёл `router-for-me/CLIProxyAPI#2746`, open non-draft but conflicting PR, который implements per-request collision-aware `forwardMap`/`reverseMap` for OAuth tool-name remapping и включает SSE stream reverse coverage. Это достаточно близко к `#3592`, поэтому CLIProxyAPI downgraded с clean `CANDIDATE` до `WATCH / duplicate-covered-risk` до settle `#2746`.
 
 Fresh watch: `anomalyco/opencode#29694` reports `~/.local/share/opencode/tool-output` spill files growing to `63G`; issue указывает на existing 7-day cleanup function в `packages/opencode/src/tool/truncate.ts`, но visible caller не найден. Exact open PR cover не найден, но issue уже assigned to `nexxeln`, поэтому keep as high-value assigned `WATCH`, not a cold PR lane.
+
+## Assigned opencode IME/TUI watch and duplicate refresh, 2026-05-28 08:05 UTC
+
+Detailed notes:
+
+- [opencode #29697 IME TUI stale cells watch](opencode-29697-ime-tui-stale-cells-watch.md)
+- [opencode #29694 tool-output spill cleanup](opencode-29694-tool-output-spill-cleanup.md)
+- [CLIProxyAPI #3592 Claude tool name reverse map](cliproxyapi-3592-claude-tool-name-reverse-map.md)
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4561938155).
+
+`next_status: WATCH`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Process: parent live GitHub gates, focused duplicate/PR search, 6-role reused-agent scouting, then 3-role critique before tracker/watch updates. The required `open-source-bug-scouting` skill is not installed in this environment, so this is a documented fallback.
+
+Fresh watch: `anomalyco/opencode#29697` reports macOS Terminal.app CJK IME composition corrupting the TUI layout, with stale cells after commit. Exact duplicate/PR cover was not found in focused searches, but the issue is already assigned to `simonklee` and the repro needs macOS Terminal.app + IME behavior. Keep as `WATCH`, not a cold PR lane.
+
+Existing high-value watch: `anomalyco/opencode#29694` remains open and assigned to `nexxeln`, with no material post-`07:55Z` delta and no exact cleanup PR cover found. It remains the more practical opencode source-level lane, but assignment and unavailable runner keep it out of `PR-READY`.
+
+Duplicate/race correction: `router-for-me/CLIProxyAPI#2746` is still a strong cover-risk for `#3592`, but the latest critique notes it may not fully cover the TitleCase client-tool response-restore case if `#2746` only reverses actual request-side renames. Keep `#3592` as `WATCH / duplicate-covered-risk`, not `NO-GO`; re-entry after `#2746` settles or a current-main retest proves `Glob -> glob` still leaks.
+
+Other live gates: `anthropics/claude-code#63034` remains upstream-owned `WATCH` because duplicate bot linked `#62459/#59843` and the author disputed duplicate rather than asking for an external patch. `openai/codex#24881` is `NO-GO / duplicate-design-watch` for this cycle because stronger prior path-glob skill issue `#19671` already exists. No upstream comment or PR is allowed from this cycle.

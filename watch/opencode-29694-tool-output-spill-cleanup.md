@@ -50,3 +50,11 @@ Search/list signals:
 `next_status: WATCH`
 
 Трекать `opencode#29694` как high-value assigned watch. Re-entry условия: assignee inactivity, maintainer request, или runner/source-backed evidence, что cleanup всё ещё unwired на current main и exact PR не существует.
+
+## Follow-up, 2026-05-28 08:05 UTC
+
+Live refresh found no material state change after `07:55Z`: `#29694` remains open, assigned to `nexxeln`, comments `0`, no labels, with no exact cleanup PR cover found.
+
+Related fresh opencode watch: `#29697` is a separate assigned macOS Terminal.app IME/TUI stale-cell issue. It is not a duplicate of the tool-output cleanup lane and does not change the `#29694` decision.
+
+Updated decision remains `WATCH / high-value assigned`.
