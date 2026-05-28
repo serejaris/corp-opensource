@@ -861,3 +861,27 @@ Fresh opencode `#29698` is a weak `LEAD/WATCH`: macOS Desktop appears to confuse
 Existing active lanes had no material post-cutoff transition. `vercel/ai#15652`, `probelabs/probe#568`, and `google-gemini/gemini-cli#27503` remain the top runner-backed candidate backlog, but runner `#10` is still unavailable and no PR-ready gate is closed.
 
 Decision: keep this cycle at `WATCH`. Claude Code items are product-owned from our contribution perspective; no upstream comment/PR without a future explicit maintainer ask or new source-backed evidence.
+
+## Covered PR refresh: Pydantic/Vercel/Codex, 2026-05-28 08:16 UTC
+
+Detailed note: [Pydantic/Vercel/Codex covered refresh 2026-05-28 08:16](pydantic-vercel-codex-covered-refresh-2026-05-28-0816.md).
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562007431).
+
+`next_status: WATCH`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Process: parent live GitHub gates, focused duplicate/PR search, 6-role reused-agent scouting, then synthesis critique before tracker/watch updates. The required `open-source-bug-scouting` skill is not installed in this environment, so this is a documented fallback.
+
+Material deltas after the `08:08Z` tracker heartbeat:
+
+- `pydantic/pydantic-ai#5663` is now owner/author-covered by draft PR `#5670` (`CONFLICTING`, author `colesmcintosh`, assignee `dsfaccini`). The issue remains open and pydanty marks the model-name/profile/docs update PR-ready, but this is not our candidate lane.
+- `vercel/ai#15664` has exact targeted PR `#15665` by issue author `onmax`, open non-draft, `MERGEABLE`, review required. No competing PR.
+- `openai/codex#24475` got a fresh confirming comment about Codex subagent tool hangs/reconnect symptoms on version `134`. It remains a strong product/app-server watch with labels `bug`, `CLI`, `app`, `connectivity`, `subagent`, `app-server`; no OSS patch lane or runner-backed source path exists here.
+
+Other active lanes had no material post-cutoff transition. The operational runner backlog remains `vercel/ai#15652`, `probelabs/probe#568`, and `google-gemini/gemini-cli#27503`, but runner `#10` is still unavailable.
+
+Decision: `WATCH`. No upstream comment or PR.
