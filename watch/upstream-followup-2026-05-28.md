@@ -341,3 +341,33 @@ Runner/tooling gate remains closed: `corp-server` does not resolve, `corp-openso
 | `ag-ui-protocol/ag-ui#1635` | Open, unassigned; no exact cover, but broad stale PR `#1253` strongly overlaps Mastra adapter/chunk mapping and is `CONFLICTING` / `CHANGES_REQUESTED`. | `WATCH`; no PR without test evidence and positioning against `#1253`. |
 
 3-role critique: `CANDIDATE` is justified by uncovered Probe/Serena/BrowserOS lanes, but no lane is `PR-READY`. Create no new tracker issue. Update umbrella `#52` and primary Probe tracker `#80`; avoid noisy comments on unchanged reserve lanes.
+
+## Candidate/watch backlog refresh, 2026-05-28 03:16 UTC
+
+Bounded refresh over active candidate/watch lanes plus the new CUA/UI automation runner target: `probelabs/probe#568`, `web-infra-dev/midscene#2544`, `oraios/serena#1519`, `browseros-ai/BrowserOS#1005`, `generalaction/emdash#1875`, `mastra-ai/mastra#17118`, and `ag-ui-protocol/ag-ui#1635`.
+
+Process: parent live GitHub gates, duplicate/PR search, 6 read-only roles in two waves, then internal status critique. Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are unavailable here, so this was the documented fallback.
+
+`next_status: CANDIDATE`
+
+Upstream action count: `0`.
+
+No upstream comment, PR, ping, rerun, or rebase was made.
+
+Tracker comments: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560558645), Probe [#80](https://github.com/serejaris/corp-opensource/issues/80#issuecomment-4560558654), CUA/UI automation [#72](https://github.com/serejaris/corp-opensource/issues/72#issuecomment-4560558620).
+
+Runner gate remains closed: `corp-opensource-runner` is not available from this environment, and no lane has current-main fail-before evidence. Therefore no lane is `PR-READY`; even `COMMENT-FIRST` lanes must wait for runner evidence if the comment would change upstream status.
+
+| Lane | Live result | Decision |
+|---|---|---|
+| `probelabs/probe#568` | Open, labels `bug` + `external`, unassigned; upstream comment confirms bug shape but asks for exact command/API/env details. No exact open PR found; historical JSON-output PRs and `#546` are context only. | Primary `CANDIDATE` / first runner target. Minimal contract: capture CLI/Node SDK stdout, stderr, exit code and JSON parse failure on current main; expected fix keeps machine JSON clean on stdout and sends progress/debug elsewhere. |
+| `web-infra-dev/midscene#2544` | Open, unassigned; no exact PR for web `longPress` 600ms cap. Nearby `#2387` and `#1801` are historical feature/rename context, not a cover. | `WATCH` but second practical runner target. Promote only after current-main timing evidence proves requested duration above 600ms is capped/truncated and a unit/integration contract is feasible. |
+| `oraios/serena#1519` | Open, unassigned, no labels/comments; no exact PR for Docker host-port dashboard 403. Dashboard/Docker-adjacent PRs are not direct cover. | Reserve `CANDIDATE`; Docker/port-mapping runner repro required, and any fix must preserve Host/DNS-rebinding protection. |
+| `browseros-ai/BrowserOS#1005` | Open; reporter's 2026-05-26 update remains strong evidence, but fresh MCP-adjacent merge `#1064` means runtime surface may have shifted. No exact list_changed dedupe PR found. | `WATCH` until repeat MCP/event-stream repro on current main; good later candidate if runner supports browser/MCP runtime. |
+| `generalaction/emdash#1875` | Open and PR-welcome signal remains, but closed exact prior-art PRs `#1907/#1908/#1909/#1910/#1911` are mandatory. | `WATCH / prior-art gated`; no PR evidence or upstream action before reading closed-PR failure modes and maintainer preference. |
+| `mastra-ai/mastra#17118` | Open with `bug`, `mastracode`, `impact:medium`, `effort:medium`; no exact PR found, but merged `#17054/#17005` and open `#16550/#17083/#17006` make TUI/wrapping overlap high. | `WATCH`; can become `COMMENT-FIRST` only after terminal-width MRE proves slash-command description wrapping remains uncovered. |
+| `ag-ui-protocol/ag-ui#1635` | Open; no exact issue-closing PR, but Mastra adapter overlap is high, especially broad `#1253` plus `#1727/#1687/#1556/#1615`. | `COMMENT-FIRST` after runner-backed SSE/chunk fixture and positioning against `#1253`; not PR-ready. |
+
+6-role synthesis: `probe#568` is still the best low-infra Paperclip/Codex-style target because it is a structured-output contract bug in an agent/code-search tool. `midscene#2544` is the strongest second runner target because UI action timing is directly relevant to CUA reliability and no exact PR is visible. `serena#1519` remains a valid reserve candidate, while `BrowserOS#1005` is relevant but heavier; `emdash#1875`, `mastra#17118`, and `ag-ui#1635` are blocked by prior-art, MRE, or overlap gates.
+
+Critique: final cycle status can be `CANDIDATE` because Probe and Serena are open, uncovered and actionable once runner evidence exists. It cannot be `PR-READY` because no fail-before repro was run. Upstream action count remains `0`.
