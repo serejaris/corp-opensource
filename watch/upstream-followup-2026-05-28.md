@@ -371,3 +371,23 @@ Runner gate remains closed: `corp-opensource-runner` is not available from this 
 6-role synthesis: `probe#568` is still the best low-infra Paperclip/Codex-style target because it is a structured-output contract bug in an agent/code-search tool. `midscene#2544` is the strongest second runner target because UI action timing is directly relevant to CUA reliability and no exact PR is visible. `serena#1519` remains a valid reserve candidate, while `BrowserOS#1005` is relevant but heavier; `emdash#1875`, `mastra#17118`, and `ag-ui#1635` are blocked by prior-art, MRE, or overlap gates.
 
 Critique: final cycle status can be `CANDIDATE` because Probe and Serena are open, uncovered and actionable once runner evidence exists. It cannot be `PR-READY` because no fail-before repro was run. Upstream action count remains `0`.
+
+## Fresh browser/CUA/terminal discovery cycle 36, 2026-05-28 03:26 UTC
+
+Detailed note: [cycle 36 browser/CUA/terminal](ai-native-popular-repos-paperclip-scouting-2026-05-28-cycle-36-browser-cua-terminal.md).
+
+Process: GitHub repo search, parent live repo/issue/PR gates, 6 read-only roles in two waves, then internal critique. Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are unavailable here, so this was the documented fallback.
+
+`next_status: CANDIDATE`
+
+Upstream action count: `0`.
+
+No upstream comment, PR, ping, rerun, or rebase was made.
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560610697).
+
+Selected future runner target: `simular-ai/Agent-S#195`. It is open, unassigned, no exact PR was found, and the bug has a small deterministic CUA action contract: `WindowsACI.hotkey("enter")` should produce a single `enter` key token, not split it into `e`, `n`, `t`, `e`, `r`. It is not `PR-READY` because current-main repro/test evidence is still missing.
+
+Reserve watch lanes: `nanobrowser#270`, `magnitudedev/browser-agent#154`, and `browserwing#18`. Duplicate-covered/no-go lanes: `nanobrowser#291 -> #318`, `Agent-S#196 -> #197`, `ntegrals/openbrowser` issue-disabled PR backlog, and `browserwing#11/#12` security lanes.
+
+Factology corrections recorded: one subagent confused `ntegrals/openbrowser` with `openbrowser/openbrowser`; parent live gates control. Another subagent drifted from `earendil-works/pi` into unrelated `pydantic/pydantic-ai` numbering; parent gates control and `pi#5055/#5065/#5095` remain open/assigned `WATCH`.
