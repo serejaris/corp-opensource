@@ -682,3 +682,23 @@ Selected lead: `openai/codex#24873`. The issue is open, unassigned, unlabeled, w
 Duplicate/race result: no exact open PR or issue cover found. Closed `#21915` is relevant prior art but was for the VS Code extension / remote Linux surface and does not cover Desktop WSL cache layout or the Landlock fallback panic.
 
 Critique result: factology and duplicate gates pass for `CANDIDATE`, but not `PR-READY`. This needs Windows host + WSL2 + Codex Desktop repro, `RUST_BACKTRACE=1`, launcher/resource lookup evidence, and a contribution/process gate. Current `corp-opensource-runner` remains unavailable via `#10`, and a Linux-only runner would not close the Desktop WSL packaging gap.
+
+## Fresh Claude Code Agent Teams TUI lead, 2026-05-28 06:41 UTC
+
+Detailed note: [Claude Code #63019 Agent Teams permission TUI corruption](claude-code-63019-agent-teams-permission-tui.md).
+
+Tracker comments: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4561433388), high-churn terminal/runner [#74](https://github.com/serejaris/corp-opensource/issues/74#issuecomment-4561434267).
+
+Process: fresh GitHub discovery, parent live issue/repo/duplicate gates, 6-role fallback scouting, then focused 3-role critique. Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are unavailable here, so this remains the documented fallback. No upstream comment/PR.
+
+`next_status: LEAD`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Selected lead: `anthropics/claude-code#63019`. The issue is open, unassigned, labeled `bug`, `has repro`, `platform:macos`, `area:tui`, `area:agents`, and `area:permissions`, with no comments at gate time. It reports terminal output corruption when a permission prompt appears while the user is navigating the expanded Agent Teams selection UI on Claude Code `2.1.153`; screenshots and steps are provided.
+
+Duplicate/race result: no exact open PR cover found. Nearby issues `#49865` and `#8618` are related prior art but not exact cover: `#49865` is a closed Agent Teams permission crash path, while `#8618` is broad older terminal rendering corruption without this Agent Teams permission prompt trigger.
+
+Critique result: valid fresh lead, but not `CANDIDATE`/`PR-READY`. Repro needs macOS/TUI evidence and likely manual or upstream-compatible terminal-buffer harness; the repo appears issue-first/no top-level `CONTRIBUTING`, and a comment without new evidence would be noise. Core runner backlog remains Probe, Gemini, Vercel `#15652`, LangChain4j, then Codex WSL-specific follow-up.
