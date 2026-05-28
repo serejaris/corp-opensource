@@ -4,11 +4,49 @@ Tracker: [#52](https://github.com/serejaris/corp-opensource/issues/52)
 
 Affected internal trackers: [#85](https://github.com/serejaris/corp-opensource/issues/85), [#82](https://github.com/serejaris/corp-opensource/issues/82), [#81](https://github.com/serejaris/corp-opensource/issues/81), [#80](https://github.com/serejaris/corp-opensource/issues/80), [#58](https://github.com/serejaris/corp-opensource/issues/58), [#56](https://github.com/serejaris/corp-opensource/issues/56), [#53](https://github.com/serejaris/corp-opensource/issues/53).
 
-Tracker comments: [#82 demotion](https://github.com/serejaris/corp-opensource/issues/82#issuecomment-4559803855), [#52 synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559804608), [#53 mini-swe refresh](https://github.com/serejaris/corp-opensource/issues/53#issuecomment-4559839933), [#52 mini-swe synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559840785), [#52 settlement refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560463593), [#52 active PR dashboard refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560641484), [#52 cycle 37 Gemini candidate](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560685299).
+Tracker comments: [#82 demotion](https://github.com/serejaris/corp-opensource/issues/82#issuecomment-4559803855), [#52 synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559804608), [#53 mini-swe refresh](https://github.com/serejaris/corp-opensource/issues/53#issuecomment-4559839933), [#52 mini-swe synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559840785), [#52 settlement refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560463593), [#52 active PR dashboard refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560641484), [#52 cycle 37 Gemini candidate](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560685299), [#52 runner backlog refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560707233), [#85 Gemini refresh](https://github.com/serejaris/corp-opensource/issues/85#issuecomment-4560707690).
 
 Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are not installed in this environment, so this follow-up used the documented fallback: parent live GitHub gates, 6 read-only subagents, then a 3-role critique.
 
 No upstream PR/comment/ping was made.
+
+## Runner-candidate backlog refresh, 2026-05-28 03:50 UTC
+
+Bounded refresh over current runner candidates and practical runner targets: `probelabs/probe#568`, `google-gemini/gemini-cli#27503`, `oraios/serena#1519`, `simular-ai/Agent-S#195`, `web-infra-dev/midscene#2544`, and `browseros-ai/BrowserOS#1005`.
+
+Process: parent live issue views, duplicate PR searches, runner/tooling gate, 6 read-only roles in two waves, then 3-role critique. Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are still unavailable here, so this used the documented fallback.
+
+`next_status: CANDIDATE`
+
+Upstream action count: `0`.
+
+Tracker comments: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560707233), Gemini [#85](https://github.com/serejaris/corp-opensource/issues/85#issuecomment-4560707690).
+
+Runner gate remains closed: [#10](https://github.com/serejaris/corp-opensource/issues/10) is still open and says no `corp-opensource-runner` has been provisioned. Local tooling is insufficient for bounded repro work: Node `v20.19.2` and Python `3.13.5` are present, but `pnpm`, `bun`, `cargo`, and `rustc` are unavailable.
+
+No upstream comment, PR, ping, rerun, or rebase was made.
+
+| Runner order | Lane | Live result | Next gate |
+|---:|---|---|---|
+| 1 | `probelabs/probe#568` | Open, labels `bug`/`external`, no exact PR cover found. Correction: this lane is JSON stdout pollution by debug/progress lines such as `Pattern:`, `Path:`, and BM25 text, not a `probe.toml`/config issue. | Run focused CLI + Node SDK current-main repro; capture stdout/stderr/exit/JSON parse result. |
+| 2 | `google-gemini/gemini-cli#27503` | Open P1 `area/agent` bug; adjacent PR `#25378` remains Windows ripgrep EFTYPE-only, `DIRTY/CONFLICTING`, and not an exact cover for `git grep --json` fallback. | Run current-main repro or focused fallback arg-builder test; verify contribution/CLA gate. |
+| 3 | `oraios/serena#1519` | Open, unassigned, no exact PR found for Docker host-port dashboard 403. | Docker/current-main repro with security-preserving Host validation test. |
+| 4 | `simular-ai/Agent-S#195` | Open, unassigned, no exact PR found for `WindowsACI.hotkey("enter")` splitting into characters. | Unit/current-main repro for single-key vs chord generation; GUI smoke only if needed. |
+| 5 | `web-infra-dev/midscene#2544` | Open, unassigned, no exact PR found for web `longPress` 600ms cap. | Browser/Playwright timing repro before promotion from `WATCH / runner target`. |
+| 6 | `browseros-ai/BrowserOS#1005` | Open; reporter's `2026-05-26` update gives sharper root cause around byte-identical full tool re-registration on every tool call/focus/connect. Adjacent MCP PRs `#1031/#948/#944/#864/#655/#786/#1038` are not exact `list_changed` dedupe covers. | MCP/browser runtime repro and tool-list hash/dedupe design gate. |
+
+6-role synthesis:
+
+- No target issue was closed or exact-covered in this refresh.
+- The practical runner order starts with `probelabs/probe#568` because it is the cheapest CLI/stdout contract to prove without browser, GUI, external API, Docker, Bun, or Rust toolchain assumptions.
+- `google-gemini/gemini-cli#27503` remains the strongest high-signal terminal-agent candidate, but its full repro is heavier because it involves `SearchText` fallback and possibly Linux Snap `rg`; a focused arg-builder test may be enough for the first pass.
+- `Serena#1519`, `Agent-S#195`, `Midscene#2544`, and `BrowserOS#1005` remain valid but progressively heavier runner lanes.
+
+3-role critique:
+
+- Factology: the only correction is the Probe wording; use `probelabs/probe#568` and describe JSON stdout contamination, not config/probe.toml.
+- Process: internal backlog refresh with `next_status: CANDIDATE` is allowed; runner absence blocks `PR-READY` and all upstream actions, not internal tracker/watch updates.
+- Actionability: comment only umbrella `#52` and fresh primary tracker `#85`; do not comment upstream or unchanged reserve trackers `#80/#84/#81/#72`.
 
 ## Fresh AI-native issue discovery cycle 37, 2026-05-28 03:40 UTC
 
