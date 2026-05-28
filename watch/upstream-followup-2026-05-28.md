@@ -4,11 +4,49 @@ Tracker: [#52](https://github.com/serejaris/corp-opensource/issues/52)
 
 Affected internal trackers: [#82](https://github.com/serejaris/corp-opensource/issues/82), [#81](https://github.com/serejaris/corp-opensource/issues/81), [#80](https://github.com/serejaris/corp-opensource/issues/80), [#58](https://github.com/serejaris/corp-opensource/issues/58), [#56](https://github.com/serejaris/corp-opensource/issues/56), [#53](https://github.com/serejaris/corp-opensource/issues/53).
 
-Tracker comments: [#82 demotion](https://github.com/serejaris/corp-opensource/issues/82#issuecomment-4559803855), [#52 synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559804608), [#53 mini-swe refresh](https://github.com/serejaris/corp-opensource/issues/53#issuecomment-4559839933), [#52 mini-swe synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559840785), [#52 settlement refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560463593).
+Tracker comments: [#82 demotion](https://github.com/serejaris/corp-opensource/issues/82#issuecomment-4559803855), [#52 synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559804608), [#53 mini-swe refresh](https://github.com/serejaris/corp-opensource/issues/53#issuecomment-4559839933), [#52 mini-swe synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559840785), [#52 settlement refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560463593), [#52 active PR dashboard refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560641484).
 
 Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are not installed in this environment, so this follow-up used the documented fallback: parent live GitHub gates, 6 read-only subagents, then a 3-role critique.
 
 No upstream PR/comment/ping was made.
+
+## Active PR dashboard refresh, 2026-05-28 03:35 UTC
+
+Bounded active-PR dashboard refresh over tracked upstream PRs: `OpenHands/software-agent-sdk#3394`, `anomalyco/opencode#29565/#29530`, `cline/cline#11087`, `CopilotKit/CopilotKit#5035`, `pydantic/pydantic-ai#5678/#5680`, and stale `NousResearch/hermes-agent#15640`.
+
+Process: parent live `gh pr view` gates, adjacent PR searches, 6 read-only roles in two waves, then 3-role critique. Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are still unavailable here, so this was the documented fallback. Runner repro was not required because this pass only updates read-only dashboard state and no lane reached `PR-READY`.
+
+`next_status: WATCH`
+
+Upstream action count: `0`.
+
+No upstream comment, PR, ping, rerun, rebase, close, or force-push was made.
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560641484).
+
+| Lane | Live result | Next action |
+|---|---|---|
+| `OpenHands/software-agent-sdk#3394` | Open, non-draft, `MERGEABLE/BLOCKED`, old `CHANGES_REQUESTED`; status rollup empty; maintainer eval/re-review still not visible after follow-up `3c8eae78`. | Wait maintainer eval / re-review / workflow approval. No repeat comment. |
+| `opencode#29565` | Open, non-draft, `MERGEABLE/BLOCKED`; duplicate/standards/compliance/contributor checks green; no review. Adjacent `#29632` changes structured-output retry/format flow and may interact semantically, but is not an exact cover. | Wait maintainer review; watch `#29632`; no third opencode PR without distinct signal. |
+| `opencode#29530` | Open, non-draft, `MERGEABLE/BLOCKED`; duplicate/standards/compliance/contributor-management checks green, but not full test CI; no review. | Wait maintainer review. |
+| `cline#11087` | Open, non-draft, `MERGEABLE/BLOCKED`; visible SDK quality, Ubuntu/Windows Node 24 tests, and Socket checks green/skipped; Greptile gap already answered. | Wait maintainer review; no new provider-routing work. |
+| `CopilotKit#5035` | Open, non-draft, `MERGEABLE/BLOCKED`, `REVIEW_REQUIRED`; docs Vercel preview green; other Vercel contexts fail through team authorization URLs, not proven code failures. Release/deps PRs are timing watch, not supersede. | Wait maintainer review / Vercel team authorization. |
+| `pydantic-ai#5678` | Open, non-draft, `MERGEABLE/CLEAN`; broad CI/harness/coverage/smokeshow green; no approval. | Wait maintainer/bot review. |
+| `pydantic-ai#5680` | Open, non-draft, `MERGEABLE/CLEAN`; broad CI/harness/coverage/smokeshow green; no approval. Same-file overlap risk with open `#5602/#5605`, but neither is an exact supersede. | Wait maintainer/bot review; recheck if `#5602/#5605` merge first. |
+| `Hermes#15640` | Open, non-draft, `MERGEABLE/CLEAN`; no comments/reviews/checks; stale since `2026-04-25`. Fresh `#29673` is gateway/launchd naming overlap risk and possible future supersede pressure, but not a proven replacement yet. | Keep `PR-OPEN / WATCH-stale-clean`; no ping/close/rebase without fresh macOS validation or maintainer signal; watch `#29673`. |
+
+6-role synthesis:
+
+- No tracked PR was merged, closed, approved, superseded, or given a new maintainer ask.
+- Live wording updates from the 03:10 dashboard: `opencode#29565` and `opencode#29530` moved from `UNKNOWN/UNKNOWN` to `MERGEABLE/BLOCKED`; `Hermes#15640` moved from `UNKNOWN/UNKNOWN` to `MERGEABLE/CLEAN`.
+- Exact supersede was not found. Watch-only overlaps remain: `opencode#29632`, `pydantic-ai#5602/#5605`, CopilotKit release/deps PRs, and `Hermes#29673`.
+- There is no actionable failing CI. CopilotKit Vercel failures are team-authorization gated, skipped Cline checks are not failures, and empty Hermes/OpenHands rollups are not rerun triggers from this repo.
+
+3-role critique:
+
+- Factology/duplicates: no exact cover or closure transition was found; `Hermes#29673` is high collision risk but still a broader rewrite path, not a replacement for `#15640` today.
+- Process: internal dashboard update and one umbrella heartbeat are enough; per-PR tracker comments and upstream comments would be noise.
+- Actionability: no comment, rerun, rebase, ping, close, or new PR is warranted until maintainer ask, actionable failing CI, conflict, exact supersede, approval/merge transition, or fresh runner validation.
 
 ## Duplicate-covered settlement refresh, 2026-05-28 02:57 UTC
 
