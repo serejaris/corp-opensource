@@ -626,3 +626,23 @@ Runner action count: `0`.
 Selected lead: `continuedev/continue#12507`. The issue is open, unassigned, labeled `area:chat`, `area:context-providers`, `area:docs`, and `kind:bug`. Current `main` still has the stale `Add more context providers` docs URL in `gui/src/components/mainInput/TipTapEditor/utils/getSuggestion.ts`; exact open PR cover was not found. Broad `#12202` is docs-file-only and not a cover for this UI source link.
 
 Critique result: factology and duplicate gates pass, process gates pass for `LEAD`, but actionability/strategy keeps this below the existing runner backlog. It is a useful opportunistic UI/docs-link lead, not a Paperclip-like runtime candidate and not `PR-READY`. Do not reorder primary runner targets: `probelabs/probe#568`, `google-gemini/gemini-cli#27503`, `vercel/ai#15652`, and `langchain4j/langchain4j#5313` remain ahead.
+
+## Fresh Vercel docs lead, 2026-05-28 06:10 UTC
+
+Detailed note: [Vercel AI #15663 onFinish/onEnd docs](vercel-ai-15663-onfinish-onend-docs.md).
+
+Tracker comments: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4561245208), Vercel tracker [#86](https://github.com/serejaris/corp-opensource/issues/86#issuecomment-4561246297).
+
+Process: parent live GitHub/source gates, duplicate/PR search, 6-role fallback scouting in staged groups. Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are unavailable here, so this was the documented fallback.
+
+`next_status: LEAD`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Selected lead: `vercel/ai#15663`. The issue is open, unassigned, unlabeled, and had no comments at gate time. Current `main` still contains `streamText({ ... onFinish ... })` examples in docs/cookbook/provider MDX files after merged `#15245` introduced `onEnd` and deprecated `onFinish` for the final lifecycle callback. The issue's scope caveat is valid: `toUIMessageStreamResponse({ onFinish })` is a different callback surface and should not be swept.
+
+Duplicate/race result: no exact open PR cover. `#14772` is path-adjacent for `content/cookbook/01-next/73-mcp-tools.mdx` but does not cover `onFinish -> onEnd`; `#15245` is merged source/regression context, not a cover.
+
+Critique result: factology and duplicate gates pass, but this stays `LEAD` because it is docs-only, lower priority than runtime/tool-call candidates, and has Vercel license/process friction. No upstream comment/PR. Primary runner backlog remains Probe, Gemini, Vercel `#15652`, and LangChain4j.
