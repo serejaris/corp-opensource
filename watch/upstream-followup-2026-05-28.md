@@ -702,3 +702,23 @@ Selected lead: `anthropics/claude-code#63019`. The issue is open, unassigned, la
 Duplicate/race result: no exact open PR cover found. Nearby issues `#49865` and `#8618` are related prior art but not exact cover: `#49865` is a closed Agent Teams permission crash path, while `#8618` is broad older terminal rendering corruption without this Agent Teams permission prompt trigger.
 
 Critique result: valid fresh lead, but not `CANDIDATE`/`PR-READY`. Repro needs macOS/TUI evidence and likely manual or upstream-compatible terminal-buffer harness; the repo appears issue-first/no top-level `CONTRIBUTING`, and a comment without new evidence would be noise. Core runner backlog remains Probe, Gemini, Vercel `#15652`, LangChain4j, then Codex WSL-specific follow-up.
+
+## Fresh Nanobot candidate pair, 2026-05-28 06:53 UTC
+
+Detailed note: [Nanobot #4040/#4039 unified session and context budget](nanobot-4040-4039-unified-session-context-budget.md).
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4561501637).
+
+Process: fresh GitHub discovery, parent live issue/repo/duplicate gates, 6-role fallback scouting, then focused 3-role critique. Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are unavailable here, so this remains the documented fallback. No upstream comment/PR.
+
+`next_status: CANDIDATE`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Selected candidate pair: `HKUDS/nanobot#4040` and `HKUDS/nanobot#4039`. Both are open, unassigned, unlabeled, and had no comments at gate time. `#4040` reports that `/stop` can fail to cancel an active task when `unified_session` is enabled because cancellation appears to use the raw session key rather than the effective unified session key. `#4039` reports that context snipping may count tool definitions during the initial estimate but fail to reserve tool-schema tokens when computing retained-history budget.
+
+Duplicate/race result: no exact open PR or duplicate issue found. This is distinct from cycle 34 Nanobot lanes `#4006/#4013`, which were duplicate-covered by PRs `#4011/#4020`.
+
+Critique result: `#4040` is the stronger runtime interrupt/cancellation candidate; `#4039` is a lower-confidence but strategically relevant context/tool-schema budget candidate. No upstream comment/PR because issue bodies already include root-cause hypotheses and suggested fixes; useful action requires runner/source-backed repro. Fresh lower-priority leads `oh-my-claudecode#3163` and `github/gh-aw#35423` remain unpromoted.
