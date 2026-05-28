@@ -4,11 +4,29 @@ Tracker: [#52](https://github.com/serejaris/corp-opensource/issues/52)
 
 Affected internal trackers: [#85](https://github.com/serejaris/corp-opensource/issues/85), [#82](https://github.com/serejaris/corp-opensource/issues/82), [#81](https://github.com/serejaris/corp-opensource/issues/81), [#80](https://github.com/serejaris/corp-opensource/issues/80), [#58](https://github.com/serejaris/corp-opensource/issues/58), [#56](https://github.com/serejaris/corp-opensource/issues/56), [#53](https://github.com/serejaris/corp-opensource/issues/53).
 
-Tracker comments: [#82 demotion](https://github.com/serejaris/corp-opensource/issues/82#issuecomment-4559803855), [#52 synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559804608), [#53 mini-swe refresh](https://github.com/serejaris/corp-opensource/issues/53#issuecomment-4559839933), [#52 mini-swe synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559840785), [#52 settlement refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560463593), [#52 active PR dashboard refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560641484), [#52 cycle 37 Gemini candidate](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560685299), [#52 runner backlog refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560707233), [#85 Gemini refresh](https://github.com/serejaris/corp-opensource/issues/85#issuecomment-4560707690), [#52 04:04 refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560746495), [#52 04:17 dashboard correction](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560803072), [#86 Vercel #15652 refresh](https://github.com/serejaris/corp-opensource/issues/86#issuecomment-4561045571), [#52 05:19 bounded refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4561046486), [#52 10:02 LangChain duplicate correction](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562901015).
+Tracker comments: [#82 demotion](https://github.com/serejaris/corp-opensource/issues/82#issuecomment-4559803855), [#52 synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559804608), [#53 mini-swe refresh](https://github.com/serejaris/corp-opensource/issues/53#issuecomment-4559839933), [#52 mini-swe synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559840785), [#52 settlement refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560463593), [#52 active PR dashboard refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560641484), [#52 cycle 37 Gemini candidate](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560685299), [#52 runner backlog refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560707233), [#85 Gemini refresh](https://github.com/serejaris/corp-opensource/issues/85#issuecomment-4560707690), [#52 04:04 refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560746495), [#52 04:17 dashboard correction](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560803072), [#86 Vercel #15652 refresh](https://github.com/serejaris/corp-opensource/issues/86#issuecomment-4561045571), [#52 05:19 bounded refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4561046486), [#52 10:02 LangChain duplicate correction](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562901015), [#52 10:10 Claude watch](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562948899).
 
 Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are not installed in this environment, so this follow-up used the documented fallback: parent live GitHub gates, 6 read-only subagents, then a 3-role critique.
 
 No upstream PR/comment/ping was made.
+
+## Claude Cowork/OTel/image watch, 2026-05-28 10:10 UTC
+
+Detailed note: [Claude Cowork/OTel/image watch](claude-cowork-otel-image-watch-2026-05-28-1010.md).
+
+Process: parent live gates over post-10:02 signals, reused 6 read-only fallback roles, and focused duplicate/PR checks. Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are still unavailable here, so this used the documented fallback.
+
+`next_status: WATCH`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562948899).
+
+Material deltas: `claude-code#63075` is a fresh Windows Desktop/Cowork crash watch in a broad Cowork VM/crash cluster; `claude-code#63074` is OTel log correlation but strong-duplicate-adjacent to open `#55269`; `claude-code#63071` is Windows image paste regression with multiple adjacent open/closed image-paste issues; `claude-code#63072/#63073` are duplicate-labeled; `opencode#29716` self-closed as already existing. Active source-level candidates had no transition.
+
+Carry-forward: `claude-peers-mcp#64` remains the best compact source-level `CANDIDATE-needs-runner-validation`; `vercel/ai#15652`, `probe#568`, and `gemini-cli#27503` remain runner-backed candidates; `langchain#37728` remains duplicate-covered by `langchain-google#1704/#1708`.
 
 ## LangChain Google embedding duplicate correction, 2026-05-28 10:02 UTC
 

@@ -24,7 +24,7 @@
 
 ### В работе сейчас
 
-Последний scouting heartbeat `2026-05-28 10:02 UTC`: [watch note](watch/langchain-google-embedding-batch-duplicate-2026-05-28-1002.md), tracker [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562901015). Итог: reused 6-agent cycle + parent live gates + duplicate/PR correction, upstream actions `0`, runner actions `0`, final `next_status: WATCH`. Delta: fresh `langchain-ai/langchain#37728` was demoted from `LEAD` to `WATCH / duplicate-covered` because actual package repo `langchain-ai/langchain-google` already has issue `#1704` and open PR `#1708`; `claude-code#63070`, `codex#24888`, `claude-code#63069`, and `codex#24887` remain feature/duplicate/service watch/no-go. `claude-peers-mcp#64` remains the best compact source-level `CANDIDATE-needs-runner-validation`.
+Последний scouting heartbeat `2026-05-28 10:10 UTC`: [watch note](watch/claude-cowork-otel-image-watch-2026-05-28-1010.md), tracker [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562948899). Итог: reused 6-agent cycle + parent live gates + duplicate/PR checks, upstream actions `0`, runner actions `0`, final `next_status: WATCH`. Delta: `claude-code#63075` is a fresh Windows Desktop/Cowork crash watch in a broad Cowork VM cluster; `claude-code#63074` is strong-duplicate-adjacent to open OTel issue `#55269`; `claude-code#63071` is Windows image-paste duplicate-risk; `claude-code#63072/#63073` and `opencode#29716` are duplicate/self-closed no-go. `claude-peers-mcp#64` remains the best compact source-level `CANDIDATE-needs-runner-validation`; `langchain#37728` remains duplicate-covered by `langchain-google#1704/#1708`.
 
 | Upstream | Что делаем | Статус |
 |---|---|---|
