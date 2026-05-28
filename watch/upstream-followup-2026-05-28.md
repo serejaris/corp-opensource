@@ -906,6 +906,31 @@ Duplicate/race: focused issue search found only `#64`; focused PR search found n
 
 Other fresh signal: `anthropics/claude-code#63045` is a good product-owned TUI regression watch for diff SGR background bleed in `2.1.150-2.1.153`, but Claude Code has no OSS patch lane here. Existing `claude-code#63043` now has duplicate-bot links `#62659/#31548/#58918`, so keep it at `WATCH`.
 
+## Codex/Claude product watch, 2026-05-28 08:30 UTC
+
+Detailed note: [Codex/Claude product watch 2026-05-28 08:30](codex-claude-product-watch-2026-05-28-0830.md).
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562138734).
+
+`next_status: WATCH`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Process: parent live GitHub gates, focused duplicate/PR search, 6-role reused-agent scouting, then synthesis critique before tracker/watch updates. The required `open-source-bug-scouting` skill is not installed in this environment, so this is a documented fallback.
+
+Fresh product-watch deltas:
+
+- `openai/codex#24884` reports Windows Codex App WSL mode only works with `danger-full-access`; `sandbox = "elevated"` hides distros and `sandbox = "unelevated"` hits `Wsl/EnumerateDistros/Service/E_ACCESSDENIED`. Adjacent broader cover-risk is `#21470`, but no exact PR cover was found.
+- `anthropics/claude-code#63047` re-files Desktop/Cowork plugin `PostToolUse` hooks silently skipping, with six weeks of production evidence. It is related to open canonical `#16288` and closed/stale `#51904/#27398/#51281`, so duplicate/process risk is high.
+
+Candidate carry-forward: `louislva/claude-peers-mcp#64` remains open with no PR cover or post-cutoff state change. Keep it as internal `CANDIDATE-needs-runner-validation`, not upstream action.
+
+Other active lanes had no material post-cutoff transition. Operational runner backlog remains `vercel/ai#15652`, `probelabs/probe#568`, and `google-gemini/gemini-cli#27503`; runner `#10` is still unavailable.
+
+Decision: `WATCH`. No upstream comment or PR.
+
 ## Claude/opencode post-cutoff watch, 2026-05-28 08:20 UTC
 
 Detailed note: [Claude/opencode post-cutoff watch 2026-05-28 08:20](claude-opencode-postcutoff-watch-2026-05-28-0820.md).
