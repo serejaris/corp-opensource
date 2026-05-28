@@ -89,3 +89,45 @@ Re-entry gate:
 - Rerun PR search for `1519`, `dashboard`, `403`, `Docker host port`, `host header`, and `allowed hosts`.
 - Run a focused unit or Docker repro in `corp-opensource-runner`.
 - Decide with 3-role critique whether the correct upstream mode is `COMMENT-FIRST` for host-validation design or `PR-READY` with a minimal test-backed patch.
+
+## Follow-up Gate Refresh, 2026-05-28 01:46 UTC
+
+Bounded follow-up for `oraios/serena#1519` after GitHub Search API rate limit cleared.
+
+Tracker comment: [#84 follow-up comment](https://github.com/serejaris/corp-opensource/issues/84#issuecomment-4560148164).
+
+Fallback/process note: required `open-source-bug-scouting` / `open-source-pr-workflow` skills are not installed here, so this follow-up used parent live gates, 6 read-only roles in two waves, then 3-role critique. Upstream action count remains `0`; no upstream comment, PR, ping, rerun, or rebase was made.
+
+Parent live gates:
+
+- `oraios/serena#1519` is still open, with no assignees, labels, or comments.
+- Repo state: `24,692` stars, MIT, default branch `main`, latest release `v1.5.3`, pushed `2026-05-27T11:31:58Z`, `73` issues / `32` PRs.
+- Current `main` SHA: `7bf30080f6aa8fc1f983e1d72bc91dd790f28d29`.
+- Open PR list still has no dashboard host-port/allowed-hosts PR. Targeted open PR searches for `1519`, `dashboard 403`, `host header`, and `dashboard allowed hosts OR web_dashboard_allowed_hosts OR trusted hosts` returned `[]`.
+- Broader issue/PR searches found no covering duplicate. Nearby context is not a duplicate: old PR `#403` is unrelated MCP stdio/dashboard auto-open work; issue `#1208` is dashboard security context; PRs `#719` and `#1509` are dashboard-adjacent but do not cover host-port validation; PRs `#1227/#1223` are download-host allowlisting, not dashboard trusted hosts.
+- Runner remains unavailable: `corp-server` does not resolve, and no dedicated `corp-opensource-runner` is provisioned; no Docker or heavy local repro was run.
+
+6-role follow-up synthesis:
+
+- Factology/duplicates: duplicate risk is low after the cleared-rate-limit searches; no covering PR/issue was found.
+- Process: Serena allows direct small bugfix PRs, but `COMMENT-FIRST`/`PR-READY` still need current evidence. CI/test commands are `uv sync --extra dev --locked`, `uv run poe lint`, `uv run poe test -q --tb=short`, and `uv run poe type-check`.
+- Source/test plausibility: `src/serena/dashboard.py:770-786` registers the `before_request` host check with `allowed = {f"127.0.0.1:{port}", f"localhost:{port}"}`. With Docker mapping `34283:24282`, `Host: localhost:34283` can be rejected because `port` is the internal Flask port. Existing light test surface is `test/serena/test_dashboard.py`.
+- Runner/regression card: fail-before should show host-side `curl http://localhost:34283/dashboard/index.html` returning `403` while in-container `localhost:24282` returns `200`; post-fix should make the mapped loopback case non-403 while rejecting an unrelated hostile `Host`.
+- Security/design guardrail: do not fix by wildcarding hosts, skipping validation when bind address is `0.0.0.0`, trusting `SERENA_DOCKER=1`, or using `ProxyFix` to bypass Host validation. Safe directions are explicit configured `host[:port]` allowlist entries or a tightly scoped loopback-host rule with negative tests.
+
+3-role critique:
+
+- Factology/duplicates: keep `CANDIDATE`; no factual reason to demote and no covering duplicate was found.
+- Process gates: keep `CANDIDATE`; upstream `COMMENT-FIRST`/`PR-READY` is premature without runner-backed repro or documented minimal repro evidence.
+- Actionability/security dissent: `COMMENT-FIRST` could be useful to steer away from wildcard/skip-host-check fixes, but it is still an upstream action without local evidence. Parent decision: record the security guardrail internally and wait for runner-backed evidence before any upstream comment.
+
+Decision: `next_status: CANDIDATE`.
+
+Closed caveat: duplicate search is no longer rate-limited for `#1519`.
+
+Remaining blockers before upstream action:
+
+- Runner-backed Docker smoke or accepted documented fallback with exact current-main fail-before logs.
+- Focused unit regression around the host-validation helper/hook.
+- Repeat live gates immediately before any upstream comment/PR.
+- 3-role critique after repro to choose exactly one of `COMMENT-FIRST` or `PR-READY`.
