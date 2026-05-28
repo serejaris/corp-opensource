@@ -64,3 +64,30 @@ Mini-swe continuation, 2026-05-28 UTC: a dedicated 6-role follow-up plus 3-role 
 1. Watch `stablyai/orca#2948` for merge, close without merge, stall, or incomplete fix.
 2. Run secret-free current-main repro for `mini-swe-agent#826` in `corp-opensource-runner`; prove post-`#832` behavior and fill a regression card before any upstream action.
 3. If mini-swe runner setup blocks, run `probe#568` CLI + Node SDK evidence capture for `symbols --format json` and record stdout/stderr/exit/JSON parse result.
+
+## Active PR dashboard refresh, 2026-05-28 01:15 UTC
+
+Bounded active-PR dashboard refresh over tracked upstream PRs: `OpenHands/software-agent-sdk#3394`, `anomalyco/opencode#29565/#29530`, `cline/cline#11087`, `CopilotKit/CopilotKit#5035`, `pydantic/pydantic-ai#5678/#5680`, and stale-clean `NousResearch/hermes-agent#15640`.
+
+Parent live gates used `gh pr view` plus targeted adjacent PR checks for `pydantic#5605`, `opencode#29632`, and `cline#11075/#11071`. Six read-only roles and 3-role critique selected the same dashboard outcome.
+
+`next_status: PR-OPEN / WATCH`
+
+Upstream action count: `0`.
+
+No upstream comment, rerun, rebase, force-push, close, or new adjacent PR was made.
+
+Tracker comments: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559896941), OpenHands [#22](https://github.com/serejaris/corp-opensource/issues/22#issuecomment-4559896966), opencode structured-output [#44](https://github.com/serejaris/corp-opensource/issues/44#issuecomment-4559896951), opencode webfetch [#23](https://github.com/serejaris/corp-opensource/issues/23#issuecomment-4559896968), Cline [#24](https://github.com/serejaris/corp-opensource/issues/24#issuecomment-4559896954), CopilotKit [#19](https://github.com/serejaris/corp-opensource/issues/19#issuecomment-4559896977).
+
+| Lane | Live result | Next action |
+|---|---|---|
+| `OpenHands/software-agent-sdk#3394` | Open, non-draft, `MERGEABLE/BLOCKED`, reviewDecision still `CHANGES_REQUESTED`, status rollup empty; maintainer eval was already triggered and no visible eval/re-review is present. | Wait eval result / maintainer re-review. No repeat comment. |
+| `opencode#29565` | Open, non-draft; duplicate/standards/compliance/contributor checks green; parent `gh` read returned mergeability `UNKNOWN/UNKNOWN`, so do not overclaim mergeability; no reviews. Adjacent structured-output PR `#29632` is open but not an exact cover. | Wait maintainer review; no new structured-output PR. |
+| `opencode#29530` | Open, non-draft; duplicate/standards/compliance checks green; parent `gh` read returned mergeability `UNKNOWN/UNKNOWN`, so do not overclaim mergeability; guideline bot already satisfied. | Wait maintainer review. |
+| `cline#11087` | Open, non-draft, `MERGEABLE/BLOCKED`; SDK quality, Ubuntu/Windows, and Socket checks green; Greptile gap already answered. Adjacent `#11075` and draft `#11071` increase provider-routing race risk. | Wait maintainer review; no new provider-routing work. |
+| `CopilotKit#5035` | Open, non-draft, `MERGEABLE/BLOCKED`, `REVIEW_REQUIRED`; docs Vercel preview green; other Vercel contexts are team authorization failures, not proven code failures. | Wait maintainer review / Vercel team authorization. |
+| `pydantic-ai#5678` | Open, non-draft, `MERGEABLE/CLEAN`; visible CI/harness/coverage green; no reviews. | Wait maintainer/bot review. |
+| `pydantic-ai#5680` | Open, non-draft, `MERGEABLE/CLEAN`; visible CI/harness/coverage green; no reviews. Same-file race risk with open `#5605` in AG-UI adapter. | Wait review; no new UI adapter work. |
+| `Hermes#15640` | Open, non-draft, `MERGEABLE/CLEAN`; no comments/reviews/checks; stale since `2026-04-25`. | Keep `PR-OPEN / WATCH-stale-clean`; no ping/close/rebase without fresh macOS validation or maintainer signal. |
+
+3-role critique: factology found no approval/merge/close, actionable failing CI, exact supersede, merge conflict, or maintainer ask. Process gates allow only internal tracker/watch updates. Actionability remains monitor-only across all tracked PR lanes.

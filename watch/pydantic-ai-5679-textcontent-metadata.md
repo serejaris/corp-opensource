@@ -123,3 +123,12 @@ Final CI check, 2026-05-27 02:00 -03:
 ## Next
 
 Watch CI and maintainer / bot review.
+
+## Dashboard heartbeat - 2026-05-28 01:15 UTC
+
+- PR `#5680` remains open, non-draft, `MERGEABLE/CLEAN`.
+- Visible lint, mypy, docs, PR Guard, test matrix, examples, coverage, check, harness compat, UI security prompt fetch, and smokeshow contexts are green.
+- No maintainer review yet; Codex review quota warning remains non-actionable.
+- Same-file race risk: open PR `#5605` also touches `pydantic_ai_slim/pydantic_ai/ui/ag_ui/_adapter.py`, but it is not an exact duplicate for TextContent metadata round-trip.
+- Upstream action count: `0`.
+- Next action: wait maintainer/bot review; no new UI adapter work until review/merge ordering clears.

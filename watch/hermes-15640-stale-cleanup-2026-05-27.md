@@ -83,3 +83,9 @@ Triggers:
 3. Fresh macOS launchd validation proves `#15640` still-current; then one short maintainer ping may be justified.
 4. PR becomes conflicted/failing.
 5. A later cleanup decision explicitly closes the PR as stale/out-of-current-scope without claiming the fix is disproven.
+
+## Dashboard heartbeat - 2026-05-28 01:15 UTC
+
+Active PR dashboard refresh found no material change: PR `#15640` remains open, non-draft, `MERGEABLE/CLEAN`, with no comments, reviews, or check rollup; last updated `2026-04-25T13:13:08Z`.
+
+Final status remains `PR-OPEN / WATCH-stale-clean`. Upstream action count: `0`. Do not ping, close, rebase, or rerun without fresh macOS launchd validation, maintainer signal, or a later explicit cleanup decision.

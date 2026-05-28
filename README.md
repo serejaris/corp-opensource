@@ -2,16 +2,16 @@
 
 ## Что уже сделано: PR dashboard
 
-Последняя live-проверка dashboard: 2026-05-27 23:34 UTC. Это snapshot; перед новым upstream comment/PR нужно перепроверить конкретную строку через `gh pr view` / `gh issue view`.
+Последняя live-проверка dashboard: 2026-05-28 01:15 UTC. Это snapshot; перед новым upstream comment/PR нужно перепроверить конкретную строку через `gh pr view` / `gh issue view`. Итог refresh: `next_status: PR-OPEN / WATCH`, upstream actions `0`; все tracked PR остаются monitor-only.
 
 ### Активные upstream PR
 
 | Upstream PR | Что сделано | Текущий статус | Следующее действие |
 |---|---|---|---|
 | [OpenHands/software-agent-sdk#3394](https://github.com/OpenHands/software-agent-sdk/pull/3394) | Уменьшен tmux viewport `1000x1000 -> 256x200`, добавлен regression на bounded viewport; review feedback закрыт follow-up commit `3c8eae78`. | Open, non-draft; `BLOCKED/MERGEABLE/CHANGES_REQUESTED`; check rollup empty. Maintainer said looks fine and triggered eval; eval result/re-review not visible yet. | Ждать maintainer eval / re-review / workflow approval; no repeat comment. |
-| [anomalyco/opencode#29565](https://github.com/anomalyco/opencode/pull/29565) | Structured output + thinking models: loosen tool-choice handling. | Open, non-draft; `BLOCKED/MERGEABLE`; visible duplicate/standards/compliance/contributor gates green; no maintainer review yet. | Ждать maintainer review; не открывать третий opencode PR без отдельного сигнала. |
+| [anomalyco/opencode#29565](https://github.com/anomalyco/opencode/pull/29565) | Structured output + thinking models: loosen tool-choice handling. | Open, non-draft; visible duplicate/standards/compliance/contributor gates green; current `gh` mergeability was not conclusive (`UNKNOWN/UNKNOWN` in parent read); no maintainer review yet. | Ждать maintainer review; не открывать третий opencode PR без отдельного сигнала. |
 | [cline/cline#11087](https://github.com/cline/cline/pull/11087) | OpenAI-compatible GLM: не отправлять unsupported reasoning controls. | PR-OPEN / monitor only: open, non-draft; `BLOCKED/MERGEABLE`; visible SDK quality, Ubuntu/Windows tests and Socket checks green after follow-up `e1ecc63a1`; no approval. | Ждать maintainer review; upstream comments не нужны. |
-| [anomalyco/opencode#29530](https://github.com/anomalyco/opencode/pull/29530) | Webfetch: `format=null` трактуется как default, а не как schema error. | Open, non-draft; `BLOCKED/MERGEABLE`; visible duplicate/standards/compliance gates green; contribution bot says guidelines satisfied; no maintainer review yet. | Ждать maintainer review. |
+| [anomalyco/opencode#29530](https://github.com/anomalyco/opencode/pull/29530) | Webfetch: `format=null` трактуется как default, а не как schema error. | Open, non-draft; visible duplicate/standards/compliance gates green; current `gh` mergeability was not conclusive (`UNKNOWN/UNKNOWN` in parent read); contribution bot says guidelines satisfied; no maintainer review yet. | Ждать maintainer review. |
 | [CopilotKit/CopilotKit#5035](https://github.com/CopilotKit/CopilotKit/pull/5035) | Release bump не должен публиковать workspace deps. | Open, non-draft; `BLOCKED/MERGEABLE`, `REVIEW_REQUIRED`; Vercel docs preview green; other Vercel contexts are team-authorization gated, not proven code failures. | Ждать maintainer review / team preview authorization. |
 | [pydantic/pydantic-ai#5680](https://github.com/pydantic/pydantic-ai/pull/5680) | Сохранение `TextContent` metadata в UI adapter round-trip. | PR-OPEN: open, `CLEAN/MERGEABLE`; visible CI/harness/coverage green; no maintainer review yet. | Ждать maintainer/bot review. |
 | [pydantic/pydantic-ai#5678](https://github.com/pydantic/pydantic-ai/pull/5678) | Instrumentation serialization не теряет binary data. | PR-OPEN: open, `CLEAN/MERGEABLE`; visible CI/harness/coverage green; no maintainer review yet. | Ждать maintainer/bot review. |

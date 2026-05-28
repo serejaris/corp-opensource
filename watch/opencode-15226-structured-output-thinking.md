@@ -66,3 +66,12 @@ Note: local Bun is `1.2.21`; opencode docs ask for Bun 1.3+, so push used `--no-
 - No comments or reviews yet.
 - All visible opencode management/standards checks are green.
 - No code action. Keep monitoring maintainer review and user reports.
+
+## Dashboard heartbeat - 2026-05-28 01:15 UTC
+
+- PR `#29565` remains open and non-draft; parent `gh` read returned mergeability `UNKNOWN/UNKNOWN`, so do not overclaim mergeability.
+- Visible opencode duplicate, standards, compliance, and contributor-label checks are green.
+- No reviews or maintainer comments.
+- Adjacent structured-output PR `#29632` is open and touches session structured-output retry/encoding paths, but it is not an exact cover for this tool-choice/thinking patch.
+- Upstream action count: `0`. No comment/rerun/rebase.
+- Next action: wait maintainer review; do not open another opencode structured-output PR while `#29565/#29632` are live.

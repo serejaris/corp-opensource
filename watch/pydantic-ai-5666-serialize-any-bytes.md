@@ -158,3 +158,11 @@ Final CI check, 2026-05-27 01:41 -03:
 ## Next
 
 Watch maintainer / bot review. If maintainers prefer an explicit wrapper shape for binary values instead of raw base64 strings, adapt the branch.
+
+## Dashboard heartbeat - 2026-05-28 01:15 UTC
+
+- PR `#5678` remains open, non-draft, `MERGEABLE/CLEAN`.
+- Visible lint, mypy, docs, test matrix, examples, coverage, check, harness compat, and smokeshow contexts are green.
+- No maintainer review yet; Codex review quota warning remains non-actionable.
+- Upstream action count: `0`.
+- Next action: wait maintainer/bot review.

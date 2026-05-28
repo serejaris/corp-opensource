@@ -41,3 +41,12 @@ Post-fix:
 - PR body сначала не совпал с upstream template; body переписан строго под `.github/pull_request_template.md`, bot подтвердил compliance.
 - Если duplicate bot найдёт старый PR, сравнить: old optional-default fix vs new nullable-runtime fix.
 - Если maintainer попросит убрать nested nullable schema, предложить альтернативу: убрать `null` из JSON schema converter for this field либо нормализовать schema output.
+
+## Dashboard heartbeat - 2026-05-28 01:15 UTC
+
+- PR `#29530` remains open and non-draft; parent `gh` read returned mergeability `UNKNOWN/UNKNOWN`, so do not overclaim mergeability.
+- Visible duplicate, standards, compliance and contributor/guideline gates are green.
+- No reviews or maintainer comments beyond the existing guideline bot confirmation.
+- Exact duplicate for `webfetch format: null` runtime handling not found in this dashboard pass.
+- Upstream action count: `0`. No comment/rerun/rebase.
+- Next action: wait maintainer review.

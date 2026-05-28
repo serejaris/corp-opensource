@@ -87,3 +87,12 @@ Checked after opening PR #5035:
 - Watch maintainer review and CI.
 - If asked, clarify that Vercel failures are fork deployment authorization.
 - If maintainers prefer `^${newVersion}` instead of exact `newVersion`, adjust release-script test and implementation together.
+
+## Dashboard heartbeat - 2026-05-28 01:15 UTC
+
+- PR `#5035` remains open, non-draft, `MERGEABLE/BLOCKED`, `REVIEW_REQUIRED`.
+- `Vercel - docs` preview is green.
+- Other Vercel contexts still fail through CopilotKit team authorization URLs; treat them as authorization gates, not proven code failures.
+- Claude review remains disabled for fork unless maintainers trigger it.
+- Upstream action count: `0`. No rerun/comment.
+- Next action: wait maintainer review / Vercel team authorization.

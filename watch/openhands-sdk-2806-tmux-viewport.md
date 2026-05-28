@@ -115,3 +115,11 @@ Workflow run check:
 - Maintainer comment: looks fine, wants to run an eval before merge.
 - Latest fork workflows for `3c8eae78` still show `action_required` with no jobs; this is maintainer approval/eval gating, not a local test failure.
 - No code action. Wait maintainer eval / workflow approval.
+
+## Dashboard heartbeat - 2026-05-28 01:15 UTC
+
+- PR `#3394` remains open, non-draft, `MERGEABLE/BLOCKED`.
+- GitHub still reports old `CHANGES_REQUESTED`; status rollup is empty.
+- Maintainer already said it looks fine and triggered eval, but no visible eval result or re-review is present after follow-up commit `3c8eae78`.
+- Upstream action count: `0`. No repeat comment/rerun/rebase.
+- Next action: wait maintainer eval result / re-review / workflow approval.
