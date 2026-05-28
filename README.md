@@ -24,7 +24,7 @@
 
 ### В работе сейчас
 
-Последний scouting heartbeat `2026-05-28 09:43 UTC`: [watch note](watch/claude-opencode-codex-watch-2026-05-28-0943.md), tracker [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562723960). Итог: reused 6-agent cycle + parent live gates + duplicate/PR checks, upstream actions `0`, runner actions `0`, final `next_status: WATCH`. Delta: `claude-code#63061` closed as duplicate; `opencode#29713` merged; `codex#24886` is a reasoning-only `/statusline` enhancement watch; `opencode#29714` is a fresh assigned Desktop GUI wrong-workspace lead; `claude-code#63063` is a Cmd+V image paste feature watch; `claude-code#63062` closed needs-info. `claude-peers-mcp#64` remains the best compact source-level `CANDIDATE-needs-runner-validation`.
+Последний scouting heartbeat `2026-05-28 09:50 UTC`: [watch note](watch/claude-hooks-tui-opencode-watch-2026-05-28-0950.md), tracker [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562786429). Итог: reused 6-agent cycle + parent live gates + duplicate/PR checks, upstream actions `0`, runner actions `0`, final `next_status: WATCH`. Delta: `claude-code#63065/#63066/#63067` are fresh product-watch bugs; `opencode#29714` is now duplicate-hinted and assigned; `opencode#29715` is meta no-go; `codex#24887` is service/account no-go. `claude-peers-mcp#64` remains the best compact source-level `CANDIDATE-needs-runner-validation`.
 
 | Upstream | Что делаем | Статус |
 |---|---|---|

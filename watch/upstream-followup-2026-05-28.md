@@ -1084,6 +1084,33 @@ Carry-forward: `claude-peers-mcp#64` remains the best compact source-level `CAND
 
 Decision: `WATCH`. No upstream comment or PR.
 
+## Claude hooks/TUI and opencode watch, 2026-05-28 09:50 UTC
+
+Detailed note: [Claude hooks/TUI and opencode watch 2026-05-28 09:50](claude-hooks-tui-opencode-watch-2026-05-28-0950.md).
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562786429).
+
+`next_status: WATCH`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Process: parent live GitHub gates, reused 6-role scouting synthesis, then focused 3-role critique before tracker/watch updates. The required `open-source-bug-scouting` / `open-source-pr-workflow` skills are not installed in this environment, so this is a documented fallback.
+
+Material deltas after the `09:43Z` watch:
+
+- `anthropics/claude-code#63065` is a fresh slash-command autocomplete bug with `has repro`; keep product `WATCH`.
+- `anthropics/claude-code#63066` is a fresh PreToolUse hook `if` false-positive bug with `has repro`; duplicate-light but product-gated, keep `WATCH`.
+- `anthropics/claude-code#63067` is a fresh diff panel hang/whiteout issue; keep product `WATCH`.
+- `sst/opencode#29714` now has duplicate bot links `#23607/#28972/#16680` and remains assigned `Hona`; keep `WATCH / likely-duplicate-assigned`.
+- `sst/opencode#29715` is an assigned meta issue about AI issue replies; keep `NO-GO`.
+- `openai/codex#24887` is quota/account support surface; keep `NO-GO / service-account`.
+
+Carry-forward: `claude-peers-mcp#64` remains the best compact source-level `CANDIDATE-needs-runner-validation`; runner `#10` is unavailable.
+
+Decision: `WATCH`. No upstream comment or PR.
+
 ## Claude/opencode/Codex watch, 2026-05-28 09:43 UTC
 
 Detailed note: [Claude/opencode/Codex watch 2026-05-28 09:43](claude-opencode-codex-watch-2026-05-28-0943.md).
