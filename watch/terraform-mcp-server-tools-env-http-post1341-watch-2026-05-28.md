@@ -2,6 +2,8 @@
 
 Контекст: bounded scouting pass после tracker-only heartbeat `2026-05-28T13:39:48Z`; tracker synthesis: [#52 comment](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4564626726). Обязательные skills `open-source-bug-scouting` / `open-source-pr-workflow` в этой среде недоступны, поэтому использован documented fallback: 2 read-only scouting subagents из-за `agent thread limit reached`, parent live GitHub gates, 2-of-3 critique subagents plus parent actionability critique. Upstream actions: `0`. Runner actions: `0`.
 
+Follow-up `2026-05-28T13:50Z`: direct upstream PR [`hashicorp/terraform-mcp-server#377`](https://github.com/hashicorp/terraform-mcp-server/pull/377) opened by the issue reporter and marked `Fixes #376`; tracker synthesis: [#52 comment](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4564683121). Local status demoted from `CANDIDATE-needs-runner-repro` to `WATCH / upstream PR race`; no corp upstream action.
+
 ## Scouting synthesis
 
 - Fresh discovery поднял новый material issue-level сигнал: `hashicorp/terraform-mcp-server#376`.
@@ -39,8 +41,21 @@
 
 ## Decision
 
-`next_status: CANDIDATE`
+Initial `next_status: CANDIDATE`
 
 `hashicorp/terraform-mcp-server#376` is a compact, high-fit MCP/tool-surface regression candidate with a concrete Docker repro and no direct PR cover. It is not `COMMENT-FIRST` or `PR-READY` yet: we need independent dedicated-runner evidence that the env-var streamable HTTP path ignores parsed flags on current main or the released image, plus a repeat duplicate/PR gate and full 3-role critique before any upstream comment/PR.
+
+## Follow-up demotion, 2026-05-28 13:50 UTC
+
+- Direct cover: [`hashicorp/terraform-mcp-server#377`](https://github.com/hashicorp/terraform-mcp-server/pull/377), open, non-draft, created `2026-05-28T13:48:42Z`, updated `2026-05-28T13:48:43Z`.
+- Author: issue reporter `sebin`.
+- PR body: `Fixes #376`; describes the same env-var HTTP path before `rootCmd.Execute()` and the same `--tools` / `--toolsets` flag parsing bug.
+- Files: `CHANGELOG.md`, `cmd/terraform-mcp-server/main.go`.
+- Checks at gate time: `license/cla` success, `Check Changelog Entry` success.
+- Merge state: `MERGEABLE/BLOCKED`, `REVIEW_REQUIRED`, no reviews/comments yet.
+
+Updated `next_status: WATCH / upstream PR race`.
+
+No upstream comment/PR from corp: the issue is directly covered by an active upstream PR from the reporter. Keep as monitor-only unless `#377` closes unmerged or maintainers request an alternate regression test.
 
 Runner status unchanged: `corp-opensource-runner` is still unavailable via `#10`; CT216 remains Hermes-only and was not used.
