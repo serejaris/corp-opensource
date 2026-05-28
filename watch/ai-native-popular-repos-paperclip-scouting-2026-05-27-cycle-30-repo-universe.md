@@ -2,6 +2,8 @@
 
 Tracker: [#52](https://github.com/serejaris/corp-opensource/issues/52)
 
+Follow-up: `browseros-ai/BrowserOS#1005` was promoted to internal `CANDIDATE` after issue-level gates in [BrowserOS #1005 MCP list_changed flood](browseros-1005-mcp-list-changed-flood.md), tracker [#81](https://github.com/serejaris/corp-opensource/issues/81). Upstream action count remained `0`.
+
 ## Scope
 
 Fresh live repo-universe pass for popular Paperclip-like / AI-native targets not yet fully represented in repo cards. Required `open-source-bug-scouting` is not installed in this environment, so this cycle used the documented fallback: 6 read-only subagents, parent live gates through `gh`, then internal 3-role critique.
