@@ -147,3 +147,26 @@ Tracker comments: umbrella [#52](https://github.com/serejaris/corp-opensource/is
 6-role synthesis: all five issues are still open; no exact open PR was found. `emdash#1875` is still the best runner target because the process signal is strongest and Linux Secret Service repro is decisive. If the runner lacks DBus/Electron support, `vercel/ai#15652` is the fallback because its repro can be a focused package fixture.
 
 3-role critique: no lane is `PR-READY`; allowed actions are internal tracker/watch updates only. `emdash#1875` remains an allowed `CANDIDATE`, but the closed PRs are now mandatory prior-art/design evidence before any future PR.
+
+## Candidate lane correction refresh, 2026-05-28 01:14 UTC
+
+Bounded refresh over six current lanes: `SWE-agent/mini-swe-agent#826`, `ag-ui-protocol/ag-ui#1635`, `mastra-ai/mastra#17118`, `probelabs/probe#568`, `generalaction/emdash#1875`, and `browseros-ai/BrowserOS#1005`.
+
+Process: parent live GitHub gates, runner/tooling gate, 6 read-only scouting roles in two waves, then 3-role critique before tracker/watch updates. The required `open-source-bug-scouting` skill is not installed in this environment, so this is a documented fallback. Upstream action count: `0`.
+
+Runner/tooling gate: `corp-server` still does not resolve, tracker [#10](https://github.com/serejaris/corp-opensource/issues/10) still says no live `corp-opensource-runner` is provisioned, and local tooling is insufficient for these lanes: Node `v20.19.2`, no `pnpm`, no `bun`, no `rustc/cargo`.
+
+Tracker comments: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560052525), mini-swe [#53](https://github.com/serejaris/corp-opensource/issues/53#issuecomment-4560052531), Probe [#80](https://github.com/serejaris/corp-opensource/issues/80#issuecomment-4560052533), AG-UI [#56](https://github.com/serejaris/corp-opensource/issues/56#issuecomment-4560053754), Mastra [#58](https://github.com/serejaris/corp-opensource/issues/58#issuecomment-4560053752), BrowserOS [#81](https://github.com/serejaris/corp-opensource/issues/81#issuecomment-4560053769), Emdash [#83](https://github.com/serejaris/corp-opensource/issues/83#issuecomment-4560053766).
+
+| Lane | Live correction | Decision |
+|---|---|---|
+| `SWE-agent/mini-swe-agent#826` | Issue is open/no comments, but merged upstream PR `#832` is a stronger potential cover than prior notes implied: it is timeout-related and changed agent wall-clock handling, even though it did not touch `LocalEnvironment.execute()`. | `WATCH`; first runner target, but only for post-`#832` current-main re-test. No upstream comment/PR until PID/`ps` fail-before card proves a remaining process-tree leak. |
+| `ag-ui-protocol/ag-ui#1635` | Issue open/no comments/no exact PR. `#1727` is adjacent output-processor work, not an exact payload-less chunk fix; broader Mastra adapter PRs keep collision risk medium. | `CANDIDATE`; future upstream mode is comment-first only after runner-backed `@ag-ui/mastra` test evidence and assignment/code-owner gate. |
+| `mastra-ai/mastra#17118` | Issue open/labeled; maintainer asked for MRE. Merged `#17054` is a relevant partial precedent for wrapping `ask_user` picker option labels and must be checked before claiming a clean gap; open `#17083` remains broad Mastracode overlap. | `CANDIDATE`; no `PR-READY` until terminal-width MRE/regression card proves slash-command description wrapping is still uncovered. |
+| `probelabs/probe#568` | Issue open with `bug` + `external`; upstream bot/maintainer comment is a positive bug-shape signal and also asks for exact command/API/env consistency details. | `CANDIDATE`; compact fallback runner target. Do not answer upstream until CLI + Node SDK stdout/stderr/exit/JSON-parse evidence is captured. |
+| `generalaction/emdash#1875` | Issue open/unassigned; PR-welcome signal remains; no exact open PR. Closed prior-art PRs `#1907/#1908/#1909/#1910/#1911` remain mandatory design evidence. | `CANDIDATE`; second runner target if Linux DBus/Secret Service/Electron tooling is available. |
+| `browseros-ai/BrowserOS#1005` | Issue open/unassigned with strong reporter logs; no exact PR found. Plausible path remains repeated MCP server/tool registration, but broadcast source is not runner-proven. | `CANDIDATE`; requires Bun/MCP runtime card on current main. |
+
+6-role synthesis: five lanes remain internal candidates, while `mini-swe#826` is demoted to stricter `WATCH` because `#832` may have already fixed enough of the timeout symptom to make any upstream action noisy without re-test. Best operational target after runner provisioning is `mini-swe#826`; fallback is `probe#568`; `emdash#1875` is next if runner has Linux Secret Service / Electron support.
+
+3-role critique: factology required corrections for `mini-swe#832`, Mastra `#17054`, and the semantics of the Probe `#568` upstream response. Process gates forbid `PR-READY` and forbid upstream comments in this cycle because no runner-backed evidence exists. Actionability allows internal tracker/watch updates only.

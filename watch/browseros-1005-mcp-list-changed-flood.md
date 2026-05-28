@@ -106,3 +106,11 @@ Dedicated `corp-opensource-runner` was not used in this cycle because it is not 
 - Local environment cannot run the BrowserOS server tests: `bun` is absent and `corp-server` does not resolve.
 
 Decision remains `next_status: CANDIDATE`; upstream action count `0`. Promotion still requires a current-main MCP runtime/log card proving repeated identical tool-list registration emits repeated notifications.
+
+## Cross-lane heartbeat - 2026-05-28 01:14 UTC
+
+Six-lane readiness refresh rechecked `BrowserOS#1005`: issue remains open/unassigned, reporter's controlled 2026-05-26 logs remain the strongest evidence, and targeted PR search still found no exact `notifications/tools/list_changed` dedupe/flood fix.
+
+Source-path critique kept the plausible route as `POST /mcp` creating a fresh MCP server/transport and re-registering the stable tool registry, but the exact broadcast source is not proven without a Bun/MCP runtime card.
+
+Decision remains `next_status: CANDIDATE`; upstream action count `0`. Runner blocker remains `corp-server` unresolved and no local `bun`.

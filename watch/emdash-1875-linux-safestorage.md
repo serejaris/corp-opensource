@@ -56,3 +56,11 @@ Do not store private tokens in repo. Use fake secrets or local throwaway credent
 - Local gate still blocks repro: `corp-server` does not resolve, runner `#10` is not provisioned, local Node is `v20.19.2`, and `pnpm` is absent.
 
 Decision remains `next_status: CANDIDATE`, with explicit prior-art risk. Upstream action count: `0`.
+
+## Cross-lane heartbeat - 2026-05-28 01:14 UTC
+
+Six-lane readiness refresh rechecked `emdash#1875`: issue remains open/unassigned, maintainer PR-welcome signal remains valid, and no exact open PR was found. The lane stays a strong `CANDIDATE`, but not the first runner target unless the runner has Linux DBus/Secret Service/Electron readiness.
+
+Prior-art gate is unchanged and mandatory: closed unmerged PRs `#1907/#1908/#1909/#1910/#1911` must be reviewed before implementation so a future patch avoids their build, timeout, desktop-detection and user-override issues.
+
+Decision remains `next_status: CANDIDATE`; upstream action count `0`.

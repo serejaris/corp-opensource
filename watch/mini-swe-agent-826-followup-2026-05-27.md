@@ -155,3 +155,17 @@ EOF
 ```
 
 The regression card still needs actual runner evidence: current `main` SHA, OS/kernel, Python version, install method, `LocalEnvironment.execute()` output, `ps` before/after, leaked child PID if present, cleanup command, and confirmation that no marker process remains.
+
+## Correction heartbeat - 2026-05-28 01:14 UTC
+
+Bounded six-lane refresh with 6 read-only scouting roles and 3-role critique kept this lane at `WATCH`, but corrected the duplicate-risk framing.
+
+- Upstream `#826` remains open, labeled `bug`, unassigned, and without comments.
+- Merged PR [`#832`](https://github.com/SWE-agent/mini-swe-agent/pull/832) is timeout-related and was merged on `2026-05-20`; it changed `src/minisweagent/agents/default.py`, `src/minisweagent/exceptions.py`, and `tests/agents/test_default.py`.
+- `#832` did not touch `src/minisweagent/environments/local.py`, where current `main` still has the plausible `subprocess.run(..., shell=True, timeout=...)` process-tree leak surface.
+- Because `#832` may still cover enough of the user-visible timeout symptom, no note may claim a clean uncovered bug until current `main` is re-tested after `#832`.
+- Runner remains blocked: `corp-server` does not resolve here, `corp-opensource-runner` is not provisioned per `#10`, and local-only repro is insufficient for upstream action.
+
+Decision remains `next_status: WATCH`; upstream action count `0`.
+
+First runner task once available: post-`#832` current-main repro with command, child PID, `ps` before/after timeout, cleanup proof, fresh duplicate search, and 3-role critique before any upstream comment or PR.

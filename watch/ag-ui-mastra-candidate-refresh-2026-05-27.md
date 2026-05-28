@@ -99,3 +99,12 @@ Decision: keep `CANDIDATE`, not `PR-READY`. Next admissible step is runner-backe
 2. For `mastra#17118`, run a secret-free Mastra Code TUI/autocomplete repro in runner with fixed terminal width and a long slash-command description.
 3. Re-run duplicate gates immediately before any upstream comment or PR.
 4. If runner evidence holds, run another 3-subagent critique before posting upstream.
+
+## Cross-lane correction heartbeat - 2026-05-28 01:14 UTC
+
+Six-lane readiness refresh plus 3-role critique kept both lanes internal-only and made two corrections.
+
+- `ag-ui-protocol/ag-ui#1635`: issue remains open with no exact PR. `#1727` is adjacent output-processor work, not an exact payload-less custom chunk fix. Final internal status remains `CANDIDATE`; the admissible future upstream mode is comment-first only after runner-backed `@ag-ui/mastra` evidence and assignment/code-owner gate.
+- `mastra-ai/mastra#17118`: issue remains open/labeled, and triage still asks for an MRE. Merged `#17054` is more relevant than a generic adjacent PR because it added wrapping for `ask_user` picker option labels; it is still not proven to cover slash-command description wrapping, but future notes must treat it as a partial/precedent gate. Open `#17083` remains broad Mastracode overlap.
+
+Runner gate is unchanged: local Node is `v20.19.2`, `pnpm` is absent, and `corp-server` does not resolve. No upstream comment/PR was made; upstream action count `0`.

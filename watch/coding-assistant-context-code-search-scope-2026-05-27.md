@@ -91,3 +91,18 @@ Tracker update: [#80 comment](https://github.com/serejaris/corp-opensource/issue
 Decision: `next_status: CANDIDATE`.
 
 Unblock event: in `corp-opensource-runner`, capture exact command/API/env for `0.6.0-rc319` and current `main`, raw stdout/stderr, exit code, JSON parse result, and repeat duplicate PR search immediately before any upstream comment or PR.
+
+## Probe #568 correction heartbeat, 2026-05-28 01:14 UTC
+
+Six-lane readiness refresh plus 3-role critique kept `probelabs/probe#568` as `CANDIDATE`, with one wording correction: the upstream bot/maintainer response is a positive bug-shape confirmation, not only a request for missing details. It also asks for exact CLI/API path, environment/flags, and consistency details, so upstream reply remains blocked until we can answer with evidence.
+
+Live gate summary:
+
+- Issue remains open, unassigned, labeled `bug` + `external`.
+- Exact open PR for `symbols` JSON stdout pollution was not found in this pass.
+- Source-path critique still says the exact pollution source is unproven: `symbols.rs::handle_symbols` appears JSON-clean, while `Pattern:` / `Path:` output may come from the search/debug path.
+- Runner/tooling gate still blocks: `corp-server` unresolved, no dedicated runner available, and local env lacks `rustc/cargo`.
+
+Decision remains `next_status: CANDIDATE`; upstream action count `0`.
+
+Fallback runner target after `mini-swe#826`: reproduce `@probelabs/probe@0.6.0-rc319` and current `main` through both CLI and Node SDK, capturing raw stdout, stderr, exit code, JSON parse result, command/API call, env and flags.
