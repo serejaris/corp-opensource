@@ -885,3 +885,28 @@ Material deltas after the `08:08Z` tracker heartbeat:
 Other active lanes had no material post-cutoff transition. The operational runner backlog remains `vercel/ai#15652`, `probelabs/probe#568`, and `google-gemini/gemini-cli#27503`, but runner `#10` is still unavailable.
 
 Decision: `WATCH`. No upstream comment or PR.
+
+## Claude/opencode post-cutoff watch, 2026-05-28 08:20 UTC
+
+Detailed note: [Claude/opencode post-cutoff watch 2026-05-28 08:20](claude-opencode-postcutoff-watch-2026-05-28-0820.md).
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562042732).
+
+`next_status: WATCH`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Process: parent live GitHub gates, focused duplicate/PR search, 6-role reused-agent scouting, then synthesis critique before tracker/watch updates. The required `open-source-bug-scouting` skill is not installed in this environment, so this is a documented fallback.
+
+Material deltas after the `08:13Z` tracker heartbeat:
+
+- `anthropics/claude-code#63043` is a strong Windows tool-process leak watch: `rg.exe` plus `conhost.exe` accumulate across long sessions, with measured `~2000` processes and `~14 GB` RAM. Exact search found no PR cover; adjacent orphan-process issues are not exact.
+- `anthropics/claude-code#63044` is a weaker stats/TUI timezone watch: dashboard peak hour differs from local JSONL aggregation by one hour.
+- `anomalyco/opencode#29699` is an upstream-owned open PR for OpenAI websocket response timeout behavior, non-draft and `MERGEABLE`; no competing work.
+- `anomalyco/opencode#29692` cleared compliance after reporter added Desktop repro for `erp1`/`erp2` folder confusion, but it is assigned to `Hona`, so no cold PR/comment.
+
+Other active lanes had no material post-cutoff transition. Operational runner backlog remains `vercel/ai#15652`, `probelabs/probe#568`, and `google-gemini/gemini-cli#27503`; runner `#10` is still unavailable.
+
+Decision: `WATCH`. No upstream comment or PR.
