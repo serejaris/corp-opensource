@@ -954,6 +954,32 @@ Duplicate/PR gate: focused issue search for `code-review fallback main HEAD JSON
 
 Decision: `WATCH`. `#63048` is useful product intel, but there is no external patch lane here. `claude-peers-mcp#64` remains the only current small source-level `CANDIDATE-needs-runner-validation`.
 
+## Fresh AI-native watch, 2026-05-28 08:42 UTC
+
+Detailed note: [Fresh AI-native watch 2026-05-28 08:42](fresh-ai-native-watch-2026-05-28-0842.md).
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562244160).
+
+`next_status: WATCH`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Process: parent live GitHub gates, focused duplicate/PR search, reused 6-role scouting synthesis, then focused 3-role critique before tracker/watch updates. The required `open-source-bug-scouting` / `open-source-pr-workflow` skills are not installed in this environment, so this is a documented fallback.
+
+Material deltas after the `08:36Z` tracker heartbeat:
+
+- `openai/codex#24884` got an external contributor intent comment proposing a WSL-bootstrap-only sandbox exception. This raises race risk and keeps the lane `WATCH`.
+- `anthropics/claude-code#63050` is a fresh Monitor tool bug with `has repro`: Monitor commands do not appear to source the same shell snapshot as Bash, so PATH-dependent tools fail on macOS/Nix. Exact PR search returned no cover, but Claude Code is product-owned here.
+- `router-for-me/CLIProxyAPI#3594` is a fresh `LEAD` for Amp Neo CLI WebSocket/Rivet passthrough. Exact PR search returned no cover, but protocol/session complexity blocks candidate promotion.
+- `google-gemini/gemini-cli#27517` is a weak `WATCH` for `ioctl(2) failed, EBADF` in node-pty resize under VS Code/xterm.js; repro is not yet strong enough.
+- `anomalyco/opencode#29703` remains `NO-GO/WATCH`: compliance-gated, duplicate-flagged against `#27822/#23249`, and assigned.
+
+Carry-forward: `claude-peers-mcp#64` remains the only current small source-level `CANDIDATE-needs-runner-validation`; no post-08:36 state change and no exact PR cover.
+
+Decision: `WATCH`. No upstream comment or PR.
+
 ## Claude/opencode post-cutoff watch, 2026-05-28 08:20 UTC
 
 Detailed note: [Claude/opencode post-cutoff watch 2026-05-28 08:20](claude-opencode-postcutoff-watch-2026-05-28-0820.md).
