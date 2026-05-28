@@ -74,3 +74,20 @@ GitHub Search API вернул `403` rate-limit во время broader repo-sco
 `next_status: CANDIDATE`
 
 Трекать `router-for-me/CLIProxyAPI#3592` как fresh popular AI-native candidate. Не открывать upstream PR/comment до повторного duplicate search, contribution/process gate, source-level repro или focused test, и записанной в этом repo 3-subagent critique.
+
+## Follow-up, 2026-05-28 07:55 UTC
+
+Tracker follow-up: https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4561885928
+
+Live duplicate refresh нашёл более сильный cover/race, чем исходный gate:
+
+- `router-for-me/CLIProxyAPI#2746`: https://github.com/router-for-me/CLIProxyAPI/pull/2746
+- State: open, non-draft, `CONFLICTING`, updated `2026-05-23T21:19:59Z`.
+- Title: `fix(executor): use per-request collision-aware rename maps for OAuth tool name remapping`.
+- Body заявляет замену global reverse map на per-request `forwardMap`/`reverseMap`, collision handling across `tools[]`, `tool_choice`, message references, and SSE stream reverse tests including `Stream_MixedCase`.
+
+PR не merged и конфликтует, но он достаточно близок к requested fix direction в `#3592`, чтобы `#3592` больше не был чистым cold PR candidate.
+
+Updated decision: `next_status: WATCH / duplicate-covered-risk`.
+
+Upstream comment/PR не делать. Re-entry только после settle `#2746` или если current main всё ещё воспроизводит `Glob -> glob` после разрешения reverse-map lane.

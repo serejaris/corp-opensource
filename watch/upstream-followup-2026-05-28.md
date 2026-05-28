@@ -790,3 +790,22 @@ Runner action count: `0`.
 Fresh discovery после `07:35Z` выбрал `router-for-me/CLIProxyAPI#3592`. Repo популярный (`35,153` stars, `5,823` forks, not archived). Issue описывает компактный Claude Code / Anthropic Messages proxy contract bug: incoming tool schema advertises `Glob`, но streamed response возвращает `tool_use.name: "glob"`, из-за чего Claude Code case-sensitive dispatcher отклоняет tool. В report есть request evidence, response SSE evidence, packet-capture narrowing и suggested tests.
 
 Duplicate/race: open PR list содержит adjacent request-side/Bifrost tool remapping PR `#3214`, но exact response-side per-request reverse-map cover не найден. GitHub Search API вернул `403` rate-limit во время broader duplicate search, поэтому перед upstream action нужен повторный exact search.
+
+## Post-CLIProxy duplicate refresh and opencode spill watch, 2026-05-28 07:55 UTC
+
+Detailed notes:
+
+- [CLIProxyAPI #3592 Claude tool name reverse map](cliproxyapi-3592-claude-tool-name-reverse-map.md)
+- [opencode #29694 tool-output spill cleanup](opencode-29694-tool-output-spill-cleanup.md)
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4561885928).
+
+`next_status: WATCH`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Material delta: duplicate/race refresh нашёл `router-for-me/CLIProxyAPI#2746`, open non-draft but conflicting PR, который implements per-request collision-aware `forwardMap`/`reverseMap` for OAuth tool-name remapping и включает SSE stream reverse coverage. Это достаточно близко к `#3592`, поэтому CLIProxyAPI downgraded с clean `CANDIDATE` до `WATCH / duplicate-covered-risk` до settle `#2746`.
+
+Fresh watch: `anomalyco/opencode#29694` reports `~/.local/share/opencode/tool-output` spill files growing to `63G`; issue указывает на existing 7-day cleanup function в `packages/opencode/src/tool/truncate.ts`, но visible caller не найден. Exact open PR cover не найден, но issue уже assigned to `nexxeln`, поэтому keep as high-value assigned `WATCH`, not a cold PR lane.
