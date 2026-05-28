@@ -2,6 +2,8 @@
 
 Контекст: bounded scouting pass после tracker-only heartbeat `2026-05-28 13:12 UTC`; tracker synthesis: [#52 comment](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4564357290). Обязательные skills `open-source-bug-scouting` / `open-source-pr-workflow` в этой среде недоступны, поэтому использован documented fallback: 6 read-only scouting roles, parent live GitHub gates, duplicate/PR/process synthesis и tracker update. Upstream actions: `0`. Runner actions: `0`.
 
+Follow-up `2026-05-28 13:56 UTC`: fresh issue [`zed-industries/zed#57957`](https://github.com/zed-industries/zed/issues/57957) added duplicate/race evidence for this lane; tracker synthesis: [#52 comment](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4564730930). Local status remains `CANDIDATE`, with `#57957` tracked as `WATCH / duplicate-race`; no corp upstream action.
+
 ## 6-role synthesis
 
 - Fresh discovery поднял новый material lead: `zed-industries/zed#57155` про удаление manually-created git worktree при archive agent conversation. Это популярный AI/editor control-plane repo, около 84k stars, direct Paperclip-like surface.
@@ -43,5 +45,16 @@
 `next_status: CANDIDATE`
 
 `zed#57155` is a high-fit, high-impact candidate because it crosses AI agent conversation state, git worktree lifecycle, and potential data loss. It is not `COMMENT-FIRST` or `PR-READY`: parent gates still need source checkout, exact current-main repro or code-path proof, tests, and positioning against active draft PRs around archived worktree restore/clobber behavior.
+
+## Follow-up duplicate/race evidence, 2026-05-28 13:56 UTC
+
+- Fresh issue: [`zed-industries/zed#57957`](https://github.com/zed-industries/zed/issues/57957), open, created `2026-05-28T13:50:12Z`, updated `2026-05-28T13:50:49Z`.
+- Labels: `state:needs triage`; assignee: none.
+- Report: after deleting a linked git worktree, archiving the agent thread does nothing/freezes the tool. Attached logs show `agent_servers::acp` attempting to load a session whose `cwd` points into the deleted `fair-wren` worktree.
+- Zed community bot linked `#57957` to `#57155` as a duplicate and described the shared root cause as agent conversation archival incorrectly interacting with manually-created/deleted worktrees.
+- Parent search for `archive agent worktree deleted freezes` found no separate candidate; open PR search for `archive agent worktree delete` found no direct cover.
+- Existing adjacent/race context remains draft `#57441`, draft `#55703`, open `#54936`, plus merged prior art `#53991/#53215/#53629`.
+
+Updated status: `CANDIDATE` for `#57155`; `#57957` is `WATCH / duplicate-race` evidence, not a separate candidate.
 
 Runner status unchanged: `corp-opensource-runner` is still unavailable via `#10`; CT216 remains Hermes-only and was not used.
