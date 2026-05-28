@@ -25,7 +25,9 @@
 - Любое создание/изменение Proxmox CT — live infra mutation. Работай через `corp-server-ops`, issue/runbook в `corp-server`, dry-run/read-only gate и approval policy.
 - В runner не клади приватные токены в repo. Секреты только в окружении контейнера или host-managed secret path.
 - Если server runner работает в goal-mode/hourly-mode, hourly cadence — это триггер/heartbeat, а не обязанность коммитить. Commit+push делай только в конце завершённого scouting/follow-up цикла: 6-subagent scouting или documented fallback, parent live gates, 3-subagent critique, tracker/watch update, затем `git diff --check` и один bundled commit. Если цикл не завершён или изменений нет, commit не создавать.
+- Для долгой автономной работы запускай Codex в его собственном goal/цель-режиме как один самостоятельный долгоживущий процесс. Не подменяй goal-mode bash-loop'ом, который постоянно перезапускает `codex exec`: такой wrapper можно использовать только как аварийный watchdog/heartbeat и только с явной пометкой в runbook/status.
 - Hourly runner не открывает внешний upstream PR автоматически. Upstream PR остаётся ручным/явно подтверждённым действием после `PR-READY`; hourly mode может делать internal tracker/watch updates и upstream comment-first только когда gates уже записаны.
+- Если upstream PR закрыт без merge, superseded, rejected, assignment-blocked или стал stale/no-go, после фиксации evidence в `corp-opensource` удали лишний fork/repository/branch из аккаунта `serejaris`, чтобы GitHub не засорялся. Перед удалением проверь, что: PR outcome записан в README/watch/tracker; полезный diff сохранён ссылкой/patch или признан ненужным; нет открытых PR из этого fork/repo; repo не является самостоятельным рабочим проектом. Если GitHub API не даёт удалить repo, создай cleanup task в tracker и пометь `cleanup-pending`.
 
 ## Рабочий порядок
 
