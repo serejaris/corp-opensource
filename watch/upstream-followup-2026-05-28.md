@@ -119,3 +119,31 @@ Tracker comments: umbrella [#52](https://github.com/serejaris/corp-opensource/is
 | `charmbracelet/crush#3024` | Open; maintainer/reporter discussion active, and open retry PRs `#1611/#2998` create overlap. | `WATCH`; no comment/PR without mock-provider evidence. |
 
 3-role critique: factology confirmed no lane is closed or exact-covered except the noted overlap risks; process gates require runner/current-main repro for all candidate lanes and assignment/comment-first where applicable; actionability found no `PR-READY` lane and selected upstream action count `0`.
+
+## Candidate readiness refresh, 2026-05-28 01:08 UTC
+
+Bounded readiness refresh over the five strongest current candidate lanes: `generalaction/emdash#1875`, `browseros-ai/BrowserOS#1005`, `modelcontextprotocol/inspector#1368`, `google-gemini/gemini-cli#27431`, and `vercel/ai#15652`.
+
+Process: parent live GitHub gates, runner/tooling gate, 6 read-only scouting roles in two waves, then 3-role critique.
+
+Runner/tooling gate: `corp-server` does not resolve from this environment; issue [#10](https://github.com/serejaris/corp-opensource/issues/10) still says no live runner provisioned. Local environment has Node `v20.19.2`, no `pnpm`, and no `bun`, so no candidate can move to `PR-READY` here.
+
+`next_status: CANDIDATE`
+
+Upstream action count: `0`.
+
+No upstream comment, PR, ping, rerun, or rebase was made.
+
+Tracker comments: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559994596), Emdash [#83](https://github.com/serejaris/corp-opensource/issues/83#issuecomment-4559994603), BrowserOS [#81](https://github.com/serejaris/corp-opensource/issues/81#issuecomment-4559994630), MCP ecosystem [#75](https://github.com/serejaris/corp-opensource/issues/75#issuecomment-4559994633), high-churn terminal [#74](https://github.com/serejaris/corp-opensource/issues/74#issuecomment-4559994654), AI SDK [#66](https://github.com/serejaris/corp-opensource/issues/66#issuecomment-4559994624).
+
+| Lane | Live result | Decision |
+|---|---|---|
+| `generalaction/emdash#1875` | Open/unassigned; maintainer-contributor PR-welcome signal remains; no open exact PR. Parent verified closed unmerged prior-art PRs `#1907/#1908/#1909/#1910/#1911` for the same D-Bus / `gnome-libsecret` approach. | Keep `CANDIDATE`, but with prior-art risk. Future work must avoid closed-PR failures: build break, no `execFileSync` timeout, fragile `includes("true")`, KDE/Plasma detection, and incomplete user `--password-store` override handling. |
+| `browseros-ai/BrowserOS#1005` | Open/unassigned; reporter's 2026-05-26 controlled repro remains latest signal; exact open PR search found no repeated `notifications/tools/list_changed` flood/dedupe fix. | Keep `CANDIDATE`; current-main MCP runtime/log card required. |
+| `modelcontextprotocol/inspector#1368` | Open/unassigned with `v2` label; exact PR search clean, but adjacent V2/disconnect/OAuth/session/list_changed churn exists. | Keep `CANDIDATE`; V2 UI/state repro and focused test card required. |
+| `google-gemini/gemini-cli#27431` | Open/unassigned; reporter supplied `/mcp reload` `MCP error -32000: Connection closed`; no exact PR. Adjacent MCP PRs `#27383/#25937` touch discovery/failure behavior. | Keep `CANDIDATE`; practical gate is repro first, then `COMMENT-FIRST` if the gap is generic and not covered by adjacent PRs. |
+| `vercel/ai#15652` | Open/unassigned/no comments; no exact PR for Anthropic `jsonTool` forcing `disableParallelToolUse`; adjacent provider/structured-output PRs `#10274/#15112/#10812/#12903` remain watch risks. | Keep `CANDIDATE`; Node/pnpm package fixture, changeset/signed-commit readiness, and fresh adjacent PR search required. |
+
+6-role synthesis: all five issues are still open; no exact open PR was found. `emdash#1875` is still the best runner target because the process signal is strongest and Linux Secret Service repro is decisive. If the runner lacks DBus/Electron support, `vercel/ai#15652` is the fallback because its repro can be a focused package fixture.
+
+3-role critique: no lane is `PR-READY`; allowed actions are internal tracker/watch updates only. `emdash#1875` remains an allowed `CANDIDATE`, but the closed PRs are now mandatory prior-art/design evidence before any future PR.

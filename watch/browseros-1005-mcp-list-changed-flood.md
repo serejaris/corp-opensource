@@ -97,3 +97,12 @@ Dedicated `corp-opensource-runner` was not used in this cycle because it is not 
 - Targeted open PR search again found no exact cover for `#1005`.
 - 3-role critique kept `next_status: CANDIDATE`; upstream action count `0`.
 - No runner repro was run; promotion still requires current-main fail-before evidence in `corp-opensource-runner`.
+
+## Readiness heartbeat - 2026-05-28 01:08 UTC
+
+- Issue `#1005` remains open and unassigned.
+- Exact open PR search still found no cover for repeated `notifications/tools/list_changed` on unchanged tool lists.
+- Adjacent MCP/runtime PRs remain non-exact; they do not prove the flood/dedupe gap is fixed.
+- Local environment cannot run the BrowserOS server tests: `bun` is absent and `corp-server` does not resolve.
+
+Decision remains `next_status: CANDIDATE`; upstream action count `0`. Promotion still requires a current-main MCP runtime/log card proving repeated identical tool-list registration emits repeated notifications.

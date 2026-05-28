@@ -45,3 +45,14 @@ Do not store private tokens in repo. Use fake secrets or local throwaway credent
 - `PR-READY`: runner-backed fail-before, minimal patch, focused test/manual verification, fresh duplicate search, and 3-role critique.
 - `COMMENT-FIRST`: if the design choice between auto-detection and documentation/error-only remains unclear after repro.
 - `WATCH`: if an exact upstream PR appears or maintainer chooses a different direction.
+
+## Readiness heartbeat - 2026-05-28 01:08 UTC
+
+- Issue `#1875` remains open and unassigned.
+- No open exact PR was found for `safeStorage`, `password-store`, `gnome-libsecret`, `basic_text`, or `#1875`.
+- Parent verified five closed, unmerged exact prior-art PRs: `#1907`, `#1908`, `#1909`, `#1910`, `#1911`.
+- Those PRs all used the same broad direction: detect `org.freedesktop.secrets` over D-Bus and set Chromium/Electron `--password-store=gnome-libsecret` before `app.whenReady()`.
+- Prior-art risks to avoid: build break / missing brace, no timeout around `execFileSync`, fragile `includes("true")` parsing, incomplete KDE/Plasma handling, and incomplete respect for user-supplied `--password-store`.
+- Local gate still blocks repro: `corp-server` does not resolve, runner `#10` is not provisioned, local Node is `v20.19.2`, and `pnpm` is absent.
+
+Decision remains `next_status: CANDIDATE`, with explicit prior-art risk. Upstream action count: `0`.

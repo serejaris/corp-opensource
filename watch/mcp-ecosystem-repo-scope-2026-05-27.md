@@ -60,3 +60,9 @@ No upstream PR/comment. Best next deeper cycle: `modelcontextprotocol/registry` 
 `modelcontextprotocol/inspector#1368` was rechecked in a repo-universe fallback cycle. The issue is open, unassigned, labeled `v2`, and has no comments; targeted open PR search for disconnect/session-scoped panel state found no exact cover.
 
 3-role critique selected `next_status: CANDIDATE` for this single lane, while keeping upstream action count `0`. Promotion requires current-main UI/state repro, a focused `App.test.tsx` or equivalent test card, V2 process awareness, and a fresh duplicate search.
+
+## Inspector readiness heartbeat - 2026-05-28 01:08 UTC
+
+`modelcontextprotocol/inspector#1368` remains open and unassigned with `v2` label. Exact PR search still found no clear per-call/session-scoped UI state reset on disconnect, but adjacent V2/disconnect/OAuth/session/list_changed churn means duplicate search must be repeated immediately before any PR.
+
+Decision remains `next_status: CANDIDATE`; upstream action count `0`. Current blocker: UI/state repro and focused test card against Inspector V2.

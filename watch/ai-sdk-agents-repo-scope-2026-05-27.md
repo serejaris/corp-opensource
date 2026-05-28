@@ -87,6 +87,12 @@ The repo-universe fallback cycle rechecked two exact `vercel/ai` provider lanes:
 
 Upstream action count remains `0`; no cold PR/comment before duplicate gate, runner-backed regression card and package-level tests.
 
+## Vercel AI readiness heartbeat - 2026-05-28 01:08 UTC
+
+`vercel/ai#15652` remains open, unassigned, and uncommented. No exact PR was found for Anthropic `structuredOutputMode: "jsonTool"` forcing `disableParallelToolUse: true`. Source-path confidence is high in `packages/anthropic/src/anthropic-language-model.ts`, but adjacent provider/structured-output PRs `#10274/#15112/#10812/#12903` remain watch risks.
+
+Decision remains `next_status: CANDIDATE`; upstream action count `0`. Promotion requires a Node/pnpm current-main package fixture, patch changeset/signed-commit readiness, and fresh adjacent PR search.
+
 ## Final decision
 
 - `vercel/ai`: `WATCH`, high-value exact fixture-validation watch; no generic provider/docs/support PR hunting.
