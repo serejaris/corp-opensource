@@ -1031,6 +1031,32 @@ Carry-forward: `claude-peers-mcp#64` remains the best compact source-level `CAND
 
 Decision: `WATCH`. No upstream comment or PR.
 
+## Gemini/opencode covered watch, 2026-05-28 09:02 UTC
+
+Detailed note: [Gemini/opencode covered watch 2026-05-28 09:02](gemini-opencode-covered-watch-2026-05-28-0902.md).
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562394501).
+
+`next_status: WATCH`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Process: parent live GitHub gates, focused duplicate/PR search, reused 6-role scouting synthesis, then focused 3-role critique before tracker/watch updates. The required `open-source-bug-scouting` / `open-source-pr-workflow` skills are not installed in this environment, so this is a documented fallback.
+
+Material deltas after the `08:55Z` watch:
+
+- `google-gemini/gemini-cli#27518` opened as another EBADF `resizePty` crash report, but it is already duplicate-bot labeled and belongs to the active EBADF cluster (`#27510/#26433/#27501/#27499/#27517`); keep `WATCH / NO-GO`.
+- `anomalyco/opencode#29706` opened as a generic Desktop server-500 report, assigned to `jlongster`, `needs:compliance`, and possible duplicate `#29083`; keep `WATCH / NO-GO`.
+- `modelcontextprotocol/python-sdk#2705` is a fresh external PR for streamable-HTTP/SSE test port races, non-draft `MERGEABLE/REVIEW_REQUIRED`; already covered.
+- `anomalyco/opencode#29705` is a fresh external PR for snapshot pathspec resolution from git subdirectories, non-draft `MERGEABLE`, compliance satisfied; already covered.
+- `anthropics/claude-code#63051` is product-transient API `529 Overloaded`; no OSS patch lane.
+
+Carry-forward: `claude-peers-mcp#64` remains the best compact source-level `CANDIDATE-needs-runner-validation`; `CLIProxyAPI#3594` remains an uncovered but protocol-heavy `LEAD`.
+
+Decision: `WATCH`. No upstream comment or PR.
+
 ## Claude/opencode post-cutoff watch, 2026-05-28 08:20 UTC
 
 Detailed note: [Claude/opencode post-cutoff watch 2026-05-28 08:20](claude-opencode-postcutoff-watch-2026-05-28-0820.md).
