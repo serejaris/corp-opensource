@@ -740,3 +740,21 @@ Runner action count: `0`.
 Selected candidate: `NousResearch/hermes-agent#33712`. It is open, unassigned, unlabeled, with no comments at gate time. `hermes dashboard` fails on NixOS/container with `ModuleNotFoundError: No module named 'hermes_cli.dashboard_auth'`. Exact duplicate/PR cover was not found; adjacent PR `#33311` touches `dashboard_auth` but fixes reverse-proxy login URL prefixes, not a missing packaged module.
 
 Watch lanes: `openai/codex#24879` is material but covered-risk due same-title closed `#24877`, prior `#21928`, and active auto-review model override PR `#23767`; `anthropics/claude-code#63025` is high-severity Desktop/SSH history-index loss but needs Windows Desktop + SSH Remote evidence; `NVIDIA/TensorRT-LLM#14676` is valid AutoDeploy/NVRTC watch but GPU/CI-heavy and likely maintainer-internal.
+
+## Fresh Candle correctness candidate, 2026-05-28 07:21 UTC
+
+Detailed note: [Candle #3567 Qwen2 mask and autograd watch](candle-3567-qwen2-mask-and-autograd-watch.md).
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4561668867).
+
+Process: fresh GitHub discovery, parent live issue/repo/duplicate gates, 6-role fallback scouting, then focused 3-role critique. Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are unavailable here, so this remains the documented fallback. No upstream comment/PR.
+
+`next_status: CANDIDATE`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Selected candidate: `huggingface/candle#3567`. It is open, unassigned, unlabeled, with no comments at gate time. It reports that Qwen2 `prepare_attention_mask` becomes bidirectional when `attn_mask` is provided because it lacks a causal triangle, causing silent wrong outputs in batched eval/training. No exact PR cover was found.
+
+Watch lanes: `candle#3568/#3569` are valid autograd no-bwd reports around `rope` and `softmax_last_dim`, but they are coordination-sensitive because open PR `#3526` already addresses the same `apply_op*_no_bwd` family for RmsNorm `#2168`. Keep them as `WATCH / coordination-first`, not cold PR targets.
