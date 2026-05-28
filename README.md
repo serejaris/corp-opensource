@@ -24,6 +24,8 @@
 
 ### В работе сейчас
 
+Последний scouting heartbeat `2026-05-28 09:26 UTC`: [watch note](watch/opencode-claude-mcp-langchain-watch-2026-05-28-0926.md), tracker [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562611188). Итог: reused 6-agent cycle + parent live gates + repo-local duplicate/PR checks after GitHub Search rate-limit, upstream actions `0`, runner actions `0`, final `next_status: WATCH`. Delta: `opencode#29709` merged; `opencode#29711` is assigned/duplicate-hinted and covered by PR `#29712`; `opencode#29710` still covers adjacent CJK/wide-char paste corruption; `opencode#29708` got reporter clarification but remains assigned/race-gated; `claude-code#63054` is a fresh product-watch OSC52/tmux regression; `mcp/typescript-sdk#2163` covers `#2162`; `langchain#37723` has contributor PR intent. `claude-peers-mcp#64` remains the best compact source-level `CANDIDATE-needs-runner-validation`.
+
 | Upstream | Что делаем | Статус |
 |---|---|---|
 | [continuedev/continue#12334](https://github.com/continuedev/continue/issues/12334) | OpenRouter autocomplete должен прокидывать `requestOptions.extraBodyProperties`; regression card: [watch](watch/continue-12334-openrouter-autocomplete-extra-body.md), tracker [#50](https://github.com/serejaris/corp-opensource/issues/50). | WATCH / needs reporter path: current `main` already preserves `reasoning` on tested raw completion path; [evidence comment](https://github.com/continuedev/continue/issues/12334#issuecomment-4554830611) posted. |

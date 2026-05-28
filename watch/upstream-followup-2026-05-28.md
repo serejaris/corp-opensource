@@ -1084,6 +1084,35 @@ Carry-forward: `claude-peers-mcp#64` remains the best compact source-level `CAND
 
 Decision: `WATCH`. No upstream comment or PR.
 
+## opencode/Claude/MCP/LangChain watch, 2026-05-28 09:26 UTC
+
+Detailed note: [opencode/Claude/MCP/LangChain watch 2026-05-28 09:26](opencode-claude-mcp-langchain-watch-2026-05-28-0926.md).
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562611188).
+
+`next_status: WATCH`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Process: parent live GitHub gates, repo-local issue/PR lists after GitHub Search API rate-limit, reused 6-role scouting synthesis, then focused 3-role critique before tracker/watch updates. The required `open-source-bug-scouting` / `open-source-pr-workflow` skills are not installed in this environment, so this is a documented fallback.
+
+Material deltas after the `09:16Z` watch:
+
+- `sst/opencode#29709` merged at `2026-05-28T09:23:47Z`; keep `WATCH / settled`.
+- `sst/opencode#29711` is a fresh assigned CJK paste placeholder issue, duplicate-hinted against `#17032/#29707/#25854`; keep `WATCH / duplicate-cluster`.
+- `sst/opencode#29712` closes `#29711`, is open/non-draft/mergeable, and converts display-width paste extmark offsets to JS char indices; keep `WATCH / covered-by-PR`.
+- `sst/opencode#29710` remains open/non-draft/mergeable covering adjacent `#29707`.
+- `sst/opencode#29708` got reporter clarification differentiating it from `#27907`, but remains assigned and duplicate-risk; keep `LEAD/WATCH`.
+- `anthropics/claude-code#63054` is a fresh OSC 52/tmux clipboard regression with WSL/devcontainer repro; keep product `WATCH` because broad duplicate/PR search was rate-limited and public patch surface is unclear.
+- `modelcontextprotocol/typescript-sdk#2163` covers `#2162` invalid tool argument protocol errors; keep `WATCH / covered-by-PR`.
+- `langchain-ai/langchain#37723` has a fresh root-cause comment and PR intent; keep `WATCH / contributor-intent-race`.
+
+Carry-forward: `claude-peers-mcp#64` remains the best compact source-level `CANDIDATE-needs-runner-validation`; runner `#10` is unavailable, so no repro/fix promotion.
+
+Decision: `WATCH`. No upstream comment or PR.
+
 ## Claude/opencode/AG-UI watch, 2026-05-28 09:16 UTC
 
 Detailed note: [Claude/opencode/AG-UI watch 2026-05-28 09:16](claude-opencode-agui-watch-2026-05-28-0916.md).
