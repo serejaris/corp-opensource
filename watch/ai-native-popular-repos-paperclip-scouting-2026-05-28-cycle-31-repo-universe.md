@@ -13,6 +13,8 @@ No upstream PR/comment/ping was made.
 
 Tracker update: [#52 comment](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559754605).
 
+Follow-up update: [upstream follow-up 2026-05-28](upstream-followup-2026-05-28.md) demoted the selected `stablyai/orca#2930` lane from `CANDIDATE` to `WATCH / duplicate-covered` after a later live gate found exact open non-draft upstream PR [stablyai/orca#2948](https://github.com/stablyai/orca/pull/2948). The original cycle remains useful as the promotion record, but no runner or upstream action should proceed while `#2948` is live.
+
 ## Parent live gates
 
 Selected repos came from live searches for `agent framework llm`, `mcp server ai agent`, `browser agent llm`, and `coding agent cli`.
@@ -53,7 +55,7 @@ Runner was not used. Reason: scouting/source-gate cycle only; PR-ready work requ
 
 ## Next actions
 
-- For `orca#2930`: run focused fail-before regression in dedicated runner, then repeat duplicate gate before any upstream comment/PR.
+- For `orca#2930`: watch open PR `#2948` merge/close/stall/gap; rerun runner/duplicate gates only if the PR stops covering the lane.
 - For `agent-deck#1212`: keep as runner-friendly backup lane.
 - For `emdash#1875/#2110`: keep as design/repro leads.
 - For `mcp-toolbox#3286`: comment-first only if maintainers explicitly welcome external PR.

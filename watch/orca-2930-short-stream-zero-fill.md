@@ -75,8 +75,18 @@ Also test a short non-final chunk. Fix expectation: track decoded byte count / e
 
 Runner was not used in this cycle because this was scouting + source-gate promotion, not a PR-ready implementation pass. Next step requires dedicated `corp-opensource-runner` with Node 24 / pnpm 10. CT `216` remains Hermes-only and was not used.
 
+## Follow-up, 2026-05-28 00:45 UTC
+
+Status changed to `WATCH / duplicate-covered`.
+
+Parent live gate found exact open non-draft upstream PR [stablyai/orca#2948](https://github.com/stablyai/orca/pull/2948), titled `fix: reject short SSH stream chunks instead of zero-filling reads (#2930)`. The PR body and commit explicitly cover short SSH stream chunks leaving zero-filled bytes; the commit message says `Closes #2930`. Changed files are `src/main/ssh/ssh-filesystem-stream-reader.ts` and `src/main/providers/ssh-filesystem-provider-stream.test.ts`, including a short-final-chunk rejection regression.
+
+Follow-up gates across `orca#2930`, `BrowserOS#1005`, `probe#568`, `mastra#17118`, `ag-ui#1635`, and `mini-swe-agent#826` used 6 read-only subagents plus parent live issue/PR checks and a 3-role critique. The single final cycle status is `WATCH`; upstream action count is `0`.
+
+Runner was not used because the duplicate gate stopped the lane before `PR-READY`. Next action is to watch `#2948` merge/close/stall/gap. Re-enter only if `#2948` closes without merge or lands incomplete behavior.
+
 ## Promotion triggers
 
-- `PR-READY`: runner-backed failing regression on current `main`, minimal patch, green focused tests, fresh duplicate search, and PR-template review/security/cross-platform notes.
+- `PR-READY`: only if `#2948` stops covering the lane, then runner-backed failing regression on current `main`, minimal patch, green focused tests, fresh duplicate search, and PR-template review/security/cross-platform notes.
 - `COMMENT-FIRST`: maintainer asks for direction or runner evidence contradicts/extends the current issue.
 - `NO-GO`: exact upstream PR appears, issue closes as fixed, or source/repro disproves the zero-fill behavior.
