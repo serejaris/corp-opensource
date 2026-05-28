@@ -89,3 +89,11 @@ Dedicated `corp-opensource-runner` was not used in this cycle because it is not 
 - `COMMENT-FIRST`: maintainer asks for direction, a fix-approach dispute appears, or we can add a short new fact from runner/source testing.
 - `PR-READY`: runner-backed fail-before, green focused test, fresh duplicate PR search, CLA/process note, and 3-role critique.
 - `NO-GO`: exact upstream PR appears, issue closes as fixed, or the notification is proven correct by MCP lifecycle semantics rather than a BrowserOS bug.
+
+## Repo-universe heartbeat - 2026-05-28 01:45 UTC
+
+- Live issue remains open and unassigned.
+- Reporter's 2026-05-26 reproduction remains the strongest evidence: each MCP tool call re-registers an identical tool list and emits `notifications/tools/list_changed`.
+- Targeted open PR search again found no exact cover for `#1005`.
+- 3-role critique kept `next_status: CANDIDATE`; upstream action count `0`.
+- No runner repro was run; promotion still requires current-main fail-before evidence in `corp-opensource-runner`.

@@ -91,3 +91,31 @@ Tracker comments: umbrella [#52](https://github.com/serejaris/corp-opensource/is
 | `Hermes#15640` | Open, non-draft, `MERGEABLE/CLEAN`; no comments/reviews/checks; stale since `2026-04-25`. | Keep `PR-OPEN / WATCH-stale-clean`; no ping/close/rebase without fresh macOS validation or maintainer signal. |
 
 3-role critique: factology found no approval/merge/close, actionable failing CI, exact supersede, merge conflict, or maintainer ask. Process gates allow only internal tracker/watch updates. Actionability remains monitor-only across all tracked PR lanes.
+
+## Repo-universe candidate refresh, 2026-05-28 01:45 UTC
+
+Bounded Paperclip-like / AI-native scouting refresh over browser/control-plane, terminal-agent and MCP/SDK repos.
+
+The required `open-source-bug-scouting` skill is unavailable in this environment. Attempted 6-agent cycle stopped at 3 read-only scouting roles because the multi-agent tool returned `agent thread limit reached`; parent completed live GitHub gates and then ran the required 3-role critique before status updates.
+
+`next_status: CANDIDATE / WATCH`
+
+Upstream action count: `0`.
+
+No upstream comment, PR, ping, rerun, or rebase was made.
+
+Tracker comments: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559945459), BrowserOS [#81](https://github.com/serejaris/corp-opensource/issues/81#issuecomment-4559945472), browser-agent scope [#70](https://github.com/serejaris/corp-opensource/issues/70#issuecomment-4559945473), MCP ecosystem [#75](https://github.com/serejaris/corp-opensource/issues/75#issuecomment-4559945467), high-churn terminal scope [#74](https://github.com/serejaris/corp-opensource/issues/74#issuecomment-4559945493), AI SDK scope [#66](https://github.com/serejaris/corp-opensource/issues/66#issuecomment-4559945499), FastMCP [#55](https://github.com/serejaris/corp-opensource/issues/55#issuecomment-4559945503), Emdash tracker [#83](https://github.com/serejaris/corp-opensource/issues/83).
+
+| Lane | Live result | Decision |
+|---|---|---|
+| `browseros-ai/BrowserOS#1005` | Open/unassigned; reporter's 2026-05-26 update shows repeated identical tool re-registration; exact PR search found no cover. | Keep `CANDIDATE`; runner fail-before still required. |
+| `browser-use/browser-use#4846` | Open bug, but critique found live overlap with `#4881/#4847` in MCP/CDP lifecycle area. | `WATCH / duplicate-overlap`; no PR. |
+| `modelcontextprotocol/inspector#1368` | Open/unassigned V2 UI-state issue; exact PR search clean. | `CANDIDATE`; blocked on UI/state repro and test card. |
+| `google-gemini/gemini-cli#27431` | Open MCP discovery failure with concrete `/mcp reload` error; no exact PR found; Google CLA/help-wanted process applies. | `CANDIDATE`; likely `COMMENT-FIRST` only after repro/diagnosis. |
+| `generalaction/emdash#1875` | Open/unassigned; maintainer says PR welcome; exact PR search clean. | `CANDIDATE` via [#83](https://github.com/serejaris/corp-opensource/issues/83) / [watch](emdash-1875-linux-safestorage.md); runner Linux Secret Service repro required. |
+| `vercel/ai#15652` | Open/no comments; no exact PR found; adjacent older structured-output PR exists but does not cover Anthropic `disableParallelToolUse` override. | `CANDIDATE`; Node/pnpm runner fixture required. |
+| `vercel/ai#15613` | Open/no comments; relevant Vertex provider-executed `code_execution` round-trip bug, but broader fixture/provider churn. | `WATCH` until repro. |
+| `PrefectHQ/fastmcp#4154` | Open; prior `#4156` closed after maintainer asked for reusable result-transforming abstraction, not a one-off wrapper. | `WATCH`; design/assignment-first. |
+| `charmbracelet/crush#3024` | Open; maintainer/reporter discussion active, and open retry PRs `#1611/#2998` create overlap. | `WATCH`; no comment/PR without mock-provider evidence. |
+
+3-role critique: factology confirmed no lane is closed or exact-covered except the noted overlap risks; process gates require runner/current-main repro for all candidate lanes and assignment/comment-first where applicable; actionability found no `PR-READY` lane and selected upstream action count `0`.

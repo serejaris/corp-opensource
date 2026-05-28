@@ -54,3 +54,8 @@ Future runner gates:
 `next_status: WATCH`.
 
 No upstream PR/comment. Next useful cycle should start with Daytona post-PR-settle gap scan, then Gemini help-wanted/approved issue filtering. Codex and opencode remain watch-only unless there is a narrow maintainer-friendly issue with fresh duplicate gate and runner-backed evidence.
+
+## Gemini / Crush heartbeat - 2026-05-28 01:45 UTC
+
+- `google-gemini/gemini-cli#27431` is open with `priority/p2`, `area/agent`, `kind/bug`, `status/bot-triaged`; reporter provided a concrete `/mcp reload` error for `heroui-inc/heroui-mcp`. Exact PR search found no cover. 3-role critique selected `CANDIDATE`, not `PR-READY`: Google CLA/help-wanted process and current-main repro are still required before any upstream comment/PR.
+- `charmbracelet/crush#3024` remains `WATCH`: maintainer/reporter discussion is active, reporter plans to reproduce, and open retry PRs `#1611/#2998` create overlap. No comment/PR without mock-provider evidence and fresh duplicate gate.

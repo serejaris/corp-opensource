@@ -78,6 +78,15 @@ Decision: `WATCH / issue-first`. Treat as runtime reference and exact bug watch,
 - Process: `cloudflare/agents` external PR policy means action mode is issue-first / maintainer-signal only.
 - Runner: record Node/pnpm/Wrangler gaps; no tests or repro were run in this cycle.
 
+## Vercel AI heartbeat - 2026-05-28 01:45 UTC
+
+The repo-universe fallback cycle rechecked two exact `vercel/ai` provider lanes:
+
+- `#15652`: open/no comments; targeted PR search found no exact cover for Anthropic `structuredOutputMode: "jsonTool"` ignoring `disableParallelToolUse: false`. Critique promoted this single lane to internal `CANDIDATE`, blocked on Node/pnpm current-main fixture and changeset/test gate.
+- `#15613`: open/no comments; no exact PR found for Vertex `code_execution` provider-executed tool-result round-trip, but the lane is broader and provider-fixture-heavy. Critique kept it `WATCH` until repro.
+
+Upstream action count remains `0`; no cold PR/comment before duplicate gate, runner-backed regression card and package-level tests.
+
 ## Final decision
 
 - `vercel/ai`: `WATCH`, high-value exact fixture-validation watch; no generic provider/docs/support PR hunting.

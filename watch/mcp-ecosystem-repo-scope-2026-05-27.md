@@ -54,3 +54,9 @@ Future runner gates:
 `next_status: WATCH`.
 
 No upstream PR/comment. Best next deeper cycle: `modelcontextprotocol/registry` publisher/validator issue only if not PR-covered, then `modelcontextprotocol/inspector` V1 bug/spec-compliance or maintainer-aligned V2 issue. `servers` remains package-level reference-server watch after exact duplicate gate. `modelcontextprotocol` remains spec/docs/schema watch only after SEP/governance alignment and AI disclosure planning.
+
+## Inspector heartbeat - 2026-05-28 01:45 UTC
+
+`modelcontextprotocol/inspector#1368` was rechecked in a repo-universe fallback cycle. The issue is open, unassigned, labeled `v2`, and has no comments; targeted open PR search for disconnect/session-scoped panel state found no exact cover.
+
+3-role critique selected `next_status: CANDIDATE` for this single lane, while keeping upstream action count `0`. Promotion requires current-main UI/state repro, a focused `App.test.tsx` or equivalent test card, V2 process awareness, and a fresh duplicate search.
