@@ -4,11 +4,55 @@ Tracker: [#52](https://github.com/serejaris/corp-opensource/issues/52)
 
 Affected internal trackers: [#85](https://github.com/serejaris/corp-opensource/issues/85), [#82](https://github.com/serejaris/corp-opensource/issues/82), [#81](https://github.com/serejaris/corp-opensource/issues/81), [#80](https://github.com/serejaris/corp-opensource/issues/80), [#58](https://github.com/serejaris/corp-opensource/issues/58), [#56](https://github.com/serejaris/corp-opensource/issues/56), [#53](https://github.com/serejaris/corp-opensource/issues/53).
 
-Tracker comments: [#82 demotion](https://github.com/serejaris/corp-opensource/issues/82#issuecomment-4559803855), [#52 synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559804608), [#53 mini-swe refresh](https://github.com/serejaris/corp-opensource/issues/53#issuecomment-4559839933), [#52 mini-swe synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559840785), [#52 settlement refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560463593), [#52 active PR dashboard refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560641484), [#52 cycle 37 Gemini candidate](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560685299), [#52 runner backlog refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560707233), [#85 Gemini refresh](https://github.com/serejaris/corp-opensource/issues/85#issuecomment-4560707690), [#52 04:04 refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560746495), [#52 04:17 dashboard correction](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560803072).
+Tracker comments: [#82 demotion](https://github.com/serejaris/corp-opensource/issues/82#issuecomment-4559803855), [#52 synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559804608), [#53 mini-swe refresh](https://github.com/serejaris/corp-opensource/issues/53#issuecomment-4559839933), [#52 mini-swe synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559840785), [#52 settlement refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560463593), [#52 active PR dashboard refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560641484), [#52 cycle 37 Gemini candidate](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560685299), [#52 runner backlog refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560707233), [#85 Gemini refresh](https://github.com/serejaris/corp-opensource/issues/85#issuecomment-4560707690), [#52 04:04 refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560746495), [#52 04:17 dashboard correction](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560803072), [#86 Vercel #15652 refresh](https://github.com/serejaris/corp-opensource/issues/86#issuecomment-4561045571), [#52 05:19 bounded refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4561046486).
 
 Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are not installed in this environment, so this follow-up used the documented fallback: parent live GitHub gates, 6 read-only subagents, then a 3-role critique.
 
 No upstream PR/comment/ping was made.
+
+## Vercel #15652 bounded refresh, 2026-05-28 05:19 UTC
+
+Bounded refresh over active runner candidates and fresh AI-native/MCP leads. Parent live gates used `gh issue view`, targeted `gh pr list` duplicate search, runner/tooling checks, 6 read-only fallback roles, and a 3-role critique. Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are still unavailable here, so this used the documented fallback.
+
+`next_status: CANDIDATE`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Tracker comments: Vercel [#86](https://github.com/serejaris/corp-opensource/issues/86#issuecomment-4561045571), umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4561046486).
+
+Runner gate remains closed via [#10](https://github.com/serejaris/corp-opensource/issues/10): no `corp-opensource-runner` is provisioned; local env has Node `v20.19.2` and Python `3.13.5`, but no `pnpm`, `bun`, `cargo`, `rustc`, or Docker.
+
+| Lane | Live result | Decision |
+|---|---|---|
+| `vercel/ai#15652` | Open, unassigned. New live upstream signal: [issuecomment-4561014660](https://github.com/vercel/ai/issues/15652#issuecomment-4561014660) narrows the likely safe behavior/test framing: preserve the current `jsonTool` default, honor explicit `disableParallelToolUse: false`, and assert the serialized Anthropic request carries `disable_parallel_tool_use: false`; omitted option should still serialize `true`. Exact open PR cover still not found by parent/subagent duplicate gates. Adjacent `#15112` and `#10274` remain provider/tool churn risks, not exact covers. | Keep `CANDIDATE / needs-runner-fixture`; not `PR-READY` until current-main package fixture, contribution/checks/changeset gate, repeat duplicate search, and pre-action critique. |
+| `google-gemini/gemini-cli#27503` | Open, unassigned, labels `priority/p1`, `area/agent`, `kind/bug`, no comments. Exact open PR cover not found for `#27503`, `SearchText`, or `git grep --json`; old `#19638` is SearchText result-cap/context-overflow work and not an exact cover. | Keep high strategic `CANDIDATE`; runner/current-main arg-builder repro required. |
+| `iOfficeAI/AionUi#3074` | Open, unassigned, no comments. Exact STT multipart cover not found in `AionUi` or `AionCore`. | Keep `CANDIDATE-needs-runner-repro`. |
+| `probelabs/probe#568` | Open, unassigned, labels `bug`/`external`; Visor/probelabs comment confirms plausible JSON stdout contamination and asks for exact CLI/API/env. Exact open PR cover not found. | Keep first operational runner target; no upstream reply without runner evidence. |
+| `iOfficeAI/AionUi#3051` | Open, unassigned, no comments. Exact Unicode/ACP cover not found; `AionCore#353` is same-file stream relay adjacency but not exact cover. | Keep `CANDIDATE-needs-runner-repro / adjacent file race`. |
+| `langchain-ai/langgraph#7915` | Open, unassigned, label `external`; reporter says they have a tested fix and asks assignment. Exact open PR cover not found. | Keep `CANDIDATE-with-ownership-risk / WATCH`; no comment/PR unless maintainer signal or stale-window changes. |
+| `pydantic/pydantic-ai#5696` | Open, unassigned, labels `bug`, `durable exec`, `pydanty:bug`, `serialization`; pydanty timed out and asks maintainer attention. Exact open PR cover not found. | Keep `WATCH / pydanty-runtime-timeout`; do not enter automation-owned lane. |
+
+Fresh leads checked by the factology role:
+
+- `microsoft/playwright-mcp#1636`: open/unassigned/no comments and no exact memory/OOM PR found, but this is runner-heavy browser profiling and remains a long-run `WATCH`, not a small fix lane.
+- `modelcontextprotocol/go-sdk#977`: open and no open PR cover found, but issue author self-claimed willingness to take the change; keep race-prone `WATCH`.
+- `QwenLM/qwen-code#3718`: open and maintainer-confirmed for one `qwen mcp remove` path, but contributor self-claim creates duplicate race; keep `WATCH`.
+- `microsoft/agent-framework#5876` and `Kilo-Org/kilocode#10149`: duplicate-covered by open PRs `#5931` and `#10169`.
+
+6-role synthesis:
+
+- Duplicate/race: no exact cover was found for current core candidates, but ownership/automation gates block LangGraph and pydantic-ai; Vercel has adjacent provider/tool churn, not exact cover.
+- Process: internal tracker refresh is allowed because Vercel gained a material framing comment; upstream PR/comment remains blocked.
+- Scope: Gemini remains the strongest terminal-agent lane; BrowserOS/Agent-S remain stronger Paperclip-native browser/MCP/CUA reserves; Probe stays the cheapest first runner proof.
+- Tracker/delta: update only Vercel [#86](https://github.com/serejaris/corp-opensource/issues/86) and umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52), plus this watch note/README; do not create new tracker issues.
+
+3-role critique:
+
+- Factology/duplicates: approved as `CANDIDATE / no exact cover`; do not overclaim Vercel semantics beyond request serialization.
+- Process gates: no upstream action, no runner action, no PR-ready promotion.
+- Actionability: runner order remains operationally conservative: Probe first, Gemini second, then Serena/Agent-S/Midscene/BrowserOS; Vercel/Aion/LangGraph follow when runner capacity or maintainer signal makes them sharper.
 
 ## Active PR dashboard correction, 2026-05-28 04:17 UTC
 
