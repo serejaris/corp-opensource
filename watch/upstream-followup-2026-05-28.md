@@ -1084,6 +1084,33 @@ Carry-forward: `claude-peers-mcp#64` remains the best compact source-level `CAND
 
 Decision: `WATCH`. No upstream comment or PR.
 
+## Claude/opencode/Codex watch, 2026-05-28 09:43 UTC
+
+Detailed note: [Claude/opencode/Codex watch 2026-05-28 09:43](claude-opencode-codex-watch-2026-05-28-0943.md).
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562723960).
+
+`next_status: WATCH`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Process: parent live GitHub gates, reused 6-role scouting synthesis, then focused 3-role critique before tracker/watch updates. The required `open-source-bug-scouting` / `open-source-pr-workflow` skills are not installed in this environment, so this is a documented fallback.
+
+Material deltas after the `09:36Z` watch:
+
+- `anthropics/claude-code#63061` closed as duplicate of `#63054/#61043/#62350`; keep `NO-GO / duplicate-closed`.
+- `sst/opencode#29713` merged at `2026-05-28T09:40:17Z`; keep `WATCH / settled`.
+- `openai/codex#24886` is a fresh reasoning-only `/statusline` enhancement; keep `WATCH`.
+- `sst/opencode#29714` is a fresh Desktop GUI wrong-workspace issue, assigned `Hona`; no exact repo-local issue/PR cover found for `wrong workspace` / `workspace path`, but keep `WATCH / assigned-lead`.
+- `anthropics/claude-code#63063` is a fresh Cmd+V image paste feature request; keep product `WATCH`.
+- `anthropics/claude-code#63062` closed needs-info; keep `NO-GO`.
+
+Carry-forward: `claude-peers-mcp#64` remains the best compact source-level `CANDIDATE-needs-runner-validation`; runner `#10` is unavailable.
+
+Decision: `WATCH`. No upstream comment or PR.
+
 ## Claude/Codex/Gemini/opencode watch, 2026-05-28 09:36 UTC
 
 Detailed note: [Claude/Codex/Gemini/opencode watch 2026-05-28 09:36](claude-codex-gemini-opencode-watch-2026-05-28-0936.md).

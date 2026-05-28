@@ -24,7 +24,7 @@
 
 ### В работе сейчас
 
-Последний scouting heartbeat `2026-05-28 09:36 UTC`: [watch note](watch/claude-codex-gemini-opencode-watch-2026-05-28-0936.md), tracker [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562672396). Итог: reused 6-agent cycle + parent live gates + duplicate/PR checks, upstream actions `0`, runner actions `0`, final `next_status: WATCH`. Delta: `claude-code#63054` closed/superseded by `#63061`; `claude-code#63061` is a fresh product-watch `claude agents` OSC52/tmux regression; `claude-code#63055` is a fresh RemoteTrigger circular validator watch; `codex#24885` is weak-repro app/backend watch; `gemini-cli#27519` is duplicate-cluster EBADF no-go; `opencode#29713` is already-covered maintainer ACP-next PR. `claude-peers-mcp#64` remains the best compact source-level `CANDIDATE-needs-runner-validation`.
+Последний scouting heartbeat `2026-05-28 09:43 UTC`: [watch note](watch/claude-opencode-codex-watch-2026-05-28-0943.md), tracker [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562723960). Итог: reused 6-agent cycle + parent live gates + duplicate/PR checks, upstream actions `0`, runner actions `0`, final `next_status: WATCH`. Delta: `claude-code#63061` closed as duplicate; `opencode#29713` merged; `codex#24886` is a reasoning-only `/statusline` enhancement watch; `opencode#29714` is a fresh assigned Desktop GUI wrong-workspace lead; `claude-code#63063` is a Cmd+V image paste feature watch; `claude-code#63062` closed needs-info. `claude-peers-mcp#64` remains the best compact source-level `CANDIDATE-needs-runner-validation`.
 
 | Upstream | Что делаем | Статус |
 |---|---|---|
