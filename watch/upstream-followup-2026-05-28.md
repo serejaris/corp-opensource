@@ -931,6 +931,29 @@ Other active lanes had no material post-cutoff transition. Operational runner ba
 
 Decision: `WATCH`. No upstream comment or PR.
 
+## Claude/opencode follow-up watch, 2026-05-28 08:35 UTC
+
+Detailed note: [Claude/opencode follow-up watch 2026-05-28 08:35](claude-opencode-followup-watch-2026-05-28-0835.md).
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562194681).
+
+`next_status: WATCH`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Process: parent live GitHub gates, focused duplicate/PR search, reused 6-role scouting synthesis from the current cycle, then focused 3-role critique before tracker/watch updates. The required `open-source-bug-scouting` / `open-source-pr-workflow` skills are not installed in this environment, so this is a documented fallback.
+
+Material deltas after the `08:30Z` product watch:
+
+- `anomalyco/opencode#29699` is now `MERGED` at live parent gate (`updatedAt 2026-05-28T08:28:02Z`), closing the upstream-owned websocket timeout cover lane for local implementation.
+- `anthropics/claude-code#63048` opened as a product-owned `/code-review` skill bug: empty `@{upstream}...HEAD` can silently fall back to `main...HEAD` on long-lived branches and review other people's commits; same report asks for human-readable non-`--comment` output instead of raw JSON-only findings.
+
+Duplicate/PR gate: focused issue search for `code-review fallback main HEAD JSON` found `#63048` plus broad adjacent skills/core issues, but no exact duplicate; focused PR search returned no PR cover.
+
+Decision: `WATCH`. `#63048` is useful product intel, but there is no external patch lane here. `claude-peers-mcp#64` remains the only current small source-level `CANDIDATE-needs-runner-validation`.
+
 ## Claude/opencode post-cutoff watch, 2026-05-28 08:20 UTC
 
 Detailed note: [Claude/opencode post-cutoff watch 2026-05-28 08:20](claude-opencode-postcutoff-watch-2026-05-28-0820.md).
