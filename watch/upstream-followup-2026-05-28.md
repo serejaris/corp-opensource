@@ -608,3 +608,21 @@ Selected future runner target: `simular-ai/Agent-S#195`. It is open, unassigned,
 Reserve watch lanes: `nanobrowser#270`, `magnitudedev/browser-agent#154`, and `browserwing#18`. Duplicate-covered/no-go lanes: `nanobrowser#291 -> #318`, `Agent-S#196 -> #197`, `ntegrals/openbrowser` issue-disabled PR backlog, and `browserwing#11/#12` security lanes.
 
 Factology corrections recorded: one subagent confused `ntegrals/openbrowser` with `openbrowser/openbrowser`; parent live gates control. Another subagent drifted from `earendil-works/pi` into unrelated `pydantic/pydantic-ai` numbering; parent gates control and `pi#5055/#5065/#5095` remain open/assigned `WATCH`.
+
+## Fresh Continue link lead, 2026-05-28 05:55 UTC
+
+Detailed note: [Continue #12507 context provider link](continue-12507-context-provider-link.md).
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4561177594).
+
+Process: parent live GitHub/source gates, 6-role fallback scouting in staged groups, then focused 3-role critique. Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are unavailable here, so this was the documented fallback.
+
+`next_status: LEAD`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Selected lead: `continuedev/continue#12507`. The issue is open, unassigned, labeled `area:chat`, `area:context-providers`, `area:docs`, and `kind:bug`. Current `main` still has the stale `Add more context providers` docs URL in `gui/src/components/mainInput/TipTapEditor/utils/getSuggestion.ts`; exact open PR cover was not found. Broad `#12202` is docs-file-only and not a cover for this UI source link.
+
+Critique result: factology and duplicate gates pass, process gates pass for `LEAD`, but actionability/strategy keeps this below the existing runner backlog. It is a useful opportunistic UI/docs-link lead, not a Paperclip-like runtime candidate and not `PR-READY`. Do not reorder primary runner targets: `probelabs/probe#568`, `google-gemini/gemini-cli#27503`, `vercel/ai#15652`, and `langchain4j/langchain4j#5313` remain ahead.
