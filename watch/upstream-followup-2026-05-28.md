@@ -1084,6 +1084,33 @@ Carry-forward: `claude-peers-mcp#64` remains the best compact source-level `CAND
 
 Decision: `WATCH`. No upstream comment or PR.
 
+## Claude/Codex/Gemini/opencode watch, 2026-05-28 09:36 UTC
+
+Detailed note: [Claude/Codex/Gemini/opencode watch 2026-05-28 09:36](claude-codex-gemini-opencode-watch-2026-05-28-0936.md).
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562672396).
+
+`next_status: WATCH`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Process: parent live GitHub gates, reused 6-role scouting synthesis, then focused 3-role critique before tracker/watch updates. The required `open-source-bug-scouting` / `open-source-pr-workflow` skills are not installed in this environment, so this is a documented fallback.
+
+Material deltas after the `09:26Z` watch:
+
+- `anthropics/claude-code#63054` closed and is superseded by narrower `#63061`; keep `NO-GO / superseded`.
+- `anthropics/claude-code#63061` is a fresh `claude agents` OSC52/tmux regression with `has repro`, `area:agent-view`, WSL/Linux labels; keep product `WATCH`.
+- `anthropics/claude-code#63055` is a fresh RemoteTrigger circular validator bug with `has repro`; keep product/API `WATCH`.
+- `openai/codex#24885` is a fresh Codex App server-unreachable-after-rounds report; keep weak-repro `WATCH`.
+- `google-gemini/gemini-cli#27519` is another EBADF PTY resize report with duplicate bot links; keep `NO-GO / duplicate-cluster`.
+- `sst/opencode#29713` is a fresh maintainer-owned ACP-next warm-switch PR; keep `WATCH / already-covered`.
+
+Carry-forward: `claude-peers-mcp#64` remains the best compact source-level `CANDIDATE-needs-runner-validation`; runner `#10` is unavailable.
+
+Decision: `WATCH`. No upstream comment or PR.
+
 ## opencode/Claude/MCP/LangChain watch, 2026-05-28 09:26 UTC
 
 Detailed note: [opencode/Claude/MCP/LangChain watch 2026-05-28 09:26](opencode-claude-mcp-langchain-watch-2026-05-28-0926.md).
