@@ -4,7 +4,7 @@ Tracker: [#52](https://github.com/serejaris/corp-opensource/issues/52)
 
 Affected internal trackers: [#82](https://github.com/serejaris/corp-opensource/issues/82), [#81](https://github.com/serejaris/corp-opensource/issues/81), [#80](https://github.com/serejaris/corp-opensource/issues/80), [#58](https://github.com/serejaris/corp-opensource/issues/58), [#56](https://github.com/serejaris/corp-opensource/issues/56), [#53](https://github.com/serejaris/corp-opensource/issues/53).
 
-Tracker comments: [#82 demotion](https://github.com/serejaris/corp-opensource/issues/82#issuecomment-4559803855), [#52 synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559804608).
+Tracker comments: [#82 demotion](https://github.com/serejaris/corp-opensource/issues/82#issuecomment-4559803855), [#52 synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559804608), [#53 mini-swe refresh](https://github.com/serejaris/corp-opensource/issues/53#issuecomment-4559839933), [#52 mini-swe synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559840785).
 
 Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are not installed in this environment, so this follow-up used the documented fallback: parent live GitHub gates, 6 read-only subagents, then a 3-role critique.
 
@@ -56,6 +56,8 @@ Upstream action count: `0`.
 Internal tracker `#56` was also body-aligned from plain `CANDIDATE` to `COMMENT-FIRST after runner-backed test card`; this was a consistency update only and did not authorize upstream action.
 
 Next runner target: `SWE-agent/mini-swe-agent#826`. Fallback runner target: `probelabs/probe#568`.
+
+Mini-swe continuation, 2026-05-28 UTC: a dedicated 6-role follow-up plus 3-role critique for `SWE-agent/mini-swe-agent#826` kept the same final `next_status: WATCH`. Live gates found no exact covering PR and confirmed current `local.py` still uses `subprocess.run(..., shell=True, timeout=...)`, but `corp-opensource-runner` is still not provisioned per `#10`, `ssh corp-server` does not resolve here, and CT216 is Hermes-only. No upstream comment/PR and no local repro were run.
 
 ## Next actions
 

@@ -5,6 +5,7 @@ Live state: parent `gh` pass на 2026-05-27 19:15-19:29 UTC, refreshed 2026-05-
 Upstream: [`SWE-agent/mini-swe-agent#826`](https://github.com/SWE-agent/mini-swe-agent/issues/826).
 Internal tracker: [`corp-opensource#53`](https://github.com/serejaris/corp-opensource/issues/53).
 Umbrella tracker: [`corp-opensource#52`](https://github.com/serejaris/corp-opensource/issues/52).
+Latest tracker comments: [`#53` 2026-05-28 refresh](https://github.com/serejaris/corp-opensource/issues/53#issuecomment-4559839933), [`#52` synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559840785).
 
 Upstream actions в этом блоке: 0 PR, 0 comments.
 
@@ -79,3 +80,78 @@ This is a draft, not a completed card.
 3. Run secret-free repro for `#826` after merged `#832`.
 4. Fill the regression card with actual pre-fix fail evidence and exact command.
 5. Repeat duplicate PR/issue search, then run 3-subagent critique again before any upstream comment or PR.
+
+## Follow-up 2026-05-28 UTC
+
+Bounded heartbeat after the Orca duplicate-covered cycle keeps `SWE-agent/mini-swe-agent#826` as `WATCH`, not `COMMENT-FIRST` and not `PR-READY`.
+
+Parent live gates:
+
+- Upstream `#826` is still open, label `bug`, no assignee and no comments.
+- Repo `SWE-agent/mini-swe-agent` is active on `main`, latest release `v2.3.0`, pushed `2026-05-25T21:55:36Z`.
+- Current `src/minisweagent/environments/local.py` on `main` still uses `subprocess.run(..., shell=True, timeout=...)` in `LocalEnvironment.execute()` without process-group cleanup.
+- Open PRs checked: `#840/#839/#837/#831/#830/#821/#815/#792/#728`; none is an exact cover for `LocalEnvironment` timeout process-tree cleanup.
+- Targeted searches for `#826`, `LocalEnvironment timeout`, `orphan child process`, `start_new_session`, and `killpg` found no exact covering PR.
+- `#832` is merged and timeout-related, but it changed `agents/default.py`, `exceptions.py`, and `tests/agents/test_default.py`, not `src/minisweagent/environments/local.py`.
+- `#843` is adjacent only: its `LocalEnvironment` item is about host env vars in templates, and its cleanup item is about Docker/Singularity/Bubblewrap `__del__`, not shell-grandchild timeout orphaning.
+- Runner gate remains blocked: `corp-opensource#10` is open, only CT `221` planning exists via the corp-server runbook, `ssh corp-server` currently fails with `Could not resolve hostname corp-server`, and CT `216` is Hermes-only.
+
+6-role synthesis: lane remains valid and low duplicate-risk, but all roles selected `WATCH` because there is no runner-backed current-main repro after `#832`.
+
+3-role critique: factology confirms no exact cover; process gates allow only internal tracker/watch updates; actionability forbids upstream comment/PR without `corp-opensource-runner` evidence and a completed regression card.
+
+Final `next_status`: `WATCH`.
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Next runner command shape once `corp-opensource-runner` is provisioned:
+
+```bash
+git clone https://github.com/SWE-agent/mini-swe-agent.git
+cd mini-swe-agent
+git rev-parse HEAD
+python3 --version
+python3 -m venv .venv
+. .venv/bin/activate
+pip install -e .
+
+python3 <<'EOF'
+import os
+import subprocess
+import time
+
+from minisweagent.environments.local import LocalEnvironment
+
+marker = f"miniswe_leak_{os.getpid()}"
+script = f"/tmp/{marker}.py"
+cmd = f"""
+cat > {script} <<'PY'
+import time
+while True:
+    time.sleep(1)
+PY
+python3 {script}
+"""
+
+env = LocalEnvironment(timeout=3)
+print("running", marker)
+out = env.execute({"command": cmd})
+print("RESULT", out)
+
+time.sleep(1)
+ps = subprocess.run(
+    ["ps", "-eo", "pid,ppid,etime,cmd"],
+    text=True,
+    stdout=subprocess.PIPE,
+    stderr=subprocess.STDOUT,
+)
+matches = [line for line in ps.stdout.splitlines() if marker in line]
+print("MATCHES")
+print("\n".join(matches))
+raise SystemExit(1 if matches else 0)
+EOF
+```
+
+The regression card still needs actual runner evidence: current `main` SHA, OS/kernel, Python version, install method, `LocalEnvironment.execute()` output, `ps` before/after, leaked child PID if present, cleanup command, and confirmation that no marker process remains.
