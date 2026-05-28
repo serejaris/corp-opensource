@@ -1006,6 +1006,31 @@ Carry-forward: `claude-peers-mcp#64` remains the best compact source-level `CAND
 
 Decision: `WATCH`. No upstream comment or PR.
 
+## Opencode/Codex watch, 2026-05-28 08:55 UTC
+
+Detailed note: [Opencode/Codex watch 2026-05-28 08:55](opencode-codex-watch-2026-05-28-0855.md).
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562334053).
+
+`next_status: WATCH`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Process: parent live GitHub gates, focused duplicate/PR search, reused 6-role scouting synthesis, then focused 3-role critique before tracker/watch updates. The required `open-source-bug-scouting` / `open-source-pr-workflow` skills are not installed in this environment, so this is a documented fallback.
+
+Material deltas after the `08:48Z` watch:
+
+- `anomalyco/opencode#29704` closed at `08:51:45Z` after the reporter agreed `#21939` will resolve the GPU impact too. Status becomes `NO-GO / duplicate-covered`.
+- `anomalyco/opencode#28150` got a fresh comment linking open PR `#28689` as the granular read permission deny fix. PR `#28689` is open, non-draft, `MERGEABLE`; keep `WATCH / covered-by-PR`.
+- `anomalyco/opencode#16962` got fresh Warp-to-Mac-mini confirmation while iTerm2 succeeds, but it is assigned and duplicate-linked to `#15907/#6586/#8237`; keep `WATCH`.
+- `openai/codex#24884` contributor comment was edited to say the public repo may not contain the Windows App WSL bootstrap path; this reinforces `WATCH / product-private-surface`.
+
+Carry-forward: `claude-peers-mcp#64` remains the best compact source-level `CANDIDATE-needs-runner-validation`; `CLIProxyAPI#3594` remains an uncovered but protocol-heavy `LEAD`.
+
+Decision: `WATCH`. No upstream comment or PR.
+
 ## Claude/opencode post-cutoff watch, 2026-05-28 08:20 UTC
 
 Detailed note: [Claude/opencode post-cutoff watch 2026-05-28 08:20](claude-opencode-postcutoff-watch-2026-05-28-0820.md).
