@@ -2,6 +2,8 @@
 
 Контекст: bounded scouting pass после tracker heartbeat `2026-05-28T13:57:13Z`; tracker synthesis: [#52 comment](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4564794291). Обязательные skills `open-source-bug-scouting` / `open-source-pr-workflow` в этой среде недоступны, поэтому использован documented fallback: 2 read-only scouting roles из-за `agent thread limit reached`, parent live GitHub gates, duplicate/PR/actionability synthesis. Upstream actions: `0`. Runner actions: `0`.
 
+Follow-up `2026-05-28 14:13 UTC`: upstream triaged [`#33906`](https://github.com/NousResearch/hermes-agent/issues/33906) as `type/bug`, `comp/agent`, `P2`, and marked [`#33907`](https://github.com/NousResearch/hermes-agent/issues/33907) duplicate of `#33906`; tracker synthesis: [#52 comment](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4564933516). Related PR [`#32070`](https://github.com/NousResearch/hermes-agent/pull/32070) covers `user_id` propagation for compression continuations but not the missing `state.db` row described here.
+
 ## Scouting synthesis
 
 - Fresh discovery поднял новый Hermes-specific issue-level сигнал: `NousResearch/hermes-agent#33906`, with exact duplicate `#33907` filed seconds later.
@@ -38,5 +40,14 @@
 `next_status: CANDIDATE-backup`
 
 `hermes-agent#33906` is a relevant agent-session persistence candidate: it affects long-running WebUI sessions, context compression, and lineage visibility in `state.db`. It is backup rather than primary because `#33906/#33907` are duplicate-race issues, the report is currently source-reasoned rather than independently reproduced, and existing higher-priority candidates remain open.
+
+## Follow-up triage, 2026-05-28 14:13 UTC
+
+- `#33906` remains open and now has labels `type/bug`, `comp/agent`, `P2`; assignee: none; comments: none.
+- `#33907` remains open with labels `type/bug`, `duplicate`, `comp/agent`, `P2`.
+- Maintainer/collaborator comment on `#33907`: duplicate of `#33906`; related PR `#32070` fixes `user_id` propagation in compression continuation sessions.
+- Parent PR gate: `#32070` is open, non-draft, touches `agent/conversation_compression.py`, and fixes missing `user_id` on continuation sessions. It is adjacent but not an exact cover for the `#33906` failure mode where a continuation JSON exists but the `state.db` row is missing.
+
+Updated status: `CANDIDATE-backup / triaged P2`. No upstream comment/PR: still needs source checkout, duplicate consolidation, current-main repro/test card, and 3-role critique.
 
 Runner status unchanged: `corp-opensource-runner` is still unavailable via `#10`; CT216 remains Hermes-only and was not used.
