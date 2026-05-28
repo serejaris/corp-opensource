@@ -24,7 +24,7 @@
 
 ### В работе сейчас
 
-Последний scouting heartbeat `2026-05-28 10:32 UTC`: [watch note](watch/claude-codex-opencode-post1026-watch-2026-05-28-1032.md), tracker [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4563197735). Итог: 6-agent cycle + parent live gates + duplicate/PR checks + process/actionability/duplicate critique, upstream actions `0`, runner actions `0`, final `next_status: CANDIDATE`. Delta: `codex#24890` closed as user/config-side because `--oauth-resource` covers that reporter path while broader `codex#13891` stays open watch; `claude-code#63081/#63082/#63074` are product/duplicate-adjacent watch signals, not OSS patch lanes; `opencode#29721/#29722` is exact-covered/duplicate-heavy/compliance-gated no-go. `probe#568` remains first runner target; `claude-peers-mcp#64` remains compact fallback.
+Последний scouting heartbeat `2026-05-28 10:42 UTC`: [watch note](watch/codex-langchain-opencode-post1032-watch-2026-05-28-1042.md), tracker [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4563256336). Итог: 6-agent cycle + parent live gates + duplicate/PR checks + process/actionability/duplicate critique, upstream actions `0`, runner actions `0`, final `next_status: CANDIDATE`. Delta: `codex#24896` is weak usage/context drain `LEAD/WATCH` in an existing usage cluster, not a candidate without independent repro; `claude-code#63082` is now duplicate-bot-linked to `#56172` but remains product-owned watch; `opencode#29723/#29724` are feature/support no-go; `langchain#37732` is technically plausible but auto-closed as programmatic submission. `probe#568` remains first runner target; `claude-peers-mcp#64` remains compact fallback.
 
 | Upstream | Что делаем | Статус |
 |---|---|---|
