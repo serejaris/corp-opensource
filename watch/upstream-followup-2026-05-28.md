@@ -646,3 +646,39 @@ Selected lead: `vercel/ai#15663`. The issue is open, unassigned, unlabeled, and 
 Duplicate/race result: no exact open PR cover. `#14772` is path-adjacent for `content/cookbook/01-next/73-mcp-tools.mdx` but does not cover `onFinish -> onEnd`; `#15245` is merged source/regression context, not a cover.
 
 Critique result: factology and duplicate gates pass, but this stays `LEAD` because it is docs-only, lower priority than runtime/tool-call candidates, and has Vercel license/process friction. No upstream comment/PR. Primary runner backlog remains Probe, Gemini, Vercel `#15652`, and LangChain4j.
+
+## Vercel AI #15663 follow-up, 2026-05-28 06:26 UTC
+
+Detailed note: [Vercel AI #15663 onFinish/onEnd docs](vercel-ai-15663-onfinish-onend-docs.md).
+
+Process: live gate refresh plus 6-role fallback scouting refresh. Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are unavailable here, so this remains the documented fallback. No upstream comment/PR.
+
+`next_status: LEAD/WATCH`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Delta: `vercel/ai#15663` remains open, unassigned, and unlabeled, but the original "comments absent" gate is now stale. The issue has 3 comments from author `n-satoshi061`; the author offered to open a PR and expanded the affected surface to include `packages/mcp/README.md`, several `examples/ai-functions/src/**` files that still demonstrate `onFinish`, and filename-level `on-finish` examples that may need an `on-end` rename.
+
+Duplicate/race result: no exact open PR cover found for `#15663`, `onFinish -> onEnd`, `examples/ai-functions`, or the author. Race risk increased anyway because the issue author has effectively claimed the fix lane. Keep as `LEAD/WATCH`, not `PR-READY`, and do not open a competing upstream PR unless maintainer direction or author inactivity changes the lane.
+
+## Fresh Codex Desktop WSL bwrap candidate, 2026-05-28 06:32 UTC
+
+Detailed note: [OpenAI Codex #24873 Desktop WSL bwrap sandbox](openai-codex-24873-desktop-wsl-bwrap.md).
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4561378941).
+
+Process: fresh GitHub discovery, parent live issue/repo/duplicate gates, 6-role fallback scouting, then focused 3-role critique. Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are unavailable here, so this remains the documented fallback. No upstream comment/PR.
+
+`next_status: CANDIDATE`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Selected lead: `openai/codex#24873`. The issue is open, unassigned, unlabeled, with no comments at gate time. It reports Codex Desktop WSL `codex-cli 0.133.0` failing sandboxed tool execution before a trivial command runs because the WSL binary cannot find system `bwrap` and has no adjacent bundled `codex-resources/bwrap`; `use_legacy_landlock = true` then fails with a permission-profile panic.
+
+Duplicate/race result: no exact open PR or issue cover found. Closed `#21915` is relevant prior art but was for the VS Code extension / remote Linux surface and does not cover Desktop WSL cache layout or the Landlock fallback panic.
+
+Critique result: factology and duplicate gates pass for `CANDIDATE`, but not `PR-READY`. This needs Windows host + WSL2 + Codex Desktop repro, `RUST_BACKTRACE=1`, launcher/resource lookup evidence, and a contribution/process gate. Current `corp-opensource-runner` remains unavailable via `#10`, and a Linux-only runner would not close the Desktop WSL packaging gap.

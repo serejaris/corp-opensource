@@ -47,3 +47,19 @@ Fresh discovery after `2026-05-28T05:55:00Z` found no stronger high-signal repo 
 `next_status: LEAD`
 
 Keep as opportunistic micro-docs watch. Recheck only if no author/maintainer PR appears and the primary runner backlog stalls.
+
+## Follow-up, 2026-05-28 06:26 UTC
+
+Live gate update: issue remains open, unassigned, unlabeled. The earlier gate statement "comments absent at gate time" is now stale: the issue has 3 comments, all from the issue author. The author offered to open a PR and expanded the affected surface beyond docs/cookbook MDX files:
+
+- `packages/mcp/README.md`
+- several `examples/ai-functions/src/**` files that still demonstrate `onFinish`
+- filename-level examples using `on-finish` that would need an `on-end` rename if the example contract changes
+
+Duplicate/PR search still found no exact open PR cover for `#15663`, `onFinish -> onEnd`, `examples/ai-functions`, or the author `n-satoshi061`. This does not lower the race risk: the issue author has effectively claimed a possible fix lane even without an opened PR.
+
+6-role fallback refresh: factology, duplicate/race, and process-gate roles agree that this should stay below runtime/tool-call candidates. Runner is still unavailable via corp tracker `#10`, but this lane is docs/examples consistency rather than a runner-first repro.
+
+Decision: `next_status: LEAD/WATCH`, upstream actions `0`, runner actions `0`.
+
+Do not open a competing upstream PR now. Recheck only if maintainer asks for an external PR, the issue author explicitly drops ownership, or no author/maintainer PR appears after a reasonable wait and primary runtime candidates are blocked.
