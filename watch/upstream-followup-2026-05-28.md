@@ -722,3 +722,21 @@ Selected candidate pair: `HKUDS/nanobot#4040` and `HKUDS/nanobot#4039`. Both are
 Duplicate/race result: no exact open PR or duplicate issue found. This is distinct from cycle 34 Nanobot lanes `#4006/#4013`, which were duplicate-covered by PRs `#4011/#4020`.
 
 Critique result: `#4040` is the stronger runtime interrupt/cancellation candidate; `#4039` is a lower-confidence but strategically relevant context/tool-schema budget candidate. No upstream comment/PR because issue bodies already include root-cause hypotheses and suggested fixes; useful action requires runner/source-backed repro. Fresh lower-priority leads `oh-my-claudecode#3163` and `github/gh-aw#35423` remain unpromoted.
+
+## Fresh runtime batch, 2026-05-28 07:08 UTC
+
+Detailed note: [Fresh runtime batch 2026-05-28 07:08 UTC](fresh-runtime-batch-2026-05-28-0708.md).
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4561586615).
+
+Process: fresh GitHub discovery, parent live issue/repo/duplicate gates, 6-role fallback scouting, then focused 3-role critique. Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are unavailable here, so this remains the documented fallback. No upstream comment/PR.
+
+`next_status: CANDIDATE`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Selected candidate: `NousResearch/hermes-agent#33712`. It is open, unassigned, unlabeled, with no comments at gate time. `hermes dashboard` fails on NixOS/container with `ModuleNotFoundError: No module named 'hermes_cli.dashboard_auth'`. Exact duplicate/PR cover was not found; adjacent PR `#33311` touches `dashboard_auth` but fixes reverse-proxy login URL prefixes, not a missing packaged module.
+
+Watch lanes: `openai/codex#24879` is material but covered-risk due same-title closed `#24877`, prior `#21928`, and active auto-review model override PR `#23767`; `anthropics/claude-code#63025` is high-severity Desktop/SSH history-index loss but needs Windows Desktop + SSH Remote evidence; `NVIDIA/TensorRT-LLM#14676` is valid AutoDeploy/NVRTC watch but GPU/CI-heavy and likely maintainer-internal.
