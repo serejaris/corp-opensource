@@ -4,11 +4,46 @@ Tracker: [#52](https://github.com/serejaris/corp-opensource/issues/52)
 
 Affected internal trackers: [#82](https://github.com/serejaris/corp-opensource/issues/82), [#81](https://github.com/serejaris/corp-opensource/issues/81), [#80](https://github.com/serejaris/corp-opensource/issues/80), [#58](https://github.com/serejaris/corp-opensource/issues/58), [#56](https://github.com/serejaris/corp-opensource/issues/56), [#53](https://github.com/serejaris/corp-opensource/issues/53).
 
-Tracker comments: [#82 demotion](https://github.com/serejaris/corp-opensource/issues/82#issuecomment-4559803855), [#52 synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559804608), [#53 mini-swe refresh](https://github.com/serejaris/corp-opensource/issues/53#issuecomment-4559839933), [#52 mini-swe synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559840785).
+Tracker comments: [#82 demotion](https://github.com/serejaris/corp-opensource/issues/82#issuecomment-4559803855), [#52 synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559804608), [#53 mini-swe refresh](https://github.com/serejaris/corp-opensource/issues/53#issuecomment-4559839933), [#52 mini-swe synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559840785), [#52 settlement refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560463593).
 
 Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are not installed in this environment, so this follow-up used the documented fallback: parent live GitHub gates, 6 read-only subagents, then a 3-role critique.
 
 No upstream PR/comment/ping was made.
+
+## Duplicate-covered settlement refresh, 2026-05-28 02:57 UTC
+
+Bounded settlement refresh over duplicate-covered lanes: `modelcontextprotocol/typescript-sdk#2115`, `stablyai/orca#2930`, `browser-use/browser-harness#382`, `colbymchenry/codegraph#507`, `pydantic/pydantic-ai#5688`, and `e2b-dev/E2B#1349`.
+
+Process: parent live GitHub gates, 6 read-only roles in two waves, then 3-role critique-style factology/process/actionability review. Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are still unavailable here, so this used the documented fallback.
+
+`next_status: WATCH / settlement refresh`
+
+Upstream action count: `0`.
+
+No upstream comment, PR, ping, rerun, rebase, close, or runner repro was made. Runner was not required because this pass only records live duplicate/settlement state and no lane reached `PR-READY`.
+
+| Lane | Live result | Decision |
+|---|---|---|
+| `modelcontextprotocol/typescript-sdk#2115` | Issue open. Exact duplicate PRs [#2116](https://github.com/modelcontextprotocol/typescript-sdk/pull/2116) and [#2138](https://github.com/modelcontextprotocol/typescript-sdk/pull/2138) are open/non-draft with green checks, but live state is `BLOCKED` / review-required. | `WATCH / duplicate-covered`; do not overclaim merge-ready. Re-enter only if both PRs close unmerged, maintainer asks, or merged fix misses `requestId: 0`. |
+| `stablyai/orca#2930` | Issue open. Exact-cover PR [#2948](https://github.com/stablyai/orca/pull/2948) is open/non-draft and changes the SSH stream reader plus short-final-chunk regression; live state is `UNSTABLE` with only the visible community-tracking check green. | `WATCH / duplicate-covered`; watch merge/close/stall/gap. |
+| `browser-use/browser-harness#382` | Issue open with `in-progress`. Primary exact-cover PR [#346](https://github.com/browser-use/browser-harness/pull/346) is open/non-draft and clean with visible checks green; [#332](https://github.com/browser-use/browser-harness/pull/332) / [#297](https://github.com/browser-use/browser-harness/pull/297) are adjacent keyboard-helper overlap. | `WATCH / duplicate-covered`; no new PR while #346 is live. |
+| `colbymchenry/codegraph#507` | Issue open. Exact behavioral cover [#345](https://github.com/colbymchenry/codegraph/pull/345) is open/non-draft, but live state is `DIRTY` / review-required with no visible checks. | `WATCH / stale-conflicting duplicate-covered`; not settled, but no competing PR while #345 is live unless it closes or maintainer asks. |
+| `pydantic/pydantic-ai#5688` | Issue open. Exact-cover PR [#5694](https://github.com/pydantic/pydantic-ai/pull/5694) is open/non-draft, clean, and has broad green CI with only bot/release jobs skipped. | `WATCH / duplicate-covered`; wait maintainer/bot review. |
+| `e2b-dev/E2B#1349` | Issue closed `2026-05-27T21:39:52Z`. Superset PR [#1355](https://github.com/e2b-dev/E2B/pull/1355) merged `2026-05-27T20:57:03Z`, approved, and covers JS + Python SDK multi-source Dockerfile parsing. | `SETTLED / resolved by merged #1355`; no further action on closed #1354/#1349 unless regression reopens. |
+
+6-role synthesis:
+
+- All non-E2B lanes remain covered by live upstream PRs; none justify a competing comment or PR.
+- E2B is the only settlement transition: `#1355` merged and `#1349` is closed fixed, so update README/watch from `WATCH #1355` to `SETTLED`.
+- Codegraph remains watch, not settled, because the exact-cover PR is currently dirty/conflicting.
+- Browser-harness remains watch despite maintainer PR-welcome signal because `#346` is now the primary exact cover.
+- MCP TS and Orca wording must stay conservative: MCP is review-gated, and Orca has light visible checks plus `UNSTABLE`.
+
+3-role critique:
+
+- Factology/duplicates: no lane is uncovered enough for upstream action; avoid overclaims on MCP mergeability, Orca readiness, or codegraph cleanliness.
+- Process: internal README/watch/tracker update is allowed; upstream comments are unnecessary and would add noise to already covered lanes.
+- Actionability: runner repro only becomes relevant if a cover PR closes unmerged, lands incomplete, stalls with maintainer signal, or the issue reopens.
 
 ## Scope
 
