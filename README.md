@@ -24,7 +24,7 @@
 
 ### В работе сейчас
 
-Последний scouting heartbeat `2026-05-28 10:12 UTC`: [watch note](watch/opencode-langchain-permission-security-watch-2026-05-28-1012.md), tracker [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562994890). Итог: reused 6-agent cycle + parent live gates + duplicate/PR checks, upstream actions `0`, runner actions `0`, final `next_status: WATCH`. Delta: `opencode#29717` covers `#29674` read/glob/grep permission enforcement and `**/.env*` root matching; `opencode#29718` covers `#16491` subagent MCP permission inheritance; both PRs are active but process/compliance-blocked. `langchain#37296` got fresh author-owned assignment/attribution pings around closed/unmerged PRs `#37291/#37729`; watch only, no racing. `claude-peers-mcp#64` remains the best compact source-level `CANDIDATE-needs-runner-validation`.
+Последний scouting heartbeat `2026-05-28 10:18 UTC`: [watch note](watch/codex-langchain-claude-duplicate-watch-2026-05-28-1018.md), tracker [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4563053886). Итог: reused 6-agent cycle + parent live gates + duplicate/PR checks + 3-role critique, upstream actions `0`, runner actions `0`, final `next_status: WATCH`. Delta: `openai/codex#24890` demoted to duplicate-covered watch via open exact/strong duplicate `#13891` with fork-fix evidence and no official PR; `langchain#37724/#37731` is author-owned/assignment-gated closed PR cover for OpenAI Responses image `file_id`; `claude-code#63078` is duplicate-cluster `NO-GO`. `claude-peers-mcp#64` remains the best compact source-level `CANDIDATE-needs-runner-validation`.
 
 | Upstream | Что делаем | Статус |
 |---|---|---|
