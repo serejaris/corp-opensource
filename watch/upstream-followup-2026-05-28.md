@@ -835,3 +835,29 @@ Existing high-value watch: `anomalyco/opencode#29694` remains open and assigned 
 Duplicate/race correction: `router-for-me/CLIProxyAPI#2746` is still a strong cover-risk for `#3592`, but the latest critique notes it may not fully cover the TitleCase client-tool response-restore case if `#2746` only reverses actual request-side renames. Keep `#3592` as `WATCH / duplicate-covered-risk`, not `NO-GO`; re-entry after `#2746` settles or a current-main retest proves `Glob -> glob` still leaks.
 
 Other live gates: `anthropics/claude-code#63034` remains upstream-owned `WATCH` because duplicate bot linked `#62459/#59843` and the author disputed duplicate rather than asking for an external patch. `openai/codex#24881` is `NO-GO / duplicate-design-watch` for this cycle because stronger prior path-glob skill issue `#19671` already exists. No upstream comment or PR is allowed from this cycle.
+
+## Claude Code agent/MCP fresh watch, 2026-05-28 08:12 UTC
+
+Detailed note: [Claude Code #63042/#63041 agent and MCP watch](claude-code-63042-63041-agent-mcp-watch.md).
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4561973121).
+
+`next_status: WATCH`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Process: parent live GitHub gates, focused duplicate/PR search, 6-role reused-agent scouting, then synthesis critique before tracker/watch updates. The required `open-source-bug-scouting` skill is not installed in this environment, so this is a documented fallback.
+
+Material fresh signals after the `08:02Z` tracker heartbeat:
+
+- `anthropics/claude-code#63042` reports stale local git identity leaking across Agent tool worktree dispatches, breaking signed-commit verification and multi-agent attribution. Focused search found no exact PR cover; related `#51596` and `#36981` are adjacent, not exact.
+- `anthropics/claude-code#63041` reports `claude mcp get <server>` printing secret-bearing MCP env vars in cleartext. Focused search found adjacent prior issues `#44888` and `#58850`, but no exact active cover for this command/output slice.
+- `anthropics/claude-code#63031` is a secondary watch for `claude agents` workflow slash-command completion missing from the dispatch input, adjacent to fixed `#61424`.
+
+Fresh opencode `#29698` is a weak `LEAD/WATCH`: macOS Desktop appears to confuse projects with the same folder name but different absolute paths, but the report has no steps/screenshots and may overlap `#29692`. No status promotion.
+
+Existing active lanes had no material post-cutoff transition. `vercel/ai#15652`, `probelabs/probe#568`, and `google-gemini/gemini-cli#27503` remain the top runner-backed candidate backlog, but runner `#10` is still unavailable and no PR-ready gate is closed.
+
+Decision: keep this cycle at `WATCH`. Claude Code items are product-owned from our contribution perspective; no upstream comment/PR without a future explicit maintainer ask or new source-backed evidence.
