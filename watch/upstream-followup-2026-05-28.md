@@ -980,6 +980,32 @@ Carry-forward: `claude-peers-mcp#64` remains the only current small source-level
 
 Decision: `WATCH`. No upstream comment or PR.
 
+## Fresh AI-native watch, 2026-05-28 08:48 UTC
+
+Detailed note: [Fresh AI-native watch 2026-05-28 08:48](fresh-ai-native-watch-2026-05-28-0848.md).
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562290239).
+
+`next_status: WATCH`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Process: parent live GitHub gates, focused duplicate/PR search, reused 6-role scouting synthesis, then focused 3-role critique before tracker/watch updates. The required `open-source-bug-scouting` / `open-source-pr-workflow` skills are not installed in this environment, so this is a documented fallback.
+
+Material deltas after the `08:42Z` watch:
+
+- `google-gemini/gemini-cli#27517` gained duplicate-bot `status/possible-duplicate` with a broad possible-duplicate list; keep `WATCH / NO-GO for now`.
+- `anomalyco/opencode#29704` opened for OpenCode Desktop animation GPU spikes on older Intel iGPU, but it is assigned to `Hona` and duplicate-gated against `#21939`; keep `WATCH`.
+- `mem0ai/mem0#5284` is a fresh external PR, non-draft `MERGEABLE/REVIEW_REQUIRED`, with three regression tests for LangChain vector store `None` scores; already covered.
+- `ag-ui-protocol/ag-ui#1801` is a fresh Kotlin Interrupts types enhancement with author PR intent; watch for duplicate/race, no cold PR.
+- `anthropics/claude-code#62959` and `openai/codex#24457` received external workaround/analysis comments, but both remain product watch lanes.
+
+Carry-forward: `claude-peers-mcp#64` remains the best compact source-level `CANDIDATE-needs-runner-validation`; `CLIProxyAPI#3594` remains an uncovered but protocol-heavy `LEAD`.
+
+Decision: `WATCH`. No upstream comment or PR.
+
 ## Claude/opencode post-cutoff watch, 2026-05-28 08:20 UTC
 
 Detailed note: [Claude/opencode post-cutoff watch 2026-05-28 08:20](claude-opencode-postcutoff-watch-2026-05-28-0820.md).
