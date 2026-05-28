@@ -1057,6 +1057,33 @@ Carry-forward: `claude-peers-mcp#64` remains the best compact source-level `CAND
 
 Decision: `WATCH`. No upstream comment or PR.
 
+## Claude/MCP/opencode watch, 2026-05-28 09:08 UTC
+
+Detailed note: [Claude/MCP/opencode watch 2026-05-28 09:08](claude-mcp-opencode-watch-2026-05-28-0908.md).
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562442210).
+
+`next_status: WATCH`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Process: parent live GitHub gates, focused duplicate/PR search, reused 6-role scouting synthesis, then focused 3-role critique before tracker/watch updates. The required `open-source-bug-scouting` / `open-source-pr-workflow` skills are not installed in this environment, so this is a documented fallback.
+
+Material deltas after the `09:02Z` watch:
+
+- `anthropics/claude-code#63051` gained duplicate/product labels and duplicate bot links `#62188/#39763/#41628`; keep `NO-GO / duplicate-product-transient`.
+- `anthropics/claude-code#63052` opened as a long-input TUI truncation report on macOS/Ghostty, already duplicate-labeled; keep product `WATCH`.
+- `modelcontextprotocol/python-sdk#2695` got a follow-up proposal for additional `convert_result=True` return-shape tests after `#2700`; coordination-first watch.
+- `anomalyco/opencode#26625` got a fresh stable-vs-PR-branch `/timestamps` comment; issue remains assigned and PR-linked, so keep `WATCH / PR-linked ambiguity`.
+- `vercel/ai#15667` is a docs-only OpenRouter link PR, already covered.
+- `JetBrains/koog#2079` is a fresh `maxTokens` type/semantics question; keep low-priority `LEAD/WATCH` until clarified.
+
+Carry-forward: `claude-peers-mcp#64` remains the best compact source-level `CANDIDATE-needs-runner-validation`; `CLIProxyAPI#3594` remains an uncovered but protocol-heavy `LEAD`.
+
+Decision: `WATCH`. No upstream comment or PR.
+
 ## Claude/opencode post-cutoff watch, 2026-05-28 08:20 UTC
 
 Detailed note: [Claude/opencode post-cutoff watch 2026-05-28 08:20](claude-opencode-postcutoff-watch-2026-05-28-0820.md).
