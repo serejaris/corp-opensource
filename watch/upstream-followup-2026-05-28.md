@@ -4,11 +4,29 @@ Tracker: [#52](https://github.com/serejaris/corp-opensource/issues/52)
 
 Affected internal trackers: [#85](https://github.com/serejaris/corp-opensource/issues/85), [#82](https://github.com/serejaris/corp-opensource/issues/82), [#81](https://github.com/serejaris/corp-opensource/issues/81), [#80](https://github.com/serejaris/corp-opensource/issues/80), [#58](https://github.com/serejaris/corp-opensource/issues/58), [#56](https://github.com/serejaris/corp-opensource/issues/56), [#53](https://github.com/serejaris/corp-opensource/issues/53).
 
-Tracker comments: [#82 demotion](https://github.com/serejaris/corp-opensource/issues/82#issuecomment-4559803855), [#52 synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559804608), [#53 mini-swe refresh](https://github.com/serejaris/corp-opensource/issues/53#issuecomment-4559839933), [#52 mini-swe synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559840785), [#52 settlement refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560463593), [#52 active PR dashboard refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560641484), [#52 cycle 37 Gemini candidate](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560685299), [#52 runner backlog refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560707233), [#85 Gemini refresh](https://github.com/serejaris/corp-opensource/issues/85#issuecomment-4560707690), [#52 04:04 refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560746495), [#52 04:17 dashboard correction](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560803072), [#86 Vercel #15652 refresh](https://github.com/serejaris/corp-opensource/issues/86#issuecomment-4561045571), [#52 05:19 bounded refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4561046486).
+Tracker comments: [#82 demotion](https://github.com/serejaris/corp-opensource/issues/82#issuecomment-4559803855), [#52 synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559804608), [#53 mini-swe refresh](https://github.com/serejaris/corp-opensource/issues/53#issuecomment-4559839933), [#52 mini-swe synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559840785), [#52 settlement refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560463593), [#52 active PR dashboard refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560641484), [#52 cycle 37 Gemini candidate](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560685299), [#52 runner backlog refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560707233), [#85 Gemini refresh](https://github.com/serejaris/corp-opensource/issues/85#issuecomment-4560707690), [#52 04:04 refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560746495), [#52 04:17 dashboard correction](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560803072), [#86 Vercel #15652 refresh](https://github.com/serejaris/corp-opensource/issues/86#issuecomment-4561045571), [#52 05:19 bounded refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4561046486), [#52 10:02 LangChain duplicate correction](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562901015).
 
 Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are not installed in this environment, so this follow-up used the documented fallback: parent live GitHub gates, 6 read-only subagents, then a 3-role critique.
 
 No upstream PR/comment/ping was made.
+
+## LangChain Google embedding duplicate correction, 2026-05-28 10:02 UTC
+
+Detailed note: [LangChain Google embedding batch duplicate watch](langchain-google-embedding-batch-duplicate-2026-05-28-1002.md).
+
+Process: parent live gates over the fresh post-09:50 signal, 6 read-only fallback roles, and parent duplicate/PR correction. Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are still unavailable here, so this used the documented fallback.
+
+`next_status: WATCH`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562901015).
+
+`langchain-ai/langchain#37728` looked like a fresh AI-native `LEAD` for `GoogleGenerativeAIEmbeddings.embed_documents()` returning 1 vector for N texts with `gemini-embedding-2`, but the actual implementation lives in `langchain-ai/langchain-google`. Parent duplicate gate found existing issue `langchain-google#1704` and open PR `langchain-google#1708` covering the same batch embedding behavior. The main-repo issue also gained a contributor self-claim comment within minutes. Decision: `WATCH / duplicate-covered`, no upstream comment or racing PR.
+
+Other post-09:50 signals stayed non-actionable: `claude-code#63070` is i18n/localization enhancement, `codex#24888` is UX proposal, `claude-code#63069` is labeled duplicate, `codex#24887` is service/account and likely self-resolved. Active candidates remain blocked by runner/process gates.
 
 ## Vercel #15652 bounded refresh, 2026-05-28 05:19 UTC
 
