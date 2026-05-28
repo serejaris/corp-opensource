@@ -207,3 +207,30 @@ Tracker comments: umbrella [#52](https://github.com/serejaris/corp-opensource/is
 6-role synthesis: five lanes remain internal candidates, while `mini-swe#826` is demoted to stricter `WATCH` because `#832` may have already fixed enough of the timeout symptom to make any upstream action noisy without re-test. Best operational target after runner provisioning is `mini-swe#826`; fallback is `probe#568`; `emdash#1875` is next if runner has Linux Secret Service / Electron support.
 
 3-role critique: factology required corrections for `mini-swe#832`, Mastra `#17054`, and the semantics of the Probe `#568` upstream response. Process gates forbid `PR-READY` and forbid upstream comments in this cycle because no runner-backed evidence exists. Actionability allows internal tracker/watch updates only.
+
+## Candidate backlog refresh, 2026-05-28 02:19 UTC
+
+Bounded refresh over six active candidate/watch lanes: `oraios/serena#1519`, `generalaction/emdash#1875`, `browseros-ai/BrowserOS#1005`, `probelabs/probe#568`, `mastra-ai/mastra#17118`, and `ag-ui-protocol/ag-ui#1635`.
+
+Detailed note: [candidate backlog refresh](candidate-backlog-refresh-2026-05-28-0219.md).
+
+Process: parent live GitHub gates, runner/tooling gate, 6 read-only scouting roles in two waves, then 3-role critique. Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are unavailable here, so this was the documented fallback.
+
+`next_status: CANDIDATE`
+
+Upstream action count: `0`.
+
+No upstream comment, PR, ping, rerun, or rebase was made.
+
+Runner/tooling gate remains closed: `corp-server` does not resolve, `corp-opensource-runner` is not provisioned per `#10`, local Node is `v20.19.2`, and local env lacks `pnpm`, `bun`, Docker, `rustc/cargo`, and the required runner matrix.
+
+| Lane | Live correction | Decision |
+|---|---|---|
+| `probelabs/probe#568` | Open, `bug` + `external`, unassigned; upstream confirms legitimate bug shape but asks for exact CLI/API/env details. Open PRs `#561/#264` are unrelated. Source review says root cause is still unproven because `symbols.rs` looks JSON-clean while `Pattern:` / `Path:` output is in `main.rs::handle_search`. | Primary `CANDIDATE` / first runner target. |
+| `oraios/serena#1519` | Open, unassigned, no labels/comments; no open PR cover for dashboard host-port 403. Source still maps to `src/serena/dashboard.py` Host validation. | Reserve `CANDIDATE`; needs Docker/port-mapping repro and security-preserving Flask test. |
+| `browseros-ai/BrowserOS#1005` | Open, unassigned; reporter's 2026-05-26 update gives current root-cause signal around full tool re-registration on every MCP call/focus/connect; no exact PR cover. | Reserve `CANDIDATE`; needs Bun/MCP repro, AGPL/CLA gate, and a notification-dedupe design that does not break lifecycle/security. |
+| `generalaction/emdash#1875` | Open, unassigned, PR-welcome signal remains; no open cover, but closed exact PR history `#1907-#1911` is mandatory prior art. | `WATCH / CANDIDATE-risk`; no PR without avoiding closed-PR failure modes. |
+| `mastra-ai/mastra#17118` | Open, team labels and MRE request; no exact PR cover, but dense Mastracode queue and `#17054` partial wrapping precedent. | `COMMENT-FIRST / WATCH` after MRE; not primary. |
+| `ag-ui-protocol/ag-ui#1635` | Open, unassigned; no exact cover, but broad stale PR `#1253` strongly overlaps Mastra adapter/chunk mapping and is `CONFLICTING` / `CHANGES_REQUESTED`. | `WATCH`; no PR without test evidence and positioning against `#1253`. |
+
+3-role critique: `CANDIDATE` is justified by uncovered Probe/Serena/BrowserOS lanes, but no lane is `PR-READY`. Create no new tracker issue. Update umbrella `#52` and primary Probe tracker `#80`; avoid noisy comments on unchanged reserve lanes.

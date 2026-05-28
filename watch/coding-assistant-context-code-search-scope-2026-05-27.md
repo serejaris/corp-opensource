@@ -106,3 +106,26 @@ Live gate summary:
 Decision remains `next_status: CANDIDATE`; upstream action count `0`.
 
 Fallback runner target after `mini-swe#826`: reproduce `@probelabs/probe@0.6.0-rc319` and current `main` through both CLI and Node SDK, capturing raw stdout, stderr, exit code, JSON parse result, command/API call, env and flags.
+
+## Probe #568 backlog refresh, 2026-05-28 02:19 UTC
+
+Fresh candidate backlog refresh: [watch note](candidate-backlog-refresh-2026-05-28-0219.md).
+
+Six read-only roles plus 3-role critique promoted `probelabs/probe#568` from fallback runner target to primary next runner target for the candidate backlog. Upstream action count remains `0`.
+
+Why primary now:
+
+- issue is still open, unassigned, labeled `bug` + `external`;
+- upstream `probelabs` / Visor response confirms legitimate bug shape and asks for exact CLI/API/env evidence;
+- no exact open PR cover was found; open PRs `#561/#264` are unrelated;
+- runner feasibility is better than `serena#1519`, `BrowserOS#1005`, `emdash#1875`, `ag-ui#1635`, and `mastra#17118` because Probe needs a Rust/CLI JSON capture, not Docker/Bun/Electron/browser.
+
+Critical caveat: source review still does not prove the root cause. `src/extract/symbols.rs::handle_symbols` appears JSON-clean, while suspicious `Pattern:` / `Path:` stdout output is in `src/main.rs::handle_search`. The runner job must first prove the exact failing CLI/API path before any upstream comment or PR.
+
+Updated runner card:
+
+1. Capture `v0.6.0-rc319` and current `main`.
+2. Run CLI and Node SDK paths for `symbols --format json`.
+3. Record command/API call, fixture, env/flags, stdout, stderr, exit code, JSON parse result and Node wrapper parse result.
+4. Repeat duplicate search for `#568`, `symbols`, `stdout`, `json`, `#205`, `#109`, `#546`, and `#560`.
+5. Only then choose `COMMENT-FIRST` with evidence or `PR-READY` with a focused regression test.
