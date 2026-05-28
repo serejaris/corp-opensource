@@ -2,13 +2,41 @@
 
 Tracker: [#52](https://github.com/serejaris/corp-opensource/issues/52)
 
-Affected internal trackers: [#82](https://github.com/serejaris/corp-opensource/issues/82), [#81](https://github.com/serejaris/corp-opensource/issues/81), [#80](https://github.com/serejaris/corp-opensource/issues/80), [#58](https://github.com/serejaris/corp-opensource/issues/58), [#56](https://github.com/serejaris/corp-opensource/issues/56), [#53](https://github.com/serejaris/corp-opensource/issues/53).
+Affected internal trackers: [#85](https://github.com/serejaris/corp-opensource/issues/85), [#82](https://github.com/serejaris/corp-opensource/issues/82), [#81](https://github.com/serejaris/corp-opensource/issues/81), [#80](https://github.com/serejaris/corp-opensource/issues/80), [#58](https://github.com/serejaris/corp-opensource/issues/58), [#56](https://github.com/serejaris/corp-opensource/issues/56), [#53](https://github.com/serejaris/corp-opensource/issues/53).
 
-Tracker comments: [#82 demotion](https://github.com/serejaris/corp-opensource/issues/82#issuecomment-4559803855), [#52 synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559804608), [#53 mini-swe refresh](https://github.com/serejaris/corp-opensource/issues/53#issuecomment-4559839933), [#52 mini-swe synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559840785), [#52 settlement refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560463593), [#52 active PR dashboard refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560641484).
+Tracker comments: [#82 demotion](https://github.com/serejaris/corp-opensource/issues/82#issuecomment-4559803855), [#52 synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559804608), [#53 mini-swe refresh](https://github.com/serejaris/corp-opensource/issues/53#issuecomment-4559839933), [#52 mini-swe synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559840785), [#52 settlement refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560463593), [#52 active PR dashboard refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560641484), [#52 cycle 37 Gemini candidate](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560685299).
 
 Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are not installed in this environment, so this follow-up used the documented fallback: parent live GitHub gates, 6 read-only subagents, then a 3-role critique.
 
 No upstream PR/comment/ping was made.
+
+## Fresh AI-native issue discovery cycle 37, 2026-05-28 03:40 UTC
+
+Detailed note: [cycle 37 Gemini / opencode](ai-native-popular-repos-paperclip-scouting-2026-05-28-cycle-37-gemini-opencode.md).
+
+Process: parent GitHub search over popular AI-native / CUA / MCP / agent-tooling repos, live issue/PR/contribution gates, 6 read-only roles in two waves, then 3-role status critique. Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are still unavailable here, so this used the documented fallback.
+
+`next_status: CANDIDATE`
+
+Upstream action count: `0`.
+
+Tracker comments: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560685299), selected candidate [#85](https://github.com/serejaris/corp-opensource/issues/85).
+
+No upstream comment, PR, ping, rerun, or rebase was made.
+
+| Lane | Live result | Decision |
+|---|---|---|
+| `google-gemini/gemini-cli#27503` | Open, unassigned, no comments at gate time; labels `priority/p1`, `area/agent`, `kind/bug`, `status/bot-triaged`. Adjacent PR `#25378` is Windows ripgrep EFTYPE validation, `DIRTY/CONFLICTING`, and not an exact cover for `git grep --json` fallback. | Primary internal `CANDIDATE` via [#85](https://github.com/serejaris/corp-opensource/issues/85). Needs current-main runner repro or focused fallback arg-builder test, contribution/CLA gate and repeat duplicate search before upstream action. |
+| `anomalyco/opencode#29650` | Open and assigned to `jlongster`; no exact PR found among adjacent session/processor PRs. | Reserve `LEAD / WATCH`; no upstream action unless maintainer asks or runner repro proves an uncovered gap after assignee/PR search. |
+| `mastra-ai/mastra#17189` | Exact-covered by open PR `#17140`, which changes `pricing-registry.ts` and adds dotted OpenRouter model fixture/test coverage. | `WATCH / NO-GO for implementation` while `#17140` is live. |
+| `anomalyco/opencode#29646` | Exact-covered by open PR `#29645`, which changes OpenAI websocket retry handling and adds `openai-ws.test.ts`. | `WATCH / NO-GO for implementation` while `#29645` is live. |
+| `cline/cline#11105` | Open VS Code context issue linked to Linear `CLINE-2326`; no exact PR found, but repro likely needs VS Code extension host and possibly Windows/VS Code 1.122. | `LEAD`; wait triage or runner-friendly repro path. |
+| `OpenHands/agent-canvas#845/#847` | Open low-star repo issues around browser panel placeholder and duplicate terminal output; no PR found. | `LEAD / low-fit watch`; verify repo ownership/activity before promotion. |
+| `microsoft/opentelemetry-distro-python#172` | Open GenAI telemetry bug; no PR found, but repo/package popularity is low despite Microsoft ownership. | `LEAD`; useful observability/eval reference, not primary Paperclip-like target. |
+
+6-role synthesis: Gemini `#27503` is the best fresh internal candidate because it is popular, AI-native, labeled P1/agent/bug, and uncovered. Opencode `#29650` is a strong practical reserve but gated by maintainer assignment and saturated same-day opencode queue. Mastra `#17189` and opencode websocket `#29646` are duplicate-covered by active PRs.
+
+3-role critique: internal `CANDIDATE` is allowed because parent live gates are clean and the upstream issue contains a regression card. It is not `PR-READY`: runner/current-main fail-before evidence, contribution/CLA check, repeat duplicate search, and pre-action critique are still required.
 
 ## Active PR dashboard refresh, 2026-05-28 03:35 UTC
 
