@@ -774,3 +774,19 @@ Runner action count: `0`.
 Material delta: `NousResearch/hermes-agent#33712` was triaged upstream with labels `type/bug`, `comp/cli`, `area/nix`, and `P3`. It remains open, unassigned, with no comments and no exact PR cover. This confirms the bug/CLI/Nix shape but does not make it `PR-READY`; useful action still requires Nix/container package-surface repro.
 
 Claude side watch: `anthropics/claude-code#63028` is a fresh Web/plugin `has repro` lead, `#63025` gained a third-party diagnostic comment showing the same SSH Remote UI symptom with intact `projects`, and `#63029` is a weaker Web archive-restore data-loss report with duplicate/process risk. No upstream comments or PRs.
+
+## CLIProxyAPI Claude tool-name candidate, 2026-05-28 07:45 UTC
+
+Detailed note: [CLIProxyAPI #3592 Claude tool name reverse map](cliproxyapi-3592-claude-tool-name-reverse-map.md).
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4561820934).
+
+`next_status: CANDIDATE`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Fresh discovery после `07:35Z` выбрал `router-for-me/CLIProxyAPI#3592`. Repo популярный (`35,153` stars, `5,823` forks, not archived). Issue описывает компактный Claude Code / Anthropic Messages proxy contract bug: incoming tool schema advertises `Glob`, но streamed response возвращает `tool_use.name: "glob"`, из-за чего Claude Code case-sensitive dispatcher отклоняет tool. В report есть request evidence, response SSE evidence, packet-capture narrowing и suggested tests.
+
+Duplicate/race: open PR list содержит adjacent request-side/Bifrost tool remapping PR `#3214`, но exact response-side per-request reverse-map cover не найден. GitHub Search API вернул `403` rate-limit во время broader duplicate search, поэтому перед upstream action нужен повторный exact search.
