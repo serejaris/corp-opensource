@@ -1084,6 +1084,33 @@ Carry-forward: `claude-peers-mcp#64` remains the best compact source-level `CAND
 
 Decision: `WATCH`. No upstream comment or PR.
 
+## Claude/opencode/AG-UI watch, 2026-05-28 09:16 UTC
+
+Detailed note: [Claude/opencode/AG-UI watch 2026-05-28 09:16](claude-opencode-agui-watch-2026-05-28-0916.md).
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562501539).
+
+`next_status: WATCH`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Process: parent live GitHub gates, focused duplicate/PR search, reused 6-role scouting synthesis, then focused 3-role critique before tracker/watch updates. The required `open-source-bug-scouting` / `open-source-pr-workflow` skills are not installed in this environment, so this is a documented fallback.
+
+Material deltas after the `09:08Z` watch:
+
+- `anomalyco/opencode#29707` is now covered by open PR `#29710`, which fixes wide-character summarized paste corruption with a regression test; keep `WATCH / covered-by-PR`.
+- `ag-ui-protocol/ag-ui#1802` covers `#1801` for Kotlin SDK Interrupts types/serialization; keep `WATCH / covered-by-PR`.
+- `anomalyco/opencode#29709` is a maintainer-owned ACP first-session startup PR; keep `WATCH / already-covered`.
+- `anomalyco/opencode#29708` is assigned and duplicate-hinted against `#28112/#27907`; keep `WATCH`.
+- `anthropics/claude-code#63053` is a product-owned VS Code markdown rendering enhancement; keep `WATCH`.
+- `anthropics/claude-code#63052` is duplicate-labeled; keep `NO-GO / duplicate`.
+
+Carry-forward: `claude-peers-mcp#64` remains the best compact source-level `CANDIDATE-needs-runner-validation`; `CLIProxyAPI#3594` remains an uncovered but protocol-heavy `LEAD`.
+
+Decision: `WATCH`. No upstream comment or PR.
+
 ## Claude/opencode post-cutoff watch, 2026-05-28 08:20 UTC
 
 Detailed note: [Claude/opencode post-cutoff watch 2026-05-28 08:20](claude-opencode-postcutoff-watch-2026-05-28-0820.md).
