@@ -22,7 +22,7 @@ Selected watch lane: [pydantic/pydantic-ai#5696](https://github.com/pydantic/pyd
 - Created: 2026-05-28 04:18 UTC by `app/github-actions`.
 - Labels: `bug`, `durable exec`, `pydanty:bug`, `serialization`.
 - Assignee: none.
-- Latest visible issue comment: `pydanty` classified the issue and said the next step is delegating to the sweep reproducer.
+- Latest visible issue comment at discovery: `pydanty` classified the issue and said the next step was delegating to the sweep reproducer.
 - Repo gate: `pydantic/pydantic-ai` is MIT, default branch `main`, about 17.3k stars, `CONTRIBUTING.md` exists.
 - Source gate: current `pydantic_ai_slim/pydantic_ai/messages.py` has `InstructionPart.part_kind = 'instruction'`; `_model_request_part_discriminator()` falls through to `part_kind`; `ModelRequestPart` includes `SystemPromptPart`, `UserPromptPart`, `ToolSearchReturnPart`, `ToolReturnPart`, and `RetryPromptPart`, but not `InstructionPart`.
 - Duplicate PR gate: searches for `InstructionPart`, `ModelRequestPart`, `roundtrip-sweep`, `ModelMessagesTypeAdapter`, and `instruction deserialize serialization` found no exact open PR.
@@ -30,11 +30,13 @@ Selected watch lane: [pydantic/pydantic-ai#5696](https://github.com/pydantic/pyd
 
 Runner gate: no repro or tests were run. `corp-opensource-runner` is still unavailable via [#10](https://github.com/serejaris/corp-opensource/issues/10); this cycle stopped at read-only watch because pydanty automation already owns the immediate upstream next step.
 
+Refresh `2026-05-28 04:55 UTC`: parent live gates rechecked `pydantic/pydantic-ai#5696`; issue remains open, unassigned, labels still include `bug`, `durable exec`, `pydanty:bug`, `serialization`, and exact PR search for `5696 InstructionPart ModelRequestPart` returned empty. Material delta: `pydanty` now reports Dogfooding runtime timeout after 1800s and says maintainer attention/rerun is needed. This lowers immediate auto-PR duplicate risk, but keeps process/ownership risk high because the issue is still pydanty-managed. No runner repro was run and no upstream comment/PR is justified. Tracker update: [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560954991).
+
 ## Candidate map
 
 | Lane | Live result | Decision |
 |---|---|---|
-| `pydantic-ai#5696` | Fresh open serialization/durable-exec bug with MRE and small likely fix surface; no exact PR found. Automation/pydanty has already started a reproducer/sweep flow. | `WATCH / automation-race`, not `CANDIDATE` and not `PR-READY`. Re-enter after sweep outcome or stale-window plus runner repro. |
+| `pydantic-ai#5696` | Fresh open serialization/durable-exec bug with MRE and small likely fix surface; no exact PR found. Refresh: pydanty reproducer/sweep flow timed out before completion and now needs maintainer attention/rerun. | `WATCH / pydanty-runtime-timeout`, not `CANDIDATE` and not `PR-READY`. Re-enter after maintainer/pydanty outcome or stale-window plus runner repro. |
 | `openai-agents-python#3512` | Exact-cover PR [#3513](https://github.com/openai/openai-agents-python/pull/3513) is open and says `Fixes #3512`. | `WATCH / duplicate-covered`; no upstream action. |
 | `pydantic-ai#5688` | Already tracked; exact-cover PR [#5694](https://github.com/pydantic/pydantic-ai/pull/5694) is live from prior cycles. | `WATCH / duplicate-covered`; no duplicate PR. |
 | `browser-use#4696` | Open video-speed issue, but weak technical shape and lower Paperclip-like value. | `NO-GO for this cycle`; revisit only with sharper browser/action contract. |
@@ -54,6 +56,12 @@ Runner gate: no repro or tests were run. `corp-opensource-runner` is still unava
 - Process gates: internal watch note, README/repo-card update and one umbrella `#52` comment are allowed. No upstream comment, PR, ping or repro claim.
 - Actionability: final status must stay `WATCH`, not `CANDIDATE`, because no runner-backed current-main repro was run and the upstream automation window has not cleared.
 
+Refresh critique `2026-05-28 04:55 UTC`:
+
+- Factology/duplicates: exact PR search is still empty; the only material timeline change is pydanty's runtime timeout and maintainer-attention request.
+- Process gates: internal status text may be updated from `automation-race` to `pydanty-runtime-timeout`; upstream comment/PR remains blocked by no runner evidence and active pydanty ownership.
+- Actionability: final status remains `WATCH`; do not spend runner slot before higher-priority `gemini-cli#27503` / `probe#568` unless maintainer asks for external help.
+
 ## Decision
 
 `next_status: WATCH`
@@ -65,5 +73,5 @@ Runner action count: `0`.
 Re-entry triggers:
 
 1. `pydantic-ai#5696` gets a linked PR/comment from pydanty or maintainers, then recheck exact cover.
-2. No PR appears after a short stale-window, then run current-main repro in `corp-opensource-runner` and repeat duplicate/contribution gates.
-3. Maintainer explicitly asks for an external patch or test.
+2. Maintainer reruns pydanty or asks for external help, then repeat process gates before any comment/PR.
+3. No PR appears after a short stale-window, then run current-main repro in `corp-opensource-runner` and repeat duplicate/contribution gates.
