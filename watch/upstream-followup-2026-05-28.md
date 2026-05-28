@@ -886,6 +886,26 @@ Other active lanes had no material post-cutoff transition. The operational runne
 
 Decision: `WATCH`. No upstream comment or PR.
 
+## Claude peers MCP auto-summary candidate, 2026-05-28 08:25 UTC
+
+Detailed note: [claude-peers-mcp #64 gpt-5.4 max_completion_tokens](claude-peers-mcp-64-gpt54-max-completion-tokens.md).
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4562086486).
+
+`next_status: CANDIDATE`
+
+Upstream action count: `0`.
+
+Runner action count: `0`.
+
+Process: parent live GitHub gates, focused duplicate/PR search, source read-only gate, 6-role reused-agent scouting, then synthesis critique before tracker/watch updates. The required `open-source-bug-scouting` skill is not installed in this environment, so this is a documented fallback.
+
+Selected candidate: `louislva/claude-peers-mcp#64`. Repo is MIT, not archived, `2,040` stars / `271` forks. Issue reports auto-summary silently failing because `shared/summarize.ts` sends `max_tokens` to `gpt-5.4-nano`; GitHub source gate confirms the current request body has `model: "gpt-5.4-nano"` plus `max_tokens: 100`, and non-OK responses return `null` without logging.
+
+Duplicate/race: focused issue search found only `#64`; focused PR search found no exact `max_tokens -> max_completion_tokens` cover. Race risk is still real because the repo has an active PR queue and the reporter offered to send a PR. No upstream comment/PR before repeat duplicate search, contribution/process check, and runner-backed validation.
+
+Other fresh signal: `anthropics/claude-code#63045` is a good product-owned TUI regression watch for diff SGR background bleed in `2.1.150-2.1.153`, but Claude Code has no OSS patch lane here. Existing `claude-code#63043` now has duplicate-bot links `#62659/#31548/#58918`, so keep it at `WATCH`.
+
 ## Claude/opencode post-cutoff watch, 2026-05-28 08:20 UTC
 
 Detailed note: [Claude/opencode post-cutoff watch 2026-05-28 08:20](claude-opencode-postcutoff-watch-2026-05-28-0820.md).
