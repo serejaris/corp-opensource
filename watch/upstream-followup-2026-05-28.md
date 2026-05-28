@@ -4,11 +4,49 @@ Tracker: [#52](https://github.com/serejaris/corp-opensource/issues/52)
 
 Affected internal trackers: [#85](https://github.com/serejaris/corp-opensource/issues/85), [#82](https://github.com/serejaris/corp-opensource/issues/82), [#81](https://github.com/serejaris/corp-opensource/issues/81), [#80](https://github.com/serejaris/corp-opensource/issues/80), [#58](https://github.com/serejaris/corp-opensource/issues/58), [#56](https://github.com/serejaris/corp-opensource/issues/56), [#53](https://github.com/serejaris/corp-opensource/issues/53).
 
-Tracker comments: [#82 demotion](https://github.com/serejaris/corp-opensource/issues/82#issuecomment-4559803855), [#52 synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559804608), [#53 mini-swe refresh](https://github.com/serejaris/corp-opensource/issues/53#issuecomment-4559839933), [#52 mini-swe synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559840785), [#52 settlement refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560463593), [#52 active PR dashboard refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560641484), [#52 cycle 37 Gemini candidate](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560685299), [#52 runner backlog refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560707233), [#85 Gemini refresh](https://github.com/serejaris/corp-opensource/issues/85#issuecomment-4560707690), [#52 04:04 refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560746495).
+Tracker comments: [#82 demotion](https://github.com/serejaris/corp-opensource/issues/82#issuecomment-4559803855), [#52 synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559804608), [#53 mini-swe refresh](https://github.com/serejaris/corp-opensource/issues/53#issuecomment-4559839933), [#52 mini-swe synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559840785), [#52 settlement refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560463593), [#52 active PR dashboard refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560641484), [#52 cycle 37 Gemini candidate](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560685299), [#52 runner backlog refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560707233), [#85 Gemini refresh](https://github.com/serejaris/corp-opensource/issues/85#issuecomment-4560707690), [#52 04:04 refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560746495), [#52 04:17 dashboard correction](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560803072).
 
 Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are not installed in this environment, so this follow-up used the documented fallback: parent live GitHub gates, 6 read-only subagents, then a 3-role critique.
 
 No upstream PR/comment/ping was made.
+
+## Active PR dashboard correction, 2026-05-28 04:17 UTC
+
+Bounded refresh over the active upstream PR dashboard only: `OpenHands/software-agent-sdk#3394`, `anomalyco/opencode#29565/#29530`, `cline/cline#11087`, `CopilotKit/CopilotKit#5035`, `pydantic/pydantic-ai#5680/#5678`, and stale `NousResearch/hermes-agent#15640`.
+
+Process: parent live gates, 6 read-only fallback roles, then 3-role critique. Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are still unavailable here, so this used the documented fallback. Runner repro was not required because this pass only updates read-only dashboard state and no lane reached `PR-READY`.
+
+`next_status: WATCH`
+
+Upstream action count: `0`.
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560803072).
+
+No upstream comment, PR, ping, rerun, rebase, close, local/heavy repro, or per-PR tracker comment was made.
+
+| Lane | Live result | Next action |
+|---|---|---|
+| `OpenHands/software-agent-sdk#3394` | Open, non-draft, `MERGEABLE/BLOCKED`, old `CHANGES_REQUESTED`; status rollup empty; no new maintainer eval/re-review visible after follow-up `3c8eae78`. | Wait maintainer eval / re-review / workflow approval. No repeat comment. |
+| `opencode#29565` | Open, non-draft, `MERGEABLE/BLOCKED`; visible duplicate/standards/compliance/contributor gates green; no review. Adjacent `#29632` may overlap retry/format semantics, but exact cover is not proven. | Wait maintainer review; watch `#29632`; no third opencode PR without distinct signal. |
+| `opencode#29530` | Open, non-draft, `MERGEABLE/BLOCKED`; visible duplicate/standards/compliance gates green; no review. | Wait maintainer review. |
+| `cline#11087` | Open, non-draft, `MERGEABLE/BLOCKED`; visible SDK quality, Ubuntu/Windows tests and Socket checks green/skipped; no maintainer review. | Wait maintainer review. |
+| `CopilotKit#5035` | Open, non-draft, `MERGEABLE/BLOCKED`, `REVIEW_REQUIRED`; docs Vercel preview green; other Vercel contexts are team-authorization gated, not proven code failures. | Wait maintainer review / team preview authorization; no guidance ping without maintainer ask. |
+| `pydantic-ai#5680` | Open, non-draft, `MERGEABLE/CLEAN`; broad visible CI/harness/coverage green; no maintainer review. Adjacent `#5602/#5605` are same-surface overlap risks, not exact covers. | Wait maintainer/bot review; recheck if `#5602/#5605` merge first. |
+| `pydantic-ai#5678` | Open, non-draft, `MERGEABLE/CLEAN`; broad visible CI/harness/coverage green; no maintainer review. | Wait maintainer/bot review. |
+| `Hermes#15640` | Open, non-draft, current live gate `MERGEABLE/CLEAN`; no comments/reviews/checks; stale since `2026-04-25`. Adjacent `#29673` is open/non-draft `MERGEABLE/UNSTABLE` and overlaps gateway/launchd profile naming, but is not a proven replacement. | Keep `PR-OPEN / WATCH-stale-clean`; no ping/close/rebase without fresh macOS validation or maintainer signal; watch `#29673`. |
+
+6-role synthesis:
+
+- Factology: `MERGEABLE` is not merge-ready when paired with `BLOCKED`, `CHANGES_REQUESTED`, or `REVIEW_REQUIRED`; timestamp all live claims.
+- Duplicate/race: `opencode#29632`, `pydantic-ai#5602/#5605`, and `Hermes#29673` are overlap/watch-only, not exact covers. CopilotKit Vercel auth contexts are infra/team authorization risk, not duplicate coverage.
+- Process: one umbrella `#52` heartbeat is enough. Per-PR internal comments and upstream comments would be noise because there is no material status transition.
+- Actionability: one role proposed CopilotKit/pydantic nudging, but the critique rejected it: no maintainer ask, no actionable failing CI, no conflict, no exact supersede, no approval/merge transition, and no fresh runner validation.
+
+3-role critique:
+
+- Factology/duplicates: approved after correcting Hermes wording from the 04:04 `UNKNOWN/UNKNOWN` snapshot to current `#15640 MERGEABLE/CLEAN` and `#29673 MERGEABLE/UNSTABLE`; `#29673` remains collision pressure, not exact replacement.
+- Process gates: internal README/watch update plus one `#52` correction comment is allowed; upstream ping/rerun/rebase/close/PR is not.
+- Actionability: final dashboard status stays `WATCH / monitor-only`; no lane is `COMMENT-FIRST`, `PR-READY`, or `NO-GO` in this refresh.
 
 ## Runner candidates + active PR dashboard refresh, 2026-05-28 04:04 UTC
 
