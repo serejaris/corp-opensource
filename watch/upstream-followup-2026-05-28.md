@@ -4,11 +4,42 @@ Tracker: [#52](https://github.com/serejaris/corp-opensource/issues/52)
 
 Affected internal trackers: [#85](https://github.com/serejaris/corp-opensource/issues/85), [#82](https://github.com/serejaris/corp-opensource/issues/82), [#81](https://github.com/serejaris/corp-opensource/issues/81), [#80](https://github.com/serejaris/corp-opensource/issues/80), [#58](https://github.com/serejaris/corp-opensource/issues/58), [#56](https://github.com/serejaris/corp-opensource/issues/56), [#53](https://github.com/serejaris/corp-opensource/issues/53).
 
-Tracker comments: [#82 demotion](https://github.com/serejaris/corp-opensource/issues/82#issuecomment-4559803855), [#52 synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559804608), [#53 mini-swe refresh](https://github.com/serejaris/corp-opensource/issues/53#issuecomment-4559839933), [#52 mini-swe synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559840785), [#52 settlement refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560463593), [#52 active PR dashboard refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560641484), [#52 cycle 37 Gemini candidate](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560685299), [#52 runner backlog refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560707233), [#85 Gemini refresh](https://github.com/serejaris/corp-opensource/issues/85#issuecomment-4560707690).
+Tracker comments: [#82 demotion](https://github.com/serejaris/corp-opensource/issues/82#issuecomment-4559803855), [#52 synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559804608), [#53 mini-swe refresh](https://github.com/serejaris/corp-opensource/issues/53#issuecomment-4559839933), [#52 mini-swe synthesis](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4559840785), [#52 settlement refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560463593), [#52 active PR dashboard refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560641484), [#52 cycle 37 Gemini candidate](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560685299), [#52 runner backlog refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560707233), [#85 Gemini refresh](https://github.com/serejaris/corp-opensource/issues/85#issuecomment-4560707690), [#52 04:04 refresh](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560746495).
 
 Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are not installed in this environment, so this follow-up used the documented fallback: parent live GitHub gates, 6 read-only subagents, then a 3-role critique.
 
 No upstream PR/comment/ping was made.
+
+## Runner candidates + active PR dashboard refresh, 2026-05-28 04:04 UTC
+
+Bounded refresh over the same six runner candidates plus the active PR dashboard. Parent live gates used `gh issue view`, `gh pr view`, and targeted PR search. Required `open-source-bug-scouting` / `open-source-pr-workflow` skills are still unavailable here, so this used the documented fallback: 6 read-only roles, then 3-role critique.
+
+`next_status: CANDIDATE`
+
+Upstream action count: `0`.
+
+Tracker comment: umbrella [#52](https://github.com/serejaris/corp-opensource/issues/52#issuecomment-4560746495).
+
+No upstream comment, PR, ping, rerun, rebase, close, or local/heavy repro was made. Runner gate remains closed via [#10](https://github.com/serejaris/corp-opensource/issues/10); CT216 remains Hermes-only.
+
+| Area | Live result | Decision |
+|---|---|---|
+| Runner candidates | `probelabs/probe#568`, `google-gemini/gemini-cli#27503`, `oraios/serena#1519`, `simular-ai/Agent-S#195`, `web-infra-dev/midscene#2544`, and `browseros-ai/BrowserOS#1005` all remain open. Targeted PR search found no exact or super-strong cover. | Keep backlog `CANDIDATE`; none is `PR-READY` without current-main runner evidence, contribution/process gate, and repeat duplicate search. |
+| Active upstream PRs | No merge, close, approval, maintainer ask, actionable failing CI, or exact supersede transition was found. Current recheck: `opencode#29565/#29530` are open/non-draft `MERGEABLE/BLOCKED`; `Hermes#15640` and overlap `#29673` currently return `UNKNOWN/UNKNOWN`. | Keep dashboard `WATCH / monitor-only`; do not treat mergeability API uncertainty as a rerun/rebase/close signal. |
+| Runner priority | Probe remains the first operational runner target because it has the lowest setup churn and preserves tracker continuity. Gemini is the highest strategic/race-sensitive candidate because the issue is P1/agent/bug in a very popular CLI, but it stays behind a current-main repro and duplicate-race gate. | Operational order unchanged: Probe first, Gemini second; record the strategic caveat without churn. |
+
+6-role synthesis:
+
+- Factology: no runner target closed, gained assignee/comment transition, or acquired an exact PR cover.
+- Duplicate/race: Gemini has the highest race pressure because of P1 label and active repo; BrowserOS has the heaviest adjacent MCP queue; Probe/Agent-S/Midscene currently have lower exact-cover pressure.
+- Process: one umbrella tracker comment is enough; per-lane tracker comments would be noise because status/order did not materially change.
+- Actionability: active PR dashboard stays monitor-only. No upstream action is justified without maintainer ask, actionable failing CI, conflict, exact supersede, approval/merge transition, or fresh runner validation.
+
+3-role critique:
+
+- Factology/duplicates: approved after correcting wording to avoid overclaiming transient GitHub mergeability values. Current `opencode#29565/#29530` view is `MERGEABLE/BLOCKED`; Hermes remains conservative because both stale PR `#15640` and overlap `#29673` returned `UNKNOWN/UNKNOWN` in the final parent recheck.
+- Process: internal README/watch/repo-scope update plus one `#52` heartbeat is allowed; upstream comment/PR/rerun/rebase is not.
+- Actionability: `Probe first` means operational runner order only. `Gemini highest strategic/race-sensitive` is a caveat, not PR readiness.
 
 ## Runner-candidate backlog refresh, 2026-05-28 03:50 UTC
 
