@@ -1,0 +1,101 @@
+release:
+  name: kirocrew-codex-governance-backfill
+  owner: serejaris
+  intended_repository: serejaris/KiroCrew-Codex
+  publication_fact: PUBLISHED
+  status: BLOCKED-LICENSE
+  source_issue: https://github.com/serejaris/corp-opensource/issues/94
+  inventory_issue: https://github.com/serejaris/corp-opensource/issues/95
+  verification_issue: https://github.com/serejaris/corp-opensource/issues/96
+  reviewer: six-role-corp-opensource-review
+  approved_at: null
+  published_before_review: true
+  published_at: 2026-08-07
+  maintenance_owner: serejaris
+  next_review: 2026-08-14
+  unblock_event: a debranded, license-compliant exact replacement tag passes the release gate
+
+artifacts:
+  - id: source-tree-v0.2.0-codex.1
+    source_provider: kirodotdev
+    source_locator: https://github.com/kirodotdev/KiroCrew
+    source_version: 8e988362db845acc473f56e7f340ccb2b8c47d51
+    source_owner: kirodotdev
+    publication_version: 59ab5fcc11d37c07b1924d5d7e32b49b6e7e8550
+    publication_tag: v0.2.0-codex.1
+    license: Apache-2.0
+    redistribution_basis: upstream-license
+    modified: true
+    modifications: OpenAI Codex provider, standalone packaging, public security hardening, and disabled outbound telemetry and upstream updates
+    bundle_files:
+      allowlist: releases/kirocrew-codex/allowlist.txt
+      count: 4416
+      sha256: 14954cf7cd315b958838a4794b43072bf9692530733643fed87ab676d10f9769
+    excluded:
+      - release binaries and installers
+      - runtime data, sessions, logs, credentials, and local configuration
+      - ignored build caches and dependency directories
+      - Telegram preview and owner communication history
+    decision: BLOCK
+    blockers:
+      - modified upstream files do not yet carry the prominent modification notices required by Apache-2.0 section 4(b)
+      - current repository, product, executable, and visual branding use marks excluded from the upstream software license
+      - public privacy copy conflicts with the hard-disabled outbound telemetry behavior
+      - the default embedding-model CDN request is documented as an attributable first-install signal
+      - local usage records need explicit opt-out, retention, and owner-only file permissions
+      - public workflows and install documentation still contain upstream-specific infrastructure and stale instructions
+      - the public Build run exposes unsigned wheel and desktop CI artifacts despite source-only distribution claims
+      - published ancestry retains a corporate email address and needs an approved provenance-preserving history strategy
+    notes: The source-only prerelease existed before this manifest; this record is a transparent governance backfill.
+
+provenance:
+  upstream_repository: https://github.com/kirodotdev/KiroCrew
+  upstream_base_commit: 8e988362db845acc473f56e7f340ccb2b8c47d51
+  public_repository: https://github.com/serejaris/KiroCrew-Codex
+  public_release: https://github.com/serejaris/KiroCrew-Codex/releases/tag/v0.2.0-codex.1
+  publication_commit: 59ab5fcc11d37c07b1924d5d7e32b49b6e7e8550
+  fork_relation_verified: true
+  claimed_source_only_release: true
+  github_release_assets: 0
+  public_ci_artifacts: 3
+  effective_distribution: repository archive plus unsigned CI build artifacts
+
+verification:
+  fresh_clone_commit: 59ab5fcc11d37c07b1924d5d7e32b49b6e7e8550
+  tracked_files: 4416
+  symlinks: 0
+  submodules: 0
+  files_over_10_mib: 0
+  tracked_archives_or_installers: 0
+  make_build: PASS
+  cli_help: PASS
+  doctor_codex_login: PASS
+  bounded_live_model_smoke: PASS
+  live_model_result: CORP_OPENSOURCE_LIVE_OK
+  installed_app_source_match: 649/649 PASS
+  installed_app_privacy_tests: 10/10 PASS
+  forced_environment_privacy_tests: 3/3 PASS
+  disabled_upstream_update_tests: 2/2 PASS
+  default_embedding_fetch_privacy: BLOCKED
+  github_ci: 24/24 PASS
+  github_ci_url: https://github.com/serejaris/KiroCrew-Codex/actions/runs/31139106378
+  github_build: 3/3 PASS
+  github_build_url: https://github.com/serejaris/KiroCrew-Codex/actions/runs/31139106408
+  open_dependabot_alerts: 0
+  open_secret_scanning_alerts: 0
+  code_scanning: no analysis available
+  commit_signature: unsigned
+  tag_signature: unsigned
+  installed_app_signature: ad-hoc/invalid for public distribution
+  unavailable_scanners:
+    - gitleaks
+    - trufflehog
+    - detect-secrets
+    - exiftool
+  fresh_clone_result: BLOCKED
+
+maintenance:
+  policy: source-only prereleases until license, branding, privacy, documentation, and workflow gates pass
+  release_cadence: on reviewed milestones only
+  binary_distribution: blocked pending artifact-level license and signing review
+  announcement: blocked pending verified replacement release and exact owner approval

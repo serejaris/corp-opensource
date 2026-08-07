@@ -305,7 +305,12 @@ next_review: YYYY-MM-DD
 | Работает в owner checkout, fresh clone сломан | public-boundary smoke обязателен |
 | Evaluation и release смешались | route by risk owner; separate issues |
 | Public repo создан до inventory | no outward mutation before PACKAGE-READY + approval |
+| Artifact уже опубликован до review | разделить `publication_fact` и assurance status; не датировать approval задним числом; исправлять новым commit/tag |
 | Vendor asset виден пользователю | visibility does not imply redistribution right |
+| Software license исключает product marks | письменное разрешение либо neutral debrand до PACKAGE-READY |
+| Код отключает egress, а UI/docs обещают telemetry | проверять public claims вместе с runtime probes; расхождение блокирует release |
+| GitHub Release пустой, а workflow сохраняет installable artifacts | проверять Actions artifacts и retention как часть effective distribution |
+| Workflow зелёный, release jobs skipped | проверять conclusion каждого обязательного job, а не цвет run целиком |
 | Release заброшен после публикации | maintenance owner + next review required |
 
 ## Связи
