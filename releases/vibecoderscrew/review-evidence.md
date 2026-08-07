@@ -30,3 +30,11 @@ next_review: 2026-08-14
 ## Announcement
 
 Telegram post to @vibecod3rs is **blocked** until fresh-clone verification is green and owner approves the exact preview text.
+
+
+## 2026-08-07 follow-up
+
+- All `.github/workflows/*` removed from public fork.
+- Running Actions cancelled.
+- Old tag/release `v0.2.0-codex.1` deleted.
+- Tag `v1.0.0` now at `b9c8407a115df2a6c66bb8d37543a0c19a69768e`.

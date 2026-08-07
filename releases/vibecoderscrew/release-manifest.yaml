@@ -51,6 +51,8 @@ provenance:
   publication_commit: 4960452573098586700382fcc98dc4eecdb1a106
   previous_publication: https://github.com/serejaris/KiroCrew-Codex/releases/tag/v0.2.0-codex.1
   claimed_source_only_release: true
+  github_actions: removed
+  publication_commit: b9c8407a115df2a6c66bb8d37543a0c19a69768e
   github_release_assets: 0
   product_name: VibecodersCrew
   cli_primary: vibecoderscrew
