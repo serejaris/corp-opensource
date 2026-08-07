@@ -1,0 +1,76 @@
+release:
+  name: vibecoderscrew-1.0.0
+  owner: serejaris
+  intended_repository: serejaris/vibecoderscrew
+  publication_fact: PUBLISHED
+  status: PUBLISHED-VERIFYING
+  source_issue: https://github.com/serejaris/corp-opensource/issues/94
+  inventory_issue: https://github.com/serejaris/corp-opensource/issues/95
+  verification_issue: https://github.com/serejaris/corp-opensource/issues/96
+  reviewer: six-role-corp-opensource-review
+  approved_at: null
+  published_before_review: false
+  published_at: 2026-08-07
+  maintenance_owner: serejaris
+  next_review: 2026-08-14
+  supersedes: releases/kirocrew-codex/release-manifest.yaml
+  notes: Corrective debranded replacement for KiroCrew-Codex v0.2.0-codex.1
+
+artifacts:
+  - id: source-tree-v1.0.0
+    source_provider: kirodotdev
+    source_locator: https://github.com/kirodotdev/KiroCrew
+    source_version: 8e988362db845acc473f56e7f340ccb2b8c47d51
+    source_owner: kirodotdev
+    publication_version: 4960452573098586700382fcc98dc4eecdb1a106
+    publication_tag: v1.0.0
+    license: Apache-2.0
+    redistribution_basis: upstream-license
+    modified: true
+    modifications: VibecodersCrew product identity, OpenAI Codex provider, hard-disabled product telemetry, no default embedding CDN fetch, source-only CI distribution, Apache-2.0 section 4(b) notices
+    excluded:
+      - release binaries and installers
+      - runtime data, sessions, logs, credentials, and local configuration
+      - ignored build caches and dependency directories
+      - temp-screenshots
+      - Telegram preview and owner communication history
+    decision: REVIEW
+    remaining_risks:
+      - internal Python package path still named kiro_crew (technical, documented)
+      - compatibility CLI alias kirocrew retained (documented)
+      - default data home still ~/.kiro/crew (documented; override KIROCREW_HOME)
+      - public CI may still run build jobs without uploading artifacts; confirm after Actions green
+      - commit/tag signatures not required for this source prerelease
+      - gitleaks/trufflehog/detect-secrets/exiftool unavailable in prior environment
+
+provenance:
+  upstream_repository: https://github.com/kirodotdev/KiroCrew
+  upstream_base_commit: 8e988362db845acc473f56e7f340ccb2b8c47d51
+  public_repository: https://github.com/serejaris/vibecoderscrew
+  public_release: https://github.com/serejaris/vibecoderscrew/releases/tag/v1.0.0
+  publication_commit: 4960452573098586700382fcc98dc4eecdb1a106
+  previous_publication: https://github.com/serejaris/KiroCrew-Codex/releases/tag/v0.2.0-codex.1
+  claimed_source_only_release: true
+  github_release_assets: 0
+  product_name: VibecodersCrew
+  cli_primary: vibecoderscrew
+  app_id: tech.serejaris.vibecoderscrew
+
+verification:
+  status: PENDING_FRESH_CLONE
+  planned_checks:
+    - fresh clone of v1.0.0
+    - make build or documented install
+    - vibecoderscrew --version
+    - doctor codex login
+    - bounded live model smoke
+    - forced-env privacy probes
+    - confirm no default embedding CDN request
+    - confirm CI does not publish unsigned desktop/wheel artifacts
+    - secret scanning open alerts == 0
+
+maintenance:
+  policy: source-only releases until binary signing review
+  release_cadence: on reviewed milestones only
+  binary_distribution: blocked pending signing review
+  announcement: blocked pending owner approval of exact Telegram preview after green verification
