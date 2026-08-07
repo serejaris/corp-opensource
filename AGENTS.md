@@ -57,6 +57,7 @@ Creator/community distribution, product evaluation, sales и infrastructure ос
 6. Покажи release dry run: target, allowlist, exclusions, licenses, checks, fresh-clone plan, risks.
 7. Получи explicit owner approval для точного public target и artifact set.
 8. Опубликуй из clean staging tree.
+8a. Для **product/community** release: public repo должен быть **standalone** (`fork: false`, default `main`, без `forked from` chrome). Не использовать GitHub Fork button. См. `playbooks/safe-public-release.md` → presentation gate. Референсы: OpenTofu, Valkey, OpenBao.
 9. Выполни fresh public clone/install/discovery smoke и повторные scans.
 10. Назначь maintenance owner, next review и обнови playbook/skill уроком.
 

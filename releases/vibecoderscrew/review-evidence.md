@@ -38,3 +38,11 @@ Telegram post to @vibecod3rs is **blocked** until fresh-clone verification is gr
 - Running Actions cancelled.
 - Old tag/release `v0.2.0-codex.1` deleted.
 - Tag `v1.0.0` now at `b9c8407a115df2a6c66bb8d37543a0c19a69768e`.
+
+
+## 2026-08-07 presentation fix
+
+- Canonical repo is now **standalone** `serejaris/vibecoderscrew` (`fork: false`, `main`, tag `v1.0.0`).
+- Old network fork archived as `serejaris/vibecoderscrew-fork-archive`.
+- Lesson added to `playbooks/safe-public-release.md` presentation gate.
+- References: OpenTofu, Valkey, OpenBao (all non-fork product repos).

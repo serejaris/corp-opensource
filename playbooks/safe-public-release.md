@@ -319,3 +319,101 @@ next_review: YYYY-MM-DD
 - Source project: issues #88–90.
 - Operating model: issue #93.
 - Implementation tracker: issue #92.
+
+
+## Public repository presentation gate (product/community release)
+
+Этот gate обязателен, когда публикуется **самостоятельный product/community package**, а не PR в чужой upstream.
+
+Урок 2026-08-07 (`VibecodersCrew` / KiroCrew): GitHub **Fork button** даёт `fork: true`, плашку `forked from …`, banner `N commits behind`, чужие 100+ branches/tags и default branch вроде `codex-main`. Так выглядит недоделанный fork, даже если код и release уже готовы.
+
+Референсы зрелых community/product-форков (все `fork: false`, без parent):
+
+| Repo | fork | default branch |
+|---|---|---|
+| [opentofu/opentofu](https://github.com/opentofu/opentofu) | false | main |
+| [valkey-io/valkey](https://github.com/valkey-io/valkey) | false | unstable/main-style |
+| [openbao/openbao](https://github.com/openbao/openbao) | false | main |
+
+### Запрещено для product release
+
+1. Создавать public product через GitHub **Fork** UI (`gh repo fork` / green Fork).
+2. Оставлять default branch `codex-main` / `upstream-main` / любой non-`main` без причины.
+3. Публиковать с 50+ унаследованными remote branches/tags.
+4. Заявлять «independent product», пока API показывает `"fork": true`.
+5. Держать GitHub Actions CI/Build/signing/CDN publish upstream-а, если distribution = source-only и owner не хочет ждать Actions.
+
+### Обязательный shape standalone product repo
+
+```text
+fork: false
+parent: none
+default_branch: main
+branches: main (+ optional short-lived work branches only)
+tags: only product tags (vX.Y.Z)
+GitHub Actions: explicit decision (none | minimal local-gate | full)
+README: product name first; "based on / independent of upstream X" in body, not as fork chrome
+NOTICE + MODIFICATIONS / Apache-2.0 §4(b) when redistributing modified third-party code
+Release: source-only unless binaries are reviewed/signed
+```
+
+### Как публиковать (detach path)
+
+Не:
+
+```bash
+gh repo fork upstream/foo --clone
+# push product commits into the fork network
+```
+
+Да (как OpenTofu/Valkey presentation):
+
+```bash
+# 1) prepare clean tree locally (allowlist / rebrand / notices)
+# 2) create EMPTY non-fork repo
+gh repo create OWNER/product --public --description "..."
+
+# 3) push only product history
+#    option A: full intentional history of one branch as main
+#    option B: orphan snapshot commit (cleanest UI; provenance in NOTICE)
+git checkout --orphan main
+git add -A && git commit -m "Product vX.Y.Z — standalone public tree"
+git remote add origin https://github.com/OWNER/product.git
+git push -u origin main
+git tag -a vX.Y.Z -m "..."
+git push origin vX.Y.Z
+gh release create vX.Y.Z --target main --notes "..."
+
+# 4) verify presentation
+gh api repos/OWNER/product --jq '{fork, parent:(.parent.full_name // "none"), default_branch}'
+# expect: fork=false, parent=none, default_branch=main
+```
+
+Если уже ошибочно создан fork:
+
+1. Переименовать/archive fork: `OWNER/product-fork-archive`.
+2. Создать **новый** non-fork `OWNER/product`.
+3. Запушить только `main` + product tags (не `--mirror` всех 200 branches).
+4. Обновить links в corp-opensource issues/manifest.
+5. Удалить archive, когда есть `delete_repo` scope (optional).
+
+### Presentation checks before announcement
+
+- [ ] `gh api ... --jq .fork` → `false`
+- [ ] Нет UI `forked from`
+- [ ] Default branch `main`
+- [ ] Нет banner `N commits behind upstream`
+- [ ] Branches/tags = product set, не upstream dump
+- [ ] About/description = product name, не «Unofficial fork of …» в первой строке (attribution ниже в README)
+- [ ] Release notes: standalone + license + non-affiliation
+- [ ] Если source-only: нет public unsigned binary artifacts / no Actions noise
+
+### Provenance vs presentation
+
+- **Provenance** (NOTICE, MODIFICATIONS, upstream SHA, Apache-2.0) обязателен.
+- **GitHub fork network** для product release **не** обязателен и обычно вреден.
+- Contribution-fork (для PR в upstream) остаётся fork: true — это другой lane.
+
+### Lesson registry
+
+- 2026-08-07: `vibecoderscrew` сначала вышел как rename of `KiroCrew-Codex` fork → UI «forked from kirodotdev/KiroCrew», `codex-main`, 207 branches. Corrective: archive fork network copy, create standalone non-fork, orphan/`main` + `v1.0.0`, no Actions.

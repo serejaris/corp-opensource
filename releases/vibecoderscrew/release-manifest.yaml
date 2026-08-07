@@ -76,3 +76,19 @@ maintenance:
   release_cadence: on reviewed milestones only
   binary_distribution: blocked pending signing review
   announcement: blocked pending owner approval of exact Telegram preview after green verification
+
+
+presentation:
+  repository_mode: standalone-non-fork
+  fork: false
+  default_branch: main
+  branches: [main]
+  tags: [v1.0.0]
+  github_actions: none
+  previous_mistake: published-as-github-fork-network-child
+  corrective: archived serejaris/vibecoderscrew-fork-archive; recreated serejaris/vibecoderscrew as empty non-fork; orphan main + v1.0.0
+  publication_commit: a0d84b9ada1f44562975eb98fb59990c26d49337
+  references:
+    - https://github.com/opentofu/opentofu
+    - https://github.com/valkey-io/valkey
+    - https://github.com/openbao/openbao
