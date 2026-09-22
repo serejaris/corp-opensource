@@ -104,6 +104,8 @@
 
 ## Активный watchlist
 
+oh-my-pi Opus 5.5 `2026-09-22`: [watch note](watch/oh-my-pi-12870-opus-5-5-cc-version.md), upstream [can1357/oh-my-pi#12870](https://github.com/can1357/oh-my-pi/issues/12870). Итог: parent live gates + source-проверка v18.2.9, upstream actions `0`, final `next_status: NO-GO`. Причина: fingerprint omp `2.1.257`, а Opus 5.5 требует `2.1.280+`. Upstream уже поднял пин (`0a4dfe1a`) и добавил adoption/retry (`228222665`), оба коммита в опубликованном `18.2.9`. Локальный `omp` владельца обновлён 18.2.8 → 18.2.9 (sha256 сверен); live smoke `claude-opus-5-5` → `ok`. Follow-up про stale fingerprint на 18.2.9 code-багом не подтверждён (вероятно, старый бинарник в PATH или процесс, запущенный до апгрейда); если подтвердится на чистой установке — `LEAD` по client-supplied billing header.
+
 Последний repo-map scouting: [Paperclip-adjacent repo map, 2026-05-27](watch/paperclip-adjacent-repo-map-2026-05-27.md). Anchor: `paperclipai/paperclip`. Core set: `OpenHands`, `deer-flow`, `multica`, `vibe-kanban`, `opencode`, `cline`, `goose`, `browser-use`, `trycua/cua`, MCP SDKs.
 
 Предыдущий Paperclip bug-target block: [Popular AI-native / Paperclip-like scouting, 2026-05-27](watch/ai-native-popular-repos-paperclip-scouting-2026-05-27.md), tracker [#52](https://github.com/serejaris/corp-opensource/issues/52). Итог: 3 цикла по 6 агентов, 0 upstream PR/comment. Главная immediate-дорожка из того блока была `trycua/cua#1724`, но текущий актуальный bounded lane после cycles 25/27 — `mini-swe-agent#826` через [#53](https://github.com/serejaris/corp-opensource/issues/53), пока `WATCH` из-за runner/search gates. Главные maintainer-signal дорожки: `OpenHands#14563`, `MCP python-sdk#2702`, `cline#10931`.
