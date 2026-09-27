@@ -68,3 +68,8 @@ Canonical playbook: `playbooks/safe-public-release.md`.
 ```bash
 git diff --check
 ```
+
+## Связь с HQ
+
+- HQ (карта бизнеса, владелец полной матрицы отделов): `~/Documents/GitHub/hq` (`../hq`); таблица отделов — `hq/AGENTS.md`.
+- Этот отдел зарегистрирован в HQ строкой таблицы corp-*; HQ хранит только маршрут и владельца; доменная правда живёт здесь.
