@@ -73,3 +73,14 @@ Runner actions: `0` (docs-only, repro не нужен; замеры — орке
 - Гейты AGENTS.md: пройдены parent live gates, дубли, safe-public проход. Остались: другие две оси 3-subagent critique (фактология/дубликаты, actionability), перемер, ssh-тест примера, `make check-docs`, явное «да» на комментарий и отдельно на fork/PR. Upstream actions: 0.
 
 Шаги до отправки комментария: 1) перемер main и 1.3.1, поправить таблицу; 2) закрыть две остальные оси critique; 3) «да» founder'а; 4) отправить, записать ссылку в watch-заметку. Шаги до docs-PR: 1) «да» на fork/PR; 2) прогон ssh-примера; 3) fork и ветка; 4) `make check-docs` (или `-go`); 5) PR по шаблону; 6) ссылку на PR добавить в #6114 только после открытия.
+
+## Critique: facts (2026-10-12, ось фактология и дубликаты)
+
+Вердикт: FIX (одна правка числа). Живой апстрим перепроверен gh api в тот же день, main `b630f96`.
+
+Подтверждено: в docs по-прежнему нет раздела про задержку/удалённый Dolt (поиск `latency` по docs/ даёт только MCP-сравнение и метрики); с 05.10 docs-коммиты (upgrading, ide-setup, cursor) тему не трогают; открытых PR/issues на такой раздел нет (ближайшие docs-PR #7448 и issue #7397 о default-топологии, не пересекаются); якоря в dolt.md есть («Server Mode (Multi-Writer / Orchestrator)», далее «Maintenance»), страницы sync-concepts, bucket-federation, upgrading и troubleshooting § Performance Issues существуют; флаги `-C`, `--actor`, `--stdin`, `--body-file -`, `create-form`, `edit`, `show --watch`, `--proxied-server` есть в `bd` 1.3.0; `dolt.host` в config.yaml и `BEADS_DOLT_SERVER_HOST` в dolt.md есть; RTT в issues (0.22 / 100-200 мс / 0.16-0.2 с) и 44-48 / `bd close` 150 верны; приватных данных нет.
+
+FIX:
+1. «`bd ready --limit 1` from about 48 to about 21 statements» из #6731: 48 → 21 это худший случай (issues + wisps + deferred epic + `--include-ephemeral`); по остальным конфигурациям 28 → 18, 34 → 19, 46 → 20. Написать «from 28-48 to 18-21 statements depending on the store».
+2. Таблица 9.9 / 0.85 / 0.17 с: это наш замер на 1.3.0 (одна точка). Добавить «a single run on bd 1.3.0» перед таблицей, чтобы не выглядело как усреднение.
+Остаётся на авторе: перемер на 1.3.1 и прогон ssh-примера на тестовом хосте (в заметке уже в списке «до PR»).

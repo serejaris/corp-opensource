@@ -150,3 +150,16 @@ Upstream actions: `0`. Runner actions: `0` (локальный scratch-прог�
 - Гейты AGENTS.md: пройдены parent live gates, дубли, safe-public проход. Остались: другие две оси 3-subagent critique (фактология/дубликаты, actionability), перемер, ssh-тест примера, `make check-docs`, явное «да» на комментарий и отдельно на fork/PR. Upstream actions: 0.
 
 Шаги до отправки комментария: 1) перемер main и 1.3.1, поправить таблицу; 2) закрыть две остальные оси critique; 3) «да» founder'а; 4) отправить, записать ссылку в watch-заметку. Шаги до docs-PR: 1) «да» на fork/PR; 2) прогон ssh-примера; 3) fork и ветка; 4) `make check-docs` (или `-go`); 5) PR по шаблону; 6) ссылку на PR добавить в #6114 только после открытия.
+
+## Critique: facts (2026-10-12, ось фактология и дубликаты)
+
+Вердикт: FIX (мелкие правки текста, блокеров нет). Живой апстрим перепроверен gh api в тот же день, main `b630f96` без изменений.
+
+Подтверждено: статусы и метки #6114/#5965/#5273/#3239/#4102/#6364/#6360/#6361/#7297/#7409/#5993 и слитых #6122/#5316/#6731/#7400/#7205 совпадают с заметкой; на #6114 новых комментариев после 09.10 нет, assignee/PR кэша схемы нет; цитаты kost-t-human («a call for the maintainers») и bitbot-jon («We have not implemented or benchmarked that cache») дословны; 56% занятости запросов, 44-48 round-trips, `bd close` 150 из #6114 (bd 1.2.1) верны; счётчики 24/40/44/97 равны числу строк в q-*.txt; приватных хостов, путей и имён в черновике нет.
+
+FIX:
+1. «`dolt_mode: server`» неверно для конфига: в `.beads/config.yaml` это `dolt.mode: server`. Заменить на «server mode (`dolt.mode: server`)».
+2. Таблица: `bd list` «7.0-8.7 s», а в абзаце «from about 7.4-8.7 s to 6.6 s». Привести к одному диапазону (7.0-8.7).
+3. «On 1.3.0 the list for `bd show` was: login, `SELECT @@max_allowed_packet`, `SHOW DATABASES`, a second connection, ...» не подтверждено ни досье, ни замером (досье даёт только «~26 обменов»). Убрать это предложение или заменить на «about 26 sequential exchanges».
+4. Мелочь: `bd show` на 1.3.0 «~26 exchanges» против «~33» в runbook; оставить «about 26» с пометкой «our count».
+Дубликатов нет: PR кэша схемы нет, соседние #7297/#7409 (SHOW COLUMNS/TABLES) не пересекаются с вопросом о кэше; #5273 пп.5-6 не взяты.
