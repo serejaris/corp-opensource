@@ -6,7 +6,7 @@ Upstream: https://github.com/gastownhall/beads (main `b630f96`, 2026-10-12; ре
 
 Trackers: бид `cos-e4x.2` (эпик `cos-e4x`); досье `corp-research/2026-10/2026-10-12-beads-latency-remote-dolt.md`; рабочая схема `corp-server/runbooks/beads-server.md` § «Mac: bdr и шим bd».
 
-Статус: `PR-READY` по содержанию и дубликатам, наружу не идём до явного «да» founder'а и трёх pre-PR шагов ниже.
+Статус: `PR-READY` (12.10: критика внесена, `make check-docs-go` проходит, patch готов). Наружу только после явного «да» founder'а на fork и PR.
 
 Upstream actions: `0`
 
@@ -84,3 +84,47 @@ FIX:
 1. «`bd ready --limit 1` from about 48 to about 21 statements» из #6731: 48 → 21 это худший случай (issues + wisps + deferred epic + `--include-ephemeral`); по остальным конфигурациям 28 → 18, 34 → 19, 46 → 20. Написать «from 28-48 to 18-21 statements depending on the store».
 2. Таблица 9.9 / 0.85 / 0.17 с: это наш замер на 1.3.0 (одна точка). Добавить «a single run on bd 1.3.0» перед таблицей, чтобы не выглядело как усреднение.
 Остаётся на авторе: перемер на 1.3.1 и прогон ssh-примера на тестовом хосте (в заметке уже в списке «до PR»).
+
+
+## Статус PR-READY (2026-10-12)
+
+Внесено: число #6731 заменено (наше 44 на main противоречило «18-21»: даём ссылку на #6731 и наши счётчики 24/40 с пометкой «in our run»); таблица помечена версиями, 3 прогонами и main b630f96; строка proxied-server проверена по `bd init --help` 1.3.0 и main (флаги `--proxied-server-external-host/-port` есть, EXPERIMENTAL) и исправлена; ssh-обёртка прогнана буквально (см. critique actionability).
+
+Локальная ветка `docs/remote-server-latency` в `scratchpad/oss/beads-docs` (от main b630f96), коммит ca52db3, в апстрим не пушилась. Patch: [beads-docs-remote-dolt-2026-10-12.patch](beads-docs-remote-dolt-2026-10-12.patch). `make check-docs-go`: exit 0 (check-doc-flags, check-doc-freshness, `go test ./test/docsync` ok). Bazel нет, `make check-docs` не гонялся.
+
+### Финальный PR: title
+
+```
+docs(dolt): remote server latency and running bd next to the database
+```
+
+### Финальный PR: body
+
+````markdown
+Refs #6114, #4102, #5273 (no `Closes`: this documents a workaround, it does not fix the latency).
+
+## What changed
+
+Adds a subsection to `docs/architecture/dolt.md`, between "Server Mode" and "Maintenance": why every bd command costs one round-trip per SQL statement against a remote Dolt server, measured numbers, a minimal ssh wrapper that runs `bd` on the Dolt host, its limits, and a table of alternatives. Docs only, no code, no `docs.json` change. Why: the docs say nothing about latency against a remote server, while the problem is reported repeatedly (#6114, #4102, #5273, #3239).
+
+## Evidence it works
+
+Measured against a Dolt server on another continent (RTT 0.24 s through an SSH port forward), `bd show <id>`, median of 3 runs per row:
+
+| Where bd runs | 1.3.0 | 1.3.1 | `main` (b630f96) |
+|---|---|---|---|
+| Laptop, Dolt server remote | 10.2 s | 10.3 s | 10.8 s |
+| Dolt host, via reused SSH connection (the wrapper in the text, run as written) | 0.73 s | - | - |
+| Dolt host, local shell | 0.17 s | - | - |
+
+The wrapper was run as written: `ready --json`, `list`, `show`, `create --stdin` (body returned byte for byte, quotes and `$HOME` intact), `--body-file -` work; `--body-file relative.md` fails on the remote side, as the text says. The first call without an SSH master took 5.3 s. Statement counts quoted in the text (24 for `bd list --limit 1`, 40 for `bd show` on `main`) come from a delaying TCP proxy in front of a local `dolt sql-server --loglevel debug`, counting "Starting query" lines.
+
+Docs checks: `make check-docs-go` passes (flag check, freshness check, `go test ./test/docsync`). Bazel is not installed here, so `make check-docs` was not run.
+
+## Checklist
+
+- [x] The why is documented: in this description, with links to #6114, #4102, #5273.
+- [x] `make test` is not affected (docs only); `make check-docs-go` passes.
+- [x] User-facing behavior changes are reflected in `docs/`: this PR is the docs change.
+- [x] No invariant or rule changed, so no `AGENTS.md` update.
+````

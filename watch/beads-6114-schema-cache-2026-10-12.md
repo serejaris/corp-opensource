@@ -6,7 +6,7 @@ Upstream: https://github.com/gastownhall/beads (main `b630f96`, 2026-10-12; ст
 
 Trackers: бид `cos-e4x.1` (эпик `cos-e4x`); досье `corp-research/2026-10/2026-10-12-beads-latency-remote-dolt.md`; соседняя заметка по docs-PR [beads-docs-remote-dolt-2026-10-12.md](beads-docs-remote-dolt-2026-10-12.md).
 
-`next_status` для кэша схемы: `COMMENT-FIRST` (PR сейчас no-go). Комментарий в #6114: `PR-READY` по содержанию, наружу только после явного «да» founder'а и 3-subagent critique.
+`next_status` комментария: `COMMENT-READY`; для кэша схемы: `COMMENT-FIRST` (PR сейчас no-go). Наружу только после явного «да» founder'а.
 
 Upstream actions: `0`. Runner actions: `0` (локальный scratch-прогон на Mac, без runner'а; запись в upstream не было).
 
@@ -103,36 +103,36 @@ Upstream actions: `0`. Runner actions: `0` (локальный scratch-прог�
 2. По ответам мейнтейнеров решить: кэш (стек из двух PR: примитив в schema, потом wiring) или #5273 п.5/п.6 (чтение одним выражением, префетч конфига), которые бьют по нашему узкому месту сильнее.
 3. Перед комментарием по AGENTS.md: 3-subagent critique (фактология/дубликаты, process gates, actionability), результат дописать сюда.
 
-## Черновик комментария в #6114 (английский)
+## Финальный текст комментария в #6114 (английский, COMMENT-READY)
 
-> Measurements from a remote setup, in case they help prioritise. Not a fix; I have not written a cache. Two questions for maintainers are at the end.
+Статус: `COMMENT-READY` (критика трёх осей внесена 12.10; наружу только после «да» founder'а). Ключ конфига `dolt.mode: server`, разброс `bd list` согласован (7.0-8.7 s), перечень выражений заменён на «about 26 sequential exchanges (our count)», таблица = реальные медианы из перемера. Слов: ~270 с таблицей.
+
+> Measurements from a remote setup, as input. I have not written a cache. Two questions for maintainers first:
 >
-> **Setup.** Direct server mode (`dolt_mode: server`) against an external `dolt sql-server` reached through an SSH port forward; client and server on different continents, RTT 0.24 s. Read-only commands, 3 runs each, medians, same repo and issue on every version. Statement counts come from a separate run: a delaying TCP proxy (0.12 s each way) in front of a local `dolt sql-server --loglevel debug`, counting "Starting query" lines. One machine for that run, so expect about ±1 s of noise there.
+> 1. Would you take a cache of the converged-schema result at all? If so, what must it revalidate on every open? I would keep one cursor read for forward drift and not bypass `cursorRealityFloor` and the ignored-cursor checks.
+> 2. Would you rather see #5273 items 5 and 6 first? I will not open anything before hearing back.
 >
-> | wall time over the network, RTT 0.24 s | 1.3.0 | 1.3.1 | `main` (b630f96) | statements on `main` |
+> Setup: server mode (`dolt.mode: server`), external `dolt sql-server` through an SSH port forward, RTT 0.24 s. Read-only commands, median of 3 runs, same issue on every version.
+>
+> | wall time | 1.3.0 | 1.3.1 | `main` (b630f96) | statements on `main`* |
 > |---|---|---|---|---|
 > | `bd show <id>` | 10.2 s | 10.3 s | 10.8 s | 40 |
-> | `bd list --limit 3` | 8.3 s | 8.2 s | 7.0 s | 24 (`--limit 1`) |
-> | `bd ready` | 8.3 s | 8.2 s | 8.9 s | 44 (`--limit 1`) |
+> | `bd list --limit 3` | 8.3 s | 8.2 s | 7.0 s | 24 |
+> | `bd ready` | 8.3 s | 8.2 s | 8.9 s | 44 |
 >
-> `bd create` on `main` was 97 statements and 26.5-28.3 s in the delay-proxy run only (I did not write to a shared database). Next to the server, `bd show` takes 0.17 s (1.3.0). On this path 1.3.1 changes nothing, and `main` is faster only for `list`.
+> \*Separate run with `--limit 1`: a delaying TCP proxy in front of a local `dolt sql-server --loglevel debug`, counting "Starting query" lines (about ±1 s noise). On 1.3.0, `bd show` was about 26 sequential exchanges (our count).
 >
-> **Where the exchanges go on `main`.** `bd list --limit 1` is 24 statements: 2 for the schema version (`information_schema.tables` existence probe, then `MAX(version)`), 12 are START TRANSACTION/ROLLBACK around single reads, 10 are the reads themselves (custom statuses/types, `config` three times, `metadata`, the list). A write open adds about 26 schema-init statements plus two forward-drift guards: of 97 statements for `bd create`, about 30 are schema checks. On 1.3.0 the list for `bd show` was: login, `SELECT @@max_allowed_packet`, `SHOW DATABASES`, a second connection, the version probe, `MAX(version)`, then three START TRANSACTION/SELECT/ROLLBACK.
+> In that run, 12 of the 24 `bd list` statements are START TRANSACTION/ROLLBACK and 2 are the schema version. With the schema step skipped in a scratch build, `bd create` went from 28.3 s to 19.6 s, `list` from 7.0-8.7 s to 6.6 s, `show` stayed within noise. So a cache mostly helps writes.
 >
-> **What a bootstrap cache would buy on `main`.** As an upper bound I patched a scratch build to skip the forward-drift guard and `initSchema` entirely: `bd create` went from 28.3 s to 19.6 s, `bd list` from about 7.4-8.7 s to 6.6 s, `bd show` stayed within noise (all three in the delay-proxy run). So a cache pays off mostly on writes; on reads the remaining cost is the transaction wrappers and the per-read config lookups (#5273 items 5 and 6), not the schema step.
->
-> **Running next to the database.** Executing `bd` on the Dolt host over a reused ssh connection takes `bd show` from 10.2 s to about 0.73 s (0.17 s on the host itself), at the price of the usual remote-exec limits (no tty, file arguments are read on the host).
->
-> Two questions, since #6364's author left the cache as "a call for the maintainers": would you take a cache of the converged-schema result at all, and if so what must it keep revalidating on every open (I would keep one cursor read for forward drift and not bypass `cursorRealityFloor` and the ignored-cursor checks)? And would you rather see #5273 items 5/6 first? Happy to take either if it is unclaimed; I will not open anything before hearing back.
+> Workaround: `bd` on the Dolt host over a reused ssh connection takes `bd show` to about 0.73 s.
 
 Проверка черновика на приватное: нет имён хостов, путей, пользователей, IP; ссылки только на публичные номера. Числа `1.3.0` из нашего досье, числа `main` из этой заметки. Реальная сеть перемерена 12.10 (блок Critique ниже): 1.3.0, 1.3.1, main.
 
 ## Что остаётся
 
-1. «Да» founder'а на комментарий (и отдельно на fork/PR позже).
-2. 3-subagent critique перед публикацией.
-3. Реальный сетевой перемер `main` (сейчас эмуляция задержки прокси) и 1.3.1; если разойдётся, поправить таблицу.
-4. Ссылка из комментария на docs-PR (`cos-e4x.2`) только когда тот PR будет открыт.
+1. «Да» founder'а на комментарий (fork/PR docs — отдельно, см. заметку по docs).
+2. Ссылку на docs-PR в комментарий добавлять только после его открытия.
+3. Перемер main, 1.3.1 и три оси critique: сделаны 12.10, правки внесены.
 
 ## Critique: process (2026-10-12, ось PROCESS GATES, только чтение)
 

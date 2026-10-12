@@ -14,7 +14,7 @@ Server mode works against a Dolt server on another machine (`BEADS_DOLT_SERVER_H
 
 #### What it costs
 
-Measured with bd 1.3.0 against a Dolt server on another continent (RTT 0.24 s through an SSH port forward), median of 3 runs. bd 1.3.1 gave the same numbers within 0.1 s:
+Measured with bd 1.3.0 against a Dolt server on another continent (RTT 0.24 s through an SSH port forward), median of 3 runs per row, same issue every time. bd 1.3.1 gave the same numbers within 0.1 s; a build of `main` (b630f96, 2026-10-12) took 10.8 s for `bd show`:
 
 | Where bd runs | `bd show <id>` |
 |---|---|
@@ -22,7 +22,7 @@ Measured with bd 1.3.0 against a Dolt server on another continent (RTT 0.24 s th
 | On the Dolt host, started over a reused SSH connection | 0.73 s |
 | On the Dolt host, in a local shell | 0.17 s |
 
-The cost scales with RTT, not with the size of the result. A packet-counted accounting in [#6114](https://github.com/gastownhall/beads/issues/6114) found 44 to 48 awaited round-trips for even the cheapest commands on 1.2.1 (`bd close`: 150). At 0.24 s that is 10 s or more before the command does any work of its own. Other reports with 0.1 to 0.25 s RTT: [#4102](https://github.com/gastownhall/beads/issues/4102), [#5273](https://github.com/gastownhall/beads/issues/5273), [#3239](https://github.com/gastownhall/beads/issues/3239). Changes merged after 1.3.1 cut the count for some commands (for example `bd ready --limit 1` from about 48 to about 21 statements), but it stays in the tens, so at this RTT the delay stays in seconds.
+The cost scales with RTT, not with the size of the result. A packet-counted accounting in [#6114](https://github.com/gastownhall/beads/issues/6114) found 44 to 48 awaited round-trips for even the cheapest commands on 1.2.1 (`bd close`: 150). At 0.24 s that is 10 s or more before the command does any work of its own. Other reports with 0.1 to 0.25 s RTT: [#4102](https://github.com/gastownhall/beads/issues/4102), [#5273](https://github.com/gastownhall/beads/issues/5273), [#3239](https://github.com/gastownhall/beads/issues/3239). Merged changes cut the count for some commands (for example [#6731](https://github.com/gastownhall/beads/pull/6731) for `bd ready`), but in our run on `main` the counts were still in the tens (`bd list --limit 1`: 24 statements, `bd show`: 40), so at this RTT the delay stays in seconds.
 
 With a server in the same region (RTT of a few milliseconds) the same count adds a fraction of a second.
 
@@ -71,7 +71,7 @@ Details that matter:
 
 | Option | What it gives | What it does not |
 |---|---|---|
-| Proxied-server mode (`bd init --proxied-server`, experimental) | A local proxy process owns the server lifecycle; can front an external Dolt | Reducing the statements per command is not its documented goal; no measurement against a remote server found |
+| Proxied-server mode (`bd init --proxied-server`, experimental) | A local proxy process owns the server lifecycle; `--proxied-server-external-host` and `--proxied-server-external-port` point it at an externally managed Dolt server | Reducing the statements per command is not its documented goal, and we did not measure it against a remote server |
 | Embedded mode plus Dolt remote sync (see [Sync Concepts](/core-concepts/sync-concepts), [Bucket Federation](/multi-agent/bucket-federation)) | Every command is local and fast; works offline | One writer at a time; replicas diverge between syncs; schema migrations must be applied by one clone (see [Upgrading](/getting-started/upgrading)) |
 | Same-region server (VPN or tunnel to a nearby host) | No wrapper | Only helps when a near host exists |
 | Wait for upstream fixes | Nothing to set up | Open work: [#6114](https://github.com/gastownhall/beads/issues/6114), [#5965](https://github.com/gastownhall/beads/issues/5965), [#5273](https://github.com/gastownhall/beads/issues/5273) |
