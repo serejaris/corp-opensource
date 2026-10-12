@@ -6,7 +6,9 @@ Upstream: https://github.com/gastownhall/beads (main `b630f96`, 2026-10-12; ре
 
 Trackers: бид `cos-e4x.2` (эпик `cos-e4x`); досье `corp-research/2026-10/2026-10-12-beads-latency-remote-dolt.md`; рабочая схема `corp-server/runbooks/beads-server.md` § «Mac: bdr и шим bd».
 
-Статус: `PR-READY` (12.10: критика внесена, `make check-docs-go` проходит, patch готов). Наружу только после явного «да» founder'а на fork и PR.
+Статус: `WATCH` до блока `Merge history` (было `PR-READY`: 12.10: критика внесена, `make check-docs-go` проходит, patch готов). Наружу только после явного «да» founder'а на fork и PR.
+
+Коррекция 12.10: PR-READY снят до блока `Merge history`. Утверждение «docs-PR без issue» устарело: с #7223 (05.10) нужен issue и `Closes #`/`Part of #N`. См. `playbooks/upstream-followup-loop.md` § Lesson registry.
 
 Upstream actions: `0`
 

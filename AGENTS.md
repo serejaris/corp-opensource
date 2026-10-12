@@ -22,7 +22,7 @@ Creator/community distribution, product evaluation, sales и infrastructure ос
 - Для подготовки/мониторинга upstream PR используй `open-source-pr-workflow`.
 - Для публикации, open-sourcing, export или sanitization private/vendor/runtime artifacts используй `safe-public-release`.
 - Если есть 2+ repo, 2+ competing PR или пользователь просит subagents/scouting/triage, запускай цикл из 6 субагентов и фиксируй synthesis в issue/watch note.
-- Перед upstream comment/PR, который меняет статус кандидата, после parent live gates запускай 3-subagent critique: фактология/дубликаты, process gates, actionability. Результат фиксируй в issue/watch note.
+- Перед upstream comment/PR, который меняет статус кандидата, после parent live gates запускай 3-subagent critique: фактология/дубликаты, process gates, actionability. Результат фиксируй в issue/watch note. Process gates включают «Историю влития» (`playbooks/repo-bug-scouting.md`): без блока `Merge history` в watch-заметке `PR-READY` не ставится.
 - Перед outward public release обязательны inventory/provenance/license/security allowlist и отдельный approval dry run. Не создавать public repo и не менять visibility на этапе extraction/review.
 
 ## Runner Container

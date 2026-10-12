@@ -35,7 +35,7 @@ gh search prs 'repo:OWNER/REPO is:pr is:open bug OR regression OR crash' --limit
 Перед upstream comment/PR запускать отдельный 3-subagent critique:
 
 1. **Fact-check critique**: ловит оверклеймы про freshness, maintainer signal, duplicate coverage, CI/mergeability и `subagent GO`.
-2. **Process-gate critique**: проверяет, что порядок не нарушен: `6-subagent scouting -> parent live gates -> 3-subagent critique -> comment/PR/tracker update`.
+2. **Process-gate critique**: проверяет, что порядок не нарушен: `6-subagent scouting -> parent live gates -> 3-subagent critique -> comment/PR/tracker update`; и что в watch-заметке есть блок `Merge history` (см. «История влития»). Вывод из CONTRIBUTING и шаблона без истории влития — не PASS.
 3. **Actionability critique**: требует один конкретный `next_status`: `LEAD`, `CANDIDATE`, `COMMENT-FIRST`, `PR-READY`, `PR-OPEN`, `WATCH`, `NO-GO`; для `PR-READY` нужен regression-first contract, для `COMMENT-FIRST` — точный вопрос/предложение, для `WATCH` — событие-разблокировщик.
 
 ## Allowed next_status
@@ -57,11 +57,21 @@ gh search prs 'repo:OWNER/REPO is:pr is:open bug OR regression OR crash' --limit
 - `WATCH`, если баг не воспроизведён; upstream main не ломается на проверенном path; нужен reporter version/body/log; runner недоступен; есть active same-repo PR by us waiting review; есть competing PR, но coverage ещё не сравнён.
 - `NO-GO`, если existing PR covers same contract + test; issue assignment-gated and previous drive-by PRs were closed; repo is invitation-only without invite; upstream removed affected code path; no public contribution surface.
 
+## История влития (обязательный шаг до черновика PR/issue)
+
+Правила в CONTRIBUTING и шаблоне отстают от практики (инцидент beads 12.10.2026: docs-PR «без issue» оказался в устаревшем формате, см. [watch](../watch/beads-docs-remote-dolt-2026-10-12.md)). До черновика изучить, как реально вливают:
+
+1. Последние 30–50 влитых PR (`gh pr list --state merged --limit 50 --json number,author,createdAt,mergedAt,title`): доля внешних авторов, время до merge; 3–5 похожих (docs/fix) PR внешних авторов прочитать целиком: заголовок, тело, ссылка на issue, ревью.
+2. Изменения правил за 60 дней: `git log --since=60.days -- 'CONTRIBUTING*' AGENTS.md .github/` и PR, которые их меняли (intake-политика, шаблоны, workflows).
+3. Требования шаблона PR и форм issue (`Closes #`, обязательные поля, AI disclosure) и как раскрытие AI выглядит у принятых PR.
+4. Какие проверки CI реально засчитывает (`.github/workflows/`, `gh pr checks` у влитых PR), а не облегчённые локальные аналоги.
+5. Итог — блок `Merge history` в watch-заметке со ссылками на PR/коммиты. Без него `PR-READY` не ставится.
+
 ## Hard PR gate
 
 Перед `gh pr create` все пункты должны быть true:
 
-- watch note / internal issue updated after critique;
+- watch note / internal issue updated after critique; в ней есть блок `Merge history` (формат PR совпадает с недавно влитыми внешними);
 - current issue state, assignee, labels and timeline checked;
 - linked/cross-referenced PRs checked, not only text search;
 - contribution gate says PR is allowed now;

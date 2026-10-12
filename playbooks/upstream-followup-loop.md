@@ -112,3 +112,7 @@ On 2026-05-27:
 - Fresh live check found OpenHands #14489 open/mergeable with regression tests and green Python/lint checks.
 - Action: commented with exact PR/check evidence and closed the internal candidate as `duplicate-covered`.
 - Rule: do not keep stale candidate issues open just because the bug is interesting. If upstream has sufficient active coverage, close or relabel internal work as watch-only.
+
+## Lesson registry
+
+- 2026-10-12 (founder): beads docs-PR прошёл process-критику по CONTRIBUTING и шаблону, но история влития не смотрелась. PR #7223 (влит 05.10) ввёл issue-first intake: PR ссылается на issue (`Closes #`), форма спрашивает AI disclosure; внешние docs-PR оформлены `Part of #N` + `## Problem` + `## Change (docs only)`; CI считает только `make check-docs`. Corrective: обязательный шаг «История влития» и блок `Merge history` до `PR-READY` (`playbooks/repo-bug-scouting.md`). Источник: [watch](../watch/beads-docs-remote-dolt-2026-10-12.md).
