@@ -345,3 +345,7 @@ _claude-code-unknown-model-unknown-reasoning on behalf of serejaris_
 - Комментарий с замерами: https://github.com/gastownhall/beads/issues/6114#issuecomment-6128075017
 - Подпись по engdocs/AGENT_SIGNING.md: `_claude-code-claude-opus-5-5-unknown-reasoning on behalf of serejaris_`.
 - Следующий шаг: follow-up по playbooks/upstream-followup-loop.md — CI `CI Gate / Required`, `PR Risk Gate / Required`, ответы ревьюеров.
+
+## 2026-10-12: HTTP backend добавлен в PR
+
+Коммит 2a7149d в ветке docs/remote-server-latency: строка про HTTP backend (`bd serve` + `bd connect <url>`, #7288, #7469, #7471, #7497) в таблице альтернатив docs/architecture/dolt.md со ссылкой на раздел README «HTTP Backend (experimental)». Не в релизе (1.3.1 отказывает такой metadata.json, 1.3.2-rc.2 — хотфиксы), задержку по WAN не мерили, «быстрее» не заявлено. make check-docs: PASSED. Тело PR обновлено. CI: authorize и remove-label pass, Bazel Farm skipping (ждёт метки мейнтейнера).
