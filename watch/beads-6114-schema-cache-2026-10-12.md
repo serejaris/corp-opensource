@@ -28,7 +28,7 @@ Upstream actions: `0`. Runner actions: `0` (локальный scratch-прог�
 | #3239 пер-ID проверки wisps | open | fengning-starsend | нет | kind/chore, p2 | 16.06 maphew просил repro; 27.09 бот |
 | #4102 5-10 с на удалённом Dolt | open | fishgills | нет | kind/bug, p2 | 27.09 бот; комментарий medhatgalal 11.07 |
 
-Смежные: #6116 (write-path prepare→execute→close), #6117 (write-транзакции на всю команду, при 80 мс RTT `bd create` падает 2 из 2 с 1213), #5769 (INFORMATION_SCHEMA-пробы деградируют при мусорных БД), #6202 (тест на число соединений на вызов, завёл бee, «maintainer seat»), #6179, #6701.
+Смежные: #6116 (write-path prepare→execute→close), #6117 (write-транзакции на всю команду, при 80 мс RTT `bd create` падает 2 из 2 с 1213), #5769 (INFORMATION_SCHEMA-пробы деградируют при мусорных БД), #6202 (тест на число соединений на вызов, завёл bee, «maintainer seat»), #6179, #6701.
 
 ### PR
 
