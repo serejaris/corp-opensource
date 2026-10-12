@@ -1,4 +1,4 @@
-Closes #<NEW>
+Closes #7517
 
 Refs #6114, #4102, #5273, #3239. This documents a workaround; it does not fix the latency.
 
@@ -42,4 +42,4 @@ Checks run on this branch (docs-only validation from `engdocs/TESTING.md`):
 
 AI disclosure: the text was drafted by Claude Code agents under my direction; the timings were measured on my own setup.
 
-_claude-code-unknown-model-unknown-reasoning on behalf of serejaris_
+_claude-code-claude-opus-5-5-unknown-reasoning on behalf of serejaris_

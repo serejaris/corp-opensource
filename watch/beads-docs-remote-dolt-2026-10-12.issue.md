@@ -65,4 +65,4 @@ Yes, mostly
 
 AI disclosure: the text was drafted by Claude Code agents under my direction; the timings were measured on my own setup.
 
-_claude-code-unknown-model-unknown-reasoning on behalf of serejaris_
+_claude-code-claude-opus-5-5-unknown-reasoning on behalf of serejaris_

@@ -335,3 +335,13 @@ _claude-code-unknown-model-unknown-reasoning on behalf of serejaris_
 4. Комментарий в #6114 про PR не нужен: шаблон и практика не требуют, issue и PR связаны через `Closes`/`Refs`.
 
 Примечание: `engdocs/AGENT_SIGNING.md` просит трейлер `Agent-Signature:` у коммитов агентов; на ca52db3 его нет. Правка = переписывание уже запушенного коммита и force-push в форк; для внешнего вкладчика правило не обязательное (раздел про мейнтейнерские действия), поэтому не делали.
+
+## Опубликовано (2026-10-12)
+
+Статус: `PR-OPEN`. Решение founder'а в чате сессии: «не надо меня спрашивать сразу делай».
+
+- Issue: https://github.com/gastownhall/beads/issues/7517
+- PR: https://github.com/gastownhall/beads/pull/7518 (`Closes #7517`, head `serejaris:docs/remote-server-latency`, коммит ca52db3)
+- Комментарий с замерами: https://github.com/gastownhall/beads/issues/6114#issuecomment-6128075017
+- Подпись по engdocs/AGENT_SIGNING.md: `_claude-code-claude-opus-5-5-unknown-reasoning on behalf of serejaris_`.
+- Следующий шаг: follow-up по playbooks/upstream-followup-loop.md — CI `CI Gate / Required`, `PR Risk Gate / Required`, ответы ревьюеров.
