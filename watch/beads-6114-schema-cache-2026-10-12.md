@@ -105,28 +105,27 @@ Upstream actions: `0`. Runner actions: `0` (локальный scratch-прог�
 
 ## Черновик комментария в #6114 (английский)
 
-> Measurements from a remote setup, in case they help prioritise. Not a fix; I have not written a cache.
+> Measurements from a remote setup, in case they help prioritise. Not a fix; I have not written a cache. Two questions for maintainers are at the end.
 >
-> **Setup.** bd 1.3.0 and a build of `main` (b630f96), direct server mode (`dolt_mode: server`) against an external `dolt sql-server`; client and server on different continents, RTT 0.24 s. For the `main` numbers I put a delaying TCP proxy (0.12 s each way) in front of a local `dolt sql-server` and counted "Starting query" lines in its debug log. One machine, so expect about ±1 s of noise.
+> **Setup.** Direct server mode (`dolt_mode: server`) against an external `dolt sql-server` reached through an SSH port forward; client and server on different continents, RTT 0.24 s. Read-only commands, 3 runs each, medians, same repo and issue on every version. Statement counts come from a separate run: a delaying TCP proxy (0.12 s each way) in front of a local `dolt sql-server --loglevel debug`, counting "Starting query" lines. One machine for that run, so expect about ±1 s of noise there.
 >
-> | | statements | wall |
-> |---|---|---|
-> | `bd show <id>` on 1.3.0, over the network | ~26 sequential exchanges | 9.9 s |
-> | same, `bd` running next to the server | | 0.17 s |
-> | `bd list --limit 1`, `main`, RTT 0.24 s | 24 | 7.0-8.7 s |
-> | `bd show <id>`, `main` | 40 | 10.2-12.1 s |
-> | `bd ready --limit 1`, `main` | 44 | 11.8 s |
-> | `bd create`, `main` | 97 | 26.5-28.3 s |
+> | wall time over the network, RTT 0.24 s | 1.3.0 | 1.3.1 | `main` (b630f96) | statements on `main` |
+> |---|---|---|---|---|
+> | `bd show <id>` | 10.2 s | 10.3 s | 10.8 s | 40 |
+> | `bd list --limit 3` | 8.3 s | 8.2 s | 7.0 s | 24 (`--limit 1`) |
+> | `bd ready` | 8.3 s | 8.2 s | 8.9 s | 44 (`--limit 1`) |
+>
+> `bd create` on `main` was 97 statements and 26.5-28.3 s in the delay-proxy run only (I did not write to a shared database). Next to the server, `bd show` takes 0.17 s (1.3.0). On this path 1.3.1 changes nothing, and `main` is faster only for `list`.
 >
 > **Where the exchanges go on `main`.** `bd list --limit 1` is 24 statements: 2 for the schema version (`information_schema.tables` existence probe, then `MAX(version)`), 12 are START TRANSACTION/ROLLBACK around single reads, 10 are the reads themselves (custom statuses/types, `config` three times, `metadata`, the list). A write open adds about 26 schema-init statements plus two forward-drift guards: of 97 statements for `bd create`, about 30 are schema checks. On 1.3.0 the list for `bd show` was: login, `SELECT @@max_allowed_packet`, `SHOW DATABASES`, a second connection, the version probe, `MAX(version)`, then three START TRANSACTION/SELECT/ROLLBACK.
 >
-> **What a bootstrap cache would buy on `main`.** As an upper bound I patched a scratch build to skip the forward-drift guard and `initSchema` entirely: `bd create` went from 28.3 s to 19.6 s, `bd list` from about 7.4-8.7 s to 6.6 s, `bd show` stayed within noise. So a cache pays off mostly on writes; on reads the remaining cost is the transaction wrappers and the per-read config lookups (#5273 items 5 and 6), not the schema step.
+> **What a bootstrap cache would buy on `main`.** As an upper bound I patched a scratch build to skip the forward-drift guard and `initSchema` entirely: `bd create` went from 28.3 s to 19.6 s, `bd list` from about 7.4-8.7 s to 6.6 s, `bd show` stayed within noise (all three in the delay-proxy run). So a cache pays off mostly on writes; on reads the remaining cost is the transaction wrappers and the per-read config lookups (#5273 items 5 and 6), not the schema step.
 >
-> **Running next to the database.** Executing `bd` on the Dolt host over a multiplexed ssh connection takes `bd show` from 9.9 s to about 0.85 s (and 0.17 s on the host itself), at the price of the usual remote-exec limits (no tty, file arguments are read on the host).
+> **Running next to the database.** Executing `bd` on the Dolt host over a reused ssh connection takes `bd show` from 10.2 s to about 0.73 s (0.17 s on the host itself), at the price of the usual remote-exec limits (no tty, file arguments are read on the host).
 >
 > Two questions, since #6364's author left the cache as "a call for the maintainers": would you take a cache of the converged-schema result at all, and if so what must it keep revalidating on every open (I would keep one cursor read for forward drift and not bypass `cursorRealityFloor` and the ignored-cursor checks)? And would you rather see #5273 items 5/6 first? Happy to take either if it is unclaimed; I will not open anything before hearing back.
 
-Проверка черновика на приватное: нет имён хостов, путей, пользователей, IP; ссылки только на публичные номера. Числа `1.3.0` из нашего досье, числа `main` из этой заметки. Не перемерено на 1.3.1.
+Проверка черновика на приватное: нет имён хостов, путей, пользователей, IP; ссылки только на публичные номера. Числа `1.3.0` из нашего досье, числа `main` из этой заметки. Реальная сеть перемерена 12.10 (блок Critique ниже): 1.3.0, 1.3.1, main.
 
 ## Что остаётся
 
@@ -163,3 +162,21 @@ FIX:
 3. «On 1.3.0 the list for `bd show` was: login, `SELECT @@max_allowed_packet`, `SHOW DATABASES`, a second connection, ...» не подтверждено ни досье, ни замером (досье даёт только «~26 обменов»). Убрать это предложение или заменить на «about 26 sequential exchanges».
 4. Мелочь: `bd show` на 1.3.0 «~26 exchanges» против «~33» в runbook; оставить «about 26» с пометкой «our count».
 Дубликатов нет: PR кэша схемы нет, соседние #7297/#7409 (SHOW COLUMNS/TABLES) не пересекаются с вопросом о кэше; #5273 пп.5-6 не взяты.
+
+## Critique: actionability + remeasure
+
+Дата: 2026-10-12. Ось: actionability (понятность без нашего контекста, воспроизводимость). Upstream actions: `0`. Вердикт: **FIX** (правки внесены в черновик выше), после них годен к публикации по «да» founder'а.
+
+Перемер на настоящей сети Mac → citadel (SSH-порт-форвард 127.0.0.1:3307, RTT 0,24 с), только чтения из `tg-telethon`, одно и то же issue, 3 прогона, медианы (бинарники: Homebrew 1.3.0 через `BD_LOCAL=1 bd`; релизный 1.3.1 darwin_arm64, sha256 сверен с checksums.txt; main b630f96 из scratch). Сырьё: `scratchpad/oss/remeasure.json`.
+
+| Команда | 1.3.0 | 1.3.1 | main b630f96 |
+|---|---|---|---|
+| `show <id>` | 10,2 с | 10,3 с | 10,8 с |
+| `list --limit 3` | 8,3 с | 8,2 с | 7,0 с |
+| `ready` | 8,3 с | 8,2 с | 8,9 с |
+
+Расхождение с прежним: `show` 1.3.0 был 9,9 с (теперь 10,2), эмуляция main `show` 10,2-12,1 (реальная 10,8), `list` 7,0-8,7 (реальная 7,0). Картина прежняя: 1.3.1 ничего не меняет, main выигрывает только на `list`. `ready` без `--limit 1` ближе к 8-9 с, чем 11,8 из эмуляции (там был `--limit 1`).
+
+Что поправлено: (1) таблица заменена на реальные медианы по трём версиям, счёт выражений вынесен в отдельный столбец с пометкой, что он из прогона через задерживающий прокси; (2) в Setup сказано, что путь идёт через SSH-форвард, и как считались выражения (`--loglevel debug`, «Starting query»); (3) `bd create` оставлен только как число из прокси-прогона, в общую БД не писали; (4) в начале есть указание, что два вопроса в конце; (5) 0,85 с заменено на 0,73 с.
+
+Остаётся до публикации: (а) в docs-черновике сказано «`bd ready --limit 1` ~48 → ~21 выражений» (#6731), а наш счёт на main 44; мейнтейнер сразу спросит, почему. Перед публикацией пересчитать `ready --limit 1` на b630f96 и либо объяснить разницу, либо убрать число 21 из docs; (б) комментарий длинный (таблица, три абзаца, два вопроса); если мейнтейнеры не ответят, лучше резать до таблицы и вопросов, остальное по запросу; (в) скрипт задерживающего прокси нигде не опубликован: воспроизвести «Starting query» без него можно только своим `tc netem`/toxiproxy, это стоит сказать одной фразой или приложить gist (решение founder'а).
