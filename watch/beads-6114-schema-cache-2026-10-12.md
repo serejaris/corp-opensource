@@ -134,3 +134,19 @@ Upstream actions: `0`. Runner actions: `0` (локальный scratch-прог�
 2. 3-subagent critique перед публикацией.
 3. Реальный сетевой перемер `main` (сейчас эмуляция задержки прокси) и 1.3.1; если разойдётся, поправить таблицу.
 4. Ссылка из комментария на docs-PR (`cos-e4x.2`) только когда тот PR будет открыт.
+
+## Critique: process (2026-10-12, ось PROCESS GATES, только чтение)
+
+Проверено по апстриму через `gh api` (CONTRIBUTING.md, .github/PULL_REQUEST_TEMPLATE.md, Makefile, docs/docs.json, docs/architecture/dolt.md, открытые PR).
+
+- docs-PR без issue: PASS. CONTRIBUTING: docs tweaks идут сразу PR'ом с «why» в описании; `Closes #` в шаблоне необязателен. DCO, CLA и sign-off в CONTRIBUTING нет; отдельных правил про AI-assisted вклад нет (раздел про AI описывает работу мейнтейнерских агентов), раскрытие авторства не требуется.
+- Коммит и PR: PASS. Conventional `type(scope): summary`, `docs(dolt): ...` подходит. Шаблон: Closes # / What changed / Evidence it works / Checklist (`make test`, docs обновлены). Evidence = таблица замеров и команды; для docs-only в чеклисте явно написать, что `make test` не затронут.
+- `make check-docs`: FIX. Это Bazel (`docsync_test` + `doc_freshness_test` + `scripts/check-doc-flags.sh`); без bazel брать `make check-docs-go`. Ни тот, ни другой не гонялся: прогнать на ветке до PR и вставить результат в Evidence.
+- Место в дереве: PASS. `docs/architecture/dolt.md` уже в навигации (`docs.json`, группа Architecture), подраздел `###` встаёт между «Server Mode» (стр. 168) и «Maintenance» (стр. 230), правок `docs.json` не нужно. Ссылки черновика (`/core-concepts/sync-concepts`, `/multi-agent/bucket-federation`, `/getting-started/upgrading`) существуют. Запасной вариант с новой страницей потребует строки в docs.json, но минимальный путь её не требует.
+- Дубли: PASS. Открытые PR 7447, 7511, 7514 про remote в смысле Git/Dolt-синка и CI, не про латентность; docs-PR 7448 правит другой абзац (топология по умолчанию), конфликта по строкам с dolt.md нет.
+- Fork и ветка: BLOCK до «да» founder'а. `serejaris/beads` не существует (`gh repo view`: не найден). Шаги: «да» → `gh repo fork gastownhall/beads --clone=false` → ветка `docs/remote-server-latency` от свежего main → один коммит.
+- Комментарий в #6114 (open, kind/chore, p2): FIX. Процессно допустим (ответ в issue, ничего не заявляем), но (1) числа `main` получены эмуляцией задержки прокси, перемер по сети и на 1.3.1 не сделан (шаг 3 заметки); (2) AGENTS шаг 5: репро в runner'е или явная запись, почему нет — записать «замер на Mac, runner не нужен»; (3) CONTRIBUTING_PR_GUIDELINES требует чисел для perf-утверждений: в тексте их достаточно, слово «upper bound» оставить.
+- safe-public-release (текст и код): PASS. `dolt-host.example.com`, `~/work/myproject` плейсхолдеры; хостов, IP, путей, пользователей нет; в обёртке нет секретов. FIX мелкий: пример ssh-обёртки заявлен как рабочий, но на тестовом хосте не гонялся; до PR прогнать (проверен только `printf %q`).
+- Гейты AGENTS.md: пройдены parent live gates, дубли, safe-public проход. Остались: другие две оси 3-subagent critique (фактология/дубликаты, actionability), перемер, ssh-тест примера, `make check-docs`, явное «да» на комментарий и отдельно на fork/PR. Upstream actions: 0.
+
+Шаги до отправки комментария: 1) перемер main и 1.3.1, поправить таблицу; 2) закрыть две остальные оси critique; 3) «да» founder'а; 4) отправить, записать ссылку в watch-заметку. Шаги до docs-PR: 1) «да» на fork/PR; 2) прогон ssh-примера; 3) fork и ветка; 4) `make check-docs` (или `-go`); 5) PR по шаблону; 6) ссылку на PR добавить в #6114 только после открытия.
